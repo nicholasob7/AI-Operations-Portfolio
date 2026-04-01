@@ -1,0 +1,616 @@
+<svelte:head>
+	<title>Nicko O'Brien | Personal Website</title>
+	<meta
+		name="description"
+		content="Personal website of Nicko O'Brien, IT Service Desk Analyst and AI-focused builder."
+	/>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:wght@400;600&display=swap"
+		rel="stylesheet"
+	/>
+</svelte:head>
+
+<main class="page">
+	<section class="hero card">
+		<div class="hero-aurora" aria-hidden="true"></div>
+		<p class="eyebrow">Personal Website</p>
+		<h1>Nicko O'Brien</h1>
+		<p class="tagline">IT Service Desk Analyst focused on AI-assisted operations and delivery.</p>
+		<p class="proof">3+ years resolving high-friction enterprise support and migration problems.</p>
+		<div class="links">
+			<div class="link-row">
+				<a
+					class="cta cta-github cta-feature"
+					href="https://github.com/nicholasob7"
+					target="_blank"
+					rel="noreferrer"
+					>GitHub<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<a class="cta cta-view" href="/resume.pdf" target="_blank" rel="noreferrer"
+					>View Resume<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<a class="cta cta-download" href="/resume.pdf" download="Nicholas_Francis_OBrien_Resume.pdf"
+					>Download Resume<span class="sr-only"> (downloads file)</span></a
+				>
+			</div>
+			<div class="link-row">
+				<a class="cta cta-contact" href="mailto:nicholasob972@gmail.com"
+					>Contact: nicholasob972@gmail.com</a
+				>
+				<a
+					class="cta cta-linkedin"
+					href="https://www.linkedin.com/in/nicholasfobrien"
+					target="_blank"
+					rel="noreferrer"
+					>LinkedIn Profile: Nicholas F O'Brien (Wellington)<span class="sr-only">
+						(opens in new tab)</span
+					></a
+				>
+			</div>
+		</div>
+		<div class="status-strip" aria-label="Profile snapshot">
+			<span>Location: Wellington</span>
+			<span>Current Role: IT Service Desk Analyst</span>
+			<span>Focus: AI Ops + Enterprise Systems Delivery</span>
+		</div>
+	</section>
+
+	<section class="card">
+		<h2>About</h2>
+		<p>
+			I work at the intersection of IT operations and AI-enabled delivery. My focus is translating
+			complex, messy technical situations into stable systems, practical tooling, and dependable
+			outcomes.
+		</p>
+	</section>
+
+	<div class="section-divider" aria-hidden="true"></div>
+
+	<section class="card">
+		<h2>Projects</h2>
+		<div class="projects">
+			<article>
+				<p class="project-label">AI Architecture</p>
+				<h3>Eliora</h3>
+				<p>
+					Interpretive AI architecture designed to convert atypical input into structured, stable
+					reasoning and response.
+				</p>
+				<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
+			</article>
+			<article>
+				<p class="project-label">Systems Integration</p>
+				<h3>SAP Migration Integration</h3>
+				<p>
+					AI-assisted recovery of a failed SAP migration with installation packaging and environment
+					deployment support.
+				</p>
+				<p class="project-outcome">Outcome: Restored delivery continuity and stabilized deployment flow.</p>
+			</article>
+			<article>
+				<p class="project-label">Remediation Tooling</p>
+				<h3>SAP Remediation Script</h3>
+				<p>AI-assisted production script to remediate SAP issues on single end-user devices.</p>
+				<p class="project-outcome">Outcome: Standardized single-device remediation in production support.</p>
+			</article>
+		</div>
+	</section>
+</main>
+
+<style>
+	:global(:root) {
+		--bg-0: #060912;
+		--bg-1: #0b1326;
+		--panel: rgba(14, 22, 42, 0.78);
+		--text-main: #e8eefc;
+		--text-muted: #aab8d8;
+		--accent: #2fd1ff;
+		--accent-purple: #6e3fb1;
+		--accent-green: #1e8d6a;
+		--accent-purple-bright: #9a63e8;
+		--accent-green-bright: #39c69a;
+		--accent-soft: rgba(47, 209, 255, 0.15);
+	}
+
+	:global(body) {
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		background:
+			radial-gradient(circle at 10% 10%, rgba(47, 209, 255, 0.12) 0%, transparent 25%),
+			radial-gradient(circle at 75% 12%, rgba(110, 63, 177, 0.24) 0%, transparent 24%),
+			radial-gradient(circle at 90% 18%, rgba(30, 141, 106, 0.18) 0%, transparent 24%),
+			linear-gradient(170deg, var(--bg-0) 0%, var(--bg-1) 100%);
+		color: var(--text-main);
+	}
+
+	:global(body)::after {
+		content: '';
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		background-image: radial-gradient(rgba(255, 255, 255, 0.035) 0.6px, transparent 0.6px);
+		background-size: 3px 3px;
+		opacity: 0.18;
+		mix-blend-mode: soft-light;
+	}
+
+	.page {
+		position: relative;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 3rem 1.25rem 4rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.page::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image:
+			linear-gradient(rgba(180, 210, 255, 0.04) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(180, 210, 255, 0.04) 1px, transparent 1px);
+		background-size: 28px 28px;
+		mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+	}
+
+	.card {
+		background:
+			linear-gradient(var(--panel), var(--panel)) padding-box,
+			linear-gradient(
+					125deg,
+					rgba(35, 148, 182, 0.54),
+					rgba(110, 63, 177, 0.84),
+					rgba(30, 141, 106, 0.84)
+				)
+				border-box;
+		backdrop-filter: blur(8px);
+		border: 1px solid transparent;
+		border-radius: 1rem;
+		padding: 1.25rem;
+		box-shadow: 0 14px 40px rgba(4, 8, 20, 0.55);
+		animation: rise-in 520ms ease both;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.1rem, 5vw, 3.25rem);
+		line-height: 1;
+		margin: 0.25rem 0;
+	}
+
+	.hero {
+		position: relative;
+		overflow: hidden;
+		padding: 1.75rem;
+	}
+
+	.hero > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-aurora {
+		position: absolute;
+		inset: -35% -10% auto -10%;
+		height: 68%;
+		background:
+			radial-gradient(55% 60% at 20% 50%, rgba(111, 255, 214, 0.26) 0%, transparent 60%),
+			radial-gradient(50% 60% at 45% 45%, rgba(154, 99, 232, 0.31) 0%, transparent 65%),
+			radial-gradient(45% 55% at 75% 50%, rgba(47, 209, 255, 0.25) 0%, transparent 62%);
+		filter: blur(18px) saturate(124%);
+		animation: aurora-drift 14s ease-in-out infinite alternate;
+	}
+
+	.eyebrow {
+		margin: 0;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--accent),
+			var(--accent-purple-bright),
+			var(--accent-green-bright)
+		);
+		background-clip: text;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+	}
+
+	.tagline {
+		font-size: 1.12rem;
+		margin: 0.35rem 0 0;
+		max-width: 28ch;
+	}
+
+	.proof {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.92rem;
+		color: var(--text-muted);
+		margin-top: 0.6rem;
+	}
+
+	.links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.link-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.status-strip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		margin-top: 0.9rem;
+	}
+
+	.status-strip span {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: #e8f3ff;
+		padding: 0.26rem 0.55rem;
+		border-radius: 999px;
+		background: linear-gradient(120deg, #34484f 0%, #3c4b5f 55%, #204c44 100%);
+		border: 1px solid rgba(190, 215, 242, 0.55);
+		box-shadow:
+			0 0 0 1px rgba(230, 244, 255, 0.1) inset,
+			0 6px 14px rgba(7, 14, 33, 0.28);
+	}
+
+	.cta {
+		--btn-start: #35598f;
+		--btn-mid: #50368f;
+		--btn-end: #286e68;
+		--btn-start-hover: #4470b3;
+		--btn-mid-hover: #6747b6;
+		--btn-end-hover: #318982;
+		--btn-text: #ecf3ff;
+		--btn-text-hover: var(--btn-text);
+		text-decoration: none;
+		padding: 0.45rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: var(--btn-text);
+		background: linear-gradient(120deg, var(--btn-start) 0%, var(--btn-mid) 55%, var(--btn-end) 100%);
+		border: 1px solid rgba(193, 217, 255, 0.34);
+		transition:
+			background 160ms ease,
+			color 140ms ease,
+			border-color 140ms ease,
+			transform 140ms ease;
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+			0 8px 20px rgba(7, 14, 33, 0.35);
+	}
+
+	.cta-view {
+		--btn-start: #3a5254;
+		--btn-mid: #3f4f64;
+		--btn-end: #1f5448;
+		--btn-start-hover: #486769;
+		--btn-mid-hover: #51657e;
+		--btn-end-hover: #2a695b;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta-download {
+		--btn-start: #395759;
+		--btn-mid: #3d5366;
+		--btn-end: #1f584b;
+		--btn-start-hover: #466d6f;
+		--btn-mid-hover: #4f6980;
+		--btn-end-hover: #296f5f;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta-contact {
+		--btn-start: #3c5856;
+		--btn-mid: #415466;
+		--btn-end: #22594a;
+		--btn-start-hover: #4a6e6a;
+		--btn-mid-hover: #536980;
+		--btn-end-hover: #2d705e;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta-github {
+		--btn-start: #3b7b63;
+		--btn-mid: #2a5f4d;
+		--btn-end: #1e4538;
+		--btn-start-hover: #4b9278;
+		--btn-mid-hover: #33735d;
+		--btn-end-hover: #275547;
+		--btn-text: #e9fff4;
+		--btn-text-hover: #f6fffb;
+	}
+
+	.cta-linkedin {
+		--btn-start: #3a5456;
+		--btn-mid: #405064;
+		--btn-end: #205649;
+		--btn-start-hover: #476a6d;
+		--btn-mid-hover: #51657d;
+		--btn-end-hover: #2a6b5b;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta:hover {
+		background: linear-gradient(
+			120deg,
+			var(--btn-start-hover) 0%,
+			var(--btn-mid-hover) 55%,
+			var(--btn-end-hover) 100%
+		);
+		color: var(--btn-text-hover);
+		border-color: rgba(206, 226, 255, 0.6);
+		transform: translateY(-1px);
+	}
+
+	.cta-feature {
+		padding: 0.5rem 0.95rem;
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: 0.015em;
+		border-color: rgba(182, 238, 219, 0.8);
+		box-shadow:
+			0 0 0 1px rgba(210, 240, 230, 0.26) inset,
+			0 0 18px rgba(92, 191, 154, 0.24),
+			0 10px 24px rgba(7, 14, 33, 0.4);
+	}
+
+	.cta-github.cta-feature:hover {
+		border-color: rgba(194, 255, 231, 0.95);
+		box-shadow:
+			0 0 0 1px rgba(224, 255, 243, 0.34) inset,
+			0 0 20px rgba(108, 209, 171, 0.35),
+			0 12px 26px rgba(7, 14, 33, 0.46);
+	}
+
+	.links a:focus-visible,
+	.projects article:focus-within {
+		outline: 3px solid var(--accent-purple);
+		outline-offset: 2px;
+	}
+
+	h2 {
+		margin-top: 0;
+		font-size: 1.35rem;
+		color: #d8e8ff;
+		letter-spacing: 0.01em;
+	}
+
+	p {
+		font-family: 'Source Serif 4', serif;
+		font-size: 1.05rem;
+		line-height: 1.55;
+		margin-bottom: 0;
+		max-width: 68ch;
+		color: #d4def3;
+	}
+
+	.projects {
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.section-divider {
+		height: 2px;
+		border-radius: 999px;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(47, 209, 255, 0.95) 18%,
+			rgba(154, 99, 232, 1) 50%,
+			rgba(77, 228, 181, 0.95) 82%,
+			transparent 100%
+		);
+		box-shadow: 0 0 20px rgba(154, 99, 232, 0.35);
+		animation: divider-pulse 4.4s ease-in-out infinite;
+	}
+
+	/* Add section-level richness so lower cards are not visually plain */
+	.card:has(h2) {
+		background:
+			linear-gradient(
+					135deg,
+					rgba(22, 34, 66, 0.8) 0%,
+					rgba(31, 28, 69, 0.82) 56%,
+					rgba(18, 42, 53, 0.8) 100%
+				)
+				padding-box,
+			linear-gradient(
+					128deg,
+					rgba(47, 209, 255, 0.44),
+					rgba(110, 63, 177, 0.64),
+					rgba(30, 141, 106, 0.6)
+				)
+				border-box;
+	}
+
+	.card:has(h2)::before {
+		content: '';
+		display: block;
+		height: 2px;
+		width: 120px;
+		margin-bottom: 0.9rem;
+		background: linear-gradient(
+			90deg,
+			rgba(47, 209, 255, 1),
+			rgba(154, 99, 232, 1),
+			rgba(77, 228, 181, 0.98)
+		);
+		border-radius: 999px;
+		box-shadow: 0 0 16px rgba(154, 99, 232, 0.35);
+	}
+
+	.projects article {
+		padding: 0.85rem;
+		background:
+			linear-gradient(rgba(17, 29, 54, 0.72), rgba(17, 29, 54, 0.72)) padding-box,
+			linear-gradient(
+					130deg,
+					rgba(47, 209, 255, 0.48),
+					rgba(110, 63, 177, 0.9),
+					rgba(30, 141, 106, 0.9)
+				)
+				border-box;
+		border: 1px solid transparent;
+		border-radius: 0.75rem;
+		position: relative;
+		transition:
+			border-color 140ms ease,
+			transform 140ms ease,
+			box-shadow 180ms ease;
+	}
+
+	.projects article::before {
+		content: '';
+		position: absolute;
+		left: -1px;
+		top: -1px;
+		bottom: -1px;
+		width: 5px;
+		border-radius: 0.75rem 0 0 0.75rem;
+		background: linear-gradient(
+			180deg,
+			rgba(47, 209, 255, 1),
+			rgba(154, 99, 232, 1),
+			rgba(57, 198, 154, 0.95)
+		);
+		box-shadow: 0 0 18px rgba(154, 99, 232, 0.35);
+	}
+
+	.projects article:hover {
+		background:
+			linear-gradient(rgba(20, 34, 62, 0.86), rgba(20, 34, 62, 0.86)) padding-box,
+			linear-gradient(
+					130deg,
+					rgba(95, 224, 255, 0.92),
+					rgba(154, 99, 232, 1),
+					rgba(77, 228, 181, 0.98)
+				)
+				border-box;
+		transform: translateY(-1px);
+		box-shadow: 0 10px 30px rgba(8, 16, 35, 0.45);
+	}
+
+	.projects h3 {
+		margin: 0.12rem 0 0;
+		font-size: 1.02rem;
+	}
+
+	.projects p {
+		margin-top: 0.5rem;
+	}
+
+	.project-outcome {
+		margin-top: 0.6rem;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.82rem;
+		line-height: 1.4;
+		color: #c4d6f7;
+	}
+
+	.project-label {
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.74rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--accent),
+			var(--accent-purple-bright),
+			var(--accent-green-bright)
+		);
+		background-clip: text;
+		text-shadow: 0 0 16px var(--accent-soft);
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (max-width: 640px) {
+		.page {
+			padding-top: 1.5rem;
+			gap: 1rem;
+		}
+
+		.hero {
+			padding: 1.2rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(1.9rem, 11vw, 2.45rem);
+		}
+
+		.status-strip span {
+			font-size: 0.7rem;
+		}
+	}
+
+	@keyframes aurora-drift {
+		0% {
+			transform: translateX(-2%) translateY(0%) scale(1);
+		}
+		50% {
+			transform: translateX(2%) translateY(3%) scale(1.05);
+		}
+		100% {
+			transform: translateX(-1%) translateY(-2%) scale(1.02);
+		}
+	}
+
+	@keyframes rise-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes divider-pulse {
+		0% {
+			opacity: 0.62;
+			transform: scaleX(0.98);
+		}
+		50% {
+			opacity: 1;
+			transform: scaleX(1);
+		}
+		100% {
+			opacity: 0.62;
+			transform: scaleX(0.98);
+		}
+	}
+</style>
