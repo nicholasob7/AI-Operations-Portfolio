@@ -12,12 +12,11 @@
 		<h1>Nicholas Francis O'Brien</h1>
 		<p class="role">IT Service Desk Analyst | Identity and Endpoint Administration</p>
 		<p class="contact">
-			<a href="mailto:nicholasob972@gmail.com">nicholasob972@gmail.com</a>
-			<span aria-hidden="true">|</span>
-			<span>+64 21 874 999</span>
+			<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
 			<span aria-hidden="true">|</span>
 			<span>Lower Hutt, New Zealand</span>
 		</p>
+		<p class="contact-note">Phone number and references available on request via email.</p>
 	</header>
 
 	<section class="card">
@@ -224,6 +223,12 @@
 		gap: 0.5rem;
 		font-size: 0.86rem;
 		color: #cbd8ec;
+	}
+
+	.contact-note {
+		margin: 0.42rem 0 0;
+		font-size: 0.82rem;
+		color: #afc4e3;
 	}
 
 	a {

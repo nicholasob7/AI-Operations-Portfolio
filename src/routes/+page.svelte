@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 
-	const contactEmail = 'nicholasob972@gmail.com';
+	const contactEmail = 'nicko.obrien.ai@gmail.com';
 	const linkedInUrl = 'https://www.linkedin.com/in/nicholasfobrien';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterUrl = 'https://x.com/nicho0101';
