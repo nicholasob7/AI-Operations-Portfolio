@@ -1,6 +1,13 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
+
 	const contactEmail = 'nicholasob972@gmail.com';
+	const linkedInUrl = 'https://www.linkedin.com/in/nicholasfobrien';
+	const githubUrl = 'https://github.com/nicholasob7';
+	const twitterUrl = 'https://x.com/nicho0101';
+	let showResumeOptions = $state(false);
 	let showEmailOptions = $state(false);
+	let showSocialOptions = $state(false);
 	let copied = $state(false);
 	let showEmailText = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
@@ -26,6 +33,18 @@
 			if (copyResetTimer) clearTimeout(copyResetTimer);
 		}
 	};
+
+	const toggleResumeOptions = () => {
+		showResumeOptions = !showResumeOptions;
+	};
+
+	const toggleSocialOptions = () => {
+		showSocialOptions = !showSocialOptions;
+	};
+
+	onDestroy(() => {
+		if (copyResetTimer) clearTimeout(copyResetTimer);
+	});
 </script>
 
 <svelte:head>
@@ -33,6 +52,20 @@
 	<meta
 		name="description"
 		content="Personal website of Nicko O'Brien, IT Service Desk Analyst and AI-focused builder."
+	/>
+	<meta name="robots" content="index,follow" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Nicko O'Brien | Personal Website" />
+	<meta
+		property="og:description"
+		content="IT Service Desk Analyst focused on AI-assisted operations and delivery."
+	/>
+	<meta property="og:site_name" content="Nicko O'Brien" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Nicko O'Brien | Personal Website" />
+	<meta
+		name="twitter:description"
+		content="IT Service Desk Analyst focused on AI-assisted operations and delivery."
 	/>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -50,60 +83,97 @@
 		<p class="tagline">IT Service Desk Analyst focused on AI-assisted operations and delivery.</p>
 		<p class="proof">3+ years resolving high-friction enterprise support and migration problems.</p>
 		<div class="links">
-			<div class="link-row">
+			<div class="link-row link-row-github">
 				<a
 					class="cta cta-github cta-feature"
-					href="https://github.com/nicholasob7"
+					href={githubUrl}
 					target="_blank"
-					rel="noreferrer"
+					rel="noopener noreferrer me"
 					>GitHub<span class="sr-only"> (opens in new tab)</span></a
 				>
-				<a class="cta cta-view" href="/resume.pdf" target="_blank" rel="noreferrer"
-					>View Resume<span class="sr-only"> (opens in new tab)</span></a
-				>
-				<a class="cta cta-download" href="/resume.pdf" download="Nicholas_Francis_OBrien_Resume.pdf"
-					>Download Resume<span class="sr-only"> (downloads file)</span></a
-				>
 			</div>
-			<div class="link-row">
-				<div class="email-actions">
-					<button
-						class="cta cta-contact"
-						type="button"
-						aria-expanded={showEmailOptions}
-						onclick={toggleEmailOptions}
-					>
-						Email Options
-					</button>
-					{#if showEmailOptions}
-						<div class="email-subactions" aria-label="Email actions">
-							<button class="cta cta-contact-sub" type="button" onclick={copyEmail}>
-								{copied ? 'Email Copied' : 'Copy Email Address'}
+			<div class="link-row link-row-resume">
+				<button
+					class="cta cta-resume"
+					type="button"
+					aria-expanded={showResumeOptions}
+					aria-controls="resume-subactions"
+					onclick={toggleResumeOptions}
+				>
+					Resume Options
+				</button>
+				{#if showResumeOptions}
+					<div class="resume-subactions" id="resume-subactions" aria-label="Resume actions">
+						<a class="cta cta-view" href="/resume" target="_blank" rel="noopener noreferrer"
+							>View<span class="sr-only"> resume in new tab</span></a
+						>
+						<a
+							class="cta cta-download"
+							href="/resume-bw.pdf"
+							download="Nicholas_Francis_OBrien_Resume_BW.pdf"
+						>
+							Download (B&W PDF)<span class="sr-only"> black and white resume PDF</span></a
+						>
+						<a
+							class="cta cta-view"
+							href="/resume-color.pdf"
+							download="Nicholas_Francis_OBrien_Resume_Color.pdf"
+						>
+							Download (Color PDF)<span class="sr-only"> color resume PDF</span></a
+						>
+					</div>
+				{/if}
+			</div>
+			<div class="link-row link-row-email">
+				<button
+					class="cta cta-contact"
+					type="button"
+					aria-expanded={showEmailOptions}
+					aria-controls="email-subactions"
+					onclick={toggleEmailOptions}
+				>
+					Email Options
+				</button>
+				{#if showEmailOptions}
+					<div class="email-subactions" id="email-subactions" aria-label="Email actions">
+							<button
+								class="cta cta-contact-sub"
+								type="button"
+								aria-pressed={showEmailText}
+								onclick={() => (showEmailText = !showEmailText)}
+							>
+								{showEmailText ? 'Hide' : 'Show'}
 							</button>
-							<button class="cta cta-contact-sub" type="button" onclick={() => (showEmailText = !showEmailText)}>
-								{showEmailText ? 'Hide Email' : 'Show Email'}
+							<button class="cta cta-contact-sub" type="button" onclick={copyEmail}>
+								{copied ? 'Copied' : 'Copy'}
 							</button>
 							{#if showEmailText}
 								<p class="email-plain">{contactEmail}</p>
 							{/if}
-						</div>
-					{/if}
-				</div>
-				<a
-					class="cta cta-linkedin"
-					href="https://www.linkedin.com/in/nicholasfobrien"
-					target="_blank"
-					rel="noreferrer"
-					>LinkedIn Profile: Nicholas F O'Brien (Wellington)<span class="sr-only">
-						(opens in new tab)</span
-					></a
-				>
+					</div>
+				{/if}
 			</div>
-		</div>
-		<div class="status-strip" aria-label="Profile snapshot">
-			<span>Location: Wellington</span>
-			<span>Current Role: IT Service Desk Analyst</span>
-			<span>Focus: AI Ops + Enterprise Systems Delivery</span>
+			<div class="link-row link-row-linkedin">
+				<button
+					class="cta cta-social"
+					type="button"
+					aria-expanded={showSocialOptions}
+					aria-controls="social-subactions"
+					onclick={toggleSocialOptions}
+				>
+					Social Media Options
+				</button>
+				{#if showSocialOptions}
+					<div class="social-subactions" id="social-subactions" aria-label="Social media actions">
+						<a class="cta cta-linkedin" href={linkedInUrl} target="_blank" rel="noopener noreferrer me"
+							>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
+						>
+						<a class="cta cta-twitter" href={twitterUrl} target="_blank" rel="noopener noreferrer me"
+							>X / Twitter<span class="sr-only"> (opens in new tab)</span></a
+						>
+					</div>
+				{/if}
+			</div>
 		</div>
 	</section>
 
@@ -114,6 +184,11 @@
 			complex, messy technical situations into stable systems, practical tooling, and dependable
 			outcomes.
 		</p>
+		<div class="status-strip" aria-label="Profile snapshot">
+			<span>Location: Wellington</span>
+			<span>Current Role: IT Service Desk Analyst</span>
+			<span>Focus: AI Ops + Enterprise Systems Delivery</span>
+		</div>
 	</section>
 
 	<div class="section-divider" aria-hidden="true"></div>
@@ -297,16 +372,32 @@
 		align-items: center;
 	}
 
-	.email-actions {
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-	}
-
 	.email-subactions {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.resume-subactions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.social-subactions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.link-row-email {
+		align-items: center;
+	}
+
+	.link-row-resume {
 		align-items: center;
 	}
 
@@ -319,6 +410,7 @@
 		border-radius: 999px;
 		border: 1px solid rgba(190, 215, 242, 0.52);
 		background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
+		user-select: text;
 	}
 
 	.status-strip {
@@ -405,6 +497,28 @@
 		--btn-text-hover: #ffffff;
 	}
 
+	.cta-resume {
+		--btn-start: #3a5254;
+		--btn-mid: #3f4f64;
+		--btn-end: #1f5448;
+		--btn-start-hover: #486769;
+		--btn-mid-hover: #51657e;
+		--btn-end-hover: #2a695b;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta-social {
+		--btn-start: #3a5456;
+		--btn-mid: #405064;
+		--btn-end: #205649;
+		--btn-start-hover: #476a6d;
+		--btn-mid-hover: #51657d;
+		--btn-end-hover: #2a6b5b;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
 	.cta-contact-sub {
 		--btn-start: #314a57;
 		--btn-mid: #365161;
@@ -436,6 +550,17 @@
 		--btn-start-hover: #476a6d;
 		--btn-mid-hover: #51657d;
 		--btn-end-hover: #2a6b5b;
+		--btn-text: #f3f7ff;
+		--btn-text-hover: #ffffff;
+	}
+
+	.cta-twitter {
+		--btn-start: #35598f;
+		--btn-mid: #4a4f7e;
+		--btn-end: #27556b;
+		--btn-start-hover: #4470b3;
+		--btn-mid-hover: #5a6498;
+		--btn-end-hover: #336b85;
 		--btn-text: #f3f7ff;
 		--btn-text-hover: #ffffff;
 	}
@@ -472,7 +597,7 @@
 			0 12px 26px rgba(7, 14, 33, 0.46);
 	}
 
-	.links a:focus-visible,
+	.cta:focus-visible,
 	.projects article:focus-within {
 		outline: 3px solid var(--accent-purple);
 		outline-offset: 2px;
@@ -663,6 +788,19 @@
 
 		.status-strip span {
 			font-size: 0.7rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.card,
+		.hero-aurora,
+		.section-divider {
+			animation: none;
+		}
+
+		.cta,
+		.projects article {
+			transition: none;
 		}
 	}
 
