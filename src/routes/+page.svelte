@@ -1,3 +1,33 @@
+<script lang="ts">
+	const contactEmail = 'nicholasob972@gmail.com';
+	let showEmailOptions = $state(false);
+	let copied = $state(false);
+	let showEmailText = $state(false);
+	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+
+	const copyEmail = async () => {
+		try {
+			await navigator.clipboard.writeText(contactEmail);
+			copied = true;
+			if (copyResetTimer) clearTimeout(copyResetTimer);
+			copyResetTimer = setTimeout(() => {
+				copied = false;
+			}, 1800);
+		} catch {
+			copied = false;
+		}
+	};
+
+	const toggleEmailOptions = () => {
+		showEmailOptions = !showEmailOptions;
+		if (!showEmailOptions) {
+			showEmailText = false;
+			copied = false;
+			if (copyResetTimer) clearTimeout(copyResetTimer);
+		}
+	};
+</script>
+
 <svelte:head>
 	<title>Nicko O'Brien | Personal Website</title>
 	<meta
@@ -36,9 +66,29 @@
 				>
 			</div>
 			<div class="link-row">
-				<a class="cta cta-contact" href="mailto:nicholasob972@gmail.com"
-					>Contact: nicholasob972@gmail.com</a
-				>
+				<div class="email-actions">
+					<button
+						class="cta cta-contact"
+						type="button"
+						aria-expanded={showEmailOptions}
+						onclick={toggleEmailOptions}
+					>
+						Email Options
+					</button>
+					{#if showEmailOptions}
+						<div class="email-subactions" aria-label="Email actions">
+							<button class="cta cta-contact-sub" type="button" onclick={copyEmail}>
+								{copied ? 'Email Copied' : 'Copy Email Address'}
+							</button>
+							<button class="cta cta-contact-sub" type="button" onclick={() => (showEmailText = !showEmailText)}>
+								{showEmailText ? 'Hide Email' : 'Show Email'}
+							</button>
+							{#if showEmailText}
+								<p class="email-plain">{contactEmail}</p>
+							{/if}
+						</div>
+					{/if}
+				</div>
 				<a
 					class="cta cta-linkedin"
 					href="https://www.linkedin.com/in/nicholasfobrien"
@@ -244,6 +294,31 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.email-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	.email-subactions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.email-plain {
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.84rem;
+		color: #d8e7ff;
+		padding: 0.34rem 0.62rem;
+		border-radius: 999px;
+		border: 1px solid rgba(190, 215, 242, 0.52);
+		background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
 	}
 
 	.status-strip {
@@ -277,6 +352,7 @@
 		--btn-text: #ecf3ff;
 		--btn-text-hover: var(--btn-text);
 		text-decoration: none;
+		font-family: inherit;
 		padding: 0.45rem 0.75rem;
 		border-radius: 999px;
 		font-size: 0.9rem;
@@ -285,6 +361,7 @@
 		color: var(--btn-text);
 		background: linear-gradient(120deg, var(--btn-start) 0%, var(--btn-mid) 55%, var(--btn-end) 100%);
 		border: 1px solid rgba(193, 217, 255, 0.34);
+		cursor: pointer;
 		transition:
 			background 160ms ease,
 			color 140ms ease,
@@ -326,6 +403,19 @@
 		--btn-end-hover: #2d705e;
 		--btn-text: #f3f7ff;
 		--btn-text-hover: #ffffff;
+	}
+
+	.cta-contact-sub {
+		--btn-start: #314a57;
+		--btn-mid: #365161;
+		--btn-end: #1f4c43;
+		--btn-start-hover: #3d5f6f;
+		--btn-mid-hover: #456477;
+		--btn-end-hover: #286055;
+		--btn-text: #eaf4ff;
+		--btn-text-hover: #ffffff;
+		font-size: 0.84rem;
+		padding: 0.36rem 0.62rem;
 	}
 
 	.cta-github {
