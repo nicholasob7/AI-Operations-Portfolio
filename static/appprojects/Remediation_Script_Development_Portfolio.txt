@@ -25,12 +25,7 @@ The remediation script implements several layers of defensive programming:
    - Legacy cache path families
    - Clears contents rather than deleting folders (prevents regeneration failures)
 
-3. Aggressive Shortcut Consolidation: Searches multiple desktop locations for existing shortcuts by name, exact target, or executable filename:
-   - Public Desktop (canonical compliance surface)
-   - User Desktop
-   - OneDrive-synced desktop variants (handles org-specific naming)
-   - Registry-redirected desktop paths (handles both current user and target user context)
-   - Consolidates all matches into a single canonical Public Desktop shortcut
+3. Aggressive Shortcut Consolidation: Correlates shortcut artifacts across approved endpoint contexts by name, exact target, or executable signature, then consolidates validated matches into one policy-compliant canonical launch surface.
 
 4. Executable Health Validation: Confirms application binaries exist and detects reparse-point anomalies (symlinks/shortcuts where executables should be)
 
@@ -41,11 +36,11 @@ FIELD EVIDENCE AND OPERATIONAL VALIDATION
 Problem Observed (Production):
 - Post-deployment incidents clustered in upgrade scenarios (prior to current application versions)
 - Clean-device first-time installations did not show the same failure pattern
-- Root causes: cache coexistence drift, user-profile contamination, mixed shortcut paths, duplicate landscape sources, runtime validation gaps
+- Root causes: cache coexistence drift, user-profile contamination, mixed shortcut paths, duplicate shortcut source variants, runtime validation gaps
 
 Field-Observed Behavior:
-- User profile identity often matches application user identity. This makes per-user profile targeting critical.
-- User-created cloud storage shortcuts appeared as workarounds when canonical launch stability was low
+- User-context alignment required precise per-profile targeting during remediation.
+- Field incidents regularly included multiple stale user-created shortcuts, creating endpoint-user frustration and avoidable launch errors.
 - Legacy cache corruption appeared on some prior-version devices before current-version installation
 
 Testing and Validation Timeline:
@@ -58,22 +53,23 @@ Testing and Validation Timeline:
 INTEGRATION INTO BROADER STABILIZATION EFFORT
 
 Artifact Adoption:
-- Script became the primary mechanism evidence artifact for the entire 9-step historical walkthrough
-- Each remediation action (folder deletion, cache cleaning, shortcut normalization, executable validation) was mapped back to specific observed symptoms in the Evidence Matrix
+- The script became the primary evidence artifact in a reformatted deployment package wrapper built from AI-assisted interrogation of the interaction between the base installer and the remediation script.
+- Each remediation action (folder deletion, cache cleaning, shortcut normalization, executable validation) was mapped back to specific observed symptoms in the evidence table
 - Provided causal evidence linking endpoint failures to remediation outcomes
 
 Chronology Anchor:
-- Field Services operational notes (external chronology) documented upgrade-path concentration of failures
-- Script execution in live incidents provided timestamps and outcome data
-- Production validation results informed confidence levels (Confirmed-High vs High vs Medium) for each remediation action
+- Initial attempts to repackage installation behavior and remediation controls into one wrapper failed due to constraints in the base installer.
+- That failure triggered direct interrogation of the base installer and its operational interaction with the remediation script.
+- Script execution in live incidents then provided timestamps, outcome data, and confidence scoring (confidence-tier scoring) for each remediation action.
 
 Deployment Decision:
-- Evidence explicitly noted: "Keep remediation active now" (2026-02-27)
-- Live validation extended through 2026-03-19 with end-to-end install/detect/uninstall round-trip validation
-- Script remains in active production operation as of the project evidence cutoff
+- Remediation script effectiveness was established on a dedicated non-production endpoint spanning prior and current application versions.
+- The remediation approach was then reviewed and approved by senior technical reviewers for controlled operational use.
+- Live use was approved for single-endpoint execution during guided support sessions.
+- End-to-end full lifecycle validation testing belongs to refurbished installation-wrapper validation and is separate from remediation-script effectiveness evidence.
 
 From Incident Response to Reusable Framework:
-Success in live incidents validated the broader stabilization project. Incident response was not treated as a one-time fix. Script design and validation became the evidence base for root-cause analysis, package hardening, and a reusable remediation method.
+Success in live incidents validated the broader stabilization project. Incident response was not treated as a one-time fix. Script design and validation became the evidence base for root-cause analysis, package hardening, and a repeatable remediation method.
 
 EVIDENCE-FIRST PRINCIPLES IN PRACTICE
 
@@ -88,7 +84,7 @@ SKILLS AND INTEGRATION
 
 This project demonstrates:
 - Rapid problem decomposition under uncertainty: cache paths, canonical shortcuts, and user context
-- Iterative validation design (early quick attempts → test-device comprehensive → production deployment)
+- Iterative validation design (early quick attempts → comprehensive test-device validation → production deployment)
 - Cross-functional collaboration translating field observations into technical controls
 - AI-assisted code generation producing production-grade PowerShell with sophisticated defensive programming patterns
 - Systematic distinction between validated outcomes (Confirmed-High) and assumptions (pending evidence)

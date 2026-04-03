@@ -10,116 +10,214 @@
 	<section class="doc-card">
 		<p class="eyebrow">Project Detail</p>
 		<h1>Post-Deployment Remediation Script Development</h1>
-		<a
-			class="raw-link"
-			href="/appprojects/Remediation_Script_Development_Portfolio.txt"
-			target="_blank"
-			rel="noopener noreferrer"
-			>Open Raw Text</a
-		>
-		<pre class="doc-text">ENTERPRISE POST-DEPLOYMENT REMEDIATION SCRIPT DEVELOPMENT
-AI-Assisted Development, Test-Device Validation, Production Deployment, and Evidence Synthesis
 
-PROJECT ACHIEVEMENT
+		<div class="doc-text" aria-label="Remediation project details">
+			<h2>Enterprise Post-Deployment Remediation Script Development</h2>
+			<p>AI-Assisted Development, Test-Device Validation, Production Deployment, and Evidence Synthesis</p>
 
-Developed and deployed an endpoint remediation script for live post-deployment incidents. The script targeted profile corruption, cache drift, and launch inconsistency. Work followed an evidence-driven cycle: non-production testing, test-device validation, and live production deployment. This cycle became the operational base for the broader stabilization framework.
+			<h3>Project Achievement</h3>
+			<p>
+				Developed and deployed an endpoint remediation script for live post-deployment incidents. The script
+				targeted profile corruption, cache drift, and launch inconsistency. Work followed an evidence-driven
+				cycle: non-production testing, test-device validation, and live production deployment. This cycle
+				became the operational base for the broader stabilization framework.
+			</p>
 
-TECHNICAL DEVELOPMENT METHODOLOGY
+			<h3>Technical Development Methodology</h3>
+			<p class="section-lead">Development Approach</p>
+			<ul>
+				<li>AI-assisted design in VS Code with GitHub Copilot for rapid tactic exploration</li>
+				<li>
+					Isolated non-production testing of corrective actions: folder reset, cache cleaning, shortcut
+					repair, and executable validation
+				</li>
+				<li>Iterative refinement after early dry attempts proved unsatisfactory</li>
+				<li>
+					Full test-device validation across prior and current application versions on a controlled endpoint
+				</li>
+				<li>Live production deployment on actual user endpoints with active incidents</li>
+			</ul>
 
-Development Approach:
-- AI-assisted design in VS Code with GitHub Copilot for rapid tactic exploration
-- Isolated non-production testing of corrective actions: folder reset, cache cleaning, shortcut repair, and executable validation
-- Iterative refinement after early dry attempts proved unsatisfactory
-- Full test-device validation across prior and current application versions on a controlled endpoint
-- Live production deployment on actual user endpoints with active incidents
+			<p class="section-lead">Script Sophistication</p>
+			<p>The remediation script implements several layers of defensive programming:</p>
+			<ol>
+				<li>
+					Identity Detection: Distinguishes between device logon user and session user, ensuring actions
+					target the correct user profile directory structure.
+				</li>
+				<li>
+					Multi-Path Cache Hygiene: Targets multiple cache location variants to handle version coexistence:
+					<ul>
+						<li>Version-specific user-scoped cache paths</li>
+						<li>Legacy cache path families</li>
+						<li>Clears contents rather than deleting folders (prevents regeneration failures)</li>
+					</ul>
+				</li>
+				<li>
+					Aggressive Shortcut Consolidation: Correlates shortcut artifacts across approved endpoint
+					contexts by name, exact target, or executable signature, then consolidates validated matches into
+					one policy-compliant canonical launch surface.
+				</li>
+				<li>
+					Executable Health Validation: Confirms application binaries exist and detects reparse-point
+					anomalies (symlinks/shortcuts where executables should be).
+				</li>
+				<li>
+					Detailed Status Reporting: Returns JSON-compatible summaries for folder, cache, executable, and
+					shortcut states. This supports reliable downstream automation parsing.
+				</li>
+			</ol>
 
-Script Sophistication:
+			<h3>Field Evidence and Operational Validation</h3>
+			<p class="section-lead">Problem Observed (Production)</p>
+			<ul>
+				<li>Post-deployment incidents clustered in upgrade scenarios (prior to current application versions)</li>
+				<li>Clean-device first-time installations did not show the same failure pattern</li>
+				<li>
+					Root causes: cache coexistence drift, user-profile contamination, mixed shortcut paths, duplicate
+					shortcut source variants, runtime validation gaps
+				</li>
+			</ul>
 
-The remediation script implements several layers of defensive programming:
+			<p class="section-lead">Field-Observed Behavior</p>
+			<ul>
+				<li>User-context alignment required precise per-profile targeting during remediation.</li>
+				<li>
+					Field incidents regularly included multiple stale user-created shortcuts, creating endpoint-user
+					frustration and avoidable launch errors.
+				</li>
+				<li>Legacy cache corruption appeared on some prior-version devices before current-version installation</li>
+			</ul>
 
-1. Identity Detection: Distinguishes between device logon user and session user, ensuring actions target the correct user profile directory structure
+			<p class="section-lead">Testing and Validation Timeline</p>
+			<ol>
+				<li>Non-production isolated testing: Individual corrective actions tested in controlled environments</li>
+				<li>
+					Early quick dry attempts: Rapid exploration proving unsatisfactory; quickly abandoned for more
+					comprehensive approach
+				</li>
+				<li>
+					Test-device full-profile validation: Complete remediation script runs were executed on a dedicated
+					endpoint with both prior and current application versions. Methods were refined based on observed
+					behavior.
+				</li>
+				<li>
+					Live production remediation: Script executed on production devices with actual user accounts during
+					active incident response
+				</li>
+				<li>
+					Production outcome validation: Application state normalization was confirmed. Residual failures
+					were isolated to OS or user-profile conditions outside remediation scope.
+				</li>
+			</ol>
 
-2. Multi-Path Cache Hygiene: Targets multiple cache location variants to handle version coexistence:
-   - Version-specific user-scoped cache paths
-   - Legacy cache path families
-   - Clears contents rather than deleting folders (prevents regeneration failures)
+			<h3>Integration into Broader Stabilization Effort</h3>
+			<p class="section-lead">Artifact Adoption</p>
+			<ul>
+				<li>
+					The script became the primary evidence artifact in a reformatted deployment package wrapper built
+					from AI-assisted interrogation of the interaction between the base installer and the remediation
+					script.
+				</li>
+				<li>
+					Each remediation action (folder deletion, cache cleaning, shortcut normalization, executable
+					validation) was mapped back to specific observed symptoms in the evidence table
+				</li>
+				<li>Provided causal evidence linking endpoint failures to remediation outcomes</li>
+			</ul>
 
-3. Aggressive Shortcut Consolidation: Searches multiple desktop locations for existing shortcuts by name, exact target, or executable filename:
-   - Public Desktop (canonical compliance surface)
-   - User Desktop
-   - OneDrive-synced desktop variants (handles org-specific naming)
-   - Registry-redirected desktop paths (handles both current user and target user context)
-   - Consolidates all matches into a single canonical Public Desktop shortcut
+			<p class="section-lead">Chronology Anchor</p>
+			<ul>
+				<li>
+					Initial attempts to repackage installation behavior and remediation controls into one wrapper
+					failed due to constraints in the base installer.
+				</li>
+				<li>
+					That failure triggered direct interrogation of the base installer and its operational interaction
+					with the remediation script.
+				</li>
+				<li>
+					Script execution in live incidents then provided timestamps, outcome data, and confidence scoring
+					(confidence-tier scoring) for each remediation action.
+				</li>
+			</ul>
 
-4. Executable Health Validation: Confirms application binaries exist and detects reparse-point anomalies (symlinks/shortcuts where executables should be)
+			<p class="section-lead">Deployment Decision</p>
+			<ul>
+				<li>
+					Remediation script effectiveness was established on a dedicated non-production endpoint spanning
+					prior and current application versions.
+				</li>
+				<li>
+					The remediation approach was then reviewed and approved by senior technical reviewers for
+					controlled operational use.
+				</li>
+				<li>Live use was approved for single-endpoint execution during guided support sessions.</li>
+				<li>
+					End-to-end full lifecycle validation testing belongs to refurbished installation-wrapper validation
+					and is separate from remediation-script effectiveness evidence.
+				</li>
+			</ul>
 
-5. Detailed Status Reporting: Returns JSON-compatible summaries for folder, cache, executable, and shortcut states. This supports reliable downstream automation parsing.
+			<p class="section-lead">From Incident Response to Reusable Framework</p>
+			<p>
+				Success in live incidents validated the broader stabilization project. Incident response was not
+				treated as a one-time fix. Script design and validation became the evidence base for root-cause
+				analysis, package hardening, and a repeatable remediation method.
+			</p>
 
-FIELD EVIDENCE AND OPERATIONAL VALIDATION
+			<h3>Evidence-First Principles in Practice</h3>
+			<p>This script exemplifies evidence-first engineering:</p>
+			<ul>
+				<li>Every action targets a specific observed failure symptom</li>
+				<li>Refinement decisions were based on test-device and production outcomes, not theory</li>
+				<li>
+					Status reporting design enables downstream automation to parse and react to specific failure modes
+				</li>
+				<li>
+					The script does not alter underlying installer logic (immutable vendor binary). Instead, it
+					normalizes endpoint state to known-good conditions.
+				</li>
+				<li>
+					Defensive design handles edge cases found in real-world validation: cloud desktop variants,
+					registry-redirected paths, and reparse-point binaries
+				</li>
+			</ul>
 
-Problem Observed (Production):
-- Post-deployment incidents clustered in upgrade scenarios (prior to current application versions)
-- Clean-device first-time installations did not show the same failure pattern
-- Root causes: cache coexistence drift, user-profile contamination, mixed shortcut paths, duplicate landscape sources, runtime validation gaps
+			<h3>Skills and Integration</h3>
+			<p>This project demonstrates:</p>
+			<ul>
+				<li>Rapid problem decomposition under uncertainty: cache paths, canonical shortcuts, and user context</li>
+				<li>
+					Iterative validation design (early quick attempts → comprehensive test-device validation →
+					production deployment)
+				</li>
+				<li>Cross-functional collaboration translating field observations into technical controls</li>
+				<li>
+					AI-assisted code generation producing production-grade PowerShell with sophisticated defensive
+					programming patterns
+				</li>
+				<li>
+					Systematic distinction between validated outcomes (Confirmed-High) and assumptions (pending
+					evidence)
+				</li>
+			</ul>
 
-Field-Observed Behavior:
-- User profile identity often matches application user identity. This makes per-user profile targeting critical.
-- User-created cloud storage shortcuts appeared as workarounds when canonical launch stability was low
-- Legacy cache corruption appeared on some prior-version devices before current-version installation
+			<p>
+				The remediation script served as both an operational solution and a diagnostic tool for the larger
+				stabilization project. It showed which actions resolved which symptoms in production. That evidence
+				chain helped translate incident response into defensible architectural recommendations.
+			</p>
 
-Testing and Validation Timeline:
-1. Non-production isolated testing: Individual corrective actions tested in controlled environments
-2. Early quick dry attempts: Rapid exploration proving unsatisfactory; quickly abandoned for more comprehensive approach
-3. Test-device full-profile validation: Complete remediation script runs were executed on a dedicated endpoint with both prior and current application versions. Methods were refined based on observed behavior.
-4. Live production remediation: Script executed on production devices with actual user accounts during active incident response
-5. Production outcome validation: Application state normalization was confirmed. Residual failures were isolated to OS or user-profile conditions outside remediation scope.
-
-INTEGRATION INTO BROADER STABILIZATION EFFORT
-
-Artifact Adoption:
-- Script became the primary mechanism evidence artifact for the entire 9-step historical walkthrough
-- Each remediation action (folder deletion, cache cleaning, shortcut normalization, executable validation) was mapped back to specific observed symptoms in the Evidence Matrix
-- Provided causal evidence linking endpoint failures to remediation outcomes
-
-Chronology Anchor:
-- Field Services operational notes (external chronology) documented upgrade-path concentration of failures
-- Script execution in live incidents provided timestamps and outcome data
-- Production validation results informed confidence levels (Confirmed-High vs High vs Medium) for each remediation action
-
-Deployment Decision:
-- Evidence explicitly noted: "Keep remediation active now" (2026-02-27)
-- Live validation extended through 2026-03-19 with end-to-end install/detect/uninstall round-trip validation
-- Script remains in active production operation as of the project evidence cutoff
-
-From Incident Response to Reusable Framework:
-Success in live incidents validated the broader stabilization project. Incident response was not treated as a one-time fix. Script design and validation became the evidence base for root-cause analysis, package hardening, and a reusable remediation method.
-
-EVIDENCE-FIRST PRINCIPLES IN PRACTICE
-
-This script exemplifies evidence-first engineering:
-- Every action targets a specific observed failure symptom
-- Refinement decisions were based on test-device and production outcomes, not theory
-- Status reporting design enables downstream automation to parse and react to specific failure modes
-- The script does not alter underlying installer logic (immutable vendor binary). Instead, it normalizes endpoint state to known-good conditions.
-- Defensive design handles edge cases found in real-world validation: cloud desktop variants, registry-redirected paths, and reparse-point binaries
-
-SKILLS AND INTEGRATION
-
-This project demonstrates:
-- Rapid problem decomposition under uncertainty: cache paths, canonical shortcuts, and user context
-- Iterative validation design (early quick attempts → test-device comprehensive → production deployment)
-- Cross-functional collaboration translating field observations into technical controls
-- AI-assisted code generation producing production-grade PowerShell with sophisticated defensive programming patterns
-- Systematic distinction between validated outcomes (Confirmed-High) and assumptions (pending evidence)
-
-The remediation script served as both an operational solution and a diagnostic tool for the larger stabilization project. It showed which actions resolved which symptoms in production. That evidence chain helped translate incident response into defensible architectural recommendations.
-
-
----
-
-ATTRIBUTION NOTE
-
-This portfolio description was produced in collaboration with GitHub Copilot in Visual Studio Code. Repository artifacts, validation records, and operational observations were analyzed to synthesize the methodology and the script's role in the stabilization framework while preserving confidentiality.</pre>
+			<hr />
+			<h3>Attribution Note</h3>
+			<p>
+				This portfolio description was produced in collaboration with GitHub Copilot in Visual Studio Code.
+				Repository artifacts, validation records, and operational observations were analyzed to synthesize
+				the methodology and the script's role in the stabilization framework while preserving
+				confidentiality.
+			</p>
+		</div>
 	</section>
 </main>
 
@@ -166,29 +264,58 @@ This portfolio description was produced in collaboration with GitHub Copilot in 
 		font-size: clamp(1.45rem, 3.4vw, 2rem);
 	}
 
-	.raw-link {
-		display: inline-flex;
-		margin-top: 0.7rem;
-		text-decoration: none;
-		font-size: 0.82rem;
-		font-weight: 700;
-		color: #e6f4ff;
-		padding: 0.34rem 0.62rem;
-		border-radius: 999px;
-		border: 1px solid rgba(193, 217, 255, 0.5);
-		background: linear-gradient(120deg, #35598f 0%, #4f4685 55%, #2a7167 100%);
-	}
-
 	.doc-text {
-		margin-top: 0.95rem;
+		margin-top: 0.7rem;
 		padding: 0.9rem;
 		border-radius: 0.72rem;
 		border: 1px solid rgba(190, 215, 242, 0.32);
 		background: rgba(12, 20, 37, 0.65);
-		white-space: pre-wrap;
 		font-family: 'Source Serif 4', serif;
 		font-size: 1rem;
 		line-height: 1.52;
 		color: #d4def3;
+	}
+
+	.doc-text h2,
+	.doc-text h3 {
+		font-family: 'Space Grotesk', sans-serif;
+		color: #e8eefc;
+	}
+
+	.doc-text h2 {
+		font-size: 1.15rem;
+		margin: 0 0 0.4rem;
+	}
+
+	.doc-text h3 {
+		font-size: 1rem;
+		margin: 1.1rem 0 0.35rem;
+	}
+
+	.section-lead {
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 600;
+		margin: 0.7rem 0 0.35rem;
+	}
+
+	.doc-text ul,
+	.doc-text ol {
+		margin: 0.25rem 0 0.65rem 1.15rem;
+		padding: 0;
+	}
+
+	.doc-text li {
+		margin: 0.25rem 0;
+	}
+
+	.doc-text p {
+		margin: 0.35rem 0 0.65rem;
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background: rgba(190, 215, 242, 0.24);
+		margin: 1.1rem 0 0.8rem;
 	}
 </style>

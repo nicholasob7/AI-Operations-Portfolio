@@ -10,61 +10,96 @@
 	<section class="doc-card">
 		<p class="eyebrow">Project Detail</p>
 		<h1>Enterprise Application Migration Stabilization Framework</h1>
-		<a
-			class="raw-link"
-			href="/appprojects/Portfolio_Description.txt"
-			target="_blank"
-			rel="noopener noreferrer"
-			>Open Raw Text</a
-		>
-		<pre class="doc-text">ENTERPRISE APPLICATION MIGRATION STABILIZATION FRAMEWORK
 
-PROJECT ACHIEVEMENT
+		<div class="doc-text" aria-label="Migration stabilization project details">
+			<h2>Enterprise Application Migration Stabilization Framework</h2>
 
-Developed and validated an evidence-driven migration stabilization methodology for an enterprise application. The project resolved post-upgrade endpoint failures by turning field-tested remediation actions into hardened installation package controls.
+			<h3>Project Achievement</h3>
+			<p>
+				Developed and validated an evidence-driven migration stabilization methodology for an enterprise
+				application. The project resolved post-upgrade endpoint failures by turning field-tested remediation
+				actions into hardened installation package controls.
+			</p>
 
-TECHNICAL CORE:
+			<h3>Technical Core</h3>
+			<ul>
+				<li>Analyzed endpoint failure patterns from a large-scale enterprise application version migration</li>
+				<li>
+					Isolated root causes through evidence of mechanisms: user-context state drift, cache coexistence
+					drift, shortcut launch inconsistency, installer sequencing weak points, and runtime validation
+					gaps
+				</li>
+				<li>
+					Mapped live production remediation actions (user-state cleanup, cache hygiene, shortcut
+					normalization controls, executable validation) directly into proposed package controls
+				</li>
+				<li>
+					Built AI-assisted evidence-chain protocols so each package change is traceable to symptoms and
+					outcomes
+				</li>
+			</ul>
 
-- Analyzed endpoint failure patterns from a large-scale enterprise application version migration
-- Isolated root causes through mechanism evidence: profile contamination, cache coexistence drift, shortcut launch inconsistency, installer sequencing weak points, and runtime validation gaps
-- Mapped live production remediation actions (user-state cleanup, cache hygiene, canonical shortcut enforcement, executable validation) directly into proposed package controls
-- Built AI-assisted evidence-chain protocols so each package change is traceable to symptoms and outcomes
+			<h3>Outcomes</h3>
+			<ul>
+				<li>Resolved duplicate path entries, intermittent launch failures, and non-standard workaround drift</li>
+				<li>Eliminated installation sequencing ambiguity with early failure detection improvements</li>
+				<li>Validated on live production devices post-remediation, including uninstall/reboot behaviors</li>
+				<li>Produced reproducible, audit-ready change documentation for formal review process</li>
+			</ul>
 
-OUTCOMES:
+			<h3>User-Friendly and Platform-Agnostic Impact</h3>
+			<p>
+				This project goes beyond technical implementation. It delivers a reusable stabilization framework
+				template for both technical and non-technical stakeholders:
+			</p>
+			<ul>
+				<li>
+					For Technical Teams: Evidence-based control mapping, smoke-test gates, integrity manifests, and
+					side-by-side package diffs for confident deployment decisions
+				</li>
+				<li>
+					For Business and Compliance: Executive summaries with confidence levels, chronology anchors, and
+					clear before/after outcomes; no specialized technical background required
+				</li>
+				<li>
+					For Future Deployments: AI-assisted workflows that guide new migrations with the same evidence-first
+					method
+				</li>
+			</ul>
 
-- Resolved duplicate path entries, intermittent launch failures, and user workaround drift
-- Eliminated installation sequencing ambiguity with fail-fast detection alignment
-- Validated on live production devices post-remediation, including uninstall/reboot behaviors
-- Produced reproducible, audit-ready change documentation for formal change submission
+			<h3>Key Differentiators</h3>
+			<ol>
+				<li>
+					Evidence-First Architecture: Prose summaries are not treated as primary proof. Controls remain
+					traceable to installer behavior, remediation outcomes, or endpoint-state observations.
+				</li>
+				<li>
+					Defensive Historiography: Separates validated findings from assumptions and explicitly marks
+					unresolved questions for follow-up investigation.
+				</li>
+				<li>
+					Cross-Functional Accessibility: A single repository structure supports technical architects,
+					compliance auditors, operations teams, and AI-assisted documentation workflows.
+				</li>
+				<li>
+					Reproducible Methodology: The template enables the same structured approach for future migrations.
+					It is applicable to any versioned enterprise software with similar failure patterns.
+				</li>
+			</ol>
 
+			<p>
+				This work shows how AI supports human technical judgment. It improves evidence traceability,
+				documentation clarity, and troubleshooting access across stakeholder groups.
+			</p>
 
-USER-FRIENDLY & PLATFORM-AGNOSTIC IMPACT
-
-This project goes beyond technical implementation. It delivers a reusable stabilization template framework for both technical and non-technical stakeholders:
-
-- For Technical Teams: Evidence-based control mapping, smoke-test gates, integrity manifests, and side-by-side package diffs for confident deployment decisions
-- For Business/Compliance: Executive summaries with confidence levels, chronology anchors, and clear before/after outcomes; no specialized technical background required
-- For Future Deployments: AI-assisted workflows that guide new migrations with the same evidence-first method
-
-
-KEY DIFFERENTIATORS
-
-1. Evidence-First Architecture: Prose summaries are not treated as primary proof. Controls remain traceable to installer behavior, remediation outcomes, or endpoint-state observations.
-
-2. Defensive Historiography: Separates validated findings from assumptions and explicitly marks unresolved questions for follow-up investigation.
-
-3. Cross-Functional Accessibility: A single repository structure supports technical architects, compliance auditors, operations teams, and AI-assisted documentation workflows.
-
-4. Reproducible Methodology: The template enables the same structured approach for future migrations. It is applicable to any versioned enterprise software with similar failure patterns.
-
-This work shows how AI can amplify human technical judgment. It improves evidence traceability, documentation clarity, and troubleshooting access across stakeholder groups.
-
-
----
-
-ATTRIBUTION NOTE
-
-This portfolio description was produced in collaboration with GitHub Copilot in Visual Studio Code. Repository artifacts and technical documentation were analyzed to synthesize key achievements and differentiators while preserving confidentiality.</pre>
+			<hr />
+			<h3>Attribution Note</h3>
+			<p>
+				This portfolio description was produced in collaboration with GitHub Copilot in Visual Studio Code.
+				Repository artifacts and technical documentation were analyzed to synthesize key achievements and
+				differentiators while preserving confidentiality.
+			</p>
+		</div>
 	</section>
 </main>
 
@@ -111,29 +146,52 @@ This portfolio description was produced in collaboration with GitHub Copilot in 
 		font-size: clamp(1.45rem, 3.4vw, 2rem);
 	}
 
-	.raw-link {
-		display: inline-flex;
-		margin-top: 0.7rem;
-		text-decoration: none;
-		font-size: 0.82rem;
-		font-weight: 700;
-		color: #e6f4ff;
-		padding: 0.34rem 0.62rem;
-		border-radius: 999px;
-		border: 1px solid rgba(193, 217, 255, 0.5);
-		background: linear-gradient(120deg, #35598f 0%, #4f4685 55%, #2a7167 100%);
-	}
-
 	.doc-text {
-		margin-top: 0.95rem;
+		margin-top: 0.7rem;
 		padding: 0.9rem;
 		border-radius: 0.72rem;
 		border: 1px solid rgba(190, 215, 242, 0.32);
 		background: rgba(12, 20, 37, 0.65);
-		white-space: pre-wrap;
 		font-family: 'Source Serif 4', serif;
 		font-size: 1rem;
 		line-height: 1.52;
 		color: #d4def3;
+	}
+
+	.doc-text h2,
+	.doc-text h3 {
+		font-family: 'Space Grotesk', sans-serif;
+		color: #e8eefc;
+	}
+
+	.doc-text h2 {
+		font-size: 1.15rem;
+		margin: 0 0 0.4rem;
+	}
+
+	.doc-text h3 {
+		font-size: 1rem;
+		margin: 1.1rem 0 0.35rem;
+	}
+
+	.doc-text ul,
+	.doc-text ol {
+		margin: 0.25rem 0 0.65rem 1.15rem;
+		padding: 0;
+	}
+
+	.doc-text li {
+		margin: 0.25rem 0;
+	}
+
+	.doc-text p {
+		margin: 0.35rem 0 0.65rem;
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background: rgba(190, 215, 242, 0.24);
+		margin: 1.1rem 0 0.8rem;
 	}
 </style>
