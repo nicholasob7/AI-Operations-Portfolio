@@ -29,10 +29,10 @@
 <section class="card">
 	<h2>Projects</h2>
 	<div class="projects">
-		<article>
+		<article class="project-card">
 			<p class="project-label">AI Architecture</p>
 			<h3>Eliora</h3>
-			<p>
+			<p class="project-summary">
 				Interpretive AI architecture designed to convert atypical input into structured, stable reasoning and
 				response.
 			</p>
@@ -76,10 +76,10 @@
 				</p>
 			</article>
 		{/if}
-		<article>
+		<article class="project-card">
 			<p class="project-label">Remediation Tooling</p>
 			<h3>Post-Deployment Remediation Script Development</h3>
-			<p>
+			<p class="project-summary">
 				AI-assisted endpoint remediation script development for live post-deployment incidents and production
 				validation.
 			</p>
@@ -131,10 +131,10 @@
 				</div>
 			{/if}
 		</article>
-		<article>
+		<article class="project-card">
 			<p class="project-label">Systems Integration</p>
 			<h3>Enterprise Migration Stabilization Framework</h3>
-			<p>
+			<p class="project-summary">
 				Evidence-driven application migration stabilization methodology translating live remediation into
 				hardened package controls.
 			</p>
