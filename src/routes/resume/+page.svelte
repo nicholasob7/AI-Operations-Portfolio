@@ -10,7 +10,7 @@
 	<header class="card hero">
 		<p class="eyebrow">Resume</p>
 		<h1>Nicholas Francis O'Brien</h1>
-		<p class="role">IT Service Desk Analyst | Identity and Endpoint Administration</p>
+		<p class="role">AI-Forward IT Operations Professional</p>
 		<p class="contact">
 			<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
 			<span aria-hidden="true">|</span>
@@ -22,11 +22,12 @@
 	<section class="card">
 		<h2>Professional Summary</h2>
 		<p>
-			IT Service Desk Analyst and Service Desk SME with 3+ years supporting enterprise identity,
-			access, and endpoint environments across Active Directory, Entra ID, Intune, and Microsoft 365.
-			Trusted to resolve complex BAU incidents, lead support-facing vendor transition workflows, and
-			improve queue outcomes through process design, structured ticket handling, and AI-assisted
-			troubleshooting.
+			Confident IT professional with 3+ years delivering enterprise technology outcomes in
+			high-demand environments.
+			Early and practical adopter of AI in IT operations, using AI-assisted troubleshooting and
+			workflow automation to improve speed, quality, and operational control.
+			Ready to take on broader roles where AI, automation, and strong IT execution drive measurable
+			business outcomes.
 		</p>
 		<div class="metrics">
 			<article>
@@ -50,20 +51,24 @@
 		<p class="meta">November 2022 - Present</p>
 		<ul>
 			<li>
-				Service Desk Analyst supporting a 5,000+ user environment across multi-client and
-				single-organisation engagements, including KiwiRail.
+				Support a 5,000+ user environment across shared-service and single-organisation engagements,
+				including Air New Zealand, Icon Group, Zenergy, Otago Regional Council, and Frucor.
 			</li>
 			<li>
-				First point of contact for BAU incidents and service requests, owning triage, resolution,
-				documentation, and escalation workflows.
+				Currently provide dedicated BAU Service Desk support for KiwiRail, with 2.5+ years in this
+				engagement within a team delivering 90%+ first contact resolution.
 			</li>
 			<li>
-				Daily administration across Active Directory and Entra ID, including user lifecycle management,
-				group membership, access changes, and privileged account workflows within SDA scope.
+				Act as first point of contact for BAU incidents and service requests, owning triage, resolution,
+				documentation, and escalation.
 			</li>
 			<li>
-				Service Desk SME for Privileged User Access Requests, owning end-to-end creation and
-				configuration of admin, local admin, shared, and external user accounts.
+				Administer Active Directory and Entra ID daily, including user lifecycle, group access, and
+				privileged account workflows within SDA scope.
+			</li>
+			<li>
+				Serve as Service Desk SME for Privileged User Access Requests, managing end-to-end provisioning
+				of admin, local admin, shared, and external accounts.
 			</li>
 			<li>
 				Daily support across Microsoft 365, Exchange Online, and Intune, including device

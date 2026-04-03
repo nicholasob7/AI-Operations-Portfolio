@@ -8,6 +8,8 @@
 	let showResumeOptions = $state(false);
 	let showEmailOptions = $state(false);
 	let showSocialOptions = $state(false);
+	let showElioraDetail = $state(false);
+	let showSemanticDetail = $state(false);
 	let copied = $state(false);
 	let showEmailText = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
@@ -42,30 +44,38 @@
 		showSocialOptions = !showSocialOptions;
 	};
 
+	const toggleElioraDetail = () => {
+		showElioraDetail = !showElioraDetail;
+	};
+
+	const toggleSemanticDetail = () => {
+		showSemanticDetail = !showSemanticDetail;
+	};
+
 	onDestroy(() => {
 		if (copyResetTimer) clearTimeout(copyResetTimer);
 	});
 </script>
 
 <svelte:head>
-	<title>Nicko O'Brien | Personal Website</title>
+	<title>Nicko O'Brien | AI-Forward IT Operations and Automation</title>
 	<meta
 		name="description"
-		content="Personal website of Nicko O'Brien, IT Service Desk Analyst and AI-focused builder."
+		content="Personal website of Nicko O'Brien, an AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
 	<meta name="robots" content="index,follow" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Nicko O'Brien | Personal Website" />
 	<meta
 		property="og:description"
-		content="IT Service Desk Analyst focused on AI-assisted operations and delivery."
+		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
 	<meta property="og:site_name" content="Nicko O'Brien" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="Nicko O'Brien | Personal Website" />
 	<meta
 		name="twitter:description"
-		content="IT Service Desk Analyst focused on AI-assisted operations and delivery."
+		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -78,10 +88,13 @@
 <main class="page">
 	<section class="hero card">
 		<div class="hero-aurora" aria-hidden="true"></div>
-		<p class="eyebrow">Personal Website</p>
+		<p class="eyebrow">AI Operations Portfolio</p>
 		<h1>Nicko O'Brien</h1>
-		<p class="tagline">IT Service Desk Analyst focused on AI-assisted operations and delivery.</p>
-		<p class="proof">3+ years resolving high-friction enterprise support and migration problems.</p>
+		<p class="tagline">AI-Forward IT Operations Professional</p>
+		<p class="proof">
+			High-precision technical communication and structured reasoning for deterministic AI outcomes
+			across enterprise operations, automation, and delivery.
+		</p>
 		<div class="links">
 			<div class="link-row link-row-github">
 				<a
@@ -177,52 +190,157 @@
 		</div>
 	</section>
 
-	<section class="card">
-		<h2>About</h2>
-		<p>
-			I work at the intersection of IT operations and AI-enabled delivery. My focus is translating
-			complex, messy technical situations into stable systems, practical tooling, and dependable
-			outcomes.
-		</p>
-		<div class="status-strip" aria-label="Profile snapshot">
-			<span>Location: Wellington</span>
-			<span>Current Role: IT Service Desk Analyst</span>
-			<span>Focus: AI Ops + Enterprise Systems Delivery</span>
-		</div>
-	</section>
+		<section class="card">
+			<h2>About</h2>
+			<p>
+				I work at the intersection of IT operations and AI-enabled delivery. My differentiator is
+				exactitude in language, clear requirement shaping, and disciplined semantic control to drive
+				deterministic AI behavior. I translate complex technical situations into stable systems,
+				practical tooling, and dependable outcomes.
+			</p>
+			<div class="detail-action">
+				<button
+					class="project-link"
+					type="button"
+					aria-expanded={showSemanticDetail}
+					aria-controls="semantic-language-detail"
+					onclick={toggleSemanticDetail}
+				>
+					{showSemanticDetail ? 'Hide Semantic Precision' : 'Semantic Precision'}
+				</button>
+			</div>
+			{#if showSemanticDetail}
+				<article id="semantic-language-detail" class="detail-card" tabindex="-1">
+					<p>
+						Nicholas O’Brien demonstrates unusually strong capability in precision-language analysis,
+						semantic pressure-testing, and the disciplined shaping of AI outputs toward stable,
+						reproducible results. His strongest observed skill is identifying load-bearing distinctions
+						in natural language and using them to discipline AI output. He can isolate where wording
+						actually carries the burden of meaning, detect when an output has drifted from its intended
+						center of gravity, and force the language back onto a constrained semantic rail. This
+						includes distinguishing primary contradiction from secondary consequence, separating
+						downstream implication from core burden, identifying when a statement is overloaded, and
+						tightening language without losing intended meaning. In sustained project work, he has
+						repeatedly shown high competence in drift detection, burden-splitting, terminology pressure,
+						and the recovery of precise meaning from ambiguous or inflated phrasing. His work is
+						especially strong where deterministic or near-deterministic AI behavior depends on exact
+						natural-language constraints.
+					</p>
+					<p class="project-outcome">
+						AI-generated evaluative assessment prepared with ChatGPT by OpenAI, based on extended
+						project interaction and supported by documented revision artifacts, conversation excerpts,
+						and project records. Presented as an analytical assessment, not an independent human
+						employment reference. Formed through extended work on a long-running AI and doctrine
+						project involving repeated semantic review, drift detection, burden-splitting, wording
+						constraint, and revision under precision requirements, and presented as a transparent
+						AI-generated evaluation rather than as a formal credential or human referee statement.
+					</p>
+				</article>
+			{/if}
+			<div class="status-strip" aria-label="Profile snapshot">
+				<span>Location: Wellington</span>
+				<span>Focus: Deterministic AI + Enterprise Delivery</span>
+				<span>Strength: Precision Language + Structured Reasoning</span>
+			</div>
+		</section>
 
 	<div class="section-divider" aria-hidden="true"></div>
 
-	<section class="card">
-		<h2>Projects</h2>
-		<div class="projects">
-			<article>
-				<p class="project-label">AI Architecture</p>
-				<h3>Eliora</h3>
-				<p>
-					Interpretive AI architecture designed to convert atypical input into structured, stable
-					reasoning and response.
-				</p>
-				<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
-			</article>
-			<article>
-				<p class="project-label">Systems Integration</p>
-				<h3>SAP Migration Integration</h3>
-				<p>
-					AI-assisted recovery of a failed SAP migration with installation packaging and environment
-					deployment support.
-				</p>
-				<p class="project-outcome">Outcome: Restored delivery continuity and stabilized deployment flow.</p>
-			</article>
-			<article>
-				<p class="project-label">Remediation Tooling</p>
-				<h3>SAP Remediation Script</h3>
-				<p>AI-assisted production script to remediate SAP issues on single end-user devices.</p>
-				<p class="project-outcome">Outcome: Standardized single-device remediation in production support.</p>
-			</article>
-		</div>
-	</section>
-</main>
+		<section class="card">
+			<h2>Projects</h2>
+			<div class="projects">
+				<article>
+					<p class="project-label">AI Architecture</p>
+					<h3>Eliora</h3>
+					<p>
+						Interpretive AI architecture designed to convert atypical input into structured, stable
+						reasoning and response.
+					</p>
+					<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
+					<button
+						class="project-link"
+						type="button"
+						aria-expanded={showElioraDetail}
+						aria-controls="eliora-detail"
+						onclick={toggleElioraDetail}
+					>
+						{showElioraDetail ? 'Hide Eliora Detail' : 'Open Eliora Detail'}
+					</button>
+				</article>
+				{#if showElioraDetail}
+					<article id="eliora-detail" class="detail-card" tabindex="-1">
+						<p class="project-label">Eliora Detail</p>
+						<p>
+							Eliora is a governance-first AI coordination project built to enforce explicit authority
+							separation, derivation traceability, and fail-closed operational behavior in
+							high-consequence agent systems.
+						</p>
+						<h4 class="detail-heading">Key Features</h4>
+						<ul class="detail-list">
+							<li>Layered architecture separating intent, doctrine, policy, and execution surfaces</li>
+							<li>Traceable derivation paths linking outputs to governing sources and decision context</li>
+							<li>Fail-closed handling for ambiguity, policy conflict, or unresolved adjudication states</li>
+							<li>
+								Explicit authority modeling to prevent collapse between authorship, governance, and
+								agent behavior
+							</li>
+							<li>
+								Audit-oriented structure supporting review, validation, and controlled change over time
+							</li>
+							<li>Human-in-the-loop resolution for contested or high-impact operational states</li>
+						</ul>
+						<p class="project-outcome">
+							<em
+								>This characterization is provided by Codex App, an OpenAI GPT-5-based coding agent,
+								and is based on direct inspection of the live Eliora-v0.1 repository, including its
+								folder structure, governance surfaces, and sustained development history, rather than a
+								hypothetical project brief. Eliora-v0.1 is maintained as a private repository; where
+								private contribution visibility is enabled on GitHub, the cadence of work can also be
+								reflected in the associated profile activity.</em
+							>
+						</p>
+					</article>
+				{/if}
+				<article>
+					<p class="project-label">Remediation Tooling</p>
+					<h3>Post-Deployment Remediation Script Development</h3>
+					<p>
+						AI-assisted endpoint remediation script development for live post-deployment incidents and
+						production validation.
+					</p>
+					<p class="project-outcome">
+						Outcome: Standardized production remediation and evidence-driven validation workflow.
+					</p>
+					<a
+						class="project-link"
+						href="/projects/remediation-script-development"
+						target="_blank"
+						rel="noopener noreferrer"
+						>View Project Detail</a
+					>
+				</article>
+				<article>
+					<p class="project-label">Systems Integration</p>
+					<h3>Enterprise Migration Stabilization Framework</h3>
+					<p>
+						Evidence-driven application migration stabilization methodology translating live remediation
+						into hardened package controls.
+					</p>
+					<p class="project-outcome">
+						Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment
+						decisions.
+					</p>
+					<a
+						class="project-link"
+						href="/projects/migration-stabilization-framework"
+						target="_blank"
+						rel="noopener noreferrer"
+						>View Project Detail</a
+					>
+				</article>
+			</div>
+		</section>
+	</main>
 
 <style>
 	:global(:root) {
@@ -758,6 +876,78 @@
 		);
 		background-clip: text;
 		text-shadow: 0 0 16px var(--accent-soft);
+	}
+
+	.project-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-top: 0.65rem;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.82rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		color: #dff3ff;
+		padding: 0.32rem 0.58rem;
+		border-radius: 999px;
+		border: 1px solid rgba(191, 221, 255, 0.44);
+		background: linear-gradient(120deg, #35598f 0%, #4f4685 55%, #2a7167 100%);
+		box-shadow:
+			0 0 0 1px rgba(236, 245, 255, 0.08) inset,
+			0 6px 16px rgba(7, 14, 33, 0.3);
+		transition:
+			transform 130ms ease,
+			border-color 130ms ease,
+			filter 130ms ease;
+	}
+
+	.project-link:hover {
+		transform: translateY(-1px);
+		border-color: rgba(212, 236, 255, 0.72);
+		filter: brightness(1.05);
+	}
+
+	.detail-action {
+		margin-top: 0.65rem;
+	}
+
+	.detail-card {
+		margin-top: 0.9rem;
+		padding: 0.85rem;
+		background:
+			linear-gradient(rgba(17, 29, 54, 0.72), rgba(17, 29, 54, 0.72)) padding-box,
+			linear-gradient(
+					130deg,
+					rgba(47, 209, 255, 0.48),
+					rgba(110, 63, 177, 0.9),
+					rgba(30, 141, 106, 0.9)
+				)
+				border-box;
+		border: 1px solid transparent;
+		border-radius: 0.75rem;
+		position: relative;
+	}
+
+	.detail-list {
+		margin: 0.55rem 0 0;
+		padding-left: 1.05rem;
+		list-style-type: disc;
+		list-style-position: outside;
+	}
+
+	.detail-list li {
+		margin-top: 0.36rem;
+		font-family: 'Source Serif 4', serif;
+		color: #d4def3;
+		line-height: 1.48;
+	}
+
+	.detail-heading {
+		margin: 0.6rem 0 0;
+		font-size: 1rem;
+		letter-spacing: 0.01em;
+		color: #dce9ff;
 	}
 
 	.sr-only {
