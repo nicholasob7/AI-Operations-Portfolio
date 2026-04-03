@@ -487,6 +487,10 @@
 		margin-top: 0.55rem;
 	}
 
+	.card > h2 + .projects {
+		margin-top: 0.55rem;
+	}
+
 	.projects {
 		display: grid;
 		gap: 0.9rem;
