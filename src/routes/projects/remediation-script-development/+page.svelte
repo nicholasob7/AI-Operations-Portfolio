@@ -1,3 +1,11 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		window.scrollTo({ top: 0, behavior: 'auto' });
+	});
+</script>
+
 <svelte:head>
 	<title>Post-Deployment Remediation Script Development | Nicko O'Brien</title>
 	<meta

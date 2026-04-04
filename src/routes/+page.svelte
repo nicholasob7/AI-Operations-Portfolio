@@ -21,18 +21,28 @@
 	let copied = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 
+	const scrollToAnchor = async (id: string) => {
+		await tick();
+		await new Promise<void>((resolve) => {
+			requestAnimationFrame(() => resolve());
+		});
+		const target = document.getElementById(id);
+		if (target) {
+			const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 12);
+			window.scrollTo({ top, behavior: 'auto' });
+		}
+	};
+
+	const revealPanel = async (id: string) => {
+		await scrollToAnchor(id);
+		const panel = document.getElementById(id);
+		panel?.focus({ preventScroll: true });
+	};
+
 	const focusPanel = async (id: string) => {
 		await tick();
 		const panel = document.getElementById(id);
-		if (panel) panel.focus();
-	};
-
-	const scrollToAnchor = async (id: string) => {
-		await tick();
-		const target = document.getElementById(id);
-		if (target) {
-			target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-		}
+		panel?.focus({ preventScroll: true });
 	};
 
 	const closeAllTopPanels = () => {
@@ -95,18 +105,18 @@
 	const openElioraDetail = () => {
 		closeAllTopPanels();
 		showElioraDetail = true;
-		void focusPanel('eliora-detail');
+		void revealPanel('eliora-detail');
 	};
 
 	const closeElioraDetail = () => {
 		showElioraDetail = false;
-		void scrollToAnchor('remediation-card');
+		void scrollToAnchor('remediation-label');
 	};
 
 	const openSemanticDetail = () => {
 		closeAllTopPanels();
 		showSemanticDetail = true;
-		void focusPanel('semantic-language-detail');
+		void revealPanel('semantic-language-detail');
 	};
 
 	const closeSemanticDetail = () => {
@@ -122,13 +132,13 @@
 
 	const closeRemediationOptions = () => {
 		showRemediationOptions = false;
-		void scrollToAnchor('migration-card');
+		void scrollToAnchor('migration-label');
 	};
 
 	const openMigrationOptions = () => {
 		closeAllTopPanels();
 		showMigrationOptions = true;
-		void focusPanel('migration-subactions');
+		void revealPanel('migration-subactions');
 	};
 
 	const closeMigrationOptions = () => {

@@ -79,7 +79,7 @@
 			</article>
 		{/if}
 		<article id="remediation-card" class="project-card">
-			<p class="project-label">Remediation</p>
+			<p id="remediation-label" class="project-label">Remediation</p>
 			<h3>Post-Deployment Remediation Script Development</h3>
 			<p class="project-summary">
 				AI-assisted endpoint remediation script development for live post-deployment incidents and production
@@ -114,7 +114,7 @@
 			{/if}
 		</article>
 		<article id="migration-card" class="project-card">
-			<p class="project-label">Deployment</p>
+			<p id="migration-label" class="project-label">Deployment</p>
 			<h3>Enterprise Migration Stabilization Framework</h3>
 			<p class="project-summary">
 				Evidence-driven application migration stabilization methodology translating live remediation into
