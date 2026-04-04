@@ -230,12 +230,18 @@
 	.role {
 		margin: 0.35rem 0 0;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem;
-		font-size: 0.82rem;
+		flex-wrap: nowrap;
+		align-items: baseline;
+		column-gap: 0.18rem;
+		row-gap: 0.08rem;
+		font-size: 0.74rem;
 		line-height: 1.08;
 		font-weight: 560;
 		color: #afc3de;
+	}
+
+	.role > * {
+		white-space: nowrap;
 	}
 
 	.hero-copy h1,
@@ -371,6 +377,12 @@
 	}
 
 	@media (max-width: 760px) {
+		.role {
+			flex-wrap: wrap;
+			font-size: 0.78rem;
+			column-gap: 0.22rem;
+		}
+
 		.hero-content-row {
 			display: block;
 			padding-right: 0;
