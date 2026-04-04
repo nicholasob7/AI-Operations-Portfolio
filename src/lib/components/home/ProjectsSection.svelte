@@ -27,7 +27,7 @@
 </script>
 
 <section class="card">
-	<h2>Projects</h2>
+	<h2>Selected Work</h2>
 	<div class="projects">
 		<article class="project-card">
 			<p class="project-label">AI Architecture</p>
@@ -38,13 +38,13 @@
 			</p>
 			<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
 			<button
-				class="project-link"
+				class="cta cta-resume section-cta-eliora"
 				type="button"
 				aria-expanded={showElioraDetail}
 				aria-controls="eliora-detail"
 				onclick={toggleElioraDetail}
 			>
-				{showElioraDetail ? 'Hide Eliora Detail' : 'Show Eliora Detail'}
+				{showElioraDetail ? 'Hide Eliora Detail' : 'Eliora Detail'}
 			</button>
 		</article>
 		{#if showElioraDetail}
@@ -77,7 +77,7 @@
 			</article>
 		{/if}
 		<article class="project-card">
-			<p class="project-label">Remediation Tooling</p>
+			<p class="project-label">Remediation</p>
 			<h3>Post-Deployment Remediation Script Development</h3>
 			<p class="project-summary">
 				AI-assisted endpoint remediation script development for live post-deployment incidents and production
@@ -87,13 +87,13 @@
 				Outcome: Standardized production remediation and evidence-driven validation workflow.
 			</p>
 			<button
-				class="cta cta-resume"
+				class="cta cta-resume section-cta-remediation"
 				type="button"
 				aria-expanded={showRemediationOptions}
 				aria-controls="remediation-subactions"
 				onclick={toggleRemediationOptions}
 			>
-				{showRemediationOptions ? 'Hide Project Options' : 'Show Project Options'}
+				{showRemediationOptions ? 'Hide Work Options' : 'Work Options'}
 			</button>
 			{#if showRemediationOptions}
 				<div
@@ -132,7 +132,7 @@
 			{/if}
 		</article>
 		<article class="project-card">
-			<p class="project-label">Systems Integration</p>
+			<p class="project-label">Deployment</p>
 			<h3>Enterprise Migration Stabilization Framework</h3>
 			<p class="project-summary">
 				Evidence-driven application migration stabilization methodology translating live remediation into
@@ -142,13 +142,13 @@
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
 			<button
-				class="cta cta-resume"
+				class="cta cta-resume section-cta-migration"
 				type="button"
 				aria-expanded={showMigrationOptions}
 				aria-controls="migration-subactions"
 				onclick={toggleMigrationOptions}
 			>
-				{showMigrationOptions ? 'Hide Project Options' : 'Show Project Options'}
+				{showMigrationOptions ? 'Hide Work Options' : 'Work Options'}
 			</button>
 			{#if showMigrationOptions}
 				<div class="resume-subactions" id="migration-subactions" aria-label="Migration project actions" tabindex="-1">

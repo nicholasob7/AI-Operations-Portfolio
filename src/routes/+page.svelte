@@ -20,7 +20,6 @@
 	let showRemediationDownloadOptions = $state(false);
 	let showMigrationDownloadOptions = $state(false);
 	let copied = $state(false);
-	let showEmailText = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const focusPanel = async (id: string) => {
@@ -39,7 +38,6 @@
 		showMigrationOptions = false;
 		showRemediationDownloadOptions = false;
 		showMigrationDownloadOptions = false;
-		showEmailText = false;
 		copied = false;
 		if (copyResetTimer) clearTimeout(copyResetTimer);
 	};
@@ -57,14 +55,9 @@
 		}
 	};
 
-	const toggleShowEmailText = () => {
-		showEmailText = !showEmailText;
-	};
-
 	const toggleEmailOptions = () => {
 		if (showEmailOptions) {
 			showEmailOptions = false;
-			showEmailText = false;
 			copied = false;
 			if (copyResetTimer) clearTimeout(copyResetTimer);
 			return;
@@ -180,12 +173,10 @@
 		{showResumeOptions}
 		{showEmailOptions}
 		{showSocialOptions}
-		{showEmailText}
 		{copied}
 		{toggleResumeOptions}
 		{toggleEmailOptions}
 		{toggleSocialOptions}
-		{toggleShowEmailText}
 		{copyEmail}
 	/>
 
