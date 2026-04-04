@@ -3,23 +3,29 @@
 		showElioraDetail: boolean;
 		showRemediationOptions: boolean;
 		showMigrationOptions: boolean;
-		toggleElioraDetail: () => void;
-		toggleRemediationOptions: () => void;
-		toggleMigrationOptions: () => void;
+		openElioraDetail: () => void;
+		closeElioraDetail: () => void;
+		openRemediationOptions: () => void;
+		closeRemediationOptions: () => void;
+		openMigrationOptions: () => void;
+		closeMigrationOptions: () => void;
 	};
 
 	let {
 		showElioraDetail,
 		showRemediationOptions,
 		showMigrationOptions,
-		toggleElioraDetail,
-		toggleRemediationOptions,
-		toggleMigrationOptions
+		openElioraDetail,
+		closeElioraDetail,
+		openRemediationOptions,
+		closeRemediationOptions,
+		openMigrationOptions,
+		closeMigrationOptions
 	}: Props = $props();
 </script>
 
 <section class="card">
-	<h2>Selected Work</h2>
+	<h2 id="selected-work-heading">Selected Work</h2>
 	<div class="projects">
 		<article class="project-card">
 			<p class="project-label">AI Architecture</p>
@@ -34,7 +40,7 @@
 				type="button"
 				aria-expanded={showElioraDetail}
 				aria-controls="eliora-detail"
-				onclick={toggleElioraDetail}
+				onclick={showElioraDetail ? closeElioraDetail : openElioraDetail}
 			>
 				{showElioraDetail ? 'Hide Overview' : 'Overview'}
 			</button>
@@ -66,13 +72,13 @@
 					>
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-eliora" type="button" onclick={toggleElioraDetail}>
+					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closeElioraDetail}>
 						Hide and Return to Main Page
 					</button>
 				</div>
 			</article>
 		{/if}
-		<article class="project-card">
+		<article id="remediation-card" class="project-card">
 			<p class="project-label">Remediation</p>
 			<h3>Post-Deployment Remediation Script Development</h3>
 			<p class="project-summary">
@@ -87,9 +93,9 @@
 				type="button"
 				aria-expanded={showRemediationOptions}
 				aria-controls="remediation-subactions"
-				onclick={toggleRemediationOptions}
+				onclick={showRemediationOptions ? closeRemediationOptions : openRemediationOptions}
 			>
-				{showRemediationOptions ? 'Hide View Case' : 'View Case'}
+				{showRemediationOptions ? 'Hide View Case 1' : 'View Case 1'}
 			</button>
 			{#if showRemediationOptions}
 				<div
@@ -107,7 +113,7 @@
 				</div>
 			{/if}
 		</article>
-		<article class="project-card">
+		<article id="migration-card" class="project-card">
 			<p class="project-label">Deployment</p>
 			<h3>Enterprise Migration Stabilization Framework</h3>
 			<p class="project-summary">
@@ -122,9 +128,9 @@
 				type="button"
 				aria-expanded={showMigrationOptions}
 				aria-controls="migration-subactions"
-				onclick={toggleMigrationOptions}
+				onclick={showMigrationOptions ? closeMigrationOptions : openMigrationOptions}
 			>
-				{showMigrationOptions ? 'Hide View Case' : 'View Case'}
+				{showMigrationOptions ? 'Hide View Case 2' : 'View Case 2'}
 			</button>
 			{#if showMigrationOptions}
 				<div class="resume-subactions" id="migration-subactions" aria-label="Migration project actions" tabindex="-1">

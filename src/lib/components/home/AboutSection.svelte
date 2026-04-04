@@ -1,10 +1,11 @@
 <script lang="ts">
 	type Props = {
 		showSemanticDetail: boolean;
-		toggleSemanticDetail: () => void;
+		openSemanticDetail: () => void;
+		closeSemanticDetail: () => void;
 	};
 
-	let { showSemanticDetail, toggleSemanticDetail }: Props = $props();
+	let { showSemanticDetail, openSemanticDetail, closeSemanticDetail }: Props = $props();
 </script>
 
 <section class="card about-section">
@@ -21,7 +22,7 @@
 				type="button"
 				aria-expanded={showSemanticDetail}
 				aria-controls="semantic-language-detail"
-				onclick={toggleSemanticDetail}
+				onclick={showSemanticDetail ? closeSemanticDetail : openSemanticDetail}
 			>
 				{showSemanticDetail ? 'Hide Precision' : 'Precision'}
 			</button>
@@ -49,7 +50,7 @@
 					detection, burden-splitting, wording constraint, and revision under precision requirements.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-about" type="button" onclick={toggleSemanticDetail}>
+					<button class="cta cta-resume section-cta-about" type="button" onclick={closeSemanticDetail}>
 						Hide and Return to Main Page
 					</button>
 				</div>

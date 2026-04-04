@@ -218,7 +218,7 @@
 				confidentiality.
 			</p>
 			<div class="doc-actions">
-				<a class="doc-cta" href="/">Hide and Return to Main Page</a>
+				<a class="doc-cta" href="/#remediation-card">Hide and Return to Main Page</a>
 			</div>
 		</div>
 	</section>

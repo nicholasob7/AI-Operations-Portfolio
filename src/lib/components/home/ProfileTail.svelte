@@ -1,4 +1,4 @@
-<section class="card profile-tail">
+<section id="profile-tail" class="card profile-tail">
 	<div class="metric-grid" aria-label="Location, timezone, focus, and strength">
 		<div class="metric-block metric-location">
 			<p class="metric-label">Location</p>

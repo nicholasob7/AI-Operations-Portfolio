@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, tick } from 'svelte';
+	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -17,6 +17,7 @@
 	let showSemanticDetail = $state(false);
 	let showRemediationOptions = $state(false);
 	let showMigrationOptions = $state(false);
+	let showReturnToTop = $state(false);
 	let copied = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -24,6 +25,14 @@
 		await tick();
 		const panel = document.getElementById(id);
 		if (panel) panel.focus();
+	};
+
+	const scrollToAnchor = async (id: string) => {
+		await tick();
+		const target = document.getElementById(id);
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+		}
 	};
 
 	const closeAllTopPanels = () => {
@@ -83,45 +92,72 @@
 		void focusPanel('social-subactions');
 	};
 
-	const toggleElioraDetail = () => {
-		if (showElioraDetail) {
-			showElioraDetail = false;
-			return;
-		}
+	const openElioraDetail = () => {
 		closeAllTopPanels();
 		showElioraDetail = true;
 		void focusPanel('eliora-detail');
 	};
 
-	const toggleSemanticDetail = () => {
-		if (showSemanticDetail) {
-			showSemanticDetail = false;
-			return;
-		}
+	const closeElioraDetail = () => {
+		showElioraDetail = false;
+		void scrollToAnchor('remediation-card');
+	};
+
+	const openSemanticDetail = () => {
 		closeAllTopPanels();
 		showSemanticDetail = true;
 		void focusPanel('semantic-language-detail');
 	};
 
-	const toggleRemediationOptions = () => {
-		if (showRemediationOptions) {
-			showRemediationOptions = false;
-			return;
-		}
+	const closeSemanticDetail = () => {
+		showSemanticDetail = false;
+		void scrollToAnchor('selected-work-heading');
+	};
+
+	const openRemediationOptions = () => {
 		closeAllTopPanels();
 		showRemediationOptions = true;
 		void focusPanel('remediation-subactions');
 	};
 
-	const toggleMigrationOptions = () => {
-		if (showMigrationOptions) {
-			showMigrationOptions = false;
-			return;
-		}
+	const closeRemediationOptions = () => {
+		showRemediationOptions = false;
+		void scrollToAnchor('migration-card');
+	};
+
+	const openMigrationOptions = () => {
 		closeAllTopPanels();
 		showMigrationOptions = true;
 		void focusPanel('migration-subactions');
 	};
+
+	const closeMigrationOptions = () => {
+		showMigrationOptions = false;
+		void scrollToAnchor('profile-tail');
+	};
+
+	const returnToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	onMount(() => {
+		const tail = document.getElementById('profile-tail');
+		if (!tail) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const entry = entries[0];
+				showReturnToTop = entry.isIntersecting && entry.intersectionRatio >= 0.99;
+			},
+			{ threshold: [0.99, 1] }
+		);
+
+		observer.observe(tail);
+
+		return () => {
+			observer.disconnect();
+		};
+	});
 
 	onDestroy(() => {
 		if (copyResetTimer) clearTimeout(copyResetTimer);
@@ -166,7 +202,7 @@
 		{copyEmail}
 	/>
 
-	<AboutSection {showSemanticDetail} {toggleSemanticDetail} />
+	<AboutSection {showSemanticDetail} {openSemanticDetail} {closeSemanticDetail} />
 
 	<div class="section-divider" aria-hidden="true"></div>
 
@@ -174,10 +210,19 @@
 		{showElioraDetail}
 		{showRemediationOptions}
 		{showMigrationOptions}
-		{toggleElioraDetail}
-		{toggleRemediationOptions}
-		{toggleMigrationOptions}
+		{openElioraDetail}
+		{closeElioraDetail}
+		{openRemediationOptions}
+		{closeRemediationOptions}
+		{openMigrationOptions}
+		{closeMigrationOptions}
 	/>
 
 	<ProfileTail />
+
+	{#if showReturnToTop}
+		<div class="return-top-wrap">
+			<button class="cta cta-return-top" type="button" onclick={returnToTop}>Return to Top</button>
+		</div>
+	{/if}
 </main>

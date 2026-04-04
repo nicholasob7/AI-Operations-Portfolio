@@ -847,6 +847,22 @@
 		color: #dce9ff;
 	}
 
+	.return-top-wrap {
+		position: fixed;
+		right: 1.1rem;
+		bottom: 1.1rem;
+		z-index: 30;
+	}
+
+	.cta-return-top {
+		--btn-start: #35598f;
+		--btn-mid: #4f4685;
+		--btn-end: #2a7167;
+		--btn-start-hover: #446ca9;
+		--btn-mid-hover: #6458a0;
+		--btn-end-hover: #358879;
+	}
+
 	.sr-only {
 		position: absolute;
 		width: 1px;
@@ -885,6 +901,14 @@
 		.project-summary,
 		.project-outcome {
 			min-height: 0;
+		}
+
+		.return-top-wrap {
+			right: 0.8rem;
+			left: 0.8rem;
+			bottom: 0.8rem;
+			display: flex;
+			justify-content: center;
 		}
 	}
 
