@@ -77,6 +77,7 @@
 		font-size: clamp(2.1rem, 5vw, 3.25rem);
 		line-height: 1;
 		margin: 0.25rem 0;
+		color: #d6e2f7;
 	}
 
 	.hero {
