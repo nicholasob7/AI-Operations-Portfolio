@@ -167,6 +167,13 @@
 			<li>Continuous self-directed learning in identity, endpoint management, and AI-assisted IT operations</li>
 		</ul>
 	</section>
+
+	<div class="resume-actions">
+		<a class="resume-download-link resume-download-link-bw" href="/resume-bw.pdf" download="Nicholas_Francis_OBrien_Resume_BW.pdf">
+			Download Print-Friendly (B&W PDF)
+		</a>
+		<a class="resume-home-link" href="/">Return to Main Page</a>
+	</div>
 </main>
 
 <style>
@@ -339,6 +346,41 @@
 
 	.compact-copy-card li {
 		line-height: 1.26;
+	}
+
+	.resume-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		justify-content: flex-start;
+	}
+
+	.resume-download-link,
+	.resume-home-link {
+		text-decoration: none;
+		font-family: inherit;
+		padding: 0.45rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: #f3f7ff;
+		border: 1px solid rgba(193, 217, 255, 0.34);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+			0 8px 20px rgba(7, 14, 33, 0.35);
+	}
+
+	.resume-download-link {
+		background: linear-gradient(120deg, #35598f 0%, #4f4685 55%, #2a7167 100%);
+	}
+
+	.resume-download-link-bw {
+		background: linear-gradient(120deg, #395759 0%, #3d5366 55%, #1f584b 100%);
+	}
+
+	.resume-home-link {
+		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
 	}
 
 	.metrics {

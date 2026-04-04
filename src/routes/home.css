@@ -820,6 +820,12 @@
 		position: relative;
 	}
 
+	.detail-card-actions {
+		margin-top: 0.9rem;
+		display: flex;
+		justify-content: flex-start;
+	}
+
 	.detail-list {
 		margin: 0.55rem 0 0;
 		padding-left: 1.05rem;

@@ -74,6 +74,11 @@
 						activity.</em
 					>
 				</p>
+				<div class="detail-card-actions">
+					<button class="cta cta-resume section-cta-eliora" type="button" onclick={toggleElioraDetail}>
+						Hide and Return to Main Page
+					</button>
+				</div>
 			</article>
 		{/if}
 		<article class="project-card">

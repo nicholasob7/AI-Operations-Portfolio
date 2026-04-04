@@ -99,6 +99,9 @@
 				Repository artifacts and technical documentation were analyzed to synthesize key achievements and
 				differentiators while preserving confidentiality.
 			</p>
+			<div class="doc-actions">
+				<a class="doc-cta" href="/">Hide and Return to Main Page</a>
+			</div>
 		</div>
 	</section>
 </main>
@@ -193,5 +196,27 @@
 		height: 1px;
 		background: rgba(190, 215, 242, 0.24);
 		margin: 1.1rem 0 0.8rem;
+	}
+
+	.doc-actions {
+		margin-top: 1rem;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.doc-cta {
+		text-decoration: none;
+		font-family: 'Space Grotesk', sans-serif;
+		padding: 0.45rem 0.75rem;
+		border-radius: 999px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: #f3f7ff;
+		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
+		border: 1px solid rgba(193, 217, 255, 0.34);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+			0 8px 20px rgba(7, 14, 33, 0.35);
 	}
 </style>

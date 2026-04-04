@@ -48,6 +48,11 @@
 					extended work on a long-running AI and doctrine project involving repeated semantic review, drift
 					detection, burden-splitting, wording constraint, and revision under precision requirements.
 				</p>
+				<div class="detail-card-actions">
+					<button class="cta cta-resume section-cta-about" type="button" onclick={toggleSemanticDetail}>
+						Hide and Return to Main Page
+					</button>
+				</div>
 			</article>
 		{/if}
 	</div>
