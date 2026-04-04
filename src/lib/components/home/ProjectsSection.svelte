@@ -3,26 +3,18 @@
 		showElioraDetail: boolean;
 		showRemediationOptions: boolean;
 		showMigrationOptions: boolean;
-		showRemediationDownloadOptions: boolean;
-		showMigrationDownloadOptions: boolean;
 		toggleElioraDetail: () => void;
 		toggleRemediationOptions: () => void;
 		toggleMigrationOptions: () => void;
-		toggleRemediationDownloadOptions: () => void;
-		toggleMigrationDownloadOptions: () => void;
 	};
 
 	let {
 		showElioraDetail,
 		showRemediationOptions,
 		showMigrationOptions,
-		showRemediationDownloadOptions,
-		showMigrationDownloadOptions,
 		toggleElioraDetail,
 		toggleRemediationOptions,
-		toggleMigrationOptions,
-		toggleRemediationDownloadOptions,
-		toggleMigrationDownloadOptions
+		toggleMigrationOptions
 	}: Props = $props();
 </script>
 
@@ -44,12 +36,11 @@
 				aria-controls="eliora-detail"
 				onclick={toggleElioraDetail}
 			>
-				{showElioraDetail ? 'Hide Eliora Detail' : 'Eliora Detail'}
+				{showElioraDetail ? 'Hide Overview' : 'Overview'}
 			</button>
 		</article>
 		{#if showElioraDetail}
 			<article id="eliora-detail" class="detail-card" tabindex="-1">
-				<p class="project-label">Eliora Detail</p>
 				<p>
 					Eliora is a governance-first AI coordination project built to enforce explicit authority
 					separation, derivation traceability, and fail-closed operational behavior in high-consequence
@@ -98,7 +89,7 @@
 				aria-controls="remediation-subactions"
 				onclick={toggleRemediationOptions}
 			>
-				{showRemediationOptions ? 'Hide Work Options' : 'Work Options'}
+				{showRemediationOptions ? 'Hide View Case' : 'View Case'}
 			</button>
 			{#if showRemediationOptions}
 				<div
@@ -108,31 +99,11 @@
 					tabindex="-1"
 				>
 					<a class="cta cta-view" href="/projects/remediation-script-development">View First</a>
-					<div class="resume-subgroup">
-						<button
-							class="cta cta-download"
-							type="button"
-							aria-expanded={showRemediationDownloadOptions}
-							aria-controls="remediation-download-subactions"
-							onclick={toggleRemediationDownloadOptions}
-						>
-							{showRemediationDownloadOptions ? 'Hide Download Now Options' : 'Show Download Now Options'}
-						</button>
-						{#if showRemediationDownloadOptions}
-							<div class="resume-subactions resume-subactions-nested" id="remediation-download-subactions">
-								<a
-									class="cta cta-download"
-									href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
-									download="Remediation_Script_Development_Portfolio_BW.pdf">Download (B&W PDF)</a
-								>
-								<a
-									class="cta cta-view"
-									href="/appprojects/Remediation_Script_Development_Portfolio_color.pdf"
-									download="Remediation_Script_Development_Portfolio_Color.pdf">Download (Color PDF)</a
-								>
-							</div>
-						{/if}
-					</div>
+					<a
+						class="cta cta-download"
+						href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
+						download="Remediation_Script_Development_Portfolio_BW.pdf">Download (B&W PDF)</a
+					>
 				</div>
 			{/if}
 		</article>
@@ -153,36 +124,12 @@
 				aria-controls="migration-subactions"
 				onclick={toggleMigrationOptions}
 			>
-				{showMigrationOptions ? 'Hide Work Options' : 'Work Options'}
+				{showMigrationOptions ? 'Hide View Case' : 'View Case'}
 			</button>
 			{#if showMigrationOptions}
 				<div class="resume-subactions" id="migration-subactions" aria-label="Migration project actions" tabindex="-1">
 					<a class="cta cta-view" href="/projects/migration-stabilization-framework">View First</a>
-					<div class="resume-subgroup">
-						<button
-							class="cta cta-download"
-							type="button"
-							aria-expanded={showMigrationDownloadOptions}
-							aria-controls="migration-download-subactions"
-							onclick={toggleMigrationDownloadOptions}
-						>
-							{showMigrationDownloadOptions ? 'Hide Download Now Options' : 'Show Download Now Options'}
-						</button>
-						{#if showMigrationDownloadOptions}
-							<div class="resume-subactions resume-subactions-nested" id="migration-download-subactions">
-								<a
-									class="cta cta-download"
-									href="/appprojects/Portfolio_Description_bw.pdf"
-									download="Portfolio_Description_BW.pdf">Download (B&W PDF)</a
-								>
-								<a
-									class="cta cta-view"
-									href="/appprojects/Portfolio_Description_color.pdf"
-									download="Portfolio_Description_Color.pdf">Download (Color PDF)</a
-								>
-							</div>
-						{/if}
-					</div>
+					<a class="cta cta-download" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Download (B&W PDF)</a>
 				</div>
 			{/if}
 		</article>

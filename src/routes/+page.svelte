@@ -17,8 +17,6 @@
 	let showSemanticDetail = $state(false);
 	let showRemediationOptions = $state(false);
 	let showMigrationOptions = $state(false);
-	let showRemediationDownloadOptions = $state(false);
-	let showMigrationDownloadOptions = $state(false);
 	let copied = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -36,8 +34,6 @@
 		showSemanticDetail = false;
 		showRemediationOptions = false;
 		showMigrationOptions = false;
-		showRemediationDownloadOptions = false;
-		showMigrationDownloadOptions = false;
 		copied = false;
 		if (copyResetTimer) clearTimeout(copyResetTimer);
 	};
@@ -110,7 +106,6 @@
 	const toggleRemediationOptions = () => {
 		if (showRemediationOptions) {
 			showRemediationOptions = false;
-			showRemediationDownloadOptions = false;
 			return;
 		}
 		closeAllTopPanels();
@@ -121,20 +116,11 @@
 	const toggleMigrationOptions = () => {
 		if (showMigrationOptions) {
 			showMigrationOptions = false;
-			showMigrationDownloadOptions = false;
 			return;
 		}
 		closeAllTopPanels();
 		showMigrationOptions = true;
 		void focusPanel('migration-subactions');
-	};
-
-	const toggleRemediationDownloadOptions = () => {
-		showRemediationDownloadOptions = !showRemediationDownloadOptions;
-	};
-
-	const toggleMigrationDownloadOptions = () => {
-		showMigrationDownloadOptions = !showMigrationDownloadOptions;
 	};
 
 	onDestroy(() => {
@@ -188,13 +174,9 @@
 		{showElioraDetail}
 		{showRemediationOptions}
 		{showMigrationOptions}
-		{showRemediationDownloadOptions}
-		{showMigrationDownloadOptions}
 		{toggleElioraDetail}
 		{toggleRemediationOptions}
 		{toggleMigrationOptions}
-		{toggleRemediationDownloadOptions}
-		{toggleMigrationDownloadOptions}
 	/>
 
 	<ProfileTail />

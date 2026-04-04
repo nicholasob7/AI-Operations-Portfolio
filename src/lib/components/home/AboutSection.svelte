@@ -23,7 +23,7 @@
 				aria-controls="semantic-language-detail"
 				onclick={toggleSemanticDetail}
 			>
-				{showSemanticDetail ? 'Hide Semantic Precision' : 'Semantic Precision'}
+				{showSemanticDetail ? 'Hide Precision' : 'Precision'}
 			</button>
 		</div>
 		{#if showSemanticDetail}
