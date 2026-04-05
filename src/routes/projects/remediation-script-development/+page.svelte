@@ -20,209 +20,107 @@
 		<h1>Post-Deployment Remediation Script Development</h1>
 
 		<div class="doc-text" aria-label="Remediation project details">
-			<h2>Enterprise Post-Deployment Remediation Script Development</h2>
-			<p>AI-Assisted Development, Test-Device Validation, Production Deployment, and Evidence Synthesis</p>
-
-			<h3>Project Achievement</h3>
-			<p>
-				Developed and deployed an endpoint remediation script for live post-deployment incidents. The script
-				targeted profile corruption, cache drift, and launch inconsistency. Work followed an evidence-driven
-				cycle: non-production testing, test-device validation, and live production deployment. This cycle
-				became the operational base for the broader stabilization framework.
+			<h2>Summary</h2>
+			<p class="doc-summary">
+				Built and deployed a remediation script for live post-deployment incidents. It targeted profile
+				corruption, cache drift, and launch inconsistency. The work moved from testing into live production use
+				and became part of the wider stabilization effort.
 			</p>
 
-			<h3>Technical Development Methodology</h3>
-			<p class="section-lead">Development Approach</p>
+			<h2>How It Was Built</h2>
 			<ul>
-				<li>AI-assisted design in VS Code with GitHub Copilot for rapid tactic exploration</li>
 				<li>
-					Isolated non-production testing of corrective actions: folder reset, cache cleaning, shortcut
-					repair, and executable validation
-				</li>
-				<li>Iterative refinement after early dry attempts proved unsatisfactory</li>
-				<li>
-					Full test-device validation across prior and current application versions on a controlled endpoint
-				</li>
-				<li>Live production deployment on actual user endpoints with active incidents</li>
-			</ul>
-
-			<p class="section-lead">Script Sophistication</p>
-			<p>The remediation script implements several layers of defensive programming:</p>
-			<ol>
-				<li>
-					Identity Detection: Distinguishes between device logon user and session user, ensuring actions
-					target the correct user profile directory structure.
+					<strong>Development workflow:</strong> Built with AI-assisted support in VS Code using GitHub Copilot
 				</li>
 				<li>
-					Multi-Path Cache Hygiene: Targets multiple cache location variants to handle version coexistence:
-					<ul>
-						<li>Version-specific user-scoped cache paths</li>
-						<li>Legacy cache path families</li>
-						<li>Clears contents rather than deleting folders (prevents regeneration failures)</li>
-					</ul>
+					<strong>Testing path:</strong> Moved from non-production testing to test-device validation and then live
+					deployment
 				</li>
 				<li>
-					Aggressive Shortcut Consolidation: Correlates shortcut artifacts across approved endpoint
-					contexts by name, exact target, or executable signature, then consolidates validated matches into
-					one policy-compliant canonical launch surface.
+					<strong>User targeting:</strong> Separated device logon user from session user to hit the correct profile
 				</li>
 				<li>
-					Executable Health Validation: Confirms application binaries exist and detects reparse-point
-					anomalies (symlinks/shortcuts where executables should be).
+					<strong>Cache cleanup:</strong> Covered both version-specific and legacy cache variants
 				</li>
 				<li>
-					Detailed Status Reporting: Returns JSON-compatible summaries for folder, cache, executable, and
-					shortcut states. This supports reliable downstream automation parsing.
+					<strong>Shortcut control:</strong> Consolidated validated shortcut artifacts into one canonical
+					launch surface
 				</li>
-			</ol>
-
-			<h3>Field Evidence and Operational Validation</h3>
-			<p class="section-lead">Problem Observed (Production)</p>
-			<ul>
-				<li>Post-deployment incidents clustered in upgrade scenarios (prior to current application versions)</li>
-				<li>Clean-device first-time installations did not show the same failure pattern</li>
 				<li>
-					Root causes: cache coexistence drift, user-profile contamination, mixed shortcut paths, duplicate
-					shortcut source variants, runtime validation gaps
+					<strong>Binary checks:</strong> Confirmed binaries and detected reparse-point anomalies
+				</li>
+				<li>
+					<strong>Status output:</strong> Returned JSON-compatible state summaries for downstream parsing
 				</li>
 			</ul>
 
-			<p class="section-lead">Field-Observed Behavior</p>
-			<ul>
-				<li>User-context alignment required precise per-profile targeting during remediation.</li>
-				<li>
-					Field incidents regularly included multiple stale user-created shortcuts, creating endpoint-user
-					frustration and avoidable launch errors.
-				</li>
-				<li>Legacy cache corruption appeared on some prior-version devices before current-version installation</li>
-			</ul>
-
-			<p class="section-lead">Testing and Validation Timeline</p>
-			<ol>
-				<li>Non-production isolated testing: Individual corrective actions tested in controlled environments</li>
-				<li>
-					Early quick dry attempts: Rapid exploration proving unsatisfactory; quickly abandoned for more
-					comprehensive approach
-				</li>
-				<li>
-					Test-device full-profile validation: Complete remediation script runs were executed on a dedicated
-					endpoint with both prior and current application versions. Methods were refined based on observed
-					behavior.
-				</li>
-				<li>
-					Live production remediation: Script executed on production devices with actual user accounts during
-					active incident response
-				</li>
-				<li>
-					Production outcome validation: Application state normalization was confirmed. Residual failures
-					were isolated to OS or user-profile conditions outside remediation scope.
-				</li>
-			</ol>
-
-			<h3>Integration into Broader Stabilization Effort</h3>
-			<p class="section-lead">Artifact Adoption</p>
+			<h2>What We Found</h2>
 			<ul>
 				<li>
-					The script became the primary evidence artifact in a reformatted deployment package wrapper built
-					from AI-assisted interrogation of the interaction between the base installer and the remediation
-					script.
+					<strong>Main pattern:</strong> Incidents clustered in upgrade scenarios
 				</li>
 				<li>
-					Each remediation action (folder deletion, cache cleaning, shortcut normalization, executable
-					validation) was mapped back to specific observed symptoms in the evidence table
-				</li>
-				<li>Provided causal evidence linking endpoint failures to remediation outcomes</li>
-			</ul>
-
-			<p class="section-lead">Chronology Anchor</p>
-			<ul>
-				<li>
-					Initial attempts to repackage installation behavior and remediation controls into one wrapper
-					failed due to constraints in the base installer.
+					<strong>Control case:</strong> Clean first-time installs did not show the same failure profile
 				</li>
 				<li>
-					That failure triggered direct interrogation of the base installer and its operational interaction
-					with the remediation script.
+					<strong>Main causes:</strong> Cache drift, user-profile contamination, mixed shortcut paths, duplicate
+					variants, and validation gaps
 				</li>
 				<li>
-					Script execution in live incidents then provided timestamps, outcome data, and confidence scoring
-					(confidence-tier scoring) for each remediation action.
+					<strong>Field behavior:</strong> Production incidents often involved stale shortcuts, legacy cache
+					corruption, and precise per-profile targeting
+				</li>
+				<li>
+					<strong>Production result:</strong> Validation confirmed normalized application state
+				</li>
+				<li>
+					<strong>Boundary:</strong> Remaining failures sat outside remediation scope
 				</li>
 			</ul>
 
-			<p class="section-lead">Deployment Decision</p>
+			<h2>How It Was Used</h2>
 			<ul>
 				<li>
-					Remediation script effectiveness was established on a dedicated non-production endpoint spanning
-					prior and current application versions.
+					<strong>Evidence role:</strong> Became the main evidence artifact in the reformatted deployment package
+					wrapper
 				</li>
 				<li>
-					The remediation approach was then reviewed and approved by senior technical reviewers for
-					controlled operational use.
+					<strong>Problem link:</strong> Tied each remediation action back to observed symptoms
 				</li>
-				<li>Live use was approved for single-endpoint execution during guided support sessions.</li>
 				<li>
-					End-to-end full lifecycle validation testing belongs to refurbished installation-wrapper validation
-					and is separate from remediation-script effectiveness evidence.
+					<strong>Approval:</strong> Approved for controlled live use on single endpoints
+				</li>
+				<li>
+					<strong>Project effect:</strong> Turned incident success into evidence for root-cause analysis and
+					package hardening
+				</li>
+				<li>
+					<strong>Scope boundary:</strong> Full wrapper lifecycle testing remained separate from script
+					effectiveness evidence
 				</li>
 			</ul>
 
-			<p class="section-lead">From Incident Response to Reusable Framework</p>
-			<p>
-				Success in live incidents validated the broader stabilization project. Incident response was not
-				treated as a one-time fix. Script design and validation became the evidence base for root-cause
-				analysis, package hardening, and a repeatable remediation method.
-			</p>
-
-			<h3>Evidence-First Principles in Practice</h3>
-			<p>This script exemplifies evidence-first engineering:</p>
+			<h2>Why It Helped</h2>
 			<ul>
-				<li>Every action targets a specific observed failure symptom</li>
-				<li>Refinement decisions were based on test-device and production outcomes, not theory</li>
 				<li>
-					Status reporting design enables downstream automation to parse and react to specific failure modes
+					Each remediation action targeted a real observed failure rather than a theoretical fix
 				</li>
 				<li>
-					The script does not alter underlying installer logic (immutable vendor binary). Instead, it
-					normalizes endpoint state to known-good conditions.
+					Refinement decisions were based on test-device and production outcomes
 				</li>
 				<li>
-					Defensive design handles edge cases found in real-world validation: cloud desktop variants,
-					registry-redirected paths, and reparse-point binaries
+					Defensive design handled cloud desktop variants, registry-redirected paths, and reparse-point binaries
 				</li>
+				<li>Rapid problem breakdown supported cache, shortcut, and user-context diagnosis</li>
+				<li>AI-assisted code generation was turned into production-grade PowerShell</li>
+				<li>Confirmed outcomes were kept separate from assumptions needing more evidence</li>
 			</ul>
-
-			<h3>Skills and Integration</h3>
-			<p>This project demonstrates:</p>
-			<ul>
-				<li>Rapid problem decomposition under uncertainty: cache paths, canonical shortcuts, and user context</li>
-				<li>
-					Iterative validation design (early quick attempts → comprehensive test-device validation →
-					production deployment)
-				</li>
-				<li>Cross-functional collaboration translating field observations into technical controls</li>
-				<li>
-					AI-assisted code generation producing production-grade PowerShell with sophisticated defensive
-					programming patterns
-				</li>
-				<li>
-					Systematic distinction between validated outcomes (Confirmed-High) and assumptions (pending
-					evidence)
-				</li>
-			</ul>
-
-			<p>
-				The remediation script served as both an operational solution and a diagnostic tool for the larger
-				stabilization project. It showed which actions resolved which symptoms in production. That evidence
-				chain helped translate incident response into defensible architectural recommendations.
-			</p>
 
 			<hr />
-			<h3>Attribution Note</h3>
-			<p>
-				This portfolio description was produced in collaboration with GitHub Copilot in Visual Studio Code.
-				Repository artifacts, validation records, and operational observations were analyzed to synthesize
-				the methodology and the script's role in the stabilization framework while preserving
+			<h2>Attribution Note</h2>
+			<p class="doc-note">
+				This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts,
+				validation records, and operational observations were used to summarize the work while preserving
 				confidentiality.
 			</p>
 			<div class="doc-actions">
@@ -271,56 +169,82 @@
 	}
 
 	h1 {
-		margin: 0.35rem 0 0;
-		font-size: clamp(1.45rem, 3.4vw, 2rem);
+		margin: 0.42rem 0 0;
+		font-size: clamp(1.62rem, 3.8vw, 2.18rem);
+		line-height: 1.06;
 	}
 
 	.doc-text {
-		margin-top: 0.7rem;
-		padding: 0.9rem;
+		margin-top: 0.8rem;
+		padding: 1.05rem 1.08rem 1.15rem;
 		border-radius: 0.72rem;
 		border: 1px solid rgba(190, 215, 242, 0.32);
 		background: rgba(12, 20, 37, 0.65);
 		font-family: 'Source Serif 4', serif;
 		font-size: 1rem;
-		line-height: 1.52;
+		line-height: 1.64;
 		color: #d4def3;
 	}
 
-	.doc-text h2,
-	.doc-text h3 {
-		font-family: 'Space Grotesk', sans-serif;
-		color: #e8eefc;
+	.doc-summary {
+		margin: 0.32rem 0 0.96rem;
+		max-width: none;
+		color: #dbe5f5;
+		line-height: 1.6;
 	}
 
 	.doc-text h2 {
-		font-size: 1.15rem;
-		margin: 0 0 0.4rem;
-	}
-
-	.doc-text h3 {
-		font-size: 1rem;
-		margin: 1.1rem 0 0.35rem;
-	}
-
-	.section-lead {
 		font-family: 'Space Grotesk', sans-serif;
-		font-weight: 600;
-		margin: 0.7rem 0 0.35rem;
+		color: #f1f6ff;
+		font-size: 1.15rem;
+		line-height: 1.26;
+		letter-spacing: 0.015em;
+		margin: 1.45rem 0 0.5rem;
+		padding-top: 0.9rem;
+		border-top: 1px solid rgba(162, 201, 243, 0.18);
 	}
 
-	.doc-text ul,
-	.doc-text ol {
-		margin: 0.25rem 0 0.65rem 1.15rem;
+	.doc-text h2:first-of-type {
+		margin-top: 0;
+		padding-top: 0;
+		border-top: 0;
+	}
+
+	.doc-text ul {
+		margin: 0.42rem 0 0.95rem 1.22rem;
 		padding: 0;
+		list-style-type: disc;
+		list-style-position: outside;
 	}
 
 	.doc-text li {
-		margin: 0.25rem 0;
+		display: list-item;
+		margin: 0.36rem 0;
+		line-height: 1.6;
+		color: #d7e2f4;
+	}
+
+	.doc-text li::marker {
+		color: #8fdcff;
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 700;
 	}
 
 	.doc-text p {
-		margin: 0.35rem 0 0.65rem;
+		margin: 0.3rem 0 0.86rem;
+		max-width: 70ch;
+		color: #dbe5f5;
+	}
+
+	.doc-text p.doc-summary {
+		max-width: none;
+	}
+
+	.doc-note {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.83rem;
+		line-height: 1.55;
+		color: #b2c7e6;
 	}
 
 	hr {
@@ -350,5 +274,15 @@
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
 			0 8px 20px rgba(7, 14, 33, 0.35);
+	}
+
+	@media (max-width: 720px) {
+		.doc-text {
+			padding: 0.95rem 0.92rem 1rem;
+		}
+
+		.doc-text p {
+			max-width: none;
+		}
 	}
 </style>

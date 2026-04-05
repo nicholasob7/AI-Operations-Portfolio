@@ -820,6 +820,47 @@
 		position: relative;
 	}
 
+	.detail-kicker {
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.74rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #9bd8ff;
+	}
+
+	.detail-title {
+		margin: 0.22rem 0 0;
+		font-size: 1.08rem;
+		line-height: 1.2;
+		color: #f1f6ff;
+	}
+
+	.detail-standfirst {
+		margin-top: 0.48rem;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.92rem;
+		line-height: 1.45;
+		font-weight: 560;
+		color: #dce9ff;
+		max-width: 58ch;
+	}
+
+	.detail-body {
+		margin-top: 0.58rem;
+		max-width: 62ch;
+	}
+
+	.detail-note {
+		margin-top: 0.75rem;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.8rem;
+		line-height: 1.5;
+		color: #aec4e4;
+		max-width: 66ch;
+	}
+
 	.detail-card-actions {
 		margin-top: 0.9rem;
 		display: flex;
@@ -841,10 +882,12 @@
 	}
 
 	.detail-heading {
-		margin: 0.6rem 0 0;
-		font-size: 1rem;
-		letter-spacing: 0.01em;
-		color: #dce9ff;
+		margin: 0.95rem 0 0;
+		font-size: 0.78rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #9bd8ff;
 	}
 
 	.return-top-wrap {

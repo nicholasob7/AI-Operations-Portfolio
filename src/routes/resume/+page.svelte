@@ -46,15 +46,12 @@
 		</div>
 	</header>
 
-	<section class="card">
+	<section class="card summary-card">
 		<h2>Professional Summary</h2>
-		<p>
-			Confident IT professional with 3+ years delivering enterprise technology outcomes in
-			high-demand environments.
-			Early and practical adopter of AI in IT operations, using AI-assisted troubleshooting and
-			workflow automation to improve speed, quality, and operational control.
-			Ready to take on broader roles where AI, automation, and strong IT execution drive measurable
-			business outcomes.
+		<p class="summary-copy">
+			IT professional with 3+ years supporting enterprise environments.
+			Uses AI tools in IT support to improve troubleshooting, speed, and workflow quality.
+			Ready to take on broader roles where strong IT delivery, automation, and practical AI use improve results.
 		</p>
 	</section>
 
@@ -64,23 +61,23 @@
 		<p class="meta">November 2022 - Present</p>
 		<ul>
 			<li>
-				Support a 5,000+ user environment across shared-service and single-organisation engagements,
+				Support a 5,000+ user environment across shared-service and single-organisation clients,
 				including Air New Zealand, Icon Group, Zenergy, Otago Regional Council, and Frucor.
 			</li>
 			<li>
-				Currently provide dedicated BAU Service Desk support for KiwiRail, with 2.5+ years in this
-				engagement within a team delivering 90%+ first contact resolution.
+				Provide dedicated BAU Service Desk support for KiwiRail, with 2.5+ years in this engagement
+				within a team delivering 90%+ first-contact resolution.
 			</li>
 			<li>
-				Act as first point of contact for BAU incidents and service requests, owning triage, resolution,
-				documentation, and escalation.
+				Handle BAU incidents and service requests from triage through to resolution, documentation,
+				and escalation.
 			</li>
 			<li>
 				Administer Active Directory and Entra ID daily, including user lifecycle, group access, and
-				privileged account workflows within SDA scope.
+				privileged account work within SDA scope.
 			</li>
 			<li>
-				Serve as Service Desk SME for Privileged User Access Requests, managing end-to-end provisioning
+				Serve as Service Desk SME for Privileged User Access Requests, managing end-to-end setup
 				of admin, local admin, shared, and external accounts.
 			</li>
 			<li>
@@ -88,8 +85,8 @@
 				administration and endpoint management.
 			</li>
 			<li>
-				Deliver identity and access troubleshooting including MFA support via Entra ID, BitLocker
-				recovery, and Intune-managed endpoint compliance.
+				Provide identity and access troubleshooting, including MFA support through Entra ID,
+				BitLocker recovery, and Intune-managed endpoint compliance.
 			</li>
 			<li>
 				Use Nexthink to identify, analyse, and support resolution of endpoint performance and device
@@ -109,7 +106,7 @@
 	<section class="card">
 		<h2>Selected Achievements and SME Responsibilities</h2>
 		<ul>
-			<li>Printer Services SME for KiwiRail, with operational ownership of the printer vendor queue.</li>
+			<li>Printer Services SME for KiwiRail, with ownership of the printer vendor queue.</li>
 			<li>
 				Service Desk SME for the Ricoh to Canon printer vendor transition, including project meeting
 				participation and direct coordination with Canon representatives.
@@ -119,28 +116,28 @@
 				Service Desk, reducing avoidable escalations.
 			</li>
 			<li>
-				Workflow optimization: designed bulk-change execution, filter logic, and cross-ticket identity
+				Workflow improvement: designed bulk-change execution, filter logic, and cross-ticket identity
 				linkage to reduce handling demand below the previous single-ticket baseline.
 			</li>
 			<li>
-				Operational visibility: converted formal three-ticket schema granularity into stronger triage
-				precision, traceability, and improved resolution outcomes.
+				Improved triage visibility by turning the formal three-ticket model into clearer traceability
+				and better resolution outcomes.
 			</li>
 			<li>
-				Transition advisory: served as SME during transition away from the three-ticket vendor model,
+				Served as SME during transition away from the three-ticket vendor model,
 				advising how to retain classification and workflow visibility benefits.
 			</li>
 			<li>
-				Automation: built AI-assisted troubleshooting scripts in VS Code and Copilot adopted into
+				Built AI-assisted troubleshooting scripts in VS Code and Copilot that were adopted into
 				production workflows for Amicus and SAP.
 			</li>
 			<li>
-				Migration recovery: diagnosed SAP 7.5 to 7.7 transition failures linked to shortcut handling
+				Diagnosed SAP 7.5 to 7.7 transition failures linked to shortcut handling
 				and logon cache behavior, helping restart a deferred enterprise upgrade in Q1 2026.
 			</li>
 			<li>
-				Expanding AI-assisted troubleshooting playbooks across additional externally supplied
-				applications, including Vision CRE.
+				Expanding AI-assisted troubleshooting playbooks across other vendor-supplied applications,
+				including Vision CRE.
 			</li>
 		</ul>
 	</section>
@@ -148,7 +145,7 @@
 	<section class="card compact-list-card">
 		<h2>Technical Skills</h2>
 		<ul>
-			<li>Active Directory and Entra ID administration (user, group, access, privileged accounts)</li>
+			<li>Active Directory and Entra ID administration</li>
 			<li>Intune device administration, compliance, and endpoint policy support</li>
 			<li>Microsoft 365 and Exchange Online</li>
 			<li>MFA support, identity troubleshooting, and BitLocker recovery</li>
@@ -172,7 +169,7 @@
 		<ul>
 			<li>Clear, professional communication in public-facing and technical contexts</li>
 			<li>Calm, methodical problem solving in BAU and project environments</li>
-			<li>Continuous self-directed learning in identity, endpoint management, and AI-assisted IT operations</li>
+			<li>Continuous learning in identity, endpoint management, and AI-assisted IT support</li>
 		</ul>
 	</section>
 
@@ -285,43 +282,52 @@
 
 	h2 {
 		margin: 0;
-		font-size: 1.02rem;
+		font-size: 1.08rem;
+		line-height: 1.2;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
-		color: #8fd5ff;
+		color: #96dcff;
 	}
 
 	h3 {
-		margin: 0.55rem 0 0;
-		font-size: 0.98rem;
-		color: #f2f6ff;
+		margin: 0.72rem 0 0;
+		font-size: 1.02rem;
+		line-height: 1.3;
+		color: #f3f7ff;
 	}
 
 	.meta {
-		margin: 0.2rem 0 0;
-		font-size: 0.83rem;
-		color: #a9bedf;
+		margin: 0.26rem 0 0;
+		font-size: 0.76rem;
+		font-weight: 560;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #9fb9da;
 	}
 
 	p {
-		margin: 0.55rem 0 0;
-		line-height: 1.46;
+		margin: 0.66rem 0 0;
+		line-height: 1.54;
 		color: #d7e2f4;
-		font-size: 0.93rem;
+		font-size: 0.9rem;
 	}
 
 	ul {
-		margin: 0.55rem 0 0;
-		padding-left: 0;
+		margin: 0.68rem 0 0;
+		padding-left: 1.05rem;
 		display: grid;
-		gap: 0.33rem;
-		list-style: none;
+		gap: 0.4rem;
+		list-style: disc;
 	}
 
 	li {
-		line-height: 1.4;
-		font-size: 0.91rem;
+		line-height: 1.47;
+		font-size: 0.89rem;
 		color: #d3def1;
+	}
+
+	li::marker {
+		color: #92dbff;
 	}
 
 	.compact-list-card {
@@ -331,9 +337,9 @@
 
 	.compact-list-card ul {
 		margin-top: 0.42rem;
-		padding-left: 0;
+		padding-left: 1rem;
 		gap: 0.22rem;
-		list-style: none;
+		list-style: disc;
 	}
 
 	.compact-list-card li {
@@ -347,13 +353,51 @@
 
 	.compact-copy-card ul {
 		margin-top: 0.42rem;
-		padding-left: 0;
+		padding-left: 1rem;
 		gap: 0.22rem;
-		list-style: none;
+		list-style: disc;
 	}
 
 	.compact-copy-card li {
 		line-height: 1.26;
+	}
+
+	.summary-card {
+		display: grid;
+		gap: 0.72rem;
+	}
+
+	.summary-copy {
+		margin: 0;
+		max-width: none;
+	}
+
+	.metrics {
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 16rem;
+		display: grid;
+		grid-template-rows: repeat(4, minmax(0, 1fr));
+		gap: 0.28rem;
+	}
+
+	.metrics article {
+		background: linear-gradient(120deg, rgba(46, 74, 118, 0.68), rgba(29, 83, 75, 0.65));
+		border-radius: 0.65rem;
+		padding: 0 0.46rem;
+		border: 1px solid rgba(156, 205, 255, 0.26);
+		display: flex;
+		align-items: center;
+		min-height: 0;
+	}
+
+	.metrics p {
+		margin: 0;
+		font-size: 0.72rem;
+		line-height: 1.12;
+		color: #d5e2f5;
 	}
 
 	.resume-actions {
@@ -389,34 +433,6 @@
 
 	.resume-home-link {
 		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
-	}
-
-	.metrics {
-		position: absolute;
-		right: 1rem;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 16rem;
-		display: grid;
-		grid-template-rows: repeat(4, minmax(0, 1fr));
-		gap: 0.28rem;
-	}
-
-	.metrics article {
-		background: linear-gradient(120deg, rgba(46, 74, 118, 0.68), rgba(29, 83, 75, 0.65));
-		border-radius: 0.65rem;
-		padding: 0 0.46rem;
-		border: 1px solid rgba(156, 205, 255, 0.26);
-		display: flex;
-		align-items: center;
-		min-height: 0;
-	}
-
-	.metrics p {
-		margin: 0;
-		font-size: 0.72rem;
-		line-height: 1.12;
-		color: #d5e2f5;
 	}
 
 	.metrics strong {

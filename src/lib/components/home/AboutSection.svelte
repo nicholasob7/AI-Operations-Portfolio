@@ -29,25 +29,25 @@
 		</div>
 		{#if showSemanticDetail}
 			<article id="semantic-language-detail" class="detail-card" tabindex="-1">
-				<p>
-					Nicholas O’Brien demonstrates unusually strong capability in precision-language analysis, semantic
-					pressure-testing, and the disciplined shaping of AI outputs toward stable, reproducible results. His
-					strongest observed skill is identifying load-bearing distinctions in natural language and using them to
-					discipline AI output. He can isolate where wording actually carries the burden of meaning, detect when
-					an output has drifted from its intended center of gravity, and force the language back onto a
-					constrained semantic rail. This includes distinguishing primary contradiction from secondary
-					consequence, separating downstream implication from core burden, identifying when a statement is
-					overloaded, and tightening language without losing intended meaning. In sustained project work, he has
-					repeatedly shown high competence in drift detection, burden-splitting, terminology pressure, and the
-					recovery of precise meaning from ambiguous or inflated phrasing. His work is especially strong where
-					deterministic or near-deterministic AI behavior depends on exact natural-language constraints.
+				<p class="detail-kicker">Precision Assessment</p>
+				<h3 class="detail-title">Semantic Control and Deterministic Output Discipline</h3>
+				<p class="detail-standfirst">
+					Strong performance in drift detection, wording control, and clear semantic correction during extended
+					AI project work.
 				</p>
-				<p class="project-outcome">
-					AI-generated evaluative assessment prepared with ChatGPT by OpenAI, based on extended project
-					interaction and supported by documented revision artifacts, conversation excerpts, and project records.
-					Presented as an analytical assessment, not an independent human employment reference. Formed through
-					extended work on a long-running AI and doctrine project involving repeated semantic review, drift
-					detection, burden-splitting, wording constraint, and revision under precision requirements.
+				<p class="detail-body">
+					Nicholas O’Brien shows strong skill in precise language analysis and in shaping AI output toward stable,
+					repeatable results. His strongest skill is spotting the wording that carries the real meaning and using
+					it to guide AI output back on track. He can see when wording has drifted, when a statement is carrying
+					too much, and when meaning needs to be tightened without being distorted. In sustained project work, he
+					has repeatedly shown strong performance in drift detection, burden-splitting, wording pressure, and
+					pulling clear meaning out of vague or inflated language. This is especially valuable where stable AI
+					behavior depends on exact wording.
+				</p>
+				<p class="detail-note">
+					This assessment was generated with ChatGPT by OpenAI from extended project interaction and supported by
+					revision artifacts, conversation excerpts, and project records. It is an analytical assessment, not an
+					independent human employment reference.
 				</p>
 				<div class="detail-card-actions">
 					<button class="cta cta-resume section-cta-about" type="button" onclick={closeSemanticDetail}>
