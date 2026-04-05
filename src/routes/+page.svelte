@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { onDestroy } from 'svelte';
@@ -14,7 +15,7 @@
 	const twitterUrl = 'https://x.com/nicho0101';
 	let copied = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
-	const openPanel = $derived(page.url.searchParams.get('open') ?? '');
+	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
 	const showResumeOptions = $derived(openPanel === 'resume');
 	const showEmailOptions = $derived(openPanel === 'email');
 	const showSocialOptions = $derived(openPanel === 'social');
