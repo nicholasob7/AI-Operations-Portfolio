@@ -22,8 +22,10 @@
 		<div class="doc-text" aria-label="Migration stabilization project details">
 			<h2>Summary</h2>
 			<p class="doc-summary">
-				Built and tested a practical process for fixing post-upgrade problems in an enterprise application. The
-				work turned real remediation steps into stronger package controls.
+				Built from the successful remediation work in View Case 1, this project turns validated fix logic into a
+				structured framework for controlled deployment. Because packaging beyond the remediation stage was blocked
+				by external factors, the current version stands at successful test-device instantiation, with full
+				production completion still pending.
 			</p>
 
 			<h2>What We Found</h2>
@@ -43,27 +45,27 @@
 
 			<h2>Results</h2>
 			<ul>
-				<li><strong>Endpoint stability:</strong> Resolved duplicate paths, intermittent launch failures, and workaround drift</li>
-				<li><strong>Installer flow:</strong> Removed installation ambiguity with earlier failure detection</li>
-				<li><strong>Live testing:</strong> Confirmed the approach on production devices, including uninstall and reboot behavior</li>
-				<li><strong>Review support:</strong> Produced clear records for review and audit</li>
+				<li><strong>Test-device result:</strong> Resolved duplicate paths, intermittent launch failures, and workaround drift on the validation device</li>
+				<li><strong>Installer flow:</strong> Reduced installation ambiguity with earlier failure detection</li>
+				<li><strong>Prepared output:</strong> Assembled records for review, change submission, and later audit</li>
+				<li><strong>Next step:</strong> Production rollout remains pending</li>
 			</ul>
 
 			<h2>Who It Helped</h2>
 			<ul>
 				<li>
 					<strong>Technical teams:</strong> Gave them control mapping, smoke tests, integrity checks, and package
-					comparisons for safer deployment decisions
+					comparisons for review and safer deployment decisions
 				</li>
 				<li>
-					<strong>Business and compliance:</strong> Gave them clear summaries, confidence levels, and before/after
-					outcomes without heavy technical language
+					<strong>Business and compliance:</strong> Gave them clear summaries, confidence statements, and before/after
+					framing without heavy technical language
 				</li>
 				<li>
-					<strong>Future migrations:</strong> Gave later projects a process that can be reused
+					<strong>Change process:</strong> Prepared project materials for controlled change review and submission
 				</li>
 				<li>
-					<strong>Operational value:</strong> Made problems easier to trace, document, and fix
+					<strong>Future migrations:</strong> Prepared a process that can be reused once rollout is completed
 				</li>
 			</ul>
 
