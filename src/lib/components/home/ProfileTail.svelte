@@ -9,9 +9,11 @@
 			</div>
 		</div>
 		<div class="metric-block metric-timezone">
-			<p class="metric-label">Time Zone</p>
-			<div class="metric-values">
-				<span>NZDT</span>
+			<div class="metric-timezone-content">
+				<p class="metric-label">Time Zone</p>
+				<div class="metric-values">
+					<span>NZDT</span>
+				</div>
 			</div>
 		</div>
 		<div class="metric-block metric-focus">
