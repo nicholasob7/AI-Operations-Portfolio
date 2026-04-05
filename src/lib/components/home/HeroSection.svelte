@@ -30,7 +30,7 @@
 	}: Props = $props();
 </script>
 
-<section class="hero card">
+<section id="hero-head" class="hero card" tabindex="-1">
 	<div class="hero-aurora" aria-hidden="true"></div>
 	<p class="eyebrow">AI Operations Portfolio</p>
 	<h1>Nicko O'Brien</h1>

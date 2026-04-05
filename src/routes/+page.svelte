@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { onDestroy, onMount, tick } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
+	import { onDestroy } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -10,51 +12,32 @@
 	const linkedInUrl = 'https://www.linkedin.com/in/nicholasfobrien';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterUrl = 'https://x.com/nicho0101';
-	let showResumeOptions = $state(false);
-	let showEmailOptions = $state(false);
-	let showSocialOptions = $state(false);
-	let showElioraDetail = $state(false);
-	let showSemanticDetail = $state(false);
-	let showRemediationOptions = $state(false);
-	let showMigrationOptions = $state(false);
-	let showReturnToTop = $state(false);
 	let copied = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+	const openPanel = $derived(page.url.searchParams.get('open') ?? '');
+	const showResumeOptions = $derived(openPanel === 'resume');
+	const showEmailOptions = $derived(openPanel === 'email');
+	const showSocialOptions = $derived(openPanel === 'social');
+	const showOverview = $derived(openPanel === 'overview');
+	const showPrecision = $derived(openPanel === 'precision');
+	const showCase1 = $derived(openPanel === 'case-1');
+	const showCase2 = $derived(openPanel === 'case-2');
 
-	const scrollToAnchor = async (id: string) => {
-		await tick();
-		await new Promise<void>((resolve) => {
-			requestAnimationFrame(() => resolve());
-		});
-		const target = document.getElementById(id);
-		if (target) {
-			const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 12);
-			window.scrollTo({ top, behavior: 'auto' });
+	const homepageHref = (hash: string, open?: string) => {
+		const url = new URL(page.url);
+		url.pathname = '/';
+		url.search = '';
+		if (open) {
+			url.searchParams.set('open', open);
 		}
+		url.hash = `#${hash}`;
+		return `${url.pathname}${url.search}${url.hash}`;
 	};
 
-	const revealPanel = async (id: string) => {
-		await scrollToAnchor(id);
-		const panel = document.getElementById(id);
-		panel?.focus({ preventScroll: true });
-	};
-
-	const focusPanel = async (id: string) => {
-		await tick();
-		const panel = document.getElementById(id);
-		panel?.focus({ preventScroll: true });
-	};
-
-	const closeAllTopPanels = () => {
-		showResumeOptions = false;
-		showEmailOptions = false;
-		showSocialOptions = false;
-		showElioraDetail = false;
-		showSemanticDetail = false;
-		showRemediationOptions = false;
-		showMigrationOptions = false;
-		copied = false;
-		if (copyResetTimer) clearTimeout(copyResetTimer);
+	const navigateHome = (hash: string, open?: string) => {
+		void goto(homepageHref(hash, open), {
+			keepFocus: true
+		});
 	};
 
 	const copyEmail = async () => {
@@ -71,103 +54,50 @@
 	};
 
 	const toggleEmailOptions = () => {
-		if (showEmailOptions) {
-			showEmailOptions = false;
-			copied = false;
-			if (copyResetTimer) clearTimeout(copyResetTimer);
-			return;
-		}
-		closeAllTopPanels();
-		showEmailOptions = true;
-		void focusPanel('email-subactions');
+		copied = false;
+		if (copyResetTimer) clearTimeout(copyResetTimer);
+		navigateHome('hero-head', showEmailOptions ? undefined : 'email');
 	};
 
 	const toggleResumeOptions = () => {
-		if (showResumeOptions) {
-			showResumeOptions = false;
-			return;
-		}
-		closeAllTopPanels();
-		showResumeOptions = true;
-		void focusPanel('resume-subactions');
+		navigateHome('hero-head', showResumeOptions ? undefined : 'resume');
 	};
 
 	const toggleSocialOptions = () => {
-		if (showSocialOptions) {
-			showSocialOptions = false;
-			return;
-		}
-		closeAllTopPanels();
-		showSocialOptions = true;
-		void focusPanel('social-subactions');
+		navigateHome('hero-head', showSocialOptions ? undefined : 'social');
 	};
 
-	const openElioraDetail = () => {
-		closeAllTopPanels();
-		showElioraDetail = true;
-		void revealPanel('eliora-detail');
+	const openOverview = () => {
+		navigateHome('overview-head', 'overview');
 	};
 
-	const closeElioraDetail = () => {
-		showElioraDetail = false;
-		void scrollToAnchor('remediation-label');
+	const closeOverview = () => {
+		navigateHome('remediation-head');
 	};
 
-	const openSemanticDetail = () => {
-		closeAllTopPanels();
-		showSemanticDetail = true;
-		void revealPanel('semantic-language-detail');
+	const openPrecision = () => {
+		navigateHome('precision-head', 'precision');
 	};
 
-	const closeSemanticDetail = () => {
-		showSemanticDetail = false;
-		void scrollToAnchor('selected-work-heading');
+	const closePrecision = () => {
+		navigateHome('selected-work-head');
 	};
 
-	const openRemediationOptions = () => {
-		closeAllTopPanels();
-		showRemediationOptions = true;
-		void focusPanel('remediation-subactions');
+	const openCase1 = () => {
+		navigateHome('remediation-head', 'case-1');
 	};
 
-	const closeRemediationOptions = () => {
-		showRemediationOptions = false;
-		void scrollToAnchor('migration-label');
+	const closeCase1 = () => {
+		navigateHome('deployment-head');
 	};
 
-	const openMigrationOptions = () => {
-		closeAllTopPanels();
-		showMigrationOptions = true;
-		void revealPanel('migration-subactions');
+	const openCase2 = () => {
+		navigateHome('deployment-head', 'case-2');
 	};
 
-	const closeMigrationOptions = () => {
-		showMigrationOptions = false;
-		void scrollToAnchor('profile-tail');
+	const closeCase2 = () => {
+		navigateHome('tail-head');
 	};
-
-	const returnToTop = () => {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	};
-
-	onMount(() => {
-		const tail = document.getElementById('profile-tail');
-		if (!tail) return;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				const entry = entries[0];
-				showReturnToTop = entry.isIntersecting && entry.intersectionRatio >= 0.99;
-			},
-			{ threshold: [0.99, 1] }
-		);
-
-		observer.observe(tail);
-
-		return () => {
-			observer.disconnect();
-		};
-	});
 
 	onDestroy(() => {
 		if (copyResetTimer) clearTimeout(copyResetTimer);
@@ -212,27 +142,22 @@
 		{copyEmail}
 	/>
 
-	<AboutSection {showSemanticDetail} {openSemanticDetail} {closeSemanticDetail} />
+	<AboutSection {showPrecision} {openPrecision} {closePrecision} />
 
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProjectsSection
-		{showElioraDetail}
-		{showRemediationOptions}
-		{showMigrationOptions}
-		{openElioraDetail}
-		{closeElioraDetail}
-		{openRemediationOptions}
-		{closeRemediationOptions}
-		{openMigrationOptions}
-		{closeMigrationOptions}
+		{showOverview}
+		{showCase1}
+		{showCase2}
+		{openOverview}
+		{closeOverview}
+		{openCase1}
+		{closeCase1}
+		{openCase2}
+		{closeCase2}
 	/>
 
 	<ProfileTail />
-
-	{#if showReturnToTop}
-		<div class="return-top-wrap">
-			<button class="cta cta-return-top" type="button" onclick={returnToTop}>Return to Top</button>
-		</div>
-	{/if}
+	<div class="page-end-spacer" aria-hidden="true"></div>
 </main>

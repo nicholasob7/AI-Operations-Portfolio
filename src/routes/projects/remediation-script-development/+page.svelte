@@ -124,7 +124,7 @@
 				confidentiality.
 			</p>
 			<div class="doc-actions">
-				<a class="doc-cta" href="/#remediation-card">Hide and Return to Main Page</a>
+				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Hide and Return to Main Page</a>
 			</div>
 		</div>
 	</section>

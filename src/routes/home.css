@@ -55,6 +55,10 @@
 		mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
 	}
 
+	.page-end-spacer {
+		min-height: clamp(24rem, 70vh, 42rem);
+	}
+
 	.card {
 		background:
 			linear-gradient(var(--panel), var(--panel)) padding-box,
@@ -890,11 +894,21 @@
 		color: #9bd8ff;
 	}
 
-	.return-top-wrap {
-		position: fixed;
-		right: 1.1rem;
-		bottom: 1.1rem;
-		z-index: 30;
+	#hero-head,
+	#about-head,
+	#precision-head,
+	#overview-head,
+	#selected-work-head,
+	#remediation-head,
+	#deployment-head,
+	#tail-head {
+		scroll-margin-top: 0.85rem;
+	}
+
+	.tail-actions {
+		margin-top: 0.95rem;
+		display: flex;
+		justify-content: flex-start;
 	}
 
 	.cta-return-top {
@@ -1033,12 +1047,14 @@
 			min-height: 0;
 		}
 
-		.return-top-wrap {
-			right: 0.8rem;
-			left: 0.8rem;
-			bottom: 0.8rem;
-			display: flex;
+		.tail-actions {
+			justify-content: stretch;
+		}
+
+		.tail-actions > .cta {
+			width: 100%;
 			justify-content: center;
+			text-align: center;
 		}
 	}
 

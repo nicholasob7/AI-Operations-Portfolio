@@ -1,15 +1,15 @@
 <script lang="ts">
 	type Props = {
-		showSemanticDetail: boolean;
-		openSemanticDetail: () => void;
-		closeSemanticDetail: () => void;
+		showPrecision: boolean;
+		openPrecision: () => void;
+		closePrecision: () => void;
 	};
 
-	let { showSemanticDetail, openSemanticDetail, closeSemanticDetail }: Props = $props();
+	let { showPrecision, openPrecision, closePrecision }: Props = $props();
 </script>
 
 <section class="card about-section">
-	<h2>About</h2>
+	<h2 id="about-head" tabindex="-1">About</h2>
 	<div class="about-panel">
 		<p>
 			I work at the intersection of IT operations and AI-enabled delivery. My differentiator is exactitude in
@@ -20,16 +20,16 @@
 			<button
 				class="cta cta-resume section-cta-about"
 				type="button"
-				aria-expanded={showSemanticDetail}
-				aria-controls="semantic-language-detail"
-				onclick={showSemanticDetail ? closeSemanticDetail : openSemanticDetail}
+				aria-expanded={showPrecision}
+				aria-controls="precision"
+				onclick={showPrecision ? closePrecision : openPrecision}
 			>
-				{showSemanticDetail ? 'Hide Precision' : 'Precision'}
+				{showPrecision ? 'Hide Precision' : 'Precision'}
 			</button>
 		</div>
-		{#if showSemanticDetail}
-			<article id="semantic-language-detail" class="detail-card" tabindex="-1">
-				<p class="detail-kicker">Precision Assessment</p>
+		{#if showPrecision}
+			<article id="precision" class="detail-card" tabindex="-1">
+				<p id="precision-head" class="detail-kicker" tabindex="-1">Precision Assessment</p>
 				<h3 class="detail-title">Semantic Control and Deterministic Output Discipline</h3>
 				<p class="detail-standfirst">
 					Strong performance in drift detection, wording control, and clear semantic correction during extended
@@ -50,7 +50,7 @@
 					independent human employment reference.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-about" type="button" onclick={closeSemanticDetail}>
+					<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
 						Hide and Return to Main Page
 					</button>
 				</div>

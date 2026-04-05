@@ -177,7 +177,7 @@
 		<a class="resume-download-link resume-download-link-bw" href="/resume-bw.pdf" download="Nicholas_Francis_OBrien_Resume_BW.pdf">
 			Download Print-Friendly (B&W PDF)
 		</a>
-		<a class="resume-home-link" href="/">Return to Main Page</a>
+			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
 	</div>
 </main>
 

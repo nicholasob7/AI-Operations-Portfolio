@@ -22,7 +22,7 @@
 		<div class="doc-text" aria-label="Migration stabilization project details">
 			<h2>Summary</h2>
 			<p class="doc-summary">
-				Built from the successful remediation work in View Case 1, this project turns validated fix logic into a
+				Built from the successful remediation work in Case 1, this project turns validated fix logic into a
 				structured framework for controlled deployment. Because packaging beyond the remediation stage was blocked
 				by external factors, the current version stands at successful test-device instantiation, with full
 				production completion still pending.
@@ -95,7 +95,7 @@
 				technical documents were used to summarize the work while preserving confidentiality.
 			</p>
 			<div class="doc-actions">
-				<a class="doc-cta" href="/#migration-card">Hide and Return to Main Page</a>
+				<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Hide and Return to Main Page</a>
 			</div>
 		</div>
 	</section>

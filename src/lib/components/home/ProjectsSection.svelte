@@ -1,31 +1,31 @@
 <script lang="ts">
 	type Props = {
-		showElioraDetail: boolean;
-		showRemediationOptions: boolean;
-		showMigrationOptions: boolean;
-		openElioraDetail: () => void;
-		closeElioraDetail: () => void;
-		openRemediationOptions: () => void;
-		closeRemediationOptions: () => void;
-		openMigrationOptions: () => void;
-		closeMigrationOptions: () => void;
+		showOverview: boolean;
+		showCase1: boolean;
+		showCase2: boolean;
+		openOverview: () => void;
+		closeOverview: () => void;
+		openCase1: () => void;
+		closeCase1: () => void;
+		openCase2: () => void;
+		closeCase2: () => void;
 	};
 
 	let {
-		showElioraDetail,
-		showRemediationOptions,
-		showMigrationOptions,
-		openElioraDetail,
-		closeElioraDetail,
-		openRemediationOptions,
-		closeRemediationOptions,
-		openMigrationOptions,
-		closeMigrationOptions
+		showOverview,
+		showCase1,
+		showCase2,
+		openOverview,
+		closeOverview,
+		openCase1,
+		closeCase1,
+		openCase2,
+		closeCase2
 	}: Props = $props();
 </script>
 
 <section class="card">
-	<h2 id="selected-work-heading">Selected Work</h2>
+	<h2 id="selected-work-head" tabindex="-1">Selected Work</h2>
 	<div class="projects">
 		<article class="project-card">
 			<p class="project-label">AI Architecture</p>
@@ -38,16 +38,16 @@
 			<button
 				class="cta cta-resume section-cta-eliora"
 				type="button"
-				aria-expanded={showElioraDetail}
-				aria-controls="eliora-detail"
-				onclick={showElioraDetail ? closeElioraDetail : openElioraDetail}
+				aria-expanded={showOverview}
+				aria-controls="overview"
+				onclick={showOverview ? closeOverview : openOverview}
 			>
-				{showElioraDetail ? 'Hide Overview' : 'Overview'}
+				{showOverview ? 'Hide Overview' : 'Overview'}
 			</button>
 		</article>
-		{#if showElioraDetail}
-			<article id="eliora-detail" class="detail-card" tabindex="-1">
-				<p class="detail-kicker">System Overview</p>
+		{#if showOverview}
+			<article id="overview" class="detail-card" tabindex="-1">
+				<p id="overview-head" class="detail-kicker" tabindex="-1">System Overview</p>
 				<h3 class="detail-title">Governance-First AI Coordination</h3>
 				<p class="detail-standfirst">
 					Built to keep authority, derivation, and execution clearly separate in high-consequence agent systems.
@@ -73,14 +73,14 @@
 					development history rather than a hypothetical project brief.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closeElioraDetail}>
+					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closeOverview}>
 						Hide and Return to Main Page
 					</button>
 				</div>
 			</article>
 		{/if}
-		<article id="remediation-card" class="project-card">
-			<p id="remediation-label" class="project-label">Remediation</p>
+		<article id="remediation-head" class="project-card" tabindex="-1">
+			<p class="project-label">Remediation</p>
 			<h3>Post-Deployment Remediation Script Development</h3>
 			<p class="project-summary">
 				AI-assisted endpoint remediation script development for live post-deployment incidents and production
@@ -92,17 +92,17 @@
 			<button
 				class="cta cta-resume section-cta-remediation"
 				type="button"
-				aria-expanded={showRemediationOptions}
-				aria-controls="remediation-subactions"
-				onclick={showRemediationOptions ? closeRemediationOptions : openRemediationOptions}
+				aria-expanded={showCase1}
+				aria-controls="case-1"
+				onclick={showCase1 ? closeCase1 : openCase1}
 			>
-				{showRemediationOptions ? 'Hide View Case 1' : 'View Case 1'}
+				{showCase1 ? 'Hide Case 1' : 'Case 1'}
 			</button>
-			{#if showRemediationOptions}
+			{#if showCase1}
 				<div
 					class="resume-subactions"
-					id="remediation-subactions"
-					aria-label="Remediation project actions"
+					id="case-1"
+					aria-label="Case 1 actions"
 					tabindex="-1"
 				>
 					<a class="cta cta-view" href="/projects/remediation-script-development">View First</a>
@@ -114,8 +114,8 @@
 				</div>
 			{/if}
 		</article>
-		<article id="migration-card" class="project-card">
-			<p id="migration-label" class="project-label">Deployment</p>
+		<article id="deployment-head" class="project-card" tabindex="-1">
+			<p class="project-label">Deployment</p>
 			<h3>Enterprise Migration Stabilization Framework</h3>
 			<p class="project-summary">
 				Evidence-driven application migration stabilization methodology translating live remediation into
@@ -127,14 +127,14 @@
 			<button
 				class="cta cta-resume section-cta-migration"
 				type="button"
-				aria-expanded={showMigrationOptions}
-				aria-controls="migration-subactions"
-				onclick={showMigrationOptions ? closeMigrationOptions : openMigrationOptions}
+				aria-expanded={showCase2}
+				aria-controls="case-2"
+				onclick={showCase2 ? closeCase2 : openCase2}
 			>
-				{showMigrationOptions ? 'Hide View Case 2' : 'View Case 2'}
+				{showCase2 ? 'Hide Case 2' : 'Case 2'}
 			</button>
-			{#if showMigrationOptions}
-				<div class="resume-subactions" id="migration-subactions" aria-label="Migration project actions" tabindex="-1">
+			{#if showCase2}
+				<div class="resume-subactions" id="case-2" aria-label="Case 2 actions" tabindex="-1">
 					<a class="cta cta-view" href="/projects/migration-stabilization-framework">View First</a>
 					<a class="cta cta-download" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Download (B&W PDF)</a>
 				</div>
