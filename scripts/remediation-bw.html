@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Remediation Script Development Portfolio BW</title>
+	<link rel="stylesheet" href="case-bw.css" />
+</head>
+<body>
+	<main class="doc">
+		<header class="section hero">
+			<p class="eyebrow">Project Detail</p>
+			<h1>Post-Deployment Remediation Script Development</h1>
+		</header>
+
+		<section class="section">
+			<h2>Summary</h2>
+			<p class="summary-copy">
+				Built and deployed a remediation script for live post-deployment incidents. It targeted profile
+				corruption, cache drift, and launch inconsistency. The work moved from testing into live production use
+				and became part of the wider stabilization effort.
+			</p>
+		</section>
+
+		<section class="section">
+			<h2>How It Was Built</h2>
+			<ul>
+				<li><strong>Development workflow:</strong> Built with AI-assisted support in VS Code using GitHub Copilot</li>
+				<li><strong>Testing path:</strong> Moved from non-production testing to test-device validation and then live deployment</li>
+				<li><strong>User targeting:</strong> Separated device logon user from session user to hit the correct profile</li>
+				<li><strong>Cache cleanup:</strong> Covered both version-specific and legacy cache variants</li>
+				<li><strong>Shortcut control:</strong> Consolidated validated shortcut artifacts into one canonical launch surface</li>
+				<li><strong>Binary checks:</strong> Confirmed binaries and detected reparse-point anomalies</li>
+				<li><strong>Status output:</strong> Returned JSON-compatible state summaries for downstream parsing</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>What We Found</h2>
+			<ul>
+				<li><strong>Main pattern:</strong> Incidents clustered in upgrade scenarios</li>
+				<li><strong>Control case:</strong> Clean first-time installs did not show the same failure profile</li>
+				<li><strong>Main causes:</strong> Cache drift, user-profile contamination, mixed shortcut paths, duplicate variants, and validation gaps</li>
+				<li><strong>Field behavior:</strong> Production incidents often involved stale shortcuts, legacy cache corruption, and precise per-profile targeting</li>
+				<li><strong>Production result:</strong> Validation confirmed normalized application state</li>
+				<li><strong>Boundary:</strong> Remaining failures sat outside remediation scope</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>How It Was Used</h2>
+			<ul>
+				<li><strong>Evidence role:</strong> Became the main evidence artifact in the reformatted deployment package wrapper</li>
+				<li><strong>Problem link:</strong> Tied each remediation action back to observed symptoms</li>
+				<li><strong>Approval:</strong> Approved for controlled live use on single endpoints</li>
+				<li><strong>Project effect:</strong> Turned incident success into evidence for root-cause analysis and package hardening</li>
+				<li><strong>Scope boundary:</strong> Full wrapper lifecycle testing remained separate from script effectiveness evidence</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>Why It Helped</h2>
+			<ul>
+				<li>Each remediation action targeted a real observed failure rather than a theoretical fix</li>
+				<li>Refinement decisions were based on test-device and production outcomes</li>
+				<li>Defensive design handled cloud desktop variants, registry-redirected paths, and reparse-point binaries</li>
+				<li>Rapid problem breakdown supported cache, shortcut, and user-context diagnosis</li>
+				<li>AI-assisted code generation was turned into production-grade PowerShell</li>
+				<li>Confirmed outcomes were kept separate from assumptions needing more evidence</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>Attribution Note</h2>
+			<p class="note">
+				This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts,
+				validation records, and operational observations were used to summarize the work while preserving
+				confidentiality.
+			</p>
+		</section>
+	</main>
+</body>
+</html>
