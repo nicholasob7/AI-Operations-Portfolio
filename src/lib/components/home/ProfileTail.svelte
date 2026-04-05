@@ -1,11 +1,12 @@
 <section id="tail-head" class="card profile-tail">
 	<div class="metric-grid" aria-label="Location, timezone, focus, and strength">
+		<div class="metric-top-approx" aria-hidden="true">≈</div>
 		<div class="metric-block metric-location">
 			<p class="metric-label">Location</p>
 			<div class="metric-values">
-				<span>Whanganui a Tara, Aotearoa</span>
-				<span class="metric-equals" aria-hidden="true">≈</span>
 				<span>Wellington, New Zealand</span>
+				<span class="metric-equals" aria-hidden="true">≈</span>
+				<span>Whanganui a Tara, Aotearoa</span>
 			</div>
 		</div>
 		<div class="metric-block metric-timezone">
