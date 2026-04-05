@@ -51,14 +51,14 @@
 				<li><strong>Next step:</strong> Production rollout remains pending</li>
 			</ul>
 
-			<h2>Who It Helped</h2>
+			<h2>How It Helped</h2>
 			<ul>
 				<li>
-					<strong>Technical teams:</strong> Gave them control mapping, smoke tests, integrity checks, and package
+					<strong>Technical teams:</strong> Control mapping, smoke tests, integrity checks, and package
 					comparisons for review and safer deployment decisions
 				</li>
 				<li>
-					<strong>Business and compliance:</strong> Gave them clear summaries, confidence statements, and before/after
+					<strong>Business and compliance:</strong> Clear summaries, confidence statements, and before/after
 					framing without heavy technical language
 				</li>
 				<li>
