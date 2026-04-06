@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -35,10 +35,38 @@
 		return `${url.pathname}${url.search}${url.hash}`;
 	};
 
+	const afterLayoutSettles = async () => {
+		await tick();
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+	};
+
+	const focusAndScrollToHash = async (hash: string) => {
+		if (!browser || !hash) return;
+
+		const id = hash.startsWith('#') ? hash.slice(1) : hash;
+		if (!id) return;
+
+		await afterLayoutSettles();
+
+		const target = document.getElementById(id);
+		if (!target) return;
+
+		target.scrollIntoView({
+			block: 'start',
+			inline: 'nearest'
+		});
+
+		if (target instanceof HTMLElement) {
+			target.focus({ preventScroll: true });
+		}
+	};
+
 	const navigateHome = (hash: string, open?: string) => {
 		void goto(homepageHref(hash, open), {
-			keepFocus: true
-		});
+			keepFocus: true,
+			noScroll: true
+		}).then(() => focusAndScrollToHash(hash));
 	};
 
 	const copyEmail = async () => {
@@ -102,6 +130,11 @@
 
 	onDestroy(() => {
 		if (copyResetTimer) clearTimeout(copyResetTimer);
+	});
+
+	$effect(() => {
+		if (!browser || !page.url.hash) return;
+		void focusAndScrollToHash(page.url.hash);
 	});
 </script>
 

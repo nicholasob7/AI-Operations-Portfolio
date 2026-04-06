@@ -910,16 +910,16 @@
 		color: #9bd8ff;
 	}
 
-	#hero-head,
-	#about-head,
-	#precision-head,
-	#overview-head,
-	#selected-work-head,
-	#remediation-head,
-	#deployment-head,
-	#tail-head {
-		scroll-margin-top: 0.85rem;
-	}
+#hero-head,
+#about-head,
+#precision-head,
+#overview-head,
+#selected-work-head,
+#remediation-head,
+#deployment-head,
+#tail-head {
+	scroll-margin-top: 1.25rem;
+}
 
 .tail-actions {
 	margin-top: 0;
@@ -948,38 +948,38 @@
 		border: 0;
 	}
 
-	@media (max-width: 820px) {
-		.hero-subpanel,
-		.email-subactions,
-		.resume-subactions,
-		.social-subactions {
+@media (max-width: 820px) {
+	.hero-subpanel,
+	.email-subactions,
+	.resume-subactions,
+	.social-subactions {
 			display: grid;
 			grid-template-columns: 1fr;
 			align-items: stretch;
-		}
+	}
 
-		.hero-subpanel > *,
-		.email-subactions > *,
-		.resume-subactions > *,
-		.social-subactions > *,
-		.detail-card-actions > * {
+	.hero-subpanel > *,
+	.email-subactions > *,
+	.resume-subactions > *,
+	.social-subactions > *,
+	.detail-card-actions > * {
 			width: 100%;
 			max-width: 100%;
-		}
+	}
 
-		.projects .project-card > .cta,
-		.resume-subactions > .cta,
-		.hero-subpanel > .cta,
-		.detail-card-actions > .cta {
+	.projects .project-card > .cta,
+	.resume-subactions > .cta,
+	.hero-subpanel > .cta,
+	.detail-card-actions > .cta {
 			justify-content: center;
 			text-align: center;
-		}
-
-		.detail-card-actions {
-			justify-content: stretch;
-		}
-
 	}
+
+	.detail-card-actions {
+			justify-content: stretch;
+	}
+
+}
 
 	@media (max-width: 640px) {
 		.page {

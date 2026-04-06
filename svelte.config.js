@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-static';
 import { relative, sep } from 'node:path';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -13,7 +13,25 @@ const config = {
 			return isExternalLibrary ? undefined : true;
 		}
 	},
-	kit: { adapter: adapter() }
+	kit: {
+		adapter: adapter(),
+		csp: {
+			mode: 'auto',
+			directives: {
+				'default-src': ['self'],
+				'base-uri': ['self'],
+				'object-src': ['none'],
+				'script-src': ['self'],
+				'script-src-attr': ['none'],
+				'style-src': ['self', 'https://fonts.googleapis.com'],
+				'font-src': ['self', 'https://fonts.gstatic.com', 'data:'],
+				'img-src': ['self', 'data:', 'blob:'],
+				'connect-src': ['self'],
+				'form-action': ['self'],
+				'upgrade-insecure-requests': true
+			}
+		}
+	}
 };
 
 export default config;
