@@ -217,8 +217,8 @@
 		display: grid;
 		gap: 0.7rem;
 		align-content: start;
-		padding-top: 0;
-		padding-bottom: 0;
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
 	}
 
 	.profile-tail .status-strip {
@@ -921,11 +921,11 @@
 		scroll-margin-top: 0.85rem;
 	}
 
-	.tail-actions {
-		margin-top: 0.95rem;
-		display: flex;
-		justify-content: flex-start;
-	}
+.tail-actions {
+	margin-top: 0;
+	display: flex;
+	justify-content: flex-start;
+}
 
 	.cta-return-top {
 		--btn-start: #35598f;
@@ -979,154 +979,6 @@
 			justify-content: stretch;
 		}
 
-		.metric-grid {
-			grid-template-columns: 1fr;
-			gap: 0.8rem;
-			transform: translateY(-0.65rem);
-		}
-
-		.metric-top-approx {
-			display: flex;
-			position: absolute;
-			top: 1.7rem;
-			left: 50%;
-			align-items: center;
-			justify-content: center;
-			font-family: 'Space Grotesk', sans-serif;
-			font-size: clamp(4.9rem, 23vw, 6rem);
-			font-weight: 700;
-			line-height: 0.72;
-			color: #98cbff;
-			text-shadow: 0 0 22px rgba(152, 203, 255, 0.24);
-			pointer-events: none;
-			user-select: none;
-			transform: translateX(-50%) scaleX(1.04) scaleY(1.01);
-		}
-
-		.metric-location,
-		.metric-timezone,
-		.metric-focus,
-		.metric-strength {
-			grid-column: 1 / -1;
-		}
-
-		.metric-block {
-			gap: 0.42rem;
-		}
-
-		.metric-values {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.38rem;
-		}
-
-		.metric-values > span {
-			display: inline-flex;
-			width: auto;
-			max-width: 100%;
-			padding: 0.34rem 0.56rem;
-			line-height: 1.34;
-			white-space: normal;
-			overflow-wrap: anywhere;
-		}
-
-		.metric-values .metric-equals {
-			display: none;
-		}
-
-			.metric-location .metric-values {
-				display: grid;
-				grid-template-columns: max-content;
-				gap: 0.46rem;
-				margin-top: 0;
-				width: max-content;
-			}
-
-		.metric-location .metric-label {
-			justify-self: start;
-			transform: translate(0.12rem, -1.525rem);
-		}
-
-		.metric-location .metric-values > span:last-child {
-			justify-self: start;
-		}
-
-			.metric-location .metric-values > span:first-child {
-				justify-self: start;
-				transform: translateY(-0.42rem);
-			}
-
-		.metric-location {
-			justify-items: start;
-			transform: translateY(4.6rem);
-		}
-
-		.metric-timezone {
-			display: grid;
-			grid-template-columns: 1fr;
-			align-items: start;
-			min-height: 5.1rem;
-			justify-items: end;
-		}
-
-			.metric-timezone-content {
-				gap: 0.42rem;
-				transform: translateY(-1.59rem);
-				justify-items: end;
-				width: max-content;
-			}
-
-		.metric-timezone-content .metric-label {
-			transform: translate(-0.12rem, -1.525rem);
-		}
-
-			.metric-timezone-content .metric-values {
-				display: flex;
-				align-items: center;
-				align-self: start;
-				gap: 0.38rem;
-				justify-self: end;
-				width: max-content;
-				transform: translateY(-1.55rem);
-			}
-
-		.metric-approx {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			align-self: stretch;
-			justify-self: stretch;
-			font-family: 'Space Grotesk', sans-serif;
-			font-size: clamp(8.8rem, 40vw, 11.2rem);
-			font-weight: 700;
-			line-height: 0.72;
-			color: #98cbff;
-			text-shadow: 0 0 22px rgba(152, 203, 255, 0.24);
-			pointer-events: none;
-			user-select: none;
-			transform: translate(-2.7rem, 2.55rem) scaleX(1.18) scaleY(1.14);
-		}
-
-		.metric-focus,
-		.metric-strength,
-		.tail-actions {
-			transform: translateY(-3.5rem);
-		}
-
-		.metric-focus,
-		.metric-strength {
-			transform: translateY(-2.375rem);
-		}
-
-		.metric-focus {
-			transform: translateY(-2.185rem);
-		}
-
-			.tail-actions {
-				margin-top: 0.2rem;
-				transform: translateY(-2.55rem);
-			}
 	}
 
 	@media (max-width: 640px) {
@@ -1191,104 +1043,6 @@
 			width: 100%;
 			justify-content: center;
 			text-align: center;
-		}
-	}
-
-	@media (max-width: 640px) and (orientation: portrait) {
-		.profile-tail {
-			--tail-pill-gap: 0.9rem;
-		}
-
-		.profile-tail {
-			gap: var(--tail-pill-gap);
-			padding-top: 0.55rem;
-			padding-bottom: 0.65rem;
-		}
-
-		.metric-grid {
-			display: flex;
-			flex-direction: column;
-			gap: var(--tail-pill-gap);
-			padding-top: 0;
-			transform: none;
-			align-items: flex-start;
-		}
-
-		.metric-timezone {
-			order: -1;
-		}
-
-		.metric-block {
-			gap: 0;
-		}
-
-		.metric-location,
-		.metric-timezone {
-			transform: none;
-			min-height: auto;
-		}
-
-		.metric-location {
-			justify-items: start;
-			align-self: start;
-		}
-
-		.metric-location .metric-label,
-		.metric-timezone-content .metric-label {
-			transform: none;
-			margin-bottom: 0.42rem;
-		}
-
-		.metric-location .metric-values {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr);
-			gap: var(--tail-pill-gap);
-			width: 100%;
-			max-width: 100%;
-		}
-
-		.metric-location .metric-values > span:first-child,
-		.metric-location .metric-values > span:last-child {
-			justify-self: start;
-			transform: none;
-		}
-
-		.metric-timezone {
-			display: block;
-			justify-items: start;
-			align-self: start;
-		}
-
-		.metric-timezone-content {
-			transform: none;
-			gap: 0;
-			justify-items: start;
-			width: 100%;
-		}
-
-		.metric-timezone-content .metric-values {
-			transform: none;
-			justify-self: start;
-			gap: 0;
-		}
-
-		.metric-focus .metric-values,
-		.metric-strength .metric-values {
-			gap: 0;
-		}
-
-		.metric-focus,
-		.metric-strength,
-		.tail-actions {
-			transform: none;
-		}
-
-		.metric-focus {
-			margin-top: 0;
-		}
-
-		.tail-actions {
-			margin-top: 0;
 		}
 	}
 
