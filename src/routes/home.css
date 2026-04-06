@@ -1194,6 +1194,104 @@
 		}
 	}
 
+	@media (max-width: 640px) and (orientation: portrait) {
+		.profile-tail {
+			--tail-pill-gap: 0.9rem;
+		}
+
+		.profile-tail {
+			gap: var(--tail-pill-gap);
+			padding-top: 0.55rem;
+			padding-bottom: 0.65rem;
+		}
+
+		.metric-grid {
+			display: flex;
+			flex-direction: column;
+			gap: var(--tail-pill-gap);
+			padding-top: 0;
+			transform: none;
+			align-items: flex-start;
+		}
+
+		.metric-timezone {
+			order: -1;
+		}
+
+		.metric-block {
+			gap: 0;
+		}
+
+		.metric-location,
+		.metric-timezone {
+			transform: none;
+			min-height: auto;
+		}
+
+		.metric-location {
+			justify-items: start;
+			align-self: start;
+		}
+
+		.metric-location .metric-label,
+		.metric-timezone-content .metric-label {
+			transform: none;
+			margin-bottom: 0.42rem;
+		}
+
+		.metric-location .metric-values {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr);
+			gap: var(--tail-pill-gap);
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.metric-location .metric-values > span:first-child,
+		.metric-location .metric-values > span:last-child {
+			justify-self: start;
+			transform: none;
+		}
+
+		.metric-timezone {
+			display: block;
+			justify-items: start;
+			align-self: start;
+		}
+
+		.metric-timezone-content {
+			transform: none;
+			gap: 0;
+			justify-items: start;
+			width: 100%;
+		}
+
+		.metric-timezone-content .metric-values {
+			transform: none;
+			justify-self: start;
+			gap: 0;
+		}
+
+		.metric-focus .metric-values,
+		.metric-strength .metric-values {
+			gap: 0;
+		}
+
+		.metric-focus,
+		.metric-strength,
+		.tail-actions {
+			transform: none;
+		}
+
+		.metric-focus {
+			margin-top: 0;
+		}
+
+		.tail-actions {
+			margin-top: 0;
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.card,
 		.hero-aurora,
