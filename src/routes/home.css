@@ -78,9 +78,12 @@
 	}
 
 	.hero h1 {
+		font-family: 'Spectral', serif;
 		font-size: clamp(2.1rem, 5vw, 3.25rem);
-		line-height: 1;
-		margin: 0.25rem 0;
+		font-weight: 600;
+		line-height: 0.94;
+		letter-spacing: -0.028em;
+		margin: 0.18rem 0 0.08rem;
 		color: #d6e2f7;
 	}
 
@@ -190,21 +193,84 @@
 	.social-subactions {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.45rem;
-		align-items: center;
+		gap: 0.8rem;
+		align-items: stretch;
 	}
 
-	.email-plain {
-		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
-		font-size: 0.84rem;
+.email-plain {
+	margin: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.84rem;
 		color: #d8e7ff;
 		padding: 0.34rem 0.62rem;
 		border-radius: 999px;
 		border: 1px solid rgba(190, 215, 242, 0.52);
-		background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
-		user-select: text;
-	}
+	background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
+	user-select: text;
+}
+
+.profile-link-plain {
+	margin: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	align-items: center;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.84rem;
+	color: #d8e7ff;
+	padding: 0.42rem 0.68rem;
+	border-radius: 0.9rem;
+	border: 1px solid rgba(190, 215, 242, 0.42);
+	background: linear-gradient(120deg, rgba(50, 70, 78, 0.82) 0%, rgba(54, 73, 91, 0.82) 55%, rgba(30, 75, 65, 0.82) 100%);
+	text-decoration: none;
+	user-select: text;
+	word-break: break-word;
+}
+
+.social-selector-group {
+	flex-basis: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+	align-items: center;
+}
+
+.social-detail {
+	flex-basis: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0.55rem;
+	align-items: center;
+}
+
+.profile-platform {
+	font-weight: 700;
+	color: rgba(238, 246, 255, 0.96);
+}
+
+.profile-url {
+	color: #d8e7ff;
+	word-break: break-word;
+}
+
+.social-detail > .profile-link-plain {
+	flex: 0 1 auto;
+	max-width: calc(100% - 8rem);
+}
+
+.social-detail > .cta {
+	flex: 0 0 auto;
+}
+
+.cta-social-option {
+	--btn-start: #3a5456;
+	--btn-mid: #405064;
+	--btn-end: #205649;
+	--btn-start-hover: #476a6d;
+	--btn-mid-hover: #51657d;
+	--btn-end-hover: #2a6b5b;
+	--btn-text: #f3f7ff;
+	--btn-text-hover: #ffffff;
+}
 
 	.status-strip {
 		display: flex;
@@ -994,6 +1060,7 @@
 
 		.hero h1 {
 			font-size: clamp(1.9rem, 11vw, 2.45rem);
+			line-height: 0.98;
 		}
 
 		.cta {

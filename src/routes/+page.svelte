@@ -10,26 +10,32 @@
 	import './home.css';
 
 	const contactEmail = 'nicko.obrien.ai@gmail.com';
-	const linkedInUrl = 'https://www.linkedin.com/in/nicholasfobrien';
+	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
-	const twitterUrl = 'https://x.com/nicho0101';
-	let copied = $state(false);
+	const twitterProfilePath = 'x.com/nicho0101';
+	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
 	const showResumeOptions = $derived(openPanel === 'resume');
 	const showEmailOptions = $derived(openPanel === 'email');
 	const showSocialOptions = $derived(openPanel === 'social');
+	const openSocialOption = $derived(browser ? (page.url.searchParams.get('social') ?? '') : '');
+	const showLinkedInSocialDetails = $derived(showSocialOptions && openSocialOption === 'linkedin');
+	const showTwitterSocialDetails = $derived(showSocialOptions && openSocialOption === 'twitter');
 	const showOverview = $derived(openPanel === 'overview');
 	const showPrecision = $derived(openPanel === 'precision');
 	const showCase1 = $derived(openPanel === 'case-1');
 	const showCase2 = $derived(openPanel === 'case-2');
 
-	const homepageHref = (hash: string, open?: string) => {
+	const homepageHref = (hash: string, open?: string, social?: string) => {
 		const url = new URL(page.url);
 		url.pathname = '/';
 		url.search = '';
 		if (open) {
 			url.searchParams.set('open', open);
+			if (social) {
+				url.searchParams.set('social', social);
+			}
 		}
 		url.hash = `#${hash}`;
 		return `${url.pathname}${url.search}${url.hash}`;
@@ -62,29 +68,45 @@
 		}
 	};
 
-	const navigateHome = (hash: string, open?: string) => {
-		void goto(homepageHref(hash, open), {
+	const navigateHome = (hash: string, open?: string, social?: string) => {
+		void goto(homepageHref(hash, open, social), {
 			keepFocus: true,
 			noScroll: true
 		}).then(() => focusAndScrollToHash(hash));
 	};
 
-	const copyEmail = async () => {
+	const resetCopiedTarget = () => {
+		copiedTarget = null;
+		if (copyResetTimer) clearTimeout(copyResetTimer);
+	};
+
+	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
 		try {
-			await navigator.clipboard.writeText(contactEmail);
-			copied = true;
+			await navigator.clipboard.writeText(value);
+			copiedTarget = target;
 			if (copyResetTimer) clearTimeout(copyResetTimer);
 			copyResetTimer = setTimeout(() => {
-				copied = false;
+				copiedTarget = null;
 			}, 1800);
 		} catch {
-			copied = false;
+			copiedTarget = null;
 		}
 	};
 
+	const copyEmail = async () => {
+		await copyText(contactEmail, 'email');
+	};
+
+	const copyLinkedInProfilePath = async () => {
+		await copyText(linkedInProfilePath, 'linkedin');
+	};
+
+	const copyTwitterProfilePath = async () => {
+		await copyText(twitterProfilePath, 'twitter');
+	};
+
 	const toggleEmailOptions = () => {
-		copied = false;
-		if (copyResetTimer) clearTimeout(copyResetTimer);
+		resetCopiedTarget();
 		navigateHome('hero-head', showEmailOptions ? undefined : 'email');
 	};
 
@@ -93,7 +115,18 @@
 	};
 
 	const toggleSocialOptions = () => {
+		resetCopiedTarget();
 		navigateHome('hero-head', showSocialOptions ? undefined : 'social');
+	};
+
+	const toggleLinkedInSocialDetails = () => {
+		resetCopiedTarget();
+		navigateHome('hero-head', 'social', showLinkedInSocialDetails ? undefined : 'linkedin');
+	};
+
+	const toggleTwitterSocialDetails = () => {
+		resetCopiedTarget();
+		navigateHome('hero-head', 'social', showTwitterSocialDetails ? undefined : 'twitter');
 	};
 
 	const openOverview = () => {
@@ -101,7 +134,7 @@
 	};
 
 	const closeOverview = () => {
-		navigateHome('remediation-head');
+		navigateHome('eliora-head');
 	};
 
 	const openPrecision = () => {
@@ -129,7 +162,7 @@
 	};
 
 	onDestroy(() => {
-		if (copyResetTimer) clearTimeout(copyResetTimer);
+		resetCopiedTarget();
 	});
 
 	$effect(() => {
@@ -163,17 +196,23 @@
 <main class="page">
 	<HeroSection
 		{githubUrl}
-		{linkedInUrl}
-		{twitterUrl}
+		{linkedInProfilePath}
+		{twitterProfilePath}
 		{contactEmail}
 		{showResumeOptions}
 		{showEmailOptions}
 		{showSocialOptions}
-		{copied}
+		{showLinkedInSocialDetails}
+		{showTwitterSocialDetails}
+		{copiedTarget}
 		{toggleResumeOptions}
 		{toggleEmailOptions}
 		{toggleSocialOptions}
+		{toggleLinkedInSocialDetails}
+		{toggleTwitterSocialDetails}
 		{copyEmail}
+		{copyLinkedInProfilePath}
+		{copyTwitterProfilePath}
 	/>
 
 	<AboutSection {showPrecision} {openPrecision} {closePrecision} />
