@@ -1,32 +1,44 @@
 <script lang="ts">
 	type Props = {
 		githubUrl: string;
-		linkedInUrl: string;
-		twitterUrl: string;
+		linkedInProfilePath: string;
+		twitterProfilePath: string;
 		contactEmail: string;
 		showResumeOptions: boolean;
 		showEmailOptions: boolean;
 		showSocialOptions: boolean;
-		copied: boolean;
+		showLinkedInSocialDetails: boolean;
+		showTwitterSocialDetails: boolean;
+		copiedTarget: 'email' | 'linkedin' | 'twitter' | null;
 		toggleResumeOptions: () => void;
 		toggleEmailOptions: () => void;
 		toggleSocialOptions: () => void;
+		toggleLinkedInSocialDetails: () => void;
+		toggleTwitterSocialDetails: () => void;
 		copyEmail: () => void;
+		copyLinkedInProfilePath: () => void;
+		copyTwitterProfilePath: () => void;
 	};
 
 	let {
 		githubUrl,
-		linkedInUrl,
-		twitterUrl,
+		linkedInProfilePath,
+		twitterProfilePath,
 		contactEmail,
 		showResumeOptions,
 		showEmailOptions,
 		showSocialOptions,
-		copied,
+		showLinkedInSocialDetails,
+		showTwitterSocialDetails,
+		copiedTarget,
 		toggleResumeOptions,
 		toggleEmailOptions,
 		toggleSocialOptions,
-		copyEmail
+		toggleLinkedInSocialDetails,
+		toggleTwitterSocialDetails,
+		copyEmail,
+		copyLinkedInProfilePath,
+		copyTwitterProfilePath
 	}: Props = $props();
 </script>
 
@@ -86,27 +98,51 @@
 			<div class="hero-subpanel email-subactions" id="email-subactions" aria-label="Email actions" tabindex="-1">
 				<p class="email-plain">{contactEmail}</p>
 				<button class="cta cta-contact-sub" type="button" onclick={copyEmail}>
-					{copied ? 'Copied Email' : 'Copy Email'}
+					{copiedTarget === 'email' ? 'Copied Email' : 'Copy Email'}
 				</button>
 				<p class="sr-only" aria-live="polite">
-					{copied ? 'Email address copied to clipboard.' : ''}
+					{copiedTarget === 'email' ? 'Email address copied to clipboard.' : ''}
 				</p>
 			</div>
 		{/if}
 
 		{#if showSocialOptions}
-			<div
-				class="hero-subpanel social-subactions"
-				id="social-subactions"
-				aria-label="Social media actions"
-				tabindex="-1"
-			>
-				<a class="cta cta-linkedin" href={linkedInUrl} target="_blank" rel="noopener noreferrer me"
-					>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
-				>
-				<a class="cta cta-twitter" href={twitterUrl} target="_blank" rel="noopener noreferrer me"
-					>X / Twitter<span class="sr-only"> (opens in new tab)</span></a
-				>
+			<div class="hero-subpanel social-subactions" id="social-subactions" aria-label="Social actions" tabindex="-1">
+				<div class="social-selector-group" aria-label="Social platform choices">
+					<button class="cta cta-social-option" type="button" onclick={toggleLinkedInSocialDetails}>
+						{showLinkedInSocialDetails ? 'Hide LinkedIn' : 'LinkedIn'}
+					</button>
+					<button class="cta cta-social-option" type="button" onclick={toggleTwitterSocialDetails}>
+						{showTwitterSocialDetails ? 'Hide X/Twitter' : 'X/Twitter'}
+					</button>
+				</div>
+				{#if showLinkedInSocialDetails}
+					<div class="social-detail">
+						<p class="profile-link-plain">
+							<span class="profile-url">{linkedInProfilePath}</span>
+						</p>
+						<button class="cta cta-contact-sub" type="button" onclick={copyLinkedInProfilePath}>
+							{copiedTarget === 'linkedin' ? 'Copied' : 'Copy'}
+						</button>
+					</div>
+				{/if}
+				{#if showTwitterSocialDetails}
+					<div class="social-detail">
+						<p class="profile-link-plain">
+							<span class="profile-url">{twitterProfilePath}</span>
+						</p>
+						<button class="cta cta-contact-sub" type="button" onclick={copyTwitterProfilePath}>
+							{copiedTarget === 'twitter' ? 'Copied' : 'Copy'}
+						</button>
+					</div>
+				{/if}
+				<p class="sr-only" aria-live="polite">
+					{copiedTarget === 'linkedin'
+						? 'LinkedIn profile URL copied to clipboard.'
+						: copiedTarget === 'twitter'
+							? 'X slash Twitter profile URL copied to clipboard.'
+							: ''}
+				</p>
 			</div>
 		{/if}
 	</div>
