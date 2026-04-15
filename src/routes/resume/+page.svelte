@@ -61,12 +61,12 @@
 		<p class="meta">November 2022 - Present</p>
 		<ul>
 			<li>
-				Support a 5,000+ user environment across shared-service and single-organisation clients,
-				including Air New Zealand, Icon Group, Zenergy, Otago Regional Council, and Frucor.
+				Support a 5,000+ user environment across shared-service and single-organisation clients in
+				transport, healthcare, energy, regional government, and consumer goods.
 			</li>
 			<li>
-				Provide dedicated BAU Service Desk support for KiwiRail, with 2.5+ years in this engagement
-				within a team delivering 90%+ first-contact resolution.
+				Provide dedicated BAU Service Desk support for a major transport-sector client, with 2.5+
+				years in this engagement within a team delivering 90%+ first-contact resolution.
 			</li>
 			<li>
 				Handle BAU incidents and service requests from triage through to resolution, documentation,
@@ -106,10 +106,10 @@
 	<section class="card">
 		<h2>Selected Achievements and SME Responsibilities</h2>
 		<ul>
-			<li>Printer Services SME for KiwiRail, with ownership of the printer vendor queue.</li>
+			<li>Printer Services SME for a major enterprise client, with ownership of the printer vendor queue.</li>
 			<li>
-				Service Desk SME for the Ricoh to Canon printer vendor transition, including project meeting
-				participation and direct coordination with Canon representatives.
+				Service Desk SME for a managed print vendor transition, including project meeting
+				participation and direct coordination with vendor representatives.
 			</li>
 			<li>
 				Extended effectiveness into Level 2 support by resolving printer configuration issues within
@@ -128,8 +128,8 @@
 				advising how to retain classification and workflow visibility benefits.
 			</li>
 			<li>
-				Built AI-assisted troubleshooting scripts in VS Code and Copilot that were adopted into
-				production workflows for vendor-supplied enterprise applications.
+				Built AI-assisted troubleshooting scripts using modern development tooling that were adopted
+				into production workflows for vendor-supplied enterprise applications.
 			</li>
 			<li>
 				Diagnosed enterprise application migration failures linked to shortcut handling
