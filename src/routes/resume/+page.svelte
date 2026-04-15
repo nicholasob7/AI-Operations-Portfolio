@@ -129,15 +129,15 @@
 			</li>
 			<li>
 				Built AI-assisted troubleshooting scripts in VS Code and Copilot that were adopted into
-				production workflows for Amicus and SAP.
+				production workflows for vendor-supplied enterprise applications.
 			</li>
 			<li>
-				Diagnosed SAP 7.5 to 7.7 transition failures linked to shortcut handling
-				and logon cache behavior, helping restart a deferred enterprise upgrade in Q1 2026.
+				Diagnosed enterprise application migration failures linked to shortcut handling
+				and logon cache behavior, helping restart a deferred upgrade programme.
 			</li>
 			<li>
-				Expanding AI-assisted troubleshooting playbooks across other vendor-supplied applications,
-				including Vision CRE.
+				Looking to expand AI-assisted troubleshooting playbooks across other vendor-supplied
+				applications.
 			</li>
 		</ul>
 	</section>
