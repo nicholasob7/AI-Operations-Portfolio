@@ -52,45 +52,88 @@
 		enterprise operations, automation, and delivery.
 	</p>
 	<div class="links">
-		<div class="hero-actions" aria-label="Primary actions">
-			<a class="cta cta-github cta-feature" href={githubUrl} target="_blank" rel="noopener noreferrer me"
-				>GitHub<span class="sr-only"> (opens in new tab)</span></a
-			>
-			<button
-				class="cta cta-resume"
-				type="button"
-				aria-expanded={showResumeOptions}
-				aria-controls="resume-subactions"
-				onclick={toggleResumeOptions}
-			>
-				{showResumeOptions ? 'Hide Resume' : 'Resume'}
-			</button>
-			<button
-				class="cta cta-contact"
-				type="button"
-				aria-expanded={showEmailOptions}
-				aria-controls="email-subactions"
-				onclick={toggleEmailOptions}
-			>
-				{showEmailOptions ? 'Hide Email' : 'Email'}
-			</button>
-			<button
-				class="cta cta-social"
-				type="button"
-				aria-expanded={showSocialOptions}
-				aria-controls="social-subactions"
-				onclick={toggleSocialOptions}
-			>
-				{showSocialOptions ? 'Hide Social' : 'Social'}
-			</button>
-		</div>
+		{#if showResumeOptions}
+			<div class="hero-actions" aria-label="Primary actions">
+				<a class="cta cta-github cta-feature" href={githubUrl} target="_blank" rel="noopener noreferrer me"
+					>GitHub<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<button
+					class="cta cta-resume"
+					type="button"
+					aria-expanded={showResumeOptions}
+					aria-controls="resume-subactions"
+					onclick={toggleResumeOptions}
+				>
+					Hide Resume
+				</button>
+			</div>
+		{:else}
+			<div class="hero-actions" aria-label="Primary actions">
+				<a class="cta cta-github cta-feature" href={githubUrl} target="_blank" rel="noopener noreferrer me"
+					>GitHub<span class="sr-only"> (opens in new tab)</span></a
+				>
+				<button
+					class="cta cta-resume"
+					type="button"
+					aria-expanded={showResumeOptions}
+					aria-controls="resume-subactions"
+					onclick={toggleResumeOptions}
+				>
+					Resume
+				</button>
+				<button
+					class="cta cta-contact"
+					type="button"
+					aria-expanded={showEmailOptions}
+					aria-controls="email-subactions"
+					onclick={toggleEmailOptions}
+				>
+					{showEmailOptions ? 'Hide Email' : 'Email'}
+				</button>
+				<button
+					class="cta cta-social"
+					type="button"
+					aria-expanded={showSocialOptions}
+					aria-controls="social-subactions"
+					onclick={toggleSocialOptions}
+				>
+					{showSocialOptions ? 'Hide Social' : 'Social'}
+				</button>
+			</div>
+		{/if}
 
 		{#if showResumeOptions}
-			<div class="hero-subpanel resume-subactions" id="resume-subactions" aria-label="Resume actions" tabindex="-1">
+			<div
+				class="hero-subpanel resume-subactions"
+				id="resume-subactions"
+				aria-label="Resume actions"
+				tabindex="-1"
+			>
 				<a class="cta cta-view" href="/resume">View First</a>
 				<a class="cta cta-download" href="/resume-bw.pdf" download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 					>Download Print-Friendly (B&W PDF)</a
 				>
+			</div>
+
+			<div class="hero-actions" aria-label="Secondary actions">
+				<button
+					class="cta cta-contact"
+					type="button"
+					aria-expanded={showEmailOptions}
+					aria-controls="email-subactions"
+					onclick={toggleEmailOptions}
+				>
+					{showEmailOptions ? 'Hide Email' : 'Email'}
+				</button>
+				<button
+					class="cta cta-social"
+					type="button"
+					aria-expanded={showSocialOptions}
+					aria-controls="social-subactions"
+					onclick={toggleSocialOptions}
+				>
+					{showSocialOptions ? 'Hide Social' : 'Social'}
+				</button>
 			</div>
 		{/if}
 
