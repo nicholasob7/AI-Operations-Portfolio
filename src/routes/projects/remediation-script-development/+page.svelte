@@ -30,7 +30,7 @@
 			<h2>How It Was Built</h2>
 			<ul>
 				<li>
-					<strong>Development workflow:</strong> Built with AI-assisted support in VS Code using GitHub Copilot
+					<strong>Development workflow:</strong> Built with AI-assisted support using modern development tooling
 				</li>
 				<li>
 					<strong>Testing path:</strong> Moved from non-production testing to test-device validation and then live
@@ -119,7 +119,7 @@
 			<hr />
 			<h2>Attribution Note</h2>
 			<p class="doc-note">
-				This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts,
+				This portfolio description was prepared with AI-assisted drafting support. Repository artifacts,
 				validation records, and operational observations were used to summarize the work while preserving
 				confidentiality.
 			</p>

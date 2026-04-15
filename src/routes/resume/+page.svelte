@@ -62,7 +62,7 @@
 		<ul>
 			<li>
 				Support a 5,000+ user environment across shared-service and single-organisation clients in
-				transport, healthcare, energy, local government, and consumer goods.
+				transport, healthcare, energy, regional government, and consumer goods.
 			</li>
 			<li>
 				Provide dedicated BAU Service Desk support for a major transport-sector client, with 2.5+
@@ -128,8 +128,8 @@
 				advising how to retain classification and workflow visibility benefits.
 			</li>
 			<li>
-				Built AI-assisted troubleshooting scripts in VS Code and Copilot that were adopted into
-				production workflows for vendor-supplied enterprise applications.
+				Built AI-assisted troubleshooting scripts using modern development tooling that were adopted
+				into production workflows for vendor-supplied enterprise applications.
 			</li>
 			<li>
 				Diagnosed enterprise application migration failures linked to shortcut handling

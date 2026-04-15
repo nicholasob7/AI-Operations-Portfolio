@@ -6,7 +6,7 @@ Built and deployed a remediation script for live post-deployment incidents. It t
 
 HOW IT WAS BUILT
 
-- Development workflow: Built with AI-assisted support in VS Code using GitHub Copilot
+- Development workflow: Built with AI-assisted support using modern development tooling
 - Testing path: Moved from non-production testing to test-device validation and then live deployment
 - User targeting: Separated device logon user from session user to hit the correct profile
 - Cache cleanup: Covered both version-specific and legacy cache variants
@@ -44,4 +44,4 @@ WHY IT HELPED
 
 ATTRIBUTION NOTE
 
-This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts, validation records, and operational observations were used to summarize the work while preserving confidentiality.
+This portfolio description was prepared with AI-assisted drafting support. Repository artifacts, validation records, and operational observations were used to summarize the work while preserving confidentiality.

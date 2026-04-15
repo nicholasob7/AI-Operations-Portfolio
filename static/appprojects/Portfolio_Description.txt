@@ -36,4 +36,4 @@ WHY IT WORKED
 
 ATTRIBUTION NOTE
 
-This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts and technical documents were used to summarize the work while preserving confidentiality.
+This portfolio description was prepared with AI-assisted drafting support. Repository artifacts and technical documents were used to summarize the work while preserving confidentiality.

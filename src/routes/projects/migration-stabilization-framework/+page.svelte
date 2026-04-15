@@ -91,7 +91,7 @@
 			<hr />
 			<h2>Attribution Note</h2>
 			<p class="doc-note">
-				This portfolio description was written with GitHub Copilot in Visual Studio Code. Repository artifacts and
+				This portfolio description was prepared with AI-assisted drafting support. Repository artifacts and
 				technical documents were used to summarize the work while preserving confidentiality.
 			</p>
 			<div class="doc-actions">
