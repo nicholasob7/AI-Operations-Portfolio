@@ -1,6 +1,151 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	type SkillGroup = {
+		title: string;
+		items: string[];
+	};
+
+	const contextPoints = [
+		'In my own time, intensely engaged in learning and using AI.',
+		'Building projects at different scales.',
+		'This immersion is the broader context for my current skill and drive within IT.'
+	];
+
+	const activeProjectCompleted = [
+		'Built an AI-developed endpoint fix script for a major vendor application.',
+		'This involved AI-driven research and coding.',
+		'Observed application behaviour under different conditions.',
+		'Tested different approaches and script versions on a dedicated test device.',
+		'The script passed validation and went into production for individual endpoint failures.',
+		'L2 bundling of the script with the existing install package failed.',
+		'The script was not at fault.',
+		'This led to investigation of the install package itself.'
+	];
+
+	const activeProjectActive = [
+		'Rebuilding the enterprise app package from the proven fix.',
+		'Test-device validation is complete.',
+		'Further rollout stages are ahead.'
+	];
+
+	const delegatedScope = [
+		'I am responsible for management of the printer queue serviced by a major external vendor.',
+		'Supported a printer vendor transition through vendor liaison and project involvement.',
+		'Resolved printer configuration issues beyond normal front-line scope.',
+		'Reduced avoidable escalation.',
+		'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
+		'Improved traceability across related requests.',
+		'Cut staff time and repeat work.',
+		'Advised on preserving classification and workflow visibility during transition away from the three-ticket vendor model.'
+	];
+
+	const coreRole = [
+		'Support a 5,000+ user environment across shared-service and single-organisation clients.',
+		'Support clients in transport, healthcare, energy, regional government, and consumer goods.',
+		'Progressed into dedicated BAU support for a major transport-sector client.',
+		'Work within a team achieving 90%+ first-contact resolution.',
+		'Handle incidents and service requests from triage through resolution, documentation, and escalation.',
+		'Resolve user, device, application, and access issues through structured remote support.',
+		'Analyse endpoint performance and device health issues.',
+		'Manage identity, access, and account lifecycle tasks within service desk scope.',
+		'Act as SME for privileged access requests across admin, local admin, shared, and external account types.'
+	];
+
+	const technicalSkills: SkillGroup[] = [
+		{
+			title: 'Identity and access administration',
+			items: [
+				'Active Directory',
+				'Entra ID',
+				'local admin',
+				'guest accounts',
+				'privileged access',
+				'account lifecycle'
+			]
+		},
+		{
+			title: 'Messaging and Microsoft 365 support',
+			items: [
+				'Exchange Online',
+				'mailbox creation',
+				'mailbox access',
+				'shared mailboxes',
+				'distribution groups',
+				'Microsoft 365 support'
+			]
+		},
+		{
+			title: 'Endpoint and device administration',
+			items: [
+				'Intune',
+				'compliance',
+				'BitLocker recovery',
+				'Windows support',
+				'drivers',
+				'disk space',
+				'device administration'
+			]
+		},
+		{
+			title: 'Enterprise applications and deployment',
+			items: [
+				'vendor applications',
+				'packaged installs',
+				'application faults',
+				'cache issues',
+				'shortcut issues',
+				'deployment support'
+			]
+		},
+		{
+			title: 'Network and connectivity troubleshooting',
+			items: [
+				'DNS issues',
+				'connectivity faults',
+				'first-line network diagnosis',
+				'escalation to specialist teams'
+			]
+		},
+		{
+			title: 'Service operations and remote support',
+			items: [
+				'Jira Service Management',
+				'triage',
+				'incident and request handling',
+				'escalation',
+				'queue workflows',
+				'remote support'
+			]
+		},
+		{
+			title: 'Knowledge, process, and documentation',
+			items: [
+				'documentation',
+				'knowledge base use and creation',
+				'troubleshooting steps',
+				'workflow traceability'
+			]
+		},
+		{
+			title: 'AI in IT operations',
+			items: [
+				'AI-assisted research',
+				'troubleshooting',
+				'scripting',
+				'package rebuild',
+				'workflow improvement'
+			]
+		}
+	];
+
+	const qualifications = [
+		'AWS Certified Cloud Practitioner',
+		'AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
+		'Bachelor of Arts, History and Political Science — Griffith University',
+		'NTT internal certifications, including AI training'
+	];
+
 	onMount(() => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	});
@@ -10,174 +155,122 @@
 	<title>Nicholas Francis O'Brien | Resume</title>
 	<meta
 		name="description"
-		content="Resume of Nicholas Francis O'Brien, IT Service Desk Analyst focused on identity and endpoint administration."
+		content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
 	/>
 </svelte:head>
 
 <main class="resume-page">
-	<header class="card hero">
+	<header class="panel hero-panel">
 		<p class="eyebrow">Resume</p>
-		<div class="hero-content-row">
-			<div class="hero-copy">
-				<h1>Nicholas Francis O'Brien</h1>
-				<div class="hero-subcopy">
-					<p class="role">
-						<span>AI_focused IT_operator</span>
-						<span aria-hidden="true">|</span>
-						<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
-						<span>Lower Hutt, New Zealand</span>
-					</p>
-				</div>
-			</div>
-			<div class="metrics">
-				<article>
-					<p><strong>5,000+</strong> Users Supported</p>
-				</article>
-				<article>
-					<p><strong>3+ Years</strong> Enterprise Service Desk</p>
-				</article>
-				<article>
-					<p><strong>Queue Reduction</strong> Below Prior Baseline</p>
-				</article>
-				<article>
-					<p><strong>On Request</strong> Mobile and References</p>
-				</article>
-			</div>
-		</div>
+		<h1>Nicholas Francis O'Brien</h1>
+		<p class="contact-line">
+			<span>Lower Hutt, New Zealand</span>
+			<span aria-hidden="true">|</span>
+			<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
+		</p>
+		<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
 	</header>
 
-	<section class="card summary-card">
-		<h2>Professional Summary</h2>
-		<p class="summary-copy">
-			IT professional with 3+ years supporting enterprise environments.
-			Uses AI tools in IT support to improve troubleshooting, speed, and workflow quality.
-			Ready to take on broader roles where strong IT delivery, automation, and practical AI use improve results.
-		</p>
-	</section>
-
-	<section class="card">
-		<h2>Professional Experience</h2>
-		<h3>IT Service Desk Analyst / Service Desk SME - NTT, Wellington</h3>
-		<p class="meta">November 2022 - Present</p>
-		<ul>
-			<li>
-				Support a 5,000+ user environment across shared-service and single-organisation clients in
-				transport, healthcare, energy, regional government, and consumer goods.
-			</li>
-			<li>
-				Provide dedicated BAU Service Desk support for a major transport-sector client, with 2.5+
-				years in this engagement within a team delivering 90%+ first-contact resolution.
-			</li>
-			<li>
-				Handle BAU incidents and service requests from triage through to resolution, documentation,
-				and escalation.
-			</li>
-			<li>
-				Administer Active Directory and Entra ID daily, including user lifecycle, group access, and
-				privileged account work within SDA scope.
-			</li>
-			<li>
-				Serve as Service Desk SME for Privileged User Access Requests, managing end-to-end setup
-				of admin, local admin, shared, and external accounts.
-			</li>
-			<li>
-				Daily support across Microsoft 365, Exchange Online, and Intune, including device
-				administration and endpoint management.
-			</li>
-			<li>
-				Provide identity and access troubleshooting, including MFA support through Entra ID,
-				BitLocker recovery, and Intune-managed endpoint compliance.
-			</li>
-			<li>
-				Use Nexthink to identify, analyse, and support resolution of endpoint performance and device
-				health issues.
-			</li>
-			<li>
-				Use Jira Service Management and ServiceNow daily for incident, request, and escalation
-				management.
-			</li>
-			<li>
-				Provide remote end-user support through TeamViewer to resolve application, device, and access
-				issues without onsite intervention.
-			</li>
+	<section class="panel">
+		<h2>Context</h2>
+		<ul class="content-list">
+			{#each contextPoints as point}
+				<li>{point}</li>
+			{/each}
 		</ul>
 	</section>
 
-	<section class="card">
-		<h2>Selected Achievements and SME Responsibilities</h2>
-		<ul>
-			<li>Printer Services SME for a major enterprise client, with ownership of the printer vendor queue.</li>
-			<li>
-				Service Desk SME for a managed print vendor transition, including project meeting
-				participation and direct coordination with vendor representatives.
-			</li>
-			<li>
-				Extended effectiveness into Level 2 support by resolving printer configuration issues within
-				Service Desk, reducing avoidable escalations.
-			</li>
-			<li>
-				Workflow improvement: designed bulk-change execution, filter logic, and cross-ticket identity
-				linkage to reduce handling demand below the previous single-ticket baseline.
-			</li>
-			<li>
-				Improved triage visibility by turning the formal three-ticket model into clearer traceability
-				and better resolution outcomes.
-			</li>
-			<li>
-				Served as SME during transition away from the three-ticket vendor model,
-				advising how to retain classification and workflow visibility benefits.
-			</li>
-			<li>
-				Built AI-assisted troubleshooting scripts using modern development tooling that were adopted
-				into production workflows for vendor-supplied enterprise applications.
-			</li>
-			<li>
-				Diagnosed enterprise application migration failures linked to shortcut handling
-				and logon cache behavior, helping restart a deferred upgrade programme.
-			</li>
-			<li>
-				Looking to expand AI-assisted troubleshooting playbooks across other vendor-supplied
-				applications.
-			</li>
-		</ul>
+	<section class="panel experience-panel">
+		<h2>NTT, Wellington — Present</h2>
+
+		<div class="scope-grid">
+			<section class="scope-card">
+				<h3>Initiative in Scope</h3>
+
+				<section class="scope-card scope-card-nested">
+					<h4>Active Project</h4>
+
+					<section class="scope-card scope-card-deep">
+						<h5>Completed</h5>
+						<ul class="content-list">
+							{#each activeProjectCompleted as point}
+								<li>{point}</li>
+							{/each}
+						</ul>
+					</section>
+
+					<section class="scope-card scope-card-deep">
+						<h5>Active</h5>
+						<ul class="content-list">
+							{#each activeProjectActive as point}
+								<li>{point}</li>
+							{/each}
+						</ul>
+					</section>
+				</section>
+			</section>
+
+			<section class="scope-card">
+				<h3>Delegated Scope</h3>
+				<ul class="content-list">
+					{#each delegatedScope as point}
+						<li>{point}</li>
+					{/each}
+				</ul>
+			</section>
+		</div>
+
+		<section class="scope-card">
+			<h3>Role Progression</h3>
+			<p class="core-role-start">Began IT role, November 2022</p>
+			<ul class="content-list">
+				{#each coreRole as point}
+					<li>{point}</li>
+				{/each}
+			</ul>
+		</section>
 	</section>
 
-	<section class="card compact-list-card">
-		<h2>Technical Skills</h2>
-		<ul>
-			<li>Active Directory and Entra ID administration</li>
-			<li>Intune device administration, compliance, and endpoint policy support</li>
-			<li>Microsoft 365 and Exchange Online</li>
-			<li>MFA support, identity troubleshooting, and BitLocker recovery</li>
-			<li>Windows desktop and application support</li>
-			<li>Jira Service Management, ServiceNow, TeamViewer, and Nexthink</li>
-		</ul>
+	<section class="panel">
+		<div class="section-head">
+			<h2>Technical Skills</h2>
+			<p class="section-note">Expand any category for detail.</p>
+		</div>
+
+		<div class="skills-grid">
+			{#each technicalSkills as group}
+				<details class="skill-card">
+					<summary>
+						<span>{group.title}</span>
+					</summary>
+					<ul class="content-list skill-detail-list">
+						{#each group.items as item}
+							<li>{item}</li>
+						{/each}
+					</ul>
+				</details>
+			{/each}
+		</div>
 	</section>
 
-	<section class="card compact-list-card">
+	<section class="panel">
 		<h2>Qualifications</h2>
-		<ul>
-			<li>AWS Certified Cloud Practitioner</li>
-			<li>AWS Foundations of Cloud Computing - Unitec / Te Pukenga</li>
-			<li>Bachelor of Arts (History and Political Science) - Griffith University</li>
-			<li>NTT internal certifications, including ongoing AI training programme</li>
-		</ul>
-	</section>
-
-	<section class="card compact-copy-card">
-		<h2>Additional Strengths</h2>
-		<ul>
-			<li>Clear, professional communication in public-facing and technical contexts</li>
-			<li>Calm, methodical problem solving in BAU and project environments</li>
-			<li>Continuous learning in identity, endpoint management, and AI-assisted IT support</li>
+		<ul class="content-list">
+			{#each qualifications as item}
+				<li>{item}</li>
+			{/each}
 		</ul>
 	</section>
 
 	<div class="resume-actions">
-		<a class="resume-download-link resume-download-link-bw" href="/resume-bw.pdf" download="Nicholas_Francis_OBrien_Resume_BW.pdf">
+		<a
+			class="resume-download-link resume-download-link-bw"
+			href="/resume-bw.pdf"
+			download="Nicholas_Francis_OBrien_Resume_BW.pdf"
+		>
 			Download Print-Friendly (B&W PDF)
 		</a>
-			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
+		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
 	</div>
 </main>
 
@@ -195,209 +288,219 @@
 	.resume-page {
 		max-width: 980px;
 		margin: 0 auto;
-		padding: 1.2rem 1rem 2.2rem;
+		padding: 1.2rem 1rem 2.4rem;
 		display: grid;
-		gap: 0.8rem;
+		gap: 0.9rem;
 	}
 
-	.card {
+	.panel {
+		display: grid;
+		gap: 0.78rem;
+		min-width: 0;
+		padding: 1rem 1.05rem;
+		border: 1px solid transparent;
+		border-radius: 0.95rem;
 		background:
 			linear-gradient(rgba(15, 24, 40, 0.9), rgba(15, 24, 40, 0.9)) padding-box,
 			linear-gradient(120deg, rgba(93, 173, 255, 0.6), rgba(61, 177, 153, 0.62)) border-box;
-		border: 1px solid transparent;
-		border-radius: 0.9rem;
-		padding: 0.9rem 1rem;
 		box-shadow: 0 12px 26px rgba(3, 8, 20, 0.5);
 	}
 
-	.hero {
-		padding-top: 1rem;
-		position: relative;
-	}
-
-	.hero-content-row {
-		display: flex;
-		align-items: stretch;
-		gap: 1.25rem;
-		margin-top: 0.55rem;
-		padding-right: calc(16rem + 1.25rem);
+	.hero-panel {
+		gap: 0.5rem;
 	}
 
 	.eyebrow {
 		margin: 0;
 		font-size: 0.72rem;
-		text-transform: uppercase;
-		letter-spacing: 0.09em;
-		color: #88d2ff;
 		font-weight: 700;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: #88d2ff;
 	}
 
 	h1 {
-		margin: 0.2rem 0 0;
-		font-size: clamp(1.6rem, 4vw, 2.2rem);
-		line-height: 1;
+		margin: 0;
+		font-size: clamp(1.95rem, 4.8vw, 2.85rem);
+		line-height: 0.98;
+		font-family: 'Spectral', serif;
 		color: #dce6f3;
 	}
 
-	.role {
-		margin: 0.35rem 0 0;
-		display: flex;
-		flex-wrap: nowrap;
-		align-items: baseline;
-		column-gap: 0.18rem;
-		row-gap: 0.08rem;
-		font-size: 0.74rem;
-		line-height: 1.08;
-		font-weight: 560;
-		color: #afc3de;
-	}
-
-	.role > * {
-		white-space: nowrap;
-	}
-
-	.hero-copy h1,
-	.hero-copy .role {
+	h2,
+	h3,
+	h4,
+	h5,
+	p {
 		margin: 0;
 	}
 
-	.hero-copy {
-		flex: 1 1 auto;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		gap: 0.58rem;
-		min-width: 0;
-		min-height: 100%;
+	h2 {
+		font-size: 1.08rem;
+		line-height: 1.2;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #96dcff;
 	}
 
-	.hero-subcopy {
-		display: grid;
-		gap: 0.42rem;
+	h3 {
+		font-size: 1rem;
+		line-height: 1.25;
+		color: #f3f7ff;
+	}
+
+	h4 {
+		font-size: 0.94rem;
+		line-height: 1.25;
+		color: #bbdefb;
+	}
+
+	h5 {
+		font-size: 0.83rem;
+		line-height: 1.3;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #8ed4ff;
+	}
+
+	.contact-line {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.2rem 0.42rem;
+		align-items: baseline;
+		font-size: 0.92rem;
+		line-height: 1.4;
+		color: #c7d6ec;
+	}
+
+	.focus-line {
+		font-size: 0.98rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: #a5d6ff;
 	}
 
 	a {
 		color: #9ed7ff;
 	}
 
-	h2 {
+	.experience-panel {
+		gap: 0.9rem;
+	}
+
+	.scope-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.8rem;
+	}
+
+	.scope-card {
+		display: grid;
+		gap: 0.62rem;
+		min-width: 0;
+		padding: 0.88rem 0.92rem;
+		border-radius: 0.84rem;
+		border: 1px solid transparent;
+		background:
+			linear-gradient(rgba(18, 31, 57, 0.68), rgba(18, 31, 57, 0.68)) padding-box,
+			linear-gradient(
+					130deg,
+					rgba(47, 209, 255, 0.24),
+					rgba(110, 63, 177, 0.35),
+					rgba(30, 141, 106, 0.32)
+				)
+				border-box;
+		box-shadow:
+			0 0 0 1px rgba(223, 239, 255, 0.03) inset,
+			0 12px 26px rgba(6, 12, 28, 0.18);
+	}
+
+	.scope-card-nested,
+	.scope-card-deep {
+		background:
+			linear-gradient(rgba(16, 26, 47, 0.74), rgba(16, 26, 47, 0.74)) padding-box,
+			linear-gradient(135deg, rgba(91, 166, 255, 0.2), rgba(77, 221, 183, 0.18)) border-box;
+	}
+
+	.content-list {
 		margin: 0;
-		font-size: 1.08rem;
-		line-height: 1.2;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-		color: #96dcff;
-	}
-
-	h3 {
-		margin: 0.72rem 0 0;
-		font-size: 1.02rem;
-		line-height: 1.3;
-		color: #f3f7ff;
-	}
-
-	.meta {
-		margin: 0.26rem 0 0;
-		font-size: 0.76rem;
-		font-weight: 560;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: #9fb9da;
-	}
-
-	p {
-		margin: 0.66rem 0 0;
-		line-height: 1.54;
-		color: #d7e2f4;
-		font-size: 0.9rem;
-	}
-
-	ul {
-		margin: 0.68rem 0 0;
 		padding-left: 1.05rem;
 		display: grid;
-		gap: 0.4rem;
+		gap: 0.38rem;
 		list-style: disc;
 	}
 
-	li {
-		line-height: 1.47;
-		font-size: 0.89rem;
+	.content-list li {
+		font-size: 0.92rem;
+		line-height: 1.48;
 		color: #d3def1;
 	}
 
-	li::marker {
+	.content-list li::marker {
 		color: #92dbff;
 	}
 
-	.compact-list-card {
-		padding-top: 0.72rem;
-		padding-bottom: 0.76rem;
+	.core-role-start {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: #c9def7;
 	}
 
-	.compact-list-card ul {
-		margin-top: 0.42rem;
-		padding-left: 1rem;
-		gap: 0.22rem;
-		list-style: disc;
-	}
-
-	.compact-list-card li {
-		line-height: 1.24;
-	}
-
-	.compact-copy-card {
-		padding-top: 0.72rem;
-		padding-bottom: 0.76rem;
-	}
-
-	.compact-copy-card ul {
-		margin-top: 0.42rem;
-		padding-left: 1rem;
-		gap: 0.22rem;
-		list-style: disc;
-	}
-
-	.compact-copy-card li {
-		line-height: 1.26;
-	}
-
-	.summary-card {
+	.section-head {
 		display: grid;
-		gap: 0.72rem;
+		gap: 0.24rem;
 	}
 
-	.summary-copy {
-		margin: 0;
-		max-width: none;
+	.section-note {
+		font-size: 0.8rem;
+		line-height: 1.35;
+		color: #a9bedf;
 	}
 
-	.metrics {
-		position: absolute;
-		right: 1rem;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 16rem;
+	.skills-grid {
 		display: grid;
-		grid-template-rows: repeat(4, minmax(0, 1fr));
-		gap: 0.28rem;
+		gap: 0.6rem;
 	}
 
-	.metrics article {
-		background: linear-gradient(120deg, rgba(46, 74, 118, 0.68), rgba(29, 83, 75, 0.65));
-		border-radius: 0.65rem;
-		padding: 0 0.46rem;
-		border: 1px solid rgba(156, 205, 255, 0.26);
+	.skill-card {
+		overflow: hidden;
+		border: 1px solid rgba(150, 205, 255, 0.18);
+		border-radius: 0.84rem;
+		background: rgba(14, 24, 42, 0.44);
+	}
+
+	.skill-card summary {
 		display: flex;
 		align-items: center;
-		min-height: 0;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding: 0.82rem 0.92rem;
+		cursor: pointer;
+		list-style: none;
+		font-size: 0.94rem;
+		font-weight: 600;
+		line-height: 1.35;
+		color: #eff6ff;
 	}
 
-	.metrics p {
-		margin: 0;
-		font-size: 0.72rem;
-		line-height: 1.12;
-		color: #d5e2f5;
+	.skill-card summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.skill-card summary::after {
+		content: '+';
+		flex: 0 0 auto;
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: #9ad6ff;
+	}
+
+	.skill-card[open] summary::after {
+		content: '−';
+	}
+
+	.skill-detail-list {
+		padding: 0 0.92rem 0.9rem 1.9rem;
 	}
 
 	.resume-actions {
@@ -409,74 +512,69 @@
 
 	.resume-download-link,
 	.resume-home-link {
-		text-decoration: none;
-		font-family: inherit;
-		padding: 0.45rem 0.75rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.8rem;
+		padding: 0.72rem 1.1rem;
+		border: 1px solid rgba(181, 226, 197, 0.45);
 		border-radius: 999px;
-		font-size: 0.9rem;
-		font-weight: 600;
+		text-decoration: none;
+		font-size: 0.92rem;
+		font-weight: 700;
 		letter-spacing: 0.01em;
-		color: #f3f7ff;
-		border: 1px solid rgba(193, 217, 255, 0.34);
 		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-			0 8px 20px rgba(7, 14, 33, 0.35);
+			0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+			0 12px 24px rgba(4, 9, 22, 0.24);
 	}
 
 	.resume-download-link {
-		background: linear-gradient(120deg, #35598f 0%, #4f4685 55%, #2a7167 100%);
-	}
-
-	.resume-download-link-bw {
-		background: linear-gradient(120deg, #395759 0%, #3d5366 55%, #1f584b 100%);
+		background: linear-gradient(135deg, rgba(87, 112, 147, 0.88), rgba(79, 120, 101, 0.88));
+		color: #f4f8ff;
 	}
 
 	.resume-home-link {
-		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
+		background: rgba(20, 32, 53, 0.85);
+		border-color: rgba(148, 202, 255, 0.28);
+		color: #d9e9ff;
 	}
 
-	.metrics strong {
-		color: #f4f8ff;
-		font-size: 0.82rem;
-		font-weight: 700;
-		margin-right: 0.22rem;
+	@media (max-width: 760px) {
+		.resume-page {
+			padding: 1rem 0.85rem 1.9rem;
+		}
 	}
 
-		@media (max-width: 1080px) {
-			.hero-content-row {
-				display: block;
-				padding-right: 0;
-			}
-
-			.role {
-				flex-wrap: wrap;
-				column-gap: 0.22rem;
-			}
-
-			.role > * {
-				white-space: normal;
-			}
-
-			.metrics {
-				position: static;
-				transform: none;
-				width: auto;
-				grid-template-rows: none;
-				gap: 0.28rem;
-				margin-top: 0.75rem;
-			}
+	@media (max-width: 520px) {
+		h1 {
+			font-size: clamp(1.75rem, 9vw, 2.4rem);
 		}
 
-		@media (max-width: 760px) {
-			.role {
-				flex-wrap: wrap;
-				font-size: 0.78rem;
-				column-gap: 0.22rem;
-			}
+		.contact-line {
+			font-size: 0.88rem;
+		}
 
-			.resume-page {
-				padding: 1rem 0.85rem 1.6rem;
-				gap: 0.7rem;
+		.focus-line {
+			font-size: 0.92rem;
+		}
+
+		.panel,
+		.scope-card {
+			padding-inline: 0.9rem;
+		}
+
+		.skill-card summary {
+			padding: 0.78rem 0.82rem;
+			font-size: 0.9rem;
+		}
+
+		.skill-detail-list {
+			padding-left: 1.65rem;
+		}
+
+		.resume-download-link,
+		.resume-home-link {
+			width: 100%;
 		}
 	}
 </style>
