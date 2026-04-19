@@ -6,10 +6,15 @@
 		items: string[];
 	};
 
+	type ProgressionStage = {
+		title: string;
+		items: string[];
+	};
+
 	const contextPoints = [
-		'In my own time, intensely engaged in learning and using AI.',
-		'Building projects at different scales.',
-		'This immersion is the broader context for my current skill and drive within IT.'
+		'Deeply engaged in learning and using AI in my own time.',
+		'Building projects across different scales.',
+		'Personal investment drives growth in IT.'
 	];
 
 	const activeProjectCompleted = [
@@ -40,16 +45,43 @@
 		'Advised on preserving classification and workflow visibility during transition away from the three-ticket vendor model.'
 	];
 
-	const coreRole = [
-		'Support a 5,000+ user environment across shared-service and single-organisation clients.',
-		'Support clients in transport, healthcare, energy, regional government, and consumer goods.',
-		'Progressed into dedicated BAU support for a major transport-sector client.',
-		'Work within a team achieving 90%+ first-contact resolution.',
-		'Handle incidents and service requests from triage through resolution, documentation, and escalation.',
-		'Resolve user, device, application, and access issues through structured remote support.',
-		'Analyse endpoint performance and device health issues.',
-		'Manage identity, access, and account lifecycle tasks within service desk scope.',
-		'Act as SME for privileged access requests across admin, local admin, shared, and external account types.'
+	const progressionStages: ProgressionStage[] = [
+		{
+			title: 'Service Desk Foundation',
+			items: [
+				'Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients.',
+				'Supported clients in transport, healthcare, energy, regional government, and consumer goods.',
+				'Handled incidents and service requests from triage through resolution, documentation, and escalation.',
+				'Resolved user, device, application, and access issues through structured remote support.'
+			]
+		},
+		{
+			title: 'Trusted Operational Scope',
+			items: [
+				'Progressed into dedicated BAU support for a major transport-sector client.',
+				'Worked within a team sustaining 90%+ first-contact resolution.',
+				'Analysed endpoint performance and device health issues as part of day-to-day support.',
+				'Managed identity, access, and account lifecycle tasks within service desk scope.'
+			]
+		},
+		{
+			title: 'Specialist and Improvement Scope',
+			items: [
+				'Became SME for privileged access requests across admin, local admin, shared, and external account types.',
+				'Took on vendor-facing queue and transition responsibilities beyond normal front-line scope.',
+				'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
+				'Reduced avoidable escalation, improved traceability, and cut staff time and repeat work.'
+			]
+		},
+		{
+			title: 'AI-Forward Operational Delivery',
+			items: [
+				'Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application.',
+				'Moved the work from test-device validation into controlled production use for individual endpoint failures.',
+				'Turned remediation results into evidence for package investigation and rebuild work.',
+				'Continued into enterprise package reconstruction based on the proven fix.'
+			]
+		}
 	];
 
 	const technicalSkills: SkillGroup[] = [
@@ -146,8 +178,54 @@
 		'NTT internal certifications, including AI training'
 	];
 
+	let openSkillIndices = $state<number[]>([]);
+	let showScrollActions = $state(false);
+
+	const showScrollActionsY = 220;
+	const hideScrollActionsY = 72;
+
+	const allSkillIndices = technicalSkills.map((_, index) => index);
+
+	const allSkillsOpen = $derived(openSkillIndices.length === technicalSkills.length);
+	const anySkillsOpen = $derived(openSkillIndices.length > 0);
+	const openSkillCount = $derived(openSkillIndices.length);
+
+	const toggleSkill = (index: number) => {
+		if (allSkillsOpen) {
+			openSkillIndices = [index];
+			return;
+		}
+
+		openSkillIndices = openSkillIndices.includes(index) ? [] : [index];
+	};
+
+	const toggleAllSkills = () => {
+		openSkillIndices = allSkillsOpen ? [] : [...allSkillIndices];
+	};
+
+	const collapseSkills = () => {
+		openSkillIndices = [];
+	};
+
 	onMount(() => {
+		const updateScrollActions = () => {
+			const currentScrollY = window.scrollY;
+			showScrollActions =
+				currentScrollY > showScrollActionsY ||
+				(showScrollActions && currentScrollY > hideScrollActionsY);
+		};
+
+		const handleScroll = () => {
+			updateScrollActions();
+		};
+
 		window.scrollTo({ top: 0, behavior: 'auto' });
+		updateScrollActions();
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	});
 </script>
 
@@ -160,6 +238,19 @@
 </svelte:head>
 
 <main class="resume-page">
+	{#if showScrollActions}
+		<div class="resume-scroll-actions">
+			<a
+				class="resume-download-link resume-download-link-bw"
+				href="/resume-bw.pdf"
+				download="Nicholas_Francis_OBrien_Resume_BW.pdf"
+			>
+				Download Print-Friendly (B&W PDF)
+			</a>
+			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
+		</div>
+	{/if}
+
 	<header class="panel hero-panel">
 		<p class="eyebrow">Resume</p>
 		<h1>Nicholas Francis O'Brien</h1>
@@ -221,36 +312,76 @@
 		</div>
 
 		<section class="scope-card">
-			<h3>Role Progression</h3>
-			<p class="core-role-start">Began IT role, November 2022</p>
-			<ul class="content-list">
-				{#each coreRole as point}
-					<li>{point}</li>
+			<h3>Role Progression Map</h3>
+			<p class="core-role-start">From service desk baseline to AI-forward operational delivery.</p>
+			<div class="progression-map">
+				{#each progressionStages as stage}
+					<section class="progression-stage">
+						<h4>{stage.title}</h4>
+						<ul class="content-list">
+							{#each stage.items as point}
+								<li>{point}</li>
+							{/each}
+						</ul>
+					</section>
 				{/each}
-			</ul>
+			</div>
 		</section>
 	</section>
 
 	<section class="panel">
 		<div class="section-head">
-			<h2>Technical Skills</h2>
-			<p class="section-note">Expand any category for detail.</p>
+			<div class="section-head-copy">
+				<h2>Technical Skills</h2>
+				<p class="section-note">Click + for one category at a time.</p>
+			</div>
+			<button class="section-reset-button" type="button" onclick={toggleAllSkills}>
+				{allSkillsOpen ? 'Collapse all' : 'View all'}
+			</button>
 		</div>
 
 		<div class="skills-grid">
-			{#each technicalSkills as group}
-				<details class="skill-card">
-					<summary>
-						<span>{group.title}</span>
-					</summary>
-					<ul class="content-list skill-detail-list">
-						{#each group.items as item}
-							<li>{item}</li>
-						{/each}
-					</ul>
-				</details>
+			{#each technicalSkills as group, index}
+				{@const isOpen = openSkillIndices.includes(index)}
+				<section class:skill-card-open={isOpen} class="skill-card">
+					<h3 class="skill-card-title">
+						<button
+							class="skill-card-button"
+							type="button"
+							id={`skill-trigger-${index}`}
+							aria-expanded={isOpen}
+							aria-controls={`skill-panel-${index}`}
+							onclick={() => toggleSkill(index)}
+						>
+							<span>{group.title}</span>
+							<span class="skill-card-icon" aria-hidden="true">{isOpen ? '-' : '+'}</span>
+						</button>
+					</h3>
+					{#if isOpen}
+						<div
+							class="skill-panel"
+							id={`skill-panel-${index}`}
+							role="region"
+							aria-labelledby={`skill-trigger-${index}`}
+						>
+							<ul class="content-list skill-detail-list">
+								{#each group.items as item}
+									<li>{item}</li>
+								{/each}
+							</ul>
+						</div>
+					{/if}
+				</section>
 			{/each}
 		</div>
+
+		{#if anySkillsOpen}
+			<div class="skills-footer-actions">
+				<button class="section-reset-button" type="button" onclick={collapseSkills}>
+					{openSkillCount === 1 ? 'Collapse open category' : 'Collapse open categories'}
+				</button>
+			</div>
+		{/if}
 	</section>
 
 	<section class="panel">
@@ -446,7 +577,27 @@
 		color: #c9def7;
 	}
 
+	.progression-map {
+		display: grid;
+		gap: 0.72rem;
+	}
+
+	.progression-stage {
+		display: grid;
+		gap: 0.48rem;
+		padding-left: 0.84rem;
+		border-left: 1px solid rgba(128, 191, 241, 0.34);
+	}
+
 	.section-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.5rem 0.75rem;
+	}
+
+	.section-head-copy {
 		display: grid;
 		gap: 0.24rem;
 	}
@@ -457,9 +608,36 @@
 		color: #a9bedf;
 	}
 
+	.section-reset-button {
+		padding: 0.42rem 0.72rem;
+		border: 1px solid rgba(143, 205, 255, 0.28);
+		border-radius: 999px;
+		background: rgba(13, 24, 43, 0.72);
+		color: #d7e8ff;
+		font: inherit;
+		font-size: 0.84rem;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.section-reset-button:hover {
+		border-color: rgba(154, 214, 255, 0.42);
+		background: rgba(18, 32, 56, 0.82);
+	}
+
+	.section-reset-button:focus-visible {
+		outline: 2px solid rgba(141, 214, 255, 0.9);
+		outline-offset: 2px;
+	}
+
 	.skills-grid {
 		display: grid;
 		gap: 0.6rem;
+	}
+
+	.skills-footer-actions {
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.skill-card {
@@ -469,34 +647,52 @@
 		background: rgba(14, 24, 42, 0.44);
 	}
 
-	.skill-card summary {
+	.skill-card-open {
+		border-color: rgba(146, 219, 255, 0.4);
+		background:
+			linear-gradient(rgba(18, 31, 56, 0.76), rgba(18, 31, 56, 0.76)) padding-box,
+			linear-gradient(135deg, rgba(94, 189, 255, 0.36), rgba(77, 221, 183, 0.24)) border-box;
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+			0 10px 24px rgba(5, 11, 26, 0.24);
+	}
+
+	.skill-card-title {
+		margin: 0;
+	}
+
+	.skill-card-button {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		width: 100%;
 		gap: 0.75rem;
 		padding: 0.82rem 0.92rem;
 		cursor: pointer;
-		list-style: none;
+		border: 0;
+		background: transparent;
+		text-align: left;
+		font: inherit;
 		font-size: 0.94rem;
 		font-weight: 600;
 		line-height: 1.35;
 		color: #eff6ff;
 	}
 
-	.skill-card summary::-webkit-details-marker {
-		display: none;
+	.skill-card-button:focus-visible {
+		outline: 2px solid rgba(141, 214, 255, 0.9);
+		outline-offset: -2px;
 	}
 
-	.skill-card summary::after {
-		content: '+';
+	.skill-card-icon {
 		flex: 0 0 auto;
 		font-size: 1.1rem;
 		font-weight: 700;
 		color: #9ad6ff;
 	}
 
-	.skill-card[open] summary::after {
-		content: '−';
+	.skill-panel {
+		padding-bottom: 0.14rem;
 	}
 
 	.skill-detail-list {
@@ -508,6 +704,29 @@
 		flex-wrap: wrap;
 		gap: 0.55rem;
 		justify-content: flex-start;
+	}
+
+	.resume-scroll-actions {
+		position: fixed;
+		top: 0.85rem;
+		right: max(1rem, calc((100vw - 980px) / 2 + 1rem));
+		z-index: 30;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: flex-end;
+		pointer-events: auto;
+	}
+
+	.resume-scroll-actions .resume-download-link,
+	.resume-scroll-actions .resume-home-link {
+		min-height: 2.45rem;
+		padding: 0.56rem 0.92rem;
+		font-size: 0.84rem;
+		backdrop-filter: blur(10px);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+			0 10px 22px rgba(4, 9, 22, 0.2);
 	}
 
 	.resume-download-link,
@@ -563,7 +782,7 @@
 			padding-inline: 0.9rem;
 		}
 
-		.skill-card summary {
+		.skill-card-button {
 			padding: 0.78rem 0.82rem;
 			font-size: 0.9rem;
 		}
@@ -575,6 +794,13 @@
 		.resume-download-link,
 		.resume-home-link {
 			width: 100%;
+		}
+
+		.resume-scroll-actions {
+			top: 0.55rem;
+			right: 0.85rem;
+			left: 0.85rem;
+			justify-content: stretch;
 		}
 	}
 </style>

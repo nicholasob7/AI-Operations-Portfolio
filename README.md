@@ -50,6 +50,18 @@ Run Svelte and TypeScript checks:
 npm run check
 ```
 
+Regenerate the printable B&W PDFs for the project pages:
+
+```bash
+npm run generate:project-pdfs
+```
+
+Regenerate the printable resume PDFs:
+
+```bash
+npm run generate:resume-pdfs
+```
+
 Create a production build:
 
 ```bash
