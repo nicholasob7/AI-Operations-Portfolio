@@ -69,14 +69,14 @@
 			<h2>Summary</h2>
 			<p class="doc-summary">
 				Built and deployed a remediation script for live post-deployment incidents. It targeted profile
-				corruption, cache drift, and launch inconsistency. The work moved from testing into live production use
+				corruption, cache drift, and launch inconsistency. The script moved from testing into production use
 				and became part of the wider stabilization effort.
 			</p>
 
 			<h2>How It Was Built</h2>
 			<ul>
 				<li>
-					<strong>Development workflow:</strong> Built with AI-assisted support using modern development tooling
+					<strong>Development workflow:</strong> Built with AI-assisted development support and standard tooling
 				</li>
 				<li>
 					<strong>Testing path:</strong> Moved from non-production testing to test-device validation and then live
@@ -120,14 +120,14 @@
 					<strong>Production result:</strong> Validation confirmed normalized application state
 				</li>
 				<li>
-					<strong>Boundary:</strong> Remaining failures sat outside remediation scope
+					<strong>Boundary:</strong> Remaining failures fell outside remediation scope
 				</li>
 			</ul>
 
 			<h2>How It Was Used</h2>
 			<ul>
 				<li>
-					<strong>Evidence role:</strong> Became the main evidence artifact in the reformatted deployment package
+					<strong>Evidence role:</strong> Served as the main evidence item in the reformatted deployment package
 					wrapper
 				</li>
 				<li>
@@ -158,8 +158,8 @@
 					Defensive design handled cloud desktop variants, registry-redirected paths, and reparse-point binaries
 				</li>
 				<li>Rapid problem breakdown supported cache, shortcut, and user-context diagnosis</li>
-				<li>AI-assisted code generation was turned into production-grade PowerShell</li>
-				<li>Confirmed outcomes were kept separate from assumptions needing more evidence</li>
+				<li>AI-assisted code generation became production-grade PowerShell</li>
+				<li>Confirmed outcomes stayed separate from assumptions that needed more evidence</li>
 			</ul>
 
 			<hr />

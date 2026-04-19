@@ -69,14 +69,14 @@
 			<h2>Summary</h2>
 			<p class="doc-summary">
 				Built from the successful remediation work in Case 1, this project turns validated fix logic into a
-				structured framework for controlled deployment. Because packaging beyond the remediation stage was blocked
-				by external factors, the current version stands at successful test-device instantiation, with full
+				framework for controlled deployment. Because packaging beyond remediation was blocked
+				by external factors, the current version reached successful test-device instantiation, with full
 				production completion still pending.
 			</p>
 
 			<h2>What We Found</h2>
 			<ul>
-				<li><strong>Failure review:</strong> Looked at endpoint failures from a large version migration</li>
+				<li><strong>Failure review:</strong> Examined endpoint failures from a large version migration</li>
 				<li>
 					<strong>Main causes:</strong> Found user-context drift, cache conflicts, shortcut issues, installer weak
 					points, and validation gaps
@@ -85,7 +85,7 @@
 					<strong>Fix mapping:</strong> Matched live remediation steps to new package controls
 				</li>
 				<li>
-					<strong>Change tracking:</strong> Built a clear way to link each package change to a known problem and result
+					<strong>Change tracking:</strong> Built a clear method for linking each package change to a known problem and result
 				</li>
 			</ul>
 
@@ -111,7 +111,7 @@
 					<strong>Change process:</strong> Prepared project materials for controlled change review and submission
 				</li>
 				<li>
-					<strong>Future migrations:</strong> Prepared a process that can be reused once rollout is completed
+					<strong>Future migrations:</strong> Prepared a reusable process for rollout completion
 				</li>
 			</ul>
 
@@ -122,14 +122,14 @@
 					endpoint state
 				</li>
 				<li>
-					<strong>Clear boundaries:</strong> Confirmed findings were kept separate from assumptions and open questions
+					<strong>Clear boundaries:</strong> Confirmed findings stayed separate from assumptions and open questions
 				</li>
 				<li>
-					<strong>Shared access:</strong> One structure worked for technical teams, compliance reviewers, operations,
-					and documentation work
+					<strong>Shared access:</strong> One structure worked across technical teams, compliance reviewers, operations,
+					and documentation.
 				</li>
 				<li>
-					<strong>Reusable process:</strong> The same approach can be used on future enterprise migrations with
+					<strong>Reusable process:</strong> The same approach can be used for future enterprise migrations with
 					similar failure patterns
 				</li>
 			</ul>
