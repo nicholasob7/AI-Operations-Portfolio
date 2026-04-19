@@ -427,7 +427,7 @@
 	}
 
 	.resume-page {
-		max-width: 980px;
+		max-width: 1320px;
 		margin: 0 auto;
 		padding: 1.2rem 1rem 2.4rem;
 		display: grid;
@@ -719,7 +719,7 @@
 	.resume-scroll-actions {
 		position: fixed;
 		top: 0.85rem;
-		right: max(1rem, calc((100vw - 980px) / 2 + 1rem));
+		right: max(1rem, calc((100vw - 1320px) / 2 + 1rem));
 		z-index: 30;
 		display: flex;
 		flex-wrap: wrap;
@@ -766,6 +766,62 @@
 		background: rgba(20, 32, 53, 0.85);
 		border-color: rgba(148, 202, 255, 0.28);
 		color: #d9e9ff;
+	}
+
+	@media (min-width: 960px) {
+		.resume-page {
+			max-width: 1320px;
+			padding: 2rem 1.25rem 3rem;
+			gap: 1.1rem;
+		}
+
+		.panel {
+			padding: 1.2rem 1.25rem;
+			border-radius: 1rem;
+		}
+
+		h1 {
+			font-size: clamp(2.35rem, 4.8vw, 3.2rem);
+		}
+
+		h2 {
+			font-size: 1.16rem;
+		}
+
+		h3 {
+			font-size: 1.08rem;
+		}
+
+		h4 {
+			font-size: 1rem;
+		}
+
+		.contact-line {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.focus-line {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.resume-page p,
+		.content-list li,
+		.core-role-start,
+		.section-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.skill-card-button {
+			font-size: 1rem;
+		}
+
+		.resume-download-link,
+		.resume-home-link {
+			font-size: 0.96rem;
+		}
 	}
 
 	@media (max-width: 760px) {

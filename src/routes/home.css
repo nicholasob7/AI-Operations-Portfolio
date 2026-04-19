@@ -10,6 +10,12 @@
 		--accent-purple-bright: #9a63e8;
 		--accent-green-bright: #39c69a;
 		--accent-soft: rgba(47, 209, 255, 0.15);
+		--heading-cyan: #5f9bb5;
+		--heading-violet: #69579a;
+		--heading-green: #4b8068;
+		--title-cyan: #4f90ae;
+		--title-violet: #5f5197;
+		--title-green: #457b64;
 	}
 
 	body {
@@ -128,9 +134,23 @@
 	}
 
 	.tagline {
-		font-size: 1.12rem;
+		display: inline-block;
+		width: fit-content;
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.12;
 		margin: 0.35rem 0 0;
 		max-width: 40ch;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.proof {
@@ -664,11 +684,23 @@
 	}
 
 	h2 {
+		display: inline-block;
+		width: fit-content;
 		margin: 0;
-		font-size: 1.35rem;
-		line-height: 1.2;
-		color: #d8e8ff;
+		font-size: 1.5rem;
+		line-height: 1.12;
+		font-weight: 600;
+		color: transparent;
 		letter-spacing: 0.01em;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	p {
@@ -713,7 +745,6 @@
 	.about-panel p {
 		max-width: 88ch;
 	}
-
 	.projects {
 		display: grid;
 		gap: 0.9rem;
@@ -754,19 +785,7 @@
 	}
 
 	.card:has(h2)::before {
-		content: '';
-		display: block;
-		height: 2px;
-		width: 120px;
-		margin-bottom: 0.9rem;
-		background: linear-gradient(
-			90deg,
-			rgba(47, 209, 255, 1),
-			rgba(154, 99, 232, 1),
-			rgba(77, 228, 181, 0.98)
-		);
-		border-radius: 999px;
-		box-shadow: 0 0 16px rgba(154, 99, 232, 0.35);
+		content: none;
 	}
 
 	.projects article {
@@ -797,8 +816,7 @@
 	}
 
 	.projects .project-card h3,
-	.projects .project-card p,
-	.projects .project-card .project-label {
+	.projects .project-card p {
 		margin: 0;
 	}
 
@@ -834,9 +852,23 @@
 	}
 
 	.projects h3 {
-		font-size: 1.02rem;
-		line-height: 1.3;
-		min-height: 1.3em;
+		display: inline-block;
+		width: fit-content;
+		font-size: 1.5rem;
+		line-height: 1.14;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		min-height: 1.14em;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.projects p {
@@ -854,24 +886,6 @@
 
 	.project-summary {
 		min-height: calc(1.55em * 2);
-	}
-
-	.project-label {
-		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
-		font-size: 0.74rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: transparent;
-		background: linear-gradient(
-			90deg,
-			var(--accent),
-			var(--accent-purple-bright),
-			var(--accent-green-bright)
-		);
-		background-clip: text;
-		text-shadow: 0 0 16px var(--accent-soft);
 	}
 
 	.project-link {
@@ -957,13 +971,13 @@
 		}
 
 		.tagline {
-			font-size: 1.44rem;
+			font-size: 1.9rem;
 			max-width: 40ch;
 		}
 
 		.proof {
-			font-size: 1.28rem;
-			line-height: 1.52;
+			font-size: 1.5rem;
+			line-height: 1.58;
 			max-width: 82ch;
 		}
 
@@ -1042,25 +1056,24 @@
 		}
 
 		h2 {
-			font-size: 1.72rem;
+			font-size: 1.9rem;
 		}
 
 		p {
-			font-size: 1.2rem;
-			line-height: 1.66;
-		}
-
-		.about-panel p {
-			max-width: 88ch;
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
 		.projects {
 			gap: 1.2rem;
 		}
 
-		.project-summary,
-		.project-outcome {
-			max-width: 88ch;
+		.project-outcome,
+		.detail-standfirst,
+		.detail-note,
+		.detail-list li {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
 	}
@@ -1076,10 +1089,24 @@
 	}
 
 	.detail-title {
-		margin: 0.22rem 0 0;
-		font-size: 1.08rem;
-		line-height: 1.2;
-		color: #f1f6ff;
+		display: inline-block;
+		width: fit-content;
+		margin: 0;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1.5rem;
+		line-height: 1.14;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.detail-standfirst {
@@ -1127,16 +1154,12 @@
 	}
 
 	@media (min-width: 960px) {
-		.detail-card .detail-standfirst {
-			max-width: 82ch;
-		}
-
-		.detail-card .detail-body {
-			max-width: 92ch;
-		}
-
+		.about-panel p,
+		.projects p,
+		.detail-card .detail-standfirst,
+		.detail-card .detail-body,
 		.detail-card .detail-note {
-			max-width: 94ch;
+			max-width: 100%;
 		}
 	}
 
@@ -1282,6 +1305,13 @@
 			min-height: 0;
 		}
 
+	}
+
+	@media (min-width: 960px) {
+		.projects h3,
+		.detail-title {
+			font-size: 1.65rem;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

@@ -27,9 +27,8 @@
 <section class="card">
 	<h2 id="selected-work-head" tabindex="-1">Selected Work</h2>
 	<div class="projects">
-		<article id="remediation-head" class="project-card" tabindex="-1">
-			<p class="project-label">Remediation</p>
-			<h3>Post-Deployment Remediation Script Development</h3>
+		<article id="remediation-head" class="project-card project-card-remediation" tabindex="-1">
+			<h3>Script Development</h3>
 			<p class="project-summary">
 				AI-assisted endpoint remediation script development for live post-deployment incidents. Built for
 				production validation.
@@ -62,9 +61,8 @@
 				</div>
 			{/if}
 		</article>
-		<article id="deployment-head" class="project-card" tabindex="-1">
-			<p class="project-label">Deployment</p>
-			<h3>Enterprise Migration Stabilization Framework</h3>
+		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
+			<h3>Migration Framework</h3>
 			<p class="project-summary">
 				Evidence-driven migration stabilization methodology. Turns live remediation into hardened package
 				controls.
@@ -88,9 +86,8 @@
 				</div>
 			{/if}
 		</article>
-		<article id="eliora-head" class="project-card" tabindex="-1">
-			<p class="project-label">AI Architecture</p>
-			<h3>Eliora</h3>
+		<article id="eliora-head" class="project-card project-card-governance" tabindex="-1">
+			<h3>AI Governance</h3>
 			<p class="project-summary">
 				Interpretive AI architecture for atypical input. Converts it into structured, stable reasoning and
 				response.
@@ -109,19 +106,16 @@
 			{/if}
 		</article>
 		{#if showOverview}
-			<article id="overview" class="detail-card" tabindex="-1">
-				<p id="overview-head" class="detail-kicker" tabindex="-1">System Overview</p>
-				<h3 class="detail-title">Governance-First AI Coordination</h3>
+			<article id="overview" class="detail-card detail-card-governance" tabindex="-1">
+				<h3 id="overview-head" class="detail-title" tabindex="-1">AI Governance</h3>
 				<p class="detail-standfirst">
 					Built to keep authority, derivation, and execution clearly separate. Designed for high-consequence
 					agent systems.
 				</p>
-				<h4 class="detail-heading">Summary</h4>
 				<p class="detail-body">
 					Eliora is an AI coordination project with strong governance controls. It separates authority clearly.
 					It traces outputs back to their source. It fails safely in high-consequence systems.
 				</p>
-				<h4 class="detail-heading">Core Features</h4>
 				<ul class="detail-list">
 					<li>Layered architecture separating intent, doctrine, policy, and execution surfaces</li>
 					<li>Clear trace paths linking outputs to their governing sources and decision context</li>
@@ -130,7 +124,6 @@
 					<li>Structure designed for review, validation, and controlled change over time</li>
 					<li>Human-in-the-loop resolution for contested or high-impact operational states</li>
 				</ul>
-				<h4 class="detail-heading">Attribution</h4>
 				<p class="detail-note">
 					This description is based on direct inspection of the live Eliora-v0.1 repository by Codex App, an
 					OpenAI GPT-5-based coding agent. It reflects the project structure, governance surfaces, and sustained

@@ -167,7 +167,7 @@
 	}
 
 	.doc-page {
-		max-width: 980px;
+		max-width: 1320px;
 		margin: 0 auto;
 		padding: 2rem 1.25rem 3rem;
 	}
@@ -256,7 +256,7 @@
 
 	.doc-text p {
 		margin: 0.3rem 0 0.86rem;
-		max-width: 70ch;
+		max-width: none;
 		color: #dbe5f5;
 	}
 
@@ -314,7 +314,7 @@
 	.doc-scroll-actions {
 		position: fixed;
 		top: 0.85rem;
-		right: max(1rem, calc((100vw - 980px) / 2 + 1rem));
+		right: max(1rem, calc((100vw - 1320px) / 2 + 1rem));
 		z-index: 30;
 		display: flex;
 		flex-wrap: wrap;
@@ -330,6 +330,40 @@
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
+	}
+
+	@media (min-width: 960px) {
+		.doc-page {
+			max-width: 1320px;
+		}
+
+		.doc-card {
+			padding: 1.7rem;
+			border-radius: 1.2rem;
+		}
+
+		h1 {
+			font-size: clamp(2.2rem, 4.6vw, 2.9rem);
+		}
+
+		.doc-text {
+			padding: 1.24rem 1.28rem 1.32rem;
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.doc-text h2 {
+			font-size: 1.24rem;
+		}
+
+		.doc-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.doc-cta {
+			font-size: 0.96rem;
+		}
 	}
 
 	@media (max-width: 720px) {

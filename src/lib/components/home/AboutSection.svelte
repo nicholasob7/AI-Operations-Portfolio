@@ -32,8 +32,7 @@
 		{/if}
 		{#if showPrecision}
 			<article id="precision" class="detail-card" tabindex="-1">
-				<p id="precision-head" class="detail-kicker" tabindex="-1">AI Quality</p>
-				<h3 class="detail-title">Semantic Control and Deterministic Output Discipline</h3>
+				<h3 id="precision-head" class="detail-title" tabindex="-1">Semantic Control</h3>
 				<p class="detail-standfirst">
 					Strong performance in drift detection and wording control. Clear semantic correction across extended AI
 					project work.
