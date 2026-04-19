@@ -1,8 +1,31 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	let showScrollActions = $state(false);
+
+	const showScrollActionsY = 220;
+	const hideScrollActionsY = 72;
+
 	onMount(() => {
+		const updateScrollActions = () => {
+			const currentScrollY = window.scrollY;
+			showScrollActions =
+				currentScrollY > showScrollActionsY ||
+				(showScrollActions && currentScrollY > hideScrollActionsY);
+		};
+
+		const handleScroll = () => {
+			updateScrollActions();
+		};
+
 		window.scrollTo({ top: 0, behavior: 'auto' });
+
+		updateScrollActions();
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	});
 </script>
 
@@ -15,6 +38,19 @@
 </svelte:head>
 
 <main class="doc-page">
+	{#if showScrollActions}
+		<div class="doc-scroll-actions">
+			<a
+				class="doc-cta doc-cta-download"
+				href="/appprojects/Portfolio_Description_bw.pdf"
+				download="Portfolio_Description_BW.pdf"
+			>
+				Download Print-Friendly (B&W PDF)
+			</a>
+			<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Hide and Return to Main Page</a>
+		</div>
+	{/if}
+
 	<section class="doc-card">
 		<p class="eyebrow">Project Detail</p>
 		<h1>Enterprise Application Migration Stabilization Framework</h1>
@@ -95,6 +131,13 @@
 				technical documents were used to summarize the work while preserving confidentiality.
 			</p>
 			<div class="doc-actions">
+				<a
+					class="doc-cta doc-cta-download"
+					href="/appprojects/Portfolio_Description_bw.pdf"
+					download="Portfolio_Description_BW.pdf"
+				>
+					Download Print-Friendly (B&W PDF)
+				</a>
 				<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Hide and Return to Main Page</a>
 			</div>
 		</div>
@@ -228,6 +271,8 @@
 	.doc-actions {
 		margin-top: 1rem;
 		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
 		justify-content: flex-start;
 	}
 
@@ -247,6 +292,36 @@
 			0 8px 20px rgba(7, 14, 33, 0.35);
 	}
 
+	.doc-cta-download {
+		background: linear-gradient(120deg, #f5f7fb 0%, #d8dee9 55%, #bcc5d2 100%);
+		border-color: rgba(255, 255, 255, 0.4);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.35) inset,
+			0 8px 20px rgba(7, 14, 33, 0.28);
+		color: #142033;
+	}
+
+	.doc-scroll-actions {
+		position: fixed;
+		top: 0.85rem;
+		right: max(1rem, calc((100vw - 980px) / 2 + 1rem));
+		z-index: 30;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: flex-end;
+	}
+
+	.doc-scroll-actions .doc-cta {
+		min-height: 2.45rem;
+		padding: 0.56rem 0.92rem;
+		font-size: 0.84rem;
+		backdrop-filter: blur(10px);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+			0 10px 22px rgba(4, 9, 22, 0.2);
+	}
+
 	@media (max-width: 720px) {
 		.doc-text {
 			padding: 0.95rem 0.92rem 1rem;
@@ -254,6 +329,13 @@
 
 		.doc-text p {
 			max-width: none;
+		}
+
+		.doc-scroll-actions {
+			top: 0.55rem;
+			right: 0.85rem;
+			left: 0.85rem;
+			justify-content: stretch;
 		}
 	}
 </style>

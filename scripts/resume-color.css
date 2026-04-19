@@ -35,6 +35,11 @@ body {
 	break-inside: avoid;
 }
 
+.progression-section {
+	page-break-inside: auto;
+	break-inside: auto;
+}
+
 .hero {
 	padding-bottom: 11px;
 	margin-bottom: 12px;
@@ -128,6 +133,12 @@ p {
 	border-left: 1px solid rgba(117, 173, 224, 0.4);
 }
 
+.progression-stage {
+	margin-top: 7px;
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
+
 .nested,
 .nested-deep {
 	margin-top: 6px;
@@ -139,12 +150,6 @@ p {
 .nested-deep {
 	page-break-inside: avoid;
 	break-inside: avoid;
-}
-
-.page-two-start {
-	page-break-before: always;
-	break-before: page;
-	padding-top: 2px;
 }
 
 .inline-meta {
