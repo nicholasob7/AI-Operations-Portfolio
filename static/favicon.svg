@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+	<title>Nicko O'Brien portfolio favicon</title>
+	<rect width="64" height="64" rx="16" fill="#12233A" />
+	<rect x="2" y="2" width="60" height="60" rx="14" stroke="#9ADFFF" stroke-opacity="0.32" />
+	<circle cx="49" cy="15" r="6" fill="#79F0CB" />
+	<path
+		d="M20 45V19L44 45V19"
+		stroke="#F7FBFF"
+		stroke-width="7"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	/>
+</svg>
