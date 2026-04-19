@@ -48,8 +48,8 @@
 	<h1>Nicko O'Brien</h1>
 	<p class="tagline">AI-Forward IT Operations</p>
 	<p class="proof">
-		High-precision technical communication and structured reasoning for deterministic AI outcomes across
-		enterprise operations, automation, and delivery.
+		High-precision technical communication. Structured reasoning. Deterministic AI outcomes for enterprise
+		operations, automation, and delivery.
 	</p>
 	<div class="links">
 		{#if showResumeOptions}
@@ -110,8 +110,11 @@
 				tabindex="-1"
 			>
 				<a class="cta cta-view" href="/resume">View First</a>
-				<a class="cta cta-download" href="/resume-bw.pdf" download="Nicholas_Francis_OBrien_Resume_BW.pdf"
-					>Download Print-Friendly (B&W PDF)</a
+				<a
+					class="cta cta-view cta-hero-download"
+					href="/resume-bw.pdf"
+					download="Nicholas_Francis_OBrien_Resume_BW.pdf"
+					>Download B&amp;W PDF</a
 				>
 			</div>
 
