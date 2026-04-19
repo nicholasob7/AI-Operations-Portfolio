@@ -35,8 +35,9 @@
 	}
 
 	.page {
+		--homepage-action-width: 10.5rem;
 		position: relative;
-		max-width: 900px;
+		max-width: 1320px;
 		margin: 0 auto;
 		padding: 3rem 1.25rem 4rem;
 		display: grid;
@@ -129,7 +130,7 @@
 	.tagline {
 		font-size: 1.12rem;
 		margin: 0.35rem 0 0;
-		max-width: 24ch;
+		max-width: 40ch;
 	}
 
 	.proof {
@@ -138,7 +139,7 @@
 		line-height: 1.45;
 		color: var(--text-muted);
 		margin-top: 0.6rem;
-		max-width: 64ch;
+		max-width: 82ch;
 	}
 
 	.links {
@@ -398,6 +399,8 @@
 	}
 
 	.cta {
+		--cta-size-inline: 8.9rem;
+		--cta-size-block: 2.7rem;
 		--btn-start: #35598f;
 		--btn-mid: #50368f;
 		--btn-end: #286e68;
@@ -408,6 +411,11 @@
 		--btn-text-hover: var(--btn-text);
 		text-decoration: none;
 		font-family: inherit;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		min-height: var(--cta-size-block);
 		padding: 0.45rem 0.75rem;
 		border-radius: 999px;
 		font-size: 0.9rem;
@@ -425,6 +433,21 @@
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
 			0 8px 20px rgba(7, 14, 33, 0.35);
+	}
+
+	.hero-actions > .cta,
+	.hero-subpanel > .cta,
+	.detail-action > .cta,
+	.detail-card-actions > .cta,
+	.projects .project-card > .cta {
+		width: min(100%, var(--homepage-action-width));
+		min-width: 0;
+		text-align: center;
+	}
+
+	.cta-hero-download {
+		width: min(100%, calc(var(--homepage-action-width) + 4rem));
+		white-space: nowrap;
 	}
 
 	.cta-view {
@@ -493,6 +516,8 @@
 		--btn-text-hover: #ffffff;
 		font-size: 0.84rem;
 		padding: 0.36rem 0.62rem;
+		min-height: 2.35rem;
+		min-width: 0;
 	}
 
 	.cta-github {
@@ -651,7 +676,7 @@
 		font-size: 1.05rem;
 		line-height: 1.55;
 		margin: 0;
-		max-width: 68ch;
+		max-width: 88ch;
 		color: #d4def3;
 	}
 
@@ -686,7 +711,7 @@
 	}
 
 	.about-panel p {
-		max-width: 62ch;
+		max-width: 88ch;
 	}
 
 	.projects {
@@ -816,7 +841,7 @@
 
 	.projects p {
 		line-height: 1.55;
-		max-width: 68ch;
+		max-width: 88ch;
 	}
 
 	.project-outcome {
@@ -875,7 +900,6 @@
 	.projects .project-card > .project-link,
 	.projects .project-card > .cta {
 		justify-self: start;
-		width: max-content;
 		max-width: 100%;
 	}
 
@@ -906,6 +930,141 @@
 		position: relative;
 	}
 
+	@media (min-width: 960px) {
+		.page {
+			--homepage-action-width: 11rem;
+			max-width: 1320px;
+			padding: 4.15rem 2rem 5.1rem;
+			gap: 2rem;
+		}
+
+		.card {
+			padding: 1.7rem;
+			border-radius: 1.2rem;
+		}
+
+		.hero {
+			padding: 2.35rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(3rem, 4.8vw, 4.7rem);
+		}
+
+		.eyebrow {
+			font-size: 0.84rem;
+			letter-spacing: 0.1em;
+		}
+
+		.tagline {
+			font-size: 1.44rem;
+			max-width: 40ch;
+		}
+
+		.proof {
+			font-size: 1.28rem;
+			line-height: 1.52;
+			max-width: 82ch;
+		}
+
+		.links {
+			gap: 0.95rem;
+			margin-top: 1.35rem;
+		}
+
+		.links > .hero-actions:first-child:not(:has(+ .hero-subpanel)) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
+			max-width: calc(var(--homepage-action-width) * 2 + 0.7rem);
+			align-items: stretch;
+		}
+
+		.links > .hero-actions:first-child:not(:has(+ .hero-subpanel)) > .cta {
+			width: var(--homepage-action-width);
+			justify-content: center;
+			text-align: center;
+		}
+
+		.links > .hero-actions:first-child:has(+ .hero-subpanel),
+		.links > .hero-actions + .hero-subpanel + .hero-actions {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
+			max-width: calc(var(--homepage-action-width) * 2 + 0.7rem);
+			align-items: stretch;
+		}
+
+		.links > .hero-actions:first-child:has(+ .hero-subpanel) > .cta,
+		.links > .hero-actions + .hero-subpanel + .hero-actions > .cta,
+		.hero-subpanel.resume-subactions > .cta {
+			width: var(--homepage-action-width);
+			justify-content: center;
+			text-align: center;
+		}
+
+		.hero-subpanel.resume-subactions > .cta-hero-download {
+			width: calc(var(--homepage-action-width) + 4rem);
+		}
+
+		.hero-subpanel.resume-subactions {
+			display: grid;
+			grid-template-columns:
+				minmax(0, var(--homepage-action-width))
+				minmax(0, calc(var(--homepage-action-width) + 4rem));
+			max-width: calc(var(--homepage-action-width) * 2 + 4rem + 0.7rem + 2.56rem);
+		}
+
+		.hero-actions,
+		.hero-subpanel,
+		.email-subactions,
+		.resume-subactions,
+		.social-subactions {
+			gap: 0.7rem;
+		}
+
+		.hero-subpanel,
+		.about-panel,
+		.projects article,
+		.detail-card {
+			padding: 1.24rem 1.28rem;
+			border-radius: 1rem;
+		}
+
+		.cta {
+			--cta-size-inline: 9.8rem;
+			--cta-size-block: 2.95rem;
+			padding: 0.62rem 1.02rem;
+			font-size: 1.02rem;
+		}
+
+		.cta-feature {
+			padding: 0.7rem 1.16rem;
+			font-size: 1.08rem;
+		}
+
+		h2 {
+			font-size: 1.72rem;
+		}
+
+		p {
+			font-size: 1.2rem;
+			line-height: 1.66;
+		}
+
+		.about-panel p {
+			max-width: 88ch;
+		}
+
+		.projects {
+			gap: 1.2rem;
+		}
+
+		.project-summary,
+		.project-outcome {
+			max-width: 88ch;
+		}
+
+	}
+
 	.detail-kicker {
 		margin: 0;
 		font-family: 'Space Grotesk', sans-serif;
@@ -930,12 +1089,12 @@
 		line-height: 1.45;
 		font-weight: 560;
 		color: #dce9ff;
-		max-width: 58ch;
+		max-width: 82ch;
 	}
 
 	.detail-body {
 		margin-top: 0.58rem;
-		max-width: 62ch;
+		max-width: 92ch;
 	}
 
 	.detail-note {
@@ -944,7 +1103,7 @@
 		font-size: 0.8rem;
 		line-height: 1.5;
 		color: #aec4e4;
-		max-width: 66ch;
+		max-width: 94ch;
 	}
 
 	.detail-card-actions {
@@ -965,6 +1124,20 @@
 		font-family: 'Source Serif 4', serif;
 		color: #d4def3;
 		line-height: 1.48;
+	}
+
+	@media (min-width: 960px) {
+		.detail-card .detail-standfirst {
+			max-width: 82ch;
+		}
+
+		.detail-card .detail-body {
+			max-width: 92ch;
+		}
+
+		.detail-card .detail-note {
+			max-width: 94ch;
+		}
 	}
 
 	.detail-heading {
@@ -989,8 +1162,15 @@
 
 .tail-actions {
 	margin-top: 0;
-	display: flex;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-content: stretch;
+}
+
+.tail-actions > .cta {
+	width: 100%;
+	justify-content: center;
+	text-align: center;
 }
 
 	.cta-return-top {
@@ -1102,15 +1282,6 @@
 			min-height: 0;
 		}
 
-		.tail-actions {
-			justify-content: stretch;
-		}
-
-		.tail-actions > .cta {
-			width: 100%;
-			justify-content: center;
-			text-align: center;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
