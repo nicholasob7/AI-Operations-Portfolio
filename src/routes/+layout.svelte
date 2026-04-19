@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.svg" />
+	<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-n.svg?v=2" />
+	<link rel="shortcut icon" href="/favicon-n.svg?v=2" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
