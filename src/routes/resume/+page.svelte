@@ -12,31 +12,31 @@
 	};
 
 	const contextPoints = [
-		'Deeply engaged in learning and using AI in my own time.',
-		'Building projects across different scales.',
-		'Personal investment drives growth in IT.'
+		'Deeply engaged in learning and applying AI in my own time.',
+		'Building projects at different scales.',
+		'Personal investment drives growth in technical capability.'
 	];
 
 	const activeProjectCompleted = [
-		'Built an AI-developed endpoint fix script for a major vendor application.',
-		'This involved AI-driven research and coding.',
+		'Built an AI-assisted endpoint fix script for a major vendor application.',
+		'This involved AI-assisted research and coding.',
 		'Observed application behaviour under different conditions.',
 		'Tested different approaches and script versions on a dedicated test device.',
-		'The script passed validation and went into production for individual endpoint failures.',
-		'L2 bundling of the script with the existing install package failed.',
+		'The script passed validation and entered production for individual endpoint failures.',
+		'L2 bundling with the existing install package failed.',
 		'The script was not at fault.',
-		'This led to investigation of the install package itself.'
+		'This led to an investigation of the install package itself.'
 	];
 
 	const activeProjectActive = [
 		'Rebuilding the enterprise app package from the proven fix.',
 		'Test-device validation is complete.',
-		'Further rollout stages are ahead.'
+		'Further rollout stages remain.'
 	];
 
 	const delegatedScope = [
-		'I am responsible for management of the printer queue serviced by a major external vendor.',
-		'Supported a printer vendor transition through vendor liaison and project involvement.',
+		'I manage the printer queue serviced by a major external vendor.',
+		'Supported a printer vendor transition through vendor liaison and project work.',
 		'Resolved printer configuration issues beyond normal front-line scope.',
 		'Reduced avoidable escalation.',
 		'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
@@ -59,7 +59,7 @@
 			title: 'Trusted Operational Scope',
 			items: [
 				'Progressed into dedicated BAU support for a major transport-sector client.',
-				'Worked within a team sustaining 90%+ first-contact resolution.',
+				'Worked in a team sustaining 90%+ first-contact resolution.',
 				'Analysed endpoint performance and device health issues as part of day-to-day support.',
 				'Managed identity, access, and account lifecycle tasks within service desk scope.'
 			]
@@ -67,7 +67,7 @@
 		{
 			title: 'Specialist and Improvement Scope',
 			items: [
-				'Became SME for privileged access requests across admin, local admin, shared, and external account types.',
+				'Became the SME for privileged access requests across admin, local admin, shared, and external account types.',
 				'Took on vendor-facing queue and transition responsibilities beyond normal front-line scope.',
 				'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
 				'Reduced avoidable escalation, improved traceability, and cut staff time and repeat work.'
@@ -78,8 +78,8 @@
 			items: [
 				'Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application.',
 				'Moved the work from test-device validation into controlled production use for individual endpoint failures.',
-				'Turned remediation results into evidence for package investigation and rebuild work.',
-				'Continued into enterprise package reconstruction based on the proven fix.'
+				'Turned remediation results into evidence for package investigation and package rebuild work.',
+				'Continued into enterprise package reconstruction from the proven fix.'
 			]
 		}
 	];
