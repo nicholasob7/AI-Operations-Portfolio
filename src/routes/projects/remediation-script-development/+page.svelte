@@ -55,9 +55,9 @@
 				href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 				download="Remediation_Script_Development_Portfolio_BW.pdf"
 			>
-				Download Print-Friendly (B&W PDF)
+				Download B&W PDF
 			</a>
-			<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Hide and Return to Main Page</a>
+			<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home Page</a>
 		</div>
 	{/if}
 
@@ -175,9 +175,9 @@
 					href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 					download="Remediation_Script_Development_Portfolio_BW.pdf"
 				>
-					Download Print-Friendly (B&W PDF)
+					Download B&W PDF
 				</a>
-				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Hide and Return to Main Page</a>
+				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home Page</a>
 			</div>
 		</div>
 	</section>

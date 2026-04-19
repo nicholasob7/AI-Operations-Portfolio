@@ -255,9 +255,9 @@
 				href="/resume-bw.pdf"
 				download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 			>
-				Download Print-Friendly (B&W PDF)
+				Download B&W PDF
 			</a>
-			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
+			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home Page</a>
 		</div>
 	{/if}
 
@@ -409,9 +409,9 @@
 			href="/resume-bw.pdf"
 			download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 		>
-			Download Print-Friendly (B&W PDF)
+			Download B&W PDF
 		</a>
-		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Return to Main Page</a>
+		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home Page</a>
 	</div>
 </main>
 

@@ -138,11 +138,11 @@
 	};
 
 	const openPrecision = () => {
-		navigateHome('precision-head', 'precision');
+		navigateHome('about-head', 'precision');
 	};
 
 	const closePrecision = () => {
-		navigateHome('selected-work-head');
+		navigateHome('about-head');
 	};
 
 	const openCase1 = () => {
