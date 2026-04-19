@@ -180,6 +180,7 @@
 
 	let openSkillIndices = $state<number[]>([]);
 	let showScrollActions = $state(false);
+	let bottomActions: HTMLDivElement | null = null;
 
 	const showScrollActionsY = 220;
 	const hideScrollActionsY = 72;
@@ -208,11 +209,20 @@
 	};
 
 	onMount(() => {
+		const bottomActionsVisible = () => {
+			if (!bottomActions) return false;
+
+			const rect = bottomActions.getBoundingClientRect();
+			return rect.top < window.innerHeight - 24 && rect.bottom > 24;
+		};
+
 		const updateScrollActions = () => {
 			const currentScrollY = window.scrollY;
+			const hideForBottomActions = bottomActionsVisible();
 			showScrollActions =
-				currentScrollY > showScrollActionsY ||
-				(showScrollActions && currentScrollY > hideScrollActionsY);
+				!hideForBottomActions &&
+				(currentScrollY > showScrollActionsY ||
+					(showScrollActions && currentScrollY > hideScrollActionsY));
 		};
 
 		const handleScroll = () => {
@@ -393,7 +403,7 @@
 		</ul>
 	</section>
 
-	<div class="resume-actions">
+	<div bind:this={bottomActions} class="resume-actions">
 		<a
 			class="resume-download-link resume-download-link-bw"
 			href="/resume-bw.pdf"
