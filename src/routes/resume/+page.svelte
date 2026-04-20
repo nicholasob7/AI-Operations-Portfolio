@@ -759,6 +759,16 @@
 		padding: 0 0.92rem 0.9rem 1.9rem;
 	}
 
+	.skill-detail-list li {
+		font-size: 0.92rem;
+		line-height: 1.52;
+		color: #e2ecff;
+	}
+
+	.skill-detail-list li::marker {
+		color: #8fe3ff;
+	}
+
 	.resume-actions {
 		display: flex;
 		flex-wrap: wrap;
@@ -873,6 +883,11 @@
 
 		.skill-card-button {
 			font-size: 1rem;
+		}
+
+		.skill-detail-list li {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
 		.resume-download-link,
