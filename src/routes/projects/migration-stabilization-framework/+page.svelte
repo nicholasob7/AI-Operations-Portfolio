@@ -55,9 +55,9 @@
 				href="/appprojects/Portfolio_Description_bw.pdf"
 				download="Portfolio_Description_BW.pdf"
 			>
-				Download B&W PDF
+				Print
 			</a>
-			<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Home Page</a>
+			<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Home</a>
 		</div>
 	{/if}
 
@@ -146,9 +146,9 @@
 					href="/appprojects/Portfolio_Description_bw.pdf"
 					download="Portfolio_Description_BW.pdf"
 				>
-					Download B&W PDF
+					Print
 				</a>
-				<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Home Page</a>
+				<a class="doc-cta" data-sveltekit-reload href="/#tail-head">Home</a>
 			</div>
 		</div>
 	</section>

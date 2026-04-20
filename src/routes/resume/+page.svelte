@@ -255,9 +255,9 @@
 				href="/resume-bw.pdf"
 				download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 			>
-				Download B&W PDF
+				Print
 			</a>
-			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home Page</a>
+			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home</a>
 		</div>
 	{/if}
 

@@ -43,7 +43,7 @@
 				aria-controls="case-1"
 				onclick={showCase1 ? closeCase1 : openCase1}
 			>
-				{showCase1 ? 'Hide Case 1' : 'Case 1'}
+				{showCase1 ? 'Hide Case 1' : 'Complete'}
 			</button>
 			{#if showCase1}
 				<div
@@ -56,7 +56,7 @@
 					<a
 						class="cta cta-download"
 						href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
-						download="Remediation_Script_Development_Portfolio_BW.pdf">Download B&amp;W PDF</a
+						download="Remediation_Script_Development_Portfolio_BW.pdf">Print</a
 					>
 				</div>
 			{/if}
@@ -77,12 +77,12 @@
 				aria-controls="case-2"
 				onclick={showCase2 ? closeCase2 : openCase2}
 			>
-				{showCase2 ? 'Hide Case 2' : 'Case 2'}
+				{showCase2 ? 'Hide Case 2' : 'Active'}
 			</button>
 			{#if showCase2}
 				<div class="resume-subactions" id="case-2" aria-label="Case 2 actions" tabindex="-1">
 					<a class="cta cta-view" href="/projects/migration-stabilization-framework">View First</a>
-					<a class="cta cta-download" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Download B&amp;W PDF</a>
+					<a class="cta cta-download" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Print</a>
 				</div>
 			{/if}
 		</article>
@@ -101,7 +101,7 @@
 					aria-controls="overview"
 					onclick={openOverview}
 				>
-					Overview
+					Personal
 				</button>
 			{/if}
 		</article>
@@ -131,7 +131,7 @@
 				</p>
 				<div class="detail-card-actions">
 					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closeOverview}>
-						Close Overview
+						Close
 					</button>
 				</div>
 			</article>
