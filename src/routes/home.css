@@ -20,7 +20,7 @@
 
 	body {
 		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		background:
 			radial-gradient(circle at 10% 10%, rgba(47, 209, 255, 0.12) 0%, transparent 25%),
 			radial-gradient(circle at 75% 12%, rgba(110, 63, 177, 0.24) 0%, transparent 24%),
@@ -85,7 +85,7 @@
 	}
 
 	.hero h1 {
-		font-family: 'Spectral', serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: clamp(2.1rem, 5vw, 3.25rem);
 		font-weight: 600;
 		line-height: 0.94;
@@ -154,7 +154,7 @@
 	}
 
 	.proof {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1.04rem;
 		line-height: 1.45;
 		color: var(--text-muted);
@@ -220,7 +220,7 @@
 
 .email-plain {
 	margin: 0;
-	font-family: 'Space Grotesk', sans-serif;
+	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 	font-size: 0.84rem;
 		color: #d8e7ff;
 		padding: 0.34rem 0.62rem;
@@ -235,7 +235,7 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
 	align-items: center;
-	font-family: 'Space Grotesk', sans-serif;
+	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 	font-size: 0.84rem;
 	color: #d8e7ff;
 	padding: 0.42rem 0.68rem;
@@ -396,7 +396,7 @@
 
 	.metric-label {
 		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.82rem;
 		font-weight: 700;
 		letter-spacing: 0.045em;
@@ -430,7 +430,7 @@
 		--btn-text: #ecf3ff;
 		--btn-text-hover: var(--btn-text);
 		text-decoration: none;
-		font-family: inherit;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -704,7 +704,7 @@
 	}
 
 	p {
-		font-family: 'Source Serif 4', serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1.05rem;
 		line-height: 1.55;
 		margin: 0;
@@ -877,7 +877,7 @@
 	}
 
 	.project-outcome {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.82rem;
 		line-height: 1.4;
 		color: #c4d6f7;
@@ -892,7 +892,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35rem;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.82rem;
 		font-weight: 700;
 		letter-spacing: 0.02em;
@@ -1080,7 +1080,7 @@
 
 	.detail-kicker {
 		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.74rem;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -1092,7 +1092,7 @@
 		display: inline-block;
 		width: fit-content;
 		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1.5rem;
 		line-height: 1.14;
 		font-weight: 700;
@@ -1111,7 +1111,7 @@
 
 	.detail-standfirst {
 		margin-top: 0.48rem;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.92rem;
 		line-height: 1.45;
 		font-weight: 560;
@@ -1126,7 +1126,7 @@
 
 	.detail-note {
 		margin-top: 0.75rem;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.8rem;
 		line-height: 1.5;
 		color: #aec4e4;
@@ -1148,7 +1148,7 @@
 
 	.detail-list li {
 		margin-top: 0.36rem;
-		font-family: 'Source Serif 4', serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		color: #d4def3;
 		line-height: 1.48;
 	}

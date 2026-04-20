@@ -419,7 +419,7 @@
 	:global(body) {
 		margin: 0;
 		color: #e7edf8;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		background:
 			radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
 			radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
@@ -464,7 +464,7 @@
 		margin: 0;
 		font-size: clamp(1.95rem, 4.8vw, 2.85rem);
 		line-height: 0.98;
-		font-family: 'Spectral', serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		color: #dce6f3;
 	}
 
@@ -624,7 +624,7 @@
 		border-radius: 999px;
 		background: rgba(13, 24, 43, 0.72);
 		color: #d7e8ff;
-		font: inherit;
+			font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.84rem;
 		font-weight: 600;
 		cursor: pointer;
@@ -682,7 +682,7 @@
 		border: 0;
 		background: transparent;
 		text-align: left;
-		font: inherit;
+			font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.94rem;
 		font-weight: 600;
 		line-height: 1.35;
