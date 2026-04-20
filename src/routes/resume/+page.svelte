@@ -262,8 +262,8 @@
 	{/if}
 
 	<header class="panel hero-panel">
-		<p class="eyebrow">Resume</p>
 		<h1>Nicholas Francis O'Brien</h1>
+		<p class="hero-subtitle">Web Resume</p>
 		<p class="contact-line">
 			<span>Lower Hutt, New Zealand</span>
 			<span aria-hidden="true">|</span>
@@ -395,7 +395,7 @@
 	</section>
 
 	<section class="panel">
-		<h2>Qualifications</h2>
+		<h2 class="qualifications-heading">Qualifications</h2>
 		<ul class="content-list">
 			{#each qualifications as item}
 				<li>{item}</li>
@@ -409,9 +409,9 @@
 			href="/resume-bw.pdf"
 			download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 		>
-			Download B&W PDF
+			Print
 		</a>
-		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home Page</a>
+		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home</a>
 	</div>
 </main>
 
@@ -451,15 +451,6 @@
 		gap: 0.5rem;
 	}
 
-	.eyebrow {
-		margin: 0;
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.09em;
-		text-transform: uppercase;
-		color: #88d2ff;
-	}
-
 	h1 {
 		margin: 0;
 		font-size: clamp(1.95rem, 4.8vw, 2.85rem);
@@ -482,6 +473,25 @@
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: #96dcff;
+	}
+
+	.hero-subtitle,
+	.focus-line {
+		margin: 0;
+		display: inline-block;
+		width: fit-content;
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.hero-subtitle {
+		font-size: 1.35rem;
+		line-height: 1.12;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 	}
 
 	h3 {
@@ -515,10 +525,9 @@
 	}
 
 	.focus-line {
-		font-size: 0.98rem;
+		font-size: 1.08rem;
 		font-weight: 600;
 		letter-spacing: 0.02em;
-		color: #a5d6ff;
 	}
 
 	a {
@@ -527,6 +536,30 @@
 
 	.experience-panel {
 		gap: 0.9rem;
+	}
+
+	.experience-panel h3,
+	.experience-panel h4,
+	.experience-panel h5,
+	.experience-panel .core-role-start {
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.experience-panel h3,
+	.experience-panel h4,
+	.experience-panel h5 {
+		font-size: 0.92rem;
+		line-height: 1.48;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+
+	.experience-panel h5 {
+		text-transform: none;
 	}
 
 	.scope-grid {
@@ -584,7 +617,7 @@
 	.core-role-start {
 		font-size: 0.9rem;
 		font-weight: 600;
-		color: #c9def7;
+		line-height: 1.48;
 	}
 
 	.progression-map {
@@ -613,9 +646,15 @@
 	}
 
 	.section-note {
-		font-size: 0.8rem;
-		line-height: 1.35;
-		color: #a9bedf;
+		font-size: 0.92rem;
+		line-height: 1.48;
+		font-weight: 600;
+		color: #cfe6ff;
+	}
+
+	.qualifications-heading {
+		font-size: 0.92rem;
+		line-height: 1.48;
 	}
 
 	.section-reset-button {
@@ -689,6 +728,17 @@
 		color: #eff6ff;
 	}
 
+	.skill-card-button > span:first-child {
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		line-height: 1.4;
+	}
+
 	.skill-card-button:focus-visible {
 		outline: 2px solid rgba(141, 214, 255, 0.9);
 		outline-offset: -2px;
@@ -707,6 +757,16 @@
 
 	.skill-detail-list {
 		padding: 0 0.92rem 0.9rem 1.9rem;
+	}
+
+	.skill-detail-list li {
+		font-size: 0.92rem;
+		line-height: 1.52;
+		color: #e2ecff;
+	}
+
+	.skill-detail-list li::marker {
+		color: #8fe3ff;
 	}
 
 	.resume-actions {
@@ -814,8 +874,20 @@
 			line-height: 1.58;
 		}
 
+		.experience-panel h3,
+		.experience-panel h4,
+		.experience-panel h5 {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
 		.skill-card-button {
 			font-size: 1rem;
+		}
+
+		.skill-detail-list li {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
 		.resume-download-link,

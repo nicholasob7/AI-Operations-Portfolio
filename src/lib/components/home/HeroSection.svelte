@@ -44,9 +44,8 @@
 
 <section id="hero-head" class="hero card" tabindex="-1">
 	<div class="hero-aurora" aria-hidden="true"></div>
-	<p class="eyebrow">AI Operations Portfolio</p>
 	<h1>Nicko O'Brien</h1>
-	<p class="tagline">AI-Forward IT Operations</p>
+	<p class="tagline">AI Operations Portfolio</p>
 	<p class="proof">
 		High-precision technical communication. Structured reasoning. Deterministic AI outcomes for enterprise
 		operations, automation, and delivery.
@@ -109,12 +108,12 @@
 				aria-label="Resume actions"
 				tabindex="-1"
 			>
-				<a class="cta cta-view" href="/resume">View First</a>
+				<a class="cta cta-view" href="/resume">Web</a>
 				<a
 					class="cta cta-view cta-hero-download"
 					href="/resume-bw.pdf"
 					download="Nicholas_Francis_OBrien_Resume_BW.pdf"
-					>Download B&amp;W PDF</a
+					>Print</a
 				>
 			</div>
 
