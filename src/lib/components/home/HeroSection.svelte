@@ -110,7 +110,7 @@
 			>
 				<a class="cta cta-view" href="/resume">Web</a>
 				<a
-					class="cta cta-view cta-hero-download"
+					class="cta cta-view cta-hero-print"
 					href="/resume-bw.pdf"
 					download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 					>Print</a

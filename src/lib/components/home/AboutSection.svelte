@@ -53,7 +53,7 @@
 				</p>
 				<div class="detail-card-actions">
 					<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
-						Close Quality
+						Close
 					</button>
 				</div>
 			</article>

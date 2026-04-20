@@ -224,12 +224,13 @@
 	align-items: center;
 	box-sizing: border-box;
 	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-	font-size: 0.84rem;
-	font-weight: 600;
-	letter-spacing: 0.01em;
+	font-size: 0.96rem;
+	font-weight: 700;
+	line-height: 1.24;
+	letter-spacing: 0.012em;
 	color: #d8e7ff;
-	padding: 0.36rem 0.62rem;
-	min-height: 2.35rem;
+	padding: 0.45rem 0.75rem;
+	min-height: 2.7rem;
 	border-radius: 999px;
 	border: 1px solid rgba(190, 215, 242, 0.52);
 	background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
@@ -243,12 +244,13 @@
 	align-items: center;
 	box-sizing: border-box;
 	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-	font-size: 0.84rem;
-	font-weight: 600;
-	letter-spacing: 0.01em;
+	font-size: 0.96rem;
+	font-weight: 700;
+	line-height: 1.24;
+	letter-spacing: 0.012em;
 	color: #d8e7ff;
-	padding: 0.36rem 0.62rem;
-	min-height: 2.35rem;
+	padding: 0.45rem 0.75rem;
+	min-height: 2.7rem;
 	border-radius: 0.9rem;
 	border: 1px solid rgba(190, 215, 242, 0.42);
 	background: linear-gradient(120deg, rgba(50, 70, 78, 0.82) 0%, rgba(54, 73, 91, 0.82) 55%, rgba(30, 75, 65, 0.82) 100%);
@@ -475,7 +477,7 @@
 		text-align: center;
 	}
 
-	.cta-hero-download {
+	.cta-hero-print {
 		width: min(100%, calc(var(--homepage-action-width) + 4rem));
 		white-space: nowrap;
 	}
@@ -491,7 +493,7 @@
 		--btn-text-hover: #ffffff;
 	}
 
-	.cta-download {
+	.cta-print {
 		--btn-start: #395759;
 		--btn-mid: #3d5366;
 		--btn-end: #1f584b;
@@ -1025,7 +1027,7 @@
 			text-align: center;
 		}
 
-		.hero-subpanel.resume-subactions > .cta-hero-download {
+		.hero-subpanel.resume-subactions > .cta-hero-print {
 			width: calc(var(--homepage-action-width) + 4rem);
 		}
 
@@ -1058,6 +1060,13 @@
 			--cta-size-block: 2.95rem;
 			padding: 0.62rem 1.02rem;
 			font-size: 1.02rem;
+		}
+
+		.email-plain,
+		.profile-link-plain {
+			font-size: 1.08rem;
+			padding: 0.62rem 1.02rem;
+			min-height: 2.95rem;
 		}
 
 		.cta-feature {
@@ -1144,17 +1153,37 @@
 	}
 
 	#precision .detail-standfirst,
-	#overview .detail-standfirst {
-		font-size: 1.05rem;
-		line-height: 1.55;
-		color: #7fe7ff;
-	}
-
 	#precision .detail-note,
+	#overview .detail-standfirst,
 	#overview .detail-note {
 		font-size: 1.05rem;
 		line-height: 1.55;
-		color: #ffd978;
+		font-weight: 400;
+		letter-spacing: normal;
+		max-width: 88ch;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	#overview .detail-body {
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.detail-card-actions {
@@ -1184,6 +1213,14 @@
 		.detail-card .detail-body,
 		.detail-card .detail-note {
 			max-width: 100%;
+		}
+
+		#precision .detail-standfirst,
+		#precision .detail-note,
+		#overview .detail-standfirst,
+		#overview .detail-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 	}
 

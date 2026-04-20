@@ -51,13 +51,13 @@
 	{#if showScrollActions}
 		<div class="doc-scroll-actions">
 			<a
-				class="doc-cta doc-cta-download"
+				class="doc-cta doc-cta-print"
 				href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 				download="Remediation_Script_Development_Portfolio_BW.pdf"
 			>
-				Download B&W PDF
+				Print
 			</a>
-			<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home Page</a>
+			<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home</a>
 		</div>
 	{/if}
 
@@ -171,13 +171,13 @@
 			</p>
 			<div bind:this={bottomActions} class="doc-actions">
 				<a
-					class="doc-cta doc-cta-download"
+					class="doc-cta doc-cta-print"
 					href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 					download="Remediation_Script_Development_Portfolio_BW.pdf"
 				>
-					Download B&W PDF
+					Print
 				</a>
-				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home Page</a>
+				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home</a>
 			</div>
 		</div>
 	</section>
@@ -331,7 +331,7 @@
 			0 8px 20px rgba(7, 14, 33, 0.35);
 	}
 
-	.doc-cta-download {
+	.doc-cta-print {
 		background: linear-gradient(120deg, #f5f7fb 0%, #d8dee9 55%, #bcc5d2 100%);
 		border-color: rgba(255, 255, 255, 0.4);
 		box-shadow:
