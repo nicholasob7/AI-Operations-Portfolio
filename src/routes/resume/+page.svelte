@@ -728,6 +728,17 @@
 		color: #eff6ff;
 	}
 
+	.skill-card-button > span:first-child {
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		line-height: 1.4;
+	}
+
 	.skill-card-button:focus-visible {
 		outline: 2px solid rgba(141, 214, 255, 0.9);
 		outline-offset: -2px;
