@@ -1153,17 +1153,24 @@
 	}
 
 	#precision .detail-standfirst,
-	#overview .detail-standfirst {
-		font-size: 1.05rem;
-		line-height: 1.55;
-		color: #7fe7ff;
-	}
-
 	#precision .detail-note,
+	#overview .detail-standfirst,
 	#overview .detail-note {
 		font-size: 1.05rem;
 		line-height: 1.55;
-		color: #ffd978;
+		font-weight: 400;
+		letter-spacing: normal;
+		max-width: 88ch;
+		color: transparent;
+		background: linear-gradient(
+			90deg,
+			var(--heading-cyan) 0%,
+			var(--heading-violet) 50%,
+			var(--heading-green) 100%
+		);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.detail-card-actions {
@@ -1193,6 +1200,14 @@
 		.detail-card .detail-body,
 		.detail-card .detail-note {
 			max-width: 100%;
+		}
+
+		#precision .detail-standfirst,
+		#precision .detail-note,
+		#overview .detail-standfirst,
+		#overview .detail-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 	}
 
