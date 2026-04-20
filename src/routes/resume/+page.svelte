@@ -538,6 +538,30 @@
 		gap: 0.9rem;
 	}
 
+	.experience-panel h3,
+	.experience-panel h4,
+	.experience-panel h5,
+	.experience-panel .core-role-start {
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.experience-panel h3,
+	.experience-panel h4,
+	.experience-panel h5 {
+		font-size: 0.92rem;
+		line-height: 1.48;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+
+	.experience-panel h5 {
+		text-transform: none;
+	}
+
 	.scope-grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -593,7 +617,7 @@
 	.core-role-start {
 		font-size: 0.9rem;
 		font-weight: 600;
-		color: #c9def7;
+		line-height: 1.48;
 	}
 
 	.progression-map {
@@ -819,6 +843,13 @@
 		.content-list li,
 		.core-role-start,
 		.section-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.experience-panel h3,
+		.experience-panel h4,
+		.experience-panel h5 {
 			font-size: 1.5rem;
 			line-height: 1.58;
 		}
