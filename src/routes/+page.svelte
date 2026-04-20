@@ -22,10 +22,10 @@
 	const openSocialOption = $derived(browser ? (page.url.searchParams.get('social') ?? '') : '');
 	const showLinkedInSocialDetails = $derived(showSocialOptions && openSocialOption === 'linkedin');
 	const showTwitterSocialDetails = $derived(showSocialOptions && openSocialOption === 'twitter');
-	const showOverview = $derived(openPanel === 'overview');
+	const showPersonal = $derived(openPanel === 'overview');
 	const showPrecision = $derived(openPanel === 'precision');
-	const showCase1 = $derived(openPanel === 'case-1');
-	const showCase2 = $derived(openPanel === 'case-2');
+	const showComplete = $derived(openPanel === 'case-1');
+	const showActive = $derived(openPanel === 'case-2');
 
 	const homepageHref = (hash: string, open?: string, social?: string) => {
 		const url = new URL(page.url);
@@ -129,11 +129,11 @@
 		navigateHome('hero-head', 'social', showTwitterSocialDetails ? undefined : 'twitter');
 	};
 
-	const openOverview = () => {
+	const openPersonal = () => {
 		navigateHome('overview-head', 'overview');
 	};
 
-	const closeOverview = () => {
+	const closePersonal = () => {
 		navigateHome('eliora-head');
 	};
 
@@ -145,19 +145,19 @@
 		navigateHome('about-head');
 	};
 
-	const openCase1 = () => {
+	const openComplete = () => {
 		navigateHome('remediation-head', 'case-1');
 	};
 
-	const closeCase1 = () => {
+	const closeComplete = () => {
 		navigateHome('deployment-head');
 	};
 
-	const openCase2 = () => {
+	const openActive = () => {
 		navigateHome('deployment-head', 'case-2');
 	};
 
-	const closeCase2 = () => {
+	const closeActive = () => {
 		navigateHome('tail-head');
 	};
 
@@ -220,15 +220,15 @@
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProjectsSection
-		{showOverview}
-		{showCase1}
-		{showCase2}
-		{openOverview}
-		{closeOverview}
-		{openCase1}
-		{closeCase1}
-		{openCase2}
-		{closeCase2}
+		{showPersonal}
+		{showComplete}
+		{showActive}
+		{openPersonal}
+		{closePersonal}
+		{openComplete}
+		{closeComplete}
+		{openActive}
+		{closeActive}
 	/>
 
 	<ProfileTail />

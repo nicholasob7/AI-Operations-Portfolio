@@ -286,7 +286,7 @@
 				</button>
 			{/if}
 			<a
-				class="resume-download-link resume-download-link-bw"
+				class="resume-print-link resume-print-link-bw"
 				href="/resume-bw.pdf"
 				download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 			>
@@ -440,7 +440,7 @@
 
 	<div bind:this={bottomActions} class="resume-actions">
 		<a
-			class="resume-download-link resume-download-link-bw"
+			class="resume-print-link resume-print-link-bw"
 			href="/resume-bw.pdf"
 			download="Nicholas_Francis_OBrien_Resume_BW.pdf"
 		>
@@ -823,7 +823,7 @@
 		pointer-events: auto;
 	}
 
-	.resume-scroll-actions .resume-download-link,
+	.resume-scroll-actions .resume-print-link,
 	.resume-scroll-actions .resume-home-link,
 	.resume-scroll-actions .resume-scroll-collapse {
 		min-height: 2.45rem;
@@ -835,7 +835,7 @@
 			0 10px 22px rgba(4, 9, 22, 0.2);
 	}
 
-	.resume-download-link,
+	.resume-print-link,
 	.resume-home-link {
 		display: inline-flex;
 		align-items: center;
@@ -853,7 +853,7 @@
 			0 12px 24px rgba(4, 9, 22, 0.24);
 	}
 
-	.resume-download-link {
+	.resume-print-link {
 		background: linear-gradient(135deg, rgba(87, 112, 147, 0.88), rgba(79, 120, 101, 0.88));
 		color: #f4f8ff;
 	}
@@ -930,7 +930,7 @@
 			line-height: 1.58;
 		}
 
-		.resume-download-link,
+		.resume-print-link,
 		.resume-home-link,
 		.resume-scroll-collapse {
 			font-size: 0.96rem;
@@ -970,7 +970,7 @@
 			padding-left: 1.65rem;
 		}
 
-		.resume-download-link,
+		.resume-print-link,
 		.resume-home-link,
 		.resume-scroll-collapse {
 			width: 100%;

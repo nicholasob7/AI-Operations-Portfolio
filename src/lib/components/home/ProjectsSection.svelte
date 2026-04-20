@@ -1,26 +1,26 @@
 <script lang="ts">
 	type Props = {
-		showOverview: boolean;
-		showCase1: boolean;
-		showCase2: boolean;
-		openOverview: () => void;
-		closeOverview: () => void;
-		openCase1: () => void;
-		closeCase1: () => void;
-		openCase2: () => void;
-		closeCase2: () => void;
+		showPersonal: boolean;
+		showComplete: boolean;
+		showActive: boolean;
+		openPersonal: () => void;
+		closePersonal: () => void;
+		openComplete: () => void;
+		closeComplete: () => void;
+		openActive: () => void;
+		closeActive: () => void;
 	};
 
 	let {
-		showOverview,
-		showCase1,
-		showCase2,
-		openOverview,
-		closeOverview,
-		openCase1,
-		closeCase1,
-		openCase2,
-		closeCase2
+		showPersonal,
+		showComplete,
+		showActive,
+		openPersonal,
+		closePersonal,
+		openComplete,
+		closeComplete,
+		openActive,
+		closeActive
 	}: Props = $props();
 </script>
 
@@ -39,22 +39,22 @@
 			<button
 				class="cta cta-resume section-cta-remediation"
 				type="button"
-				aria-expanded={showCase1}
+				aria-expanded={showComplete}
 				aria-controls="case-1"
-				onclick={showCase1 ? closeCase1 : openCase1}
+				onclick={showComplete ? closeComplete : openComplete}
 			>
-				{showCase1 ? 'Hide Case 1' : 'Complete'}
+				{showComplete ? 'Hide Case 1' : 'Complete'}
 			</button>
-			{#if showCase1}
+			{#if showComplete}
 				<div
 					class="resume-subactions"
 					id="case-1"
-					aria-label="Case 1 actions"
+					aria-label="Complete actions"
 					tabindex="-1"
 				>
 					<a class="cta cta-view" href="/projects/remediation-script-development">View First</a>
 					<a
-						class="cta cta-download"
+						class="cta cta-print"
 						href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 						download="Remediation_Script_Development_Portfolio_BW.pdf">Print</a
 					>
@@ -73,16 +73,16 @@
 			<button
 				class="cta cta-resume section-cta-migration"
 				type="button"
-				aria-expanded={showCase2}
+				aria-expanded={showActive}
 				aria-controls="case-2"
-				onclick={showCase2 ? closeCase2 : openCase2}
+				onclick={showActive ? closeActive : openActive}
 			>
-				{showCase2 ? 'Hide Case 2' : 'Active'}
+				{showActive ? 'Hide Case 2' : 'Active'}
 			</button>
-			{#if showCase2}
-				<div class="resume-subactions" id="case-2" aria-label="Case 2 actions" tabindex="-1">
+			{#if showActive}
+				<div class="resume-subactions" id="case-2" aria-label="Active actions" tabindex="-1">
 					<a class="cta cta-view" href="/projects/migration-stabilization-framework">View First</a>
-					<a class="cta cta-download" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Print</a>
+					<a class="cta cta-print" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Print</a>
 				</div>
 			{/if}
 		</article>
@@ -93,19 +93,19 @@
 				response.
 			</p>
 			<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
-			{#if !showOverview}
+			{#if !showPersonal}
 				<button
 					class="cta cta-resume section-cta-eliora"
 					type="button"
-					aria-expanded={showOverview}
+					aria-expanded={showPersonal}
 					aria-controls="overview"
-					onclick={openOverview}
+					onclick={openPersonal}
 				>
 					Personal
 				</button>
 			{/if}
 		</article>
-		{#if showOverview}
+		{#if showPersonal}
 			<article id="overview" class="detail-card detail-card-governance" tabindex="-1">
 				<h3 id="overview-head" class="detail-title" tabindex="-1">AI Governance</h3>
 				<p class="detail-standfirst">
@@ -130,7 +130,7 @@
 					development history. It is not a hypothetical project brief.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closeOverview}>
+					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
 						Close
 					</button>
 				</div>

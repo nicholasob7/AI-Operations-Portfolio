@@ -477,7 +477,7 @@
 		text-align: center;
 	}
 
-	.cta-hero-download {
+	.cta-hero-print {
 		width: min(100%, calc(var(--homepage-action-width) + 4rem));
 		white-space: nowrap;
 	}
@@ -493,7 +493,7 @@
 		--btn-text-hover: #ffffff;
 	}
 
-	.cta-download {
+	.cta-print {
 		--btn-start: #395759;
 		--btn-mid: #3d5366;
 		--btn-end: #1f584b;
@@ -1027,7 +1027,7 @@
 			text-align: center;
 		}
 
-		.hero-subpanel.resume-subactions > .cta-hero-download {
+		.hero-subpanel.resume-subactions > .cta-hero-print {
 			width: calc(var(--homepage-action-width) + 4rem);
 		}
 
