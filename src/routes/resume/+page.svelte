@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	type SkillGroup = {
 		title: string;
@@ -180,7 +180,10 @@
 
 	let openSkillIndices = $state<number[]>([]);
 	let showScrollActions = $state(false);
-	let bottomActions: HTMLDivElement | null = null;
+	let showSkillsCollapseAction = $state(false);
+	let bottomActions = $state<HTMLDivElement | null>(null);
+	let topSkillsToggle = $state<HTMLButtonElement | null>(null);
+	let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
 
 	const showScrollActionsY = 220;
 	const hideScrollActionsY = 72;
@@ -208,34 +211,61 @@
 		openSkillIndices = [];
 	};
 
+	const bottomActionsVisible = () => {
+		if (!bottomActions) return false;
+
+		const rect = bottomActions.getBoundingClientRect();
+		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
+	};
+
+	const topSkillsToggleScrolledOut = () => {
+		if (!topSkillsToggle) return false;
+
+		const rect = topSkillsToggle.getBoundingClientRect();
+		return rect.bottom < 24;
+	};
+
+	const bottomSkillsCollapseVisible = () => {
+		if (!bottomSkillsCollapse) return false;
+
+		const rect = bottomSkillsCollapse.getBoundingClientRect();
+		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
+	};
+
+	const updateFloatingActions = () => {
+		const currentScrollY = window.scrollY;
+		const hideForBottomActions = bottomActionsVisible();
+		showScrollActions =
+			!hideForBottomActions &&
+			(currentScrollY > showScrollActionsY ||
+				(showScrollActions && currentScrollY > hideScrollActionsY));
+
+		showSkillsCollapseAction =
+			anySkillsOpen && topSkillsToggleScrolledOut() && !bottomSkillsCollapseVisible();
+	};
+
 	onMount(() => {
-		const bottomActionsVisible = () => {
-			if (!bottomActions) return false;
-
-			const rect = bottomActions.getBoundingClientRect();
-			return rect.top < window.innerHeight - 24 && rect.bottom > 24;
-		};
-
-		const updateScrollActions = () => {
-			const currentScrollY = window.scrollY;
-			const hideForBottomActions = bottomActionsVisible();
-			showScrollActions =
-				!hideForBottomActions &&
-				(currentScrollY > showScrollActionsY ||
-					(showScrollActions && currentScrollY > hideScrollActionsY));
-		};
-
 		const handleScroll = () => {
-			updateScrollActions();
+			updateFloatingActions();
 		};
 
 		window.scrollTo({ top: 0, behavior: 'auto' });
-		updateScrollActions();
+		updateFloatingActions();
 		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('resize', handleScroll);
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleScroll);
 		};
+	});
+
+	$effect(() => {
+		openSkillIndices.length;
+		if (typeof window === 'undefined') return;
+		void tick().then(() => {
+			updateFloatingActions();
+		});
 	});
 </script>
 
@@ -247,9 +277,14 @@
 	/>
 </svelte:head>
 
-<main class="resume-page">
+	<main class="resume-page">
 	{#if showScrollActions}
 		<div class="resume-scroll-actions">
+			{#if showSkillsCollapseAction}
+				<button class="section-reset-button resume-scroll-collapse" type="button" onclick={collapseSkills}>
+					Collapse
+				</button>
+			{/if}
 			<a
 				class="resume-download-link resume-download-link-bw"
 				href="/resume-bw.pdf"
@@ -345,7 +380,7 @@
 				<h2>Technical Skills</h2>
 				<p class="section-note">Click + for one category at a time.</p>
 			</div>
-			<button class="section-reset-button" type="button" onclick={toggleAllSkills}>
+			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
 				{allSkillsOpen ? 'Collapse all' : 'View all'}
 			</button>
 		</div>
@@ -387,7 +422,7 @@
 
 		{#if anySkillsOpen}
 			<div class="skills-footer-actions">
-				<button class="section-reset-button" type="button" onclick={collapseSkills}>
+				<button bind:this={bottomSkillsCollapse} class="section-reset-button" type="button" onclick={collapseSkills}>
 					{openSkillCount === 1 ? 'Collapse open category' : 'Collapse open categories'}
 				</button>
 			</div>
@@ -789,7 +824,8 @@
 	}
 
 	.resume-scroll-actions .resume-download-link,
-	.resume-scroll-actions .resume-home-link {
+	.resume-scroll-actions .resume-home-link,
+	.resume-scroll-actions .resume-scroll-collapse {
 		min-height: 2.45rem;
 		padding: 0.56rem 0.92rem;
 		font-size: 0.84rem;
@@ -826,6 +862,10 @@
 		background: rgba(20, 32, 53, 0.85);
 		border-color: rgba(148, 202, 255, 0.28);
 		color: #d9e9ff;
+	}
+
+	.resume-scroll-collapse {
+		backdrop-filter: blur(10px);
 	}
 
 	@media (min-width: 960px) {
@@ -891,7 +931,8 @@
 		}
 
 		.resume-download-link,
-		.resume-home-link {
+		.resume-home-link,
+		.resume-scroll-collapse {
 			font-size: 0.96rem;
 		}
 	}
@@ -930,7 +971,8 @@
 		}
 
 		.resume-download-link,
-		.resume-home-link {
+		.resume-home-link,
+		.resume-scroll-collapse {
 			width: 100%;
 		}
 
