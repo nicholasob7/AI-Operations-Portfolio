@@ -395,7 +395,7 @@
 	</section>
 
 	<section class="panel">
-		<h2>Qualifications</h2>
+		<h2 class="qualifications-heading">Qualifications</h2>
 		<ul class="content-list">
 			{#each qualifications as item}
 				<li>{item}</li>
@@ -646,9 +646,15 @@
 	}
 
 	.section-note {
-		font-size: 0.8rem;
-		line-height: 1.35;
-		color: #a9bedf;
+		font-size: 0.92rem;
+		line-height: 1.48;
+		font-weight: 600;
+		color: #cfe6ff;
+	}
+
+	.qualifications-heading {
+		font-size: 0.92rem;
+		line-height: 1.48;
 	}
 
 	.section-reset-button {
