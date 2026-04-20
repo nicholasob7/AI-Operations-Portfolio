@@ -157,7 +157,7 @@
 <style>
 	:global(body) {
 		margin: 0;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		background:
 			radial-gradient(circle at 10% 10%, rgba(47, 209, 255, 0.12) 0%, transparent 25%),
 			radial-gradient(circle at 75% 12%, rgba(110, 63, 177, 0.24) 0%, transparent 24%),
@@ -204,7 +204,7 @@
 		border-radius: 0.72rem;
 		border: 1px solid rgba(190, 215, 242, 0.32);
 		background: rgba(12, 20, 37, 0.65);
-		font-family: 'Source Serif 4', serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1rem;
 		line-height: 1.64;
 		color: #d4def3;
@@ -218,7 +218,7 @@
 	}
 
 	.doc-text h2 {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		color: #f1f6ff;
 		font-size: 1.15rem;
 		line-height: 1.26;
@@ -250,7 +250,7 @@
 
 	.doc-text li::marker {
 		color: #8fdcff;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-weight: 700;
 	}
 
@@ -265,7 +265,7 @@
 	}
 
 	.doc-note {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.83rem;
 		line-height: 1.55;
 		color: #b2c7e6;
@@ -288,7 +288,7 @@
 
 	.doc-cta {
 		text-decoration: none;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		padding: 0.45rem 0.75rem;
 		border-radius: 999px;
 		font-size: 0.9rem;
