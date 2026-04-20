@@ -156,10 +156,8 @@
 
 <style>
 	:global(body) {
-		--body-copy-size: 1.5rem;
-		--body-copy-line: 1.55;
 		margin: 0;
-		font-family: 'Spectral', serif;
+		font-family: 'Space Grotesk', sans-serif;
 		background:
 			radial-gradient(circle at 10% 10%, rgba(47, 209, 255, 0.12) 0%, transparent 25%),
 			radial-gradient(circle at 75% 12%, rgba(110, 63, 177, 0.24) 0%, transparent 24%),
@@ -187,7 +185,6 @@
 
 	.eyebrow {
 		margin: 0;
-		font-family: 'Spectral', serif;
 		font-size: 0.76rem;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -197,7 +194,6 @@
 
 	h1 {
 		margin: 0.42rem 0 0;
-		font-family: 'Spectral', serif;
 		font-size: clamp(1.62rem, 3.8vw, 2.18rem);
 		line-height: 1.06;
 	}
@@ -208,9 +204,9 @@
 		border-radius: 0.72rem;
 		border: 1px solid rgba(190, 215, 242, 0.32);
 		background: rgba(12, 20, 37, 0.65);
-		font-family: 'Spectral', serif;
-		font-size: var(--body-copy-size);
-		line-height: var(--body-copy-line);
+		font-family: 'Source Serif 4', serif;
+		font-size: 1rem;
+		line-height: 1.64;
 		color: #d4def3;
 	}
 
@@ -218,11 +214,11 @@
 		margin: 0.32rem 0 0.96rem;
 		max-width: none;
 		color: #dbe5f5;
-		line-height: var(--body-copy-line);
+		line-height: 1.6;
 	}
 
 	.doc-text h2 {
-		font-family: 'Spectral', serif;
+		font-family: 'Space Grotesk', sans-serif;
 		color: #f1f6ff;
 		font-size: 1.15rem;
 		line-height: 1.26;
@@ -230,14 +226,6 @@
 		margin: 1.45rem 0 0.5rem;
 		padding-top: 0.9rem;
 		border-top: 1px solid rgba(162, 201, 243, 0.18);
-	}
-
-	:is(.eyebrow, h1, .doc-text h2) {
-		color: transparent;
-		background: linear-gradient(90deg, #5f9bb5 0%, #69579a 50%, #4b8068 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 	}
 
 	.doc-text h2:first-of-type {
@@ -256,14 +244,13 @@
 	.doc-text li {
 		display: list-item;
 		margin: 0.36rem 0;
-		font-size: var(--body-copy-size);
-		line-height: var(--body-copy-line);
+		line-height: 1.6;
 		color: #d7e2f4;
 	}
 
 	.doc-text li::marker {
 		color: #8fdcff;
-		font-family: 'Spectral', serif;
+		font-family: 'Space Grotesk', sans-serif;
 		font-weight: 700;
 	}
 
@@ -278,9 +265,9 @@
 	}
 
 	.doc-note {
-		font-family: 'Spectral', serif;
-		font-size: var(--body-copy-size);
-		line-height: var(--body-copy-line);
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 0.83rem;
+		line-height: 1.55;
 		color: #b2c7e6;
 	}
 
@@ -301,12 +288,12 @@
 
 	.doc-cta {
 		text-decoration: none;
-		font-family: 'Spectral', serif;
+		font-family: 'Space Grotesk', sans-serif;
 		padding: 0.45rem 0.75rem;
 		border-radius: 999px;
-		font-size: var(--body-copy-size);
-		font-weight: 500;
-		letter-spacing: 0;
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
 		color: #f3f7ff;
 		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
 		border: 1px solid rgba(193, 217, 255, 0.34);
@@ -338,7 +325,7 @@
 	.doc-scroll-actions .doc-cta {
 		min-height: 2.45rem;
 		padding: 0.56rem 0.92rem;
-		font-size: var(--body-copy-size);
+		font-size: 0.84rem;
 		backdrop-filter: blur(10px);
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
@@ -361,12 +348,22 @@
 
 		.doc-text {
 			padding: 1.24rem 1.28rem 1.32rem;
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
 		.doc-text h2 {
 			font-size: 1.24rem;
 		}
 
+		.doc-note {
+			font-size: 1.5rem;
+			line-height: 1.58;
+		}
+
+		.doc-cta {
+			font-size: 0.96rem;
+		}
 	}
 
 	@media (max-width: 720px) {
