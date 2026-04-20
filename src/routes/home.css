@@ -1143,6 +1143,20 @@
 		max-width: 94ch;
 	}
 
+	#precision .detail-standfirst,
+	#overview .detail-standfirst {
+		font-size: 1.05rem;
+		line-height: 1.55;
+		color: #7fe7ff;
+	}
+
+	#precision .detail-note,
+	#overview .detail-note {
+		font-size: 1.05rem;
+		line-height: 1.55;
+		color: #ffd978;
+	}
+
 	.detail-card-actions {
 		margin-top: 0.9rem;
 		display: flex;
