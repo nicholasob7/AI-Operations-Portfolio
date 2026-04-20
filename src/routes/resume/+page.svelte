@@ -417,9 +417,11 @@
 
 <style>
 	:global(body) {
+		--body-copy-size: 1.5rem;
+		--body-copy-line: 1.55;
 		margin: 0;
 		color: #e7edf8;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: 'Spectral', serif;
 		background:
 			radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
 			radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
@@ -453,6 +455,7 @@
 
 	.eyebrow {
 		margin: 0;
+		font-family: 'Spectral', serif;
 		font-size: 0.72rem;
 		font-weight: 700;
 		letter-spacing: 0.09em;
@@ -476,8 +479,14 @@
 		margin: 0;
 	}
 
+	p {
+		font-size: var(--body-copy-size);
+		line-height: var(--body-copy-line);
+	}
+
 	h2 {
-		font-size: 1.08rem;
+		font-family: 'Spectral', serif;
+		font-size: 1.18rem;
 		line-height: 1.2;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -485,23 +494,34 @@
 	}
 
 	h3 {
-		font-size: 1rem;
+		font-family: 'Spectral', serif;
+		font-size: 1.12rem;
 		line-height: 1.25;
 		color: #f3f7ff;
 	}
 
 	h4 {
-		font-size: 0.94rem;
+		font-family: 'Spectral', serif;
+		font-size: 1.08rem;
 		line-height: 1.25;
 		color: #bbdefb;
 	}
 
 	h5 {
-		font-size: 0.83rem;
+		font-family: 'Spectral', serif;
+		font-size: 1.06rem;
 		line-height: 1.3;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.03em;
 		text-transform: uppercase;
 		color: #8ed4ff;
+	}
+
+	:is(.eyebrow, h2, h3, h4, h5) {
+		color: transparent;
+		background: linear-gradient(90deg, #5f9bb5 0%, #69579a 50%, #4b8068 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	.contact-line {
@@ -509,15 +529,15 @@
 		flex-wrap: wrap;
 		gap: 0.2rem 0.42rem;
 		align-items: baseline;
-		font-size: 0.92rem;
-		line-height: 1.4;
+		font-size: var(--body-copy-size);
+		line-height: var(--body-copy-line);
 		color: #c7d6ec;
 	}
 
 	.focus-line {
-		font-size: 0.98rem;
-		font-weight: 600;
-		letter-spacing: 0.02em;
+		font-size: var(--body-copy-size);
+		font-weight: 400;
+		letter-spacing: 0;
 		color: #a5d6ff;
 	}
 
@@ -572,8 +592,8 @@
 	}
 
 	.content-list li {
-		font-size: 0.92rem;
-		line-height: 1.48;
+		font-size: var(--body-copy-size);
+		line-height: var(--body-copy-line);
 		color: #d3def1;
 	}
 
@@ -582,8 +602,8 @@
 	}
 
 	.core-role-start {
-		font-size: 0.9rem;
-		font-weight: 600;
+		font-size: var(--body-copy-size);
+		font-weight: 400;
 		color: #c9def7;
 	}
 
@@ -613,8 +633,8 @@
 	}
 
 	.section-note {
-		font-size: 0.8rem;
-		line-height: 1.35;
+		font-size: var(--body-copy-size);
+		line-height: var(--body-copy-line);
 		color: #a9bedf;
 	}
 
@@ -625,8 +645,8 @@
 		background: rgba(13, 24, 43, 0.72);
 		color: #d7e8ff;
 		font: inherit;
-		font-size: 0.84rem;
-		font-weight: 600;
+		font-size: var(--body-copy-size);
+		font-weight: 500;
 		cursor: pointer;
 	}
 
@@ -683,9 +703,9 @@
 		background: transparent;
 		text-align: left;
 		font: inherit;
-		font-size: 0.94rem;
-		font-weight: 600;
-		line-height: 1.35;
+		font-size: var(--body-copy-size);
+		font-weight: 500;
+		line-height: var(--body-copy-line);
 		color: #eff6ff;
 	}
 
@@ -696,8 +716,9 @@
 
 	.skill-card-icon {
 		flex: 0 0 auto;
-		font-size: 1.1rem;
-		font-weight: 700;
+		font-size: var(--body-copy-size);
+		font-weight: 500;
+		line-height: 1;
 		color: #9ad6ff;
 	}
 
@@ -732,7 +753,7 @@
 	.resume-scroll-actions .resume-home-link {
 		min-height: 2.45rem;
 		padding: 0.56rem 0.92rem;
-		font-size: 0.84rem;
+		font-size: var(--body-copy-size);
 		backdrop-filter: blur(10px);
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
@@ -749,9 +770,9 @@
 		border: 1px solid rgba(181, 226, 197, 0.45);
 		border-radius: 999px;
 		text-decoration: none;
-		font-size: 0.92rem;
-		font-weight: 700;
-		letter-spacing: 0.01em;
+		font-size: var(--body-copy-size);
+		font-weight: 500;
+		letter-spacing: 0;
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.03) inset,
 			0 12px 24px rgba(4, 9, 22, 0.24);
@@ -785,43 +806,21 @@
 		}
 
 		h2 {
-			font-size: 1.16rem;
+			font-size: 1.24rem;
 		}
 
 		h3 {
-			font-size: 1.08rem;
+			font-size: 1.16rem;
 		}
 
 		h4 {
-			font-size: 1rem;
+			font-size: 1.1rem;
 		}
 
-		.contact-line {
-			font-size: 1.5rem;
-			line-height: 1.58;
+		h5 {
+			font-size: 1.08rem;
 		}
 
-		.focus-line {
-			font-size: 1.5rem;
-			line-height: 1.58;
-		}
-
-		.resume-page p,
-		.content-list li,
-		.core-role-start,
-		.section-note {
-			font-size: 1.5rem;
-			line-height: 1.58;
-		}
-
-		.skill-card-button {
-			font-size: 1rem;
-		}
-
-		.resume-download-link,
-		.resume-home-link {
-			font-size: 0.96rem;
-		}
 	}
 
 	@media (max-width: 760px) {
@@ -835,14 +834,6 @@
 			font-size: clamp(1.75rem, 9vw, 2.4rem);
 		}
 
-		.contact-line {
-			font-size: 0.88rem;
-		}
-
-		.focus-line {
-			font-size: 0.92rem;
-		}
-
 		.panel,
 		.scope-card {
 			padding-inline: 0.9rem;
@@ -850,7 +841,6 @@
 
 		.skill-card-button {
 			padding: 0.78rem 0.82rem;
-			font-size: 0.9rem;
 		}
 
 		.skill-detail-list {
