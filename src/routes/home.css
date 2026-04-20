@@ -220,12 +220,18 @@
 
 .email-plain {
 	margin: 0;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
 	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 	font-size: 0.84rem;
-		color: #d8e7ff;
-		padding: 0.34rem 0.62rem;
-		border-radius: 999px;
-		border: 1px solid rgba(190, 215, 242, 0.52);
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: #d8e7ff;
+	padding: 0.36rem 0.62rem;
+	min-height: 2.35rem;
+	border-radius: 999px;
+	border: 1px solid rgba(190, 215, 242, 0.52);
 	background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
 	user-select: text;
 }
@@ -235,10 +241,14 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
 	align-items: center;
+	box-sizing: border-box;
 	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 	font-size: 0.84rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
 	color: #d8e7ff;
-	padding: 0.42rem 0.68rem;
+	padding: 0.36rem 0.62rem;
+	min-height: 2.35rem;
 	border-radius: 0.9rem;
 	border: 1px solid rgba(190, 215, 242, 0.42);
 	background: linear-gradient(120deg, rgba(50, 70, 78, 0.82) 0%, rgba(54, 73, 91, 0.82) 55%, rgba(30, 75, 65, 0.82) 100%);
