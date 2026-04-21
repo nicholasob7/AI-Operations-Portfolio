@@ -1186,6 +1186,10 @@
 		-webkit-text-fill-color: transparent;
 	}
 
+	#overview .detail-body + .detail-note {
+		margin-top: 0.38rem;
+	}
+
 	.detail-card-actions {
 		margin-top: 0.9rem;
 		display: flex;

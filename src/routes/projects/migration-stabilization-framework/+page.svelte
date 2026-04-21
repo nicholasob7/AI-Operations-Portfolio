@@ -3,9 +3,7 @@
 
 	let showScrollActions = $state(false);
 	let bottomActions: HTMLDivElement | null = null;
-
-	const showScrollActionsY = 220;
-	const hideScrollActionsY = 72;
+	let docCard: HTMLElement | null = null;
 
 	onMount(() => {
 		const bottomActionsVisible = () => {
@@ -15,13 +13,16 @@
 			return rect.top < window.innerHeight - 24 && rect.bottom > 24;
 		};
 
+		const topOfCardScrolledOut = () => {
+			if (!docCard) return false;
+
+			const rect = docCard.getBoundingClientRect();
+			return rect.top < 24;
+		};
+
 		const updateScrollActions = () => {
-			const currentScrollY = window.scrollY;
 			const hideForBottomActions = bottomActionsVisible();
-			showScrollActions =
-				!hideForBottomActions &&
-				(currentScrollY > showScrollActionsY ||
-					(showScrollActions && currentScrollY > hideScrollActionsY));
+			showScrollActions = !hideForBottomActions && topOfCardScrolledOut();
 		};
 
 		const handleScroll = () => {
@@ -32,9 +33,11 @@
 
 		updateScrollActions();
 		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('resize', handleScroll);
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleScroll);
 		};
 	});
 </script>
@@ -61,7 +64,7 @@
 		</div>
 	{/if}
 
-	<section class="doc-card">
+	<section bind:this={docCard} class="doc-card">
 		<p class="eyebrow">Project Detail</p>
 		<h1>Enterprise Application Migration Stabilization Framework</h1>
 
@@ -378,8 +381,18 @@
 		.doc-scroll-actions {
 			top: 0.55rem;
 			right: 0.85rem;
-			left: 0.85rem;
-			justify-content: stretch;
+			left: auto;
+			gap: 0.35rem;
+			padding: 0.35rem;
+			border: 1px solid rgba(167, 213, 255, 0.22);
+			border-radius: 999px;
+			background: rgba(10, 18, 34, 0.58);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+			box-shadow:
+				0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+				0 12px 26px rgba(4, 9, 22, 0.28);
+			justify-content: flex-end;
 		}
 	}
 </style>
