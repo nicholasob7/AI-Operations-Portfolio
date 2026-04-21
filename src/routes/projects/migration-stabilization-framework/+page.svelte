@@ -323,25 +323,16 @@
 		min-height: 2.45rem;
 		padding: 0.56rem 0.92rem;
 		font-size: 0.84rem;
-		backdrop-filter: blur(10px);
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
-		background: linear-gradient(
-			120deg,
-			rgba(59, 123, 99, 0.22) 0%,
-			rgba(42, 95, 77, 0.2) 55%,
-			rgba(30, 69, 56, 0.18) 100%
-		);
+		background: transparent;
 	}
 
 	.doc-scroll-actions .doc-cta-print {
-		background: linear-gradient(
-			120deg,
-			rgba(245, 247, 251, 0.24) 0%,
-			rgba(216, 222, 233, 0.22) 55%,
-			rgba(188, 197, 210, 0.2) 100%
-		);
+		background: transparent;
 	}
 
 	@media (min-width: 960px) {
