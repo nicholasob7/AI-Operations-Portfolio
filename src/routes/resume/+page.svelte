@@ -276,7 +276,7 @@
 	/>
 </svelte:head>
 
-	<main class="resume-page">
+	<main id="resume-top" class="resume-page">
 	{#if showScrollActions}
 		<div class="resume-scroll-actions">
 			{#if showSkillsCollapseAction}
@@ -446,6 +446,7 @@
 			Print
 		</a>
 		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home</a>
+		<a class="resume-home-link" href="#resume-top">Top</a>
 	</div>
 </main>
 
