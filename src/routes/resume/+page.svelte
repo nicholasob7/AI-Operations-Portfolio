@@ -834,6 +834,18 @@
 			0 10px 22px rgba(4, 9, 22, 0.2);
 	}
 
+	.resume-scroll-actions .resume-print-link {
+		background: linear-gradient(135deg, rgba(87, 112, 147, 0.24), rgba(79, 120, 101, 0.22));
+	}
+
+	.resume-scroll-actions .resume-home-link {
+		background: rgba(20, 32, 53, 0.22);
+	}
+
+	.resume-scroll-actions .resume-scroll-collapse {
+		background: rgba(13, 24, 43, 0.22);
+	}
+
 	.resume-print-link,
 	.resume-home-link {
 		display: inline-flex;
@@ -983,7 +995,7 @@
 			padding: 0.35rem;
 			border: 1px solid rgba(167, 213, 255, 0.22);
 			border-radius: 999px;
-			background: rgba(10, 18, 34, 0.58);
+			background: rgba(10, 18, 34, 0.14);
 			backdrop-filter: blur(14px);
 			-webkit-backdrop-filter: blur(14px);
 			box-shadow:

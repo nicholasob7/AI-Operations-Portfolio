@@ -362,6 +362,21 @@
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
+		background: linear-gradient(
+			120deg,
+			rgba(59, 123, 99, 0.22) 0%,
+			rgba(42, 95, 77, 0.2) 55%,
+			rgba(30, 69, 56, 0.18) 100%
+		);
+	}
+
+	.doc-scroll-actions .doc-cta-print {
+		background: linear-gradient(
+			120deg,
+			rgba(245, 247, 251, 0.24) 0%,
+			rgba(216, 222, 233, 0.22) 55%,
+			rgba(188, 197, 210, 0.2) 100%
+		);
 	}
 
 	@media (min-width: 960px) {
@@ -415,7 +430,7 @@
 			padding: 0.35rem;
 			border: 1px solid rgba(167, 213, 255, 0.22);
 			border-radius: 999px;
-			background: rgba(10, 18, 34, 0.58);
+			background: rgba(10, 18, 34, 0.14);
 			backdrop-filter: blur(14px);
 			-webkit-backdrop-filter: blur(14px);
 			box-shadow:
