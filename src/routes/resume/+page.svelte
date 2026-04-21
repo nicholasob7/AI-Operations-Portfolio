@@ -831,22 +831,23 @@
 		min-height: 2.45rem;
 		padding: 0.56rem 0.92rem;
 		font-size: 0.84rem;
-		backdrop-filter: blur(10px);
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
 	}
 
 	.resume-scroll-actions .resume-print-link {
-		background: linear-gradient(135deg, rgba(87, 112, 147, 0.24), rgba(79, 120, 101, 0.22));
+		background: transparent;
 	}
 
 	.resume-scroll-actions .resume-home-link {
-		background: rgba(20, 32, 53, 0.22);
+		background: transparent;
 	}
 
 	.resume-scroll-actions .resume-scroll-collapse {
-		background: rgba(13, 24, 43, 0.22);
+		background: transparent;
 	}
 
 	.resume-print-link,
