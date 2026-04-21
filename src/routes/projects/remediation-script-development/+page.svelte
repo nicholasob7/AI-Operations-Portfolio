@@ -353,6 +353,9 @@
 		font-size: 0.84rem;
 		backdrop-filter: none;
 		-webkit-backdrop-filter: none;
+		text-shadow:
+			0 0 1px rgba(4, 9, 22, 0.96),
+			0 1px 2px rgba(4, 9, 22, 0.88);
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
@@ -361,6 +364,9 @@
 
 	.doc-scroll-actions .doc-cta-print {
 		background: transparent;
+		text-shadow:
+			0 0 1px rgba(255, 255, 255, 0.98),
+			0 1px 2px rgba(255, 255, 255, 0.9);
 	}
 
 	@media (min-width: 960px) {

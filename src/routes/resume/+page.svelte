@@ -182,11 +182,9 @@
 	let showScrollActions = $state(false);
 	let showSkillsCollapseAction = $state(false);
 	let bottomActions = $state<HTMLDivElement | null>(null);
+	let heroPanel = $state<HTMLElement | null>(null);
 	let topSkillsToggle = $state<HTMLButtonElement | null>(null);
 	let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
-
-	const showScrollActionsY = 220;
-	const hideScrollActionsY = 72;
 
 	const allSkillIndices = technicalSkills.map((_, index) => index);
 
@@ -217,6 +215,13 @@
 		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
 	};
 
+	const heroPanelScrolledOut = () => {
+		if (!heroPanel) return false;
+
+		const rect = heroPanel.getBoundingClientRect();
+		return rect.bottom < 24;
+	};
+
 	const topSkillsToggleScrolledOut = () => {
 		if (!topSkillsToggle) return false;
 
@@ -232,12 +237,8 @@
 	};
 
 	const updateFloatingActions = () => {
-		const currentScrollY = window.scrollY;
 		const hideForBottomActions = bottomActionsVisible();
-		showScrollActions =
-			!hideForBottomActions &&
-			(currentScrollY > showScrollActionsY ||
-				(showScrollActions && currentScrollY > hideScrollActionsY));
+		showScrollActions = !hideForBottomActions && heroPanelScrolledOut();
 
 		showSkillsCollapseAction =
 			anySkillsOpen && topSkillsToggleScrolledOut() && !bottomSkillsCollapseVisible();
@@ -295,7 +296,7 @@
 		</div>
 	{/if}
 
-	<header class="panel hero-panel">
+	<header bind:this={heroPanel} class="panel hero-panel">
 		<h1>Nicholas Francis O'Brien</h1>
 		<p class="hero-subtitle">Web Resume</p>
 		<p class="contact-line">
@@ -1003,9 +1004,6 @@
 			padding: 0.35rem;
 			border: 1px solid rgba(167, 213, 255, 0.22);
 			border-radius: 999px;
-			background: rgba(10, 18, 34, 0.14);
-			backdrop-filter: blur(14px);
-			-webkit-backdrop-filter: blur(14px);
 			box-shadow:
 				0 0 0 1px rgba(255, 255, 255, 0.05) inset,
 				0 12px 26px rgba(4, 9, 22, 0.28);

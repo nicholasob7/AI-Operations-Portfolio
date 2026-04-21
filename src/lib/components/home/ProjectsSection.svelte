@@ -36,30 +36,9 @@
 			<p class="project-outcome">
 				Outcome: Standardized production remediation and evidence-driven validation workflow.
 			</p>
-			<button
-				class="cta cta-resume section-cta-remediation"
-				type="button"
-				aria-expanded={showComplete}
-				aria-controls="case-1"
-				onclick={showComplete ? closeComplete : openComplete}
-			>
-				{showComplete ? 'Hide Case 1' : 'Complete'}
-			</button>
-			{#if showComplete}
-				<div
-					class="resume-subactions"
-					id="case-1"
-					aria-label="Complete actions"
-					tabindex="-1"
-				>
-					<a class="cta cta-view" href="/projects/remediation-script-development">View First</a>
-					<a
-						class="cta cta-print"
-						href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
-						download="Remediation_Script_Development_Portfolio_BW.pdf">Print</a
-					>
-				</div>
-			{/if}
+			<a class="cta cta-resume section-cta-remediation" href="/projects/remediation-script-development">
+				Complete
+			</a>
 		</article>
 		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
 			<h3>Migration Framework</h3>
@@ -70,21 +49,9 @@
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
-			<button
-				class="cta cta-resume section-cta-migration"
-				type="button"
-				aria-expanded={showActive}
-				aria-controls="case-2"
-				onclick={showActive ? closeActive : openActive}
-			>
-				{showActive ? 'Hide Case 2' : 'Active'}
-			</button>
-			{#if showActive}
-				<div class="resume-subactions" id="case-2" aria-label="Active actions" tabindex="-1">
-					<a class="cta cta-view" href="/projects/migration-stabilization-framework">View First</a>
-					<a class="cta cta-print" href="/appprojects/Portfolio_Description_bw.pdf" download="Portfolio_Description_BW.pdf">Print</a>
-				</div>
-			{/if}
+			<a class="cta cta-resume section-cta-migration" href="/projects/migration-stabilization-framework">
+				Active
+			</a>
 		</article>
 		<article id="eliora-head" class="project-card project-card-governance" tabindex="-1">
 			<h3>AI Governance</h3>
