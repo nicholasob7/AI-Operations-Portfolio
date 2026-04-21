@@ -69,13 +69,6 @@
 			</div>
 		{/if}
 		{#if showPrecision}
-			{#if showFloatingClose}
-				<div class="detail-floating-close">
-					<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
-						Close
-					</button>
-				</div>
-			{/if}
 			<article id="precision" class="detail-card" tabindex="-1">
 				<h3 id="precision-head" class="detail-title" tabindex="-1">Semantic Control</h3>
 				<p class="detail-standfirst">
@@ -110,3 +103,11 @@
 		{/if}
 	</div>
 </section>
+
+{#if showPrecision && showFloatingClose}
+	<div class="detail-floating-close">
+		<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
+			Close
+		</button>
+	</div>
+{/if}

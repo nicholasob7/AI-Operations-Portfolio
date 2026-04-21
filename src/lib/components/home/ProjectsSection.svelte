@@ -111,13 +111,6 @@
 			{/if}
 		</article>
 		{#if showPersonal}
-			{#if showFloatingClose}
-				<div class="detail-floating-close">
-					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
-						Close
-					</button>
-				</div>
-			{/if}
 			<article id="overview" class="detail-card detail-card-governance" tabindex="-1">
 				<h3 id="overview-head" class="detail-title" tabindex="-1">AI Governance</h3>
 				<p class="detail-standfirst">
@@ -155,3 +148,11 @@
 		{/if}
 	</div>
 </section>
+
+{#if showPersonal && showFloatingClose}
+	<div class="detail-floating-close">
+		<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
+			Close
+		</button>
+	</div>
+{/if}
