@@ -2,7 +2,7 @@
 
 Static SvelteKit portfolio site for Nicko O'Brien, focused on AI-forward IT operations, technical communication, automation, and selected project work.
 
-The site is deployed on Cloudflare Pages and built as a fully prerendered static site.
+The site is built as a fully prerendered static site with `@sveltejs/adapter-static`.
 
 ## Purpose
 
@@ -20,9 +20,8 @@ The current UX direction favors:
 
 ### Homepage action design
 
-- The homepage exposes resume, email, and social actions as controlled reveals rather than dumping every option on screen at once.
-- Resume and project cards use paired actions:
-  `View First` for reading in-browser, and `Download Print-Friendly (B&W PDF)` for offline use.
+- The homepage exposes Resume as a direct action, while Email and Social use controlled reveals rather than dumping every option on screen at once.
+- Each homepage project card exposes a single CTA rather than paired homepage view/download actions.
 - Copy-to-clipboard actions for email and social links reduce manual selection and copying.
 
 ### Long-page navigation convenience
@@ -39,7 +38,7 @@ The current UX direction favors:
 
 ### Download and print behavior
 
-- The resume and both project pages each include their own B&W download action at page level, not just from the homepage reveal state.
+- The resume and both project pages each include their own B&W download action at page level.
 - Printable PDFs are generated with Chrome headless using `--no-pdf-header-footer` so browser-added date, file path, and title metadata are removed.
 - The downloadable assets are intended to stay aligned with the reader-facing web copy.
 
@@ -50,7 +49,6 @@ The current UX direction favors:
 - Vite 7
 - TypeScript
 - `@sveltejs/adapter-static`
-- Cloudflare Pages
 
 ## Project Structure
 
@@ -149,7 +147,7 @@ The repository currently declares:
 - `.nvmrc`: `22`
 - `package.json` engines: `node >=22.12.0`
 
-This aligns with the current Cloudflare Pages build target for the deployed site.
+This is the repository-declared Node requirement.
 
 Local validation was also completed successfully on Node `24.14.1` on April 15, 2026:
 
@@ -157,17 +155,14 @@ Local validation was also completed successfully on Node `24.14.1` on April 15, 
 - `npm run check`
 - `npm run build`
 
-If you want local development to match Cloudflare as closely as possible, use Node 22. If you want a newer machine-wide default, Node 24 LTS also works with the current codebase based on the checks above.
+If you want local development to match the repository-declared requirement, use Node 22. The Node 24 result above is a historical validation note rather than a standing compatibility guarantee.
 
 ## Deployment
 
-This project is deployed via Cloudflare Pages with these current settings:
+The repository is configured for static deployment with these build settings:
 
-- Production branch: `main`
 - Build command: `npm run build`
 - Build output directory: `build`
-- Root directory: `/`
-- Build system version: `3`
 
 The app uses `@sveltejs/adapter-static` and `prerender = true`, so deployment is based on generated static files rather than a Node server runtime.
 
