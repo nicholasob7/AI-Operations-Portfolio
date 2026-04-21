@@ -364,9 +364,10 @@
 
 	.doc-scroll-actions .doc-cta-print {
 		background: transparent;
+		color: #f3f7ff;
 		text-shadow:
-			0 0 1px rgba(255, 255, 255, 0.98),
-			0 1px 2px rgba(255, 255, 255, 0.9);
+			0 0 1px rgba(4, 9, 22, 0.96),
+			0 1px 2px rgba(4, 9, 22, 0.88);
 	}
 
 	@media (min-width: 960px) {
@@ -418,14 +419,6 @@
 			left: auto;
 			gap: 0.35rem;
 			padding: 0.35rem;
-			border: 1px solid rgba(167, 213, 255, 0.22);
-			border-radius: 999px;
-			background: rgba(10, 18, 34, 0.14);
-			backdrop-filter: blur(14px);
-			-webkit-backdrop-filter: blur(14px);
-			box-shadow:
-				0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-				0 12px 26px rgba(4, 9, 22, 0.28);
 			justify-content: flex-end;
 		}
 	}
