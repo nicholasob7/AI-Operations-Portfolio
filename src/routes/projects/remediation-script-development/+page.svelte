@@ -73,20 +73,20 @@
 			<p class="doc-summary">
 				Built and deployed a remediation script for live post-deployment incidents. It targeted profile
 				corruption, cache drift, and launch inconsistency. The script moved from testing into production use
-				and became part of the wider stabilization effort.
+				and became part of a wider stabilization effort.
 			</p>
 
 			<h2>How It Was Built</h2>
 			<ul>
 				<li>
-					<strong>Development workflow:</strong> Built with AI-assisted development support and standard tooling
+					<strong>Development workflow:</strong> Built with AI-assisted support and standard tooling
 				</li>
 				<li>
 					<strong>Testing path:</strong> Moved from non-production testing to test-device validation and then live
 					deployment
 				</li>
 				<li>
-					<strong>User targeting:</strong> Separated device logon user from session user to hit the correct profile
+					<strong>User targeting:</strong> Separated device logon user from session user to target the correct profile
 				</li>
 				<li>
 					<strong>Cache cleanup:</strong> Covered both version-specific and legacy cache variants
@@ -130,11 +130,10 @@
 			<h2>How It Was Used</h2>
 			<ul>
 				<li>
-					<strong>Evidence role:</strong> Served as the main evidence item in the reformatted deployment package
-					wrapper
+					<strong>Evidence role:</strong> Served as the main evidence item in the revised deployment package wrapper
 				</li>
 				<li>
-					<strong>Problem link:</strong> Tied each remediation action back to observed symptoms
+					<strong>Problem link:</strong> Tied each remediation action to observed symptoms
 				</li>
 				<li>
 					<strong>Approval:</strong> Approved for controlled live use on single endpoints

@@ -73,7 +73,7 @@
 			<p class="doc-summary">
 				Built from the successful remediation work in Case 1, this project turns validated fix logic into a
 				framework for controlled deployment. Because packaging beyond remediation was blocked
-				by external factors, the current version reached successful test-device instantiation, with full
+				by external factors, the current version reached successful test-device validation, with full
 				production completion still pending.
 			</p>
 
