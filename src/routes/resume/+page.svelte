@@ -510,7 +510,10 @@
 	}
 
 	.hero-subtitle,
-	.focus-line {
+	.focus-line,
+	.experience-panel h3,
+	.experience-panel h4,
+	.experience-panel h5 {
 		margin: 0;
 		display: inline-block;
 		width: fit-content;
@@ -572,9 +575,6 @@
 		gap: 0.9rem;
 	}
 
-	.experience-panel h3,
-	.experience-panel h4,
-	.experience-panel h5,
 	.experience-panel .core-role-start {
 		color: transparent;
 		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
