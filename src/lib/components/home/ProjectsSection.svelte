@@ -68,11 +68,10 @@
 		<article id="remediation-head" class="project-card project-card-remediation" tabindex="-1">
 			<h3>Script Development</h3>
 			<p class="project-summary">
-				AI-assisted endpoint remediation script development for live post-deployment incidents. Built for
-				production validation.
+				AI-assisted endpoint remediation for live post-deployment incidents. Built for production validation.
 			</p>
 			<p class="project-outcome">
-				Outcome: Standardized production remediation and evidence-driven validation workflow.
+				Outcome: Standardized production remediation with an evidence-driven validation workflow.
 			</p>
 			<a class="cta cta-resume section-cta-remediation" href="/projects/remediation-script-development">
 				Complete
@@ -81,8 +80,7 @@
 		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
 			<h3>Migration Framework</h3>
 			<p class="project-summary">
-				Evidence-driven migration stabilization methodology. Turns live remediation into hardened package
-				controls.
+				Evidence-driven migration stabilization methodology. Turns live remediation into robust package controls.
 			</p>
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
@@ -118,20 +116,20 @@
 					agent systems.
 				</p>
 				<p class="detail-body">
-					Eliora is an AI coordination project with strong governance controls. It separates authority clearly.
-					It traces outputs back to their source. It fails safely in high-consequence systems.
+					Eliora is an AI coordination project with strong governance controls. It clearly separates authority.
+					It traces outputs to their source. It fails safely in high-consequence systems.
 				</p>
 				<ul class="detail-list">
-					<li>Layered architecture separating intent, doctrine, policy, and execution surfaces</li>
-					<li>Clear trace paths linking outputs to their governing sources and decision context</li>
-					<li>Safe handling when meaning is unclear, policy conflicts appear, or decisions are unresolved</li>
+					<li>Layered architecture separating intent, doctrine, policy, and execution</li>
+					<li>Clear trace paths linking outputs to governing sources and decision context</li>
+					<li>Safe handling when meaning is unclear, policy conflicts appear, or decisions remain unresolved</li>
 					<li>Explicit authority modeling to prevent collapse between authorship, governance, and agent behavior</li>
 					<li>Structure designed for review, validation, and controlled change over time</li>
 					<li>Human-in-the-loop resolution for contested or high-impact operational states</li>
 				</ul>
 				<p class="detail-note">
 					This description is based on direct inspection of the live Eliora-v0.1 repository by Codex App, an
-					OpenAI GPT-5-based coding agent. It reflects the project structure, governance surfaces, and sustained
+					OpenAI GPT-5 coding agent. It reflects the project structure, governance surfaces, and sustained
 					development history. It is not a hypothetical project brief.
 				</p>
 				<div class="detail-card-actions">

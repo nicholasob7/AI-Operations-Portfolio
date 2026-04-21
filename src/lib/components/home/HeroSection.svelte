@@ -47,8 +47,8 @@
 	<h1>Nicko O'Brien</h1>
 	<p class="tagline">AI Operations Portfolio</p>
 	<p class="proof">
-		High-precision technical communication. Structured reasoning. Deterministic AI outcomes for enterprise
-		operations, automation, and delivery.
+		Technical communication, structured reasoning, and deterministic AI delivery for enterprise operations and
+		automation.
 	</p>
 	<div class="links">
 		<div class="hero-actions" aria-label="Primary actions">

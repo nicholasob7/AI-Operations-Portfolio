@@ -14,18 +14,18 @@
 	const contextPoints = [
 		'Deeply engaged in learning and applying AI in my own time.',
 		'Building projects at different scales.',
-		'Personal investment drives growth in technical capability.'
+		'Personal investment supports continued technical growth.'
 	];
 
 	const activeProjectCompleted = [
 		'Built an AI-assisted endpoint fix script for a major vendor application.',
 		'This involved AI-assisted research and coding.',
 		'Observed application behaviour under different conditions.',
-		'Tested different approaches and script versions on a dedicated test device.',
+		'Tested approaches and script versions on a dedicated test device.',
 		'The script passed validation and entered production for individual endpoint failures.',
 		'L2 bundling with the existing install package failed.',
 		'The script was not at fault.',
-		'This led to an investigation of the install package itself.'
+		'This led to investigation of the install package itself.'
 	];
 
 	const activeProjectActive = [
@@ -39,10 +39,10 @@
 		'Supported a printer vendor transition through vendor liaison and project work.',
 		'Resolved printer configuration issues beyond normal front-line scope.',
 		'Reduced avoidable escalation.',
-		'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
+		'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage.',
 		'Improved traceability across related requests.',
 		'Cut staff time and repeat work.',
-		'Advised on preserving classification and workflow visibility during transition away from the three-ticket vendor model.'
+		'Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model.'
 	];
 
 	const progressionStages: ProgressionStage[] = [
@@ -52,7 +52,7 @@
 				'Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients.',
 				'Supported clients in transport, healthcare, energy, regional government, and consumer goods.',
 				'Handled incidents and service requests from triage through resolution, documentation, and escalation.',
-				'Resolved user, device, application, and access issues through structured remote support.'
+				'Resolved user, device, application, and access issues through remote support.'
 			]
 		},
 		{
@@ -69,7 +69,7 @@
 			items: [
 				'Became the SME for privileged access requests across admin, local admin, shared, and external account types.',
 				'Took on vendor-facing queue and transition responsibilities beyond normal front-line scope.',
-				'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket identity linkage.',
+				'Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage.',
 				'Reduced avoidable escalation, improved traceability, and cut staff time and repeat work.'
 			]
 		},
@@ -78,7 +78,7 @@
 			items: [
 				'Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application.',
 				'Moved the work from test-device validation into controlled production use for individual endpoint failures.',
-				'Turned remediation results into evidence for package investigation and package rebuild work.',
+				'Turned remediation results into evidence for package investigation and rebuild work.',
 				'Continued into enterprise package reconstruction from the proven fix.'
 			]
 		}
@@ -379,7 +379,7 @@
 			<div class="section-head-copy">
 				<h2>Technical Skills</h2>
 				<p class="section-note">
-					{allSkillsOpen ? 'Click - = close to one category' : 'Click + = open one category'}
+					{allSkillsOpen ? 'Click - to close one category' : 'Click + to open one category'}
 				</p>
 			</div>
 			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
