@@ -781,7 +781,7 @@
 
 	.skill-card-icon {
 		flex: 0 0 auto;
-		font-size: 1.1rem;
+		font-size: 0.92rem;
 		font-weight: 700;
 		color: #9ad6ff;
 	}
@@ -935,6 +935,10 @@
 
 		.skill-card-button {
 			font-size: 1rem;
+		}
+
+		.skill-card-icon {
+			font-size: 1.5rem;
 		}
 
 		.skill-detail-list li {
