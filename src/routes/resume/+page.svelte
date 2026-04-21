@@ -379,7 +379,7 @@
 			<div class="section-head-copy">
 				<h2>Technical Skills</h2>
 				<p class="section-note">
-					{allSkillsOpen ? 'Click - to close one category' : 'Click + to open one category'}
+					{allSkillsOpen ? 'Close to one skill Click -' : 'Open one skill Click +'}
 				</p>
 			</div>
 			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
