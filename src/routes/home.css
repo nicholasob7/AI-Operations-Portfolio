@@ -169,10 +169,17 @@
 	}
 
 	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
 		gap: 0.6rem;
-		align-items: center;
+		align-items: stretch;
+		max-width: calc(var(--homepage-action-width) * 2 + 0.6rem);
+	}
+
+	.hero-actions > .cta {
+		width: 100%;
+		justify-content: center;
+		text-align: center;
 	}
 
 	.hero-subpanel {

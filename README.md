@@ -34,7 +34,7 @@ The current UX direction favors:
 ### Resume interaction behavior
 
 - The technical skills section uses a controlled one-open-at-a-time accordion by default to reduce vertical sprawl.
-- `View all` and `Collapse all` controls are available for readers who want either a quick scan or a fully expanded review.
+- `View all` and `Collapse` controls are available for readers who want either a quick scan or a fully expanded review.
 - A second collapse control appears at the bottom of the section so the reader does not need to scroll back up just to close content.
 
 ### Download and print behavior
