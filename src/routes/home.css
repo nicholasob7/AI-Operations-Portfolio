@@ -1203,6 +1203,29 @@
 		justify-content: flex-start;
 	}
 
+	.detail-floating-close {
+		position: fixed;
+		top: 0.85rem;
+		right: max(1rem, calc((100vw - 1320px) / 2 + 1rem));
+		z-index: 30;
+		pointer-events: auto;
+	}
+
+	.detail-floating-close > .cta {
+		min-height: 2.45rem;
+		padding: 0.56rem 0.92rem;
+		font-size: 0.84rem;
+		background: transparent;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		text-shadow:
+			0 0 1px rgba(4, 9, 22, 0.96),
+			0 1px 2px rgba(4, 9, 22, 0.88);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+			0 10px 22px rgba(4, 9, 22, 0.2);
+	}
+
 	.detail-list {
 		margin: 0.55rem 0 0;
 		padding-left: 1.05rem;
@@ -1336,6 +1359,11 @@
 		.hero h1 {
 			font-size: clamp(1.9rem, 11vw, 2.45rem);
 			line-height: 0.98;
+		}
+
+		.detail-floating-close {
+			top: 0.55rem;
+			right: 0.85rem;
 		}
 
 		.cta {

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount, tick } from 'svelte';
+
 	type Props = {
 		showPersonal: boolean;
 		showComplete: boolean;
@@ -22,6 +24,42 @@
 		openActive,
 		closeActive
 	}: Props = $props();
+	let bottomCloseAction = $state<HTMLButtonElement | null>(null);
+	let showFloatingClose = $state(false);
+
+	const bottomCloseVisible = () => {
+		if (!bottomCloseAction) return false;
+
+		const rect = bottomCloseAction.getBoundingClientRect();
+		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
+	};
+
+	const updateFloatingClose = () => {
+		showFloatingClose = showPersonal && !bottomCloseVisible();
+	};
+
+	onMount(() => {
+		const handleViewportChange = () => {
+			updateFloatingClose();
+		};
+
+		updateFloatingClose();
+		window.addEventListener('scroll', handleViewportChange, { passive: true });
+		window.addEventListener('resize', handleViewportChange);
+
+		return () => {
+			window.removeEventListener('scroll', handleViewportChange);
+			window.removeEventListener('resize', handleViewportChange);
+		};
+	});
+
+	$effect(() => {
+		showPersonal;
+		if (typeof window === 'undefined') return;
+		void tick().then(() => {
+			updateFloatingClose();
+		});
+	});
 </script>
 
 <section class="card">
@@ -73,6 +111,13 @@
 			{/if}
 		</article>
 		{#if showPersonal}
+			{#if showFloatingClose}
+				<div class="detail-floating-close">
+					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
+						Close
+					</button>
+				</div>
+			{/if}
 			<article id="overview" class="detail-card detail-card-governance" tabindex="-1">
 				<h3 id="overview-head" class="detail-title" tabindex="-1">AI Governance</h3>
 				<p class="detail-standfirst">
@@ -97,7 +142,12 @@
 					development history. It is not a hypothetical project brief.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
+					<button
+						bind:this={bottomCloseAction}
+						class="cta cta-resume section-cta-eliora"
+						type="button"
+						onclick={closePersonal}
+					>
 						Close
 					</button>
 				</div>

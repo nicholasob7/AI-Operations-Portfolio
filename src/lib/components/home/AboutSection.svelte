@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount, tick } from 'svelte';
+
 	type Props = {
 		showPrecision: boolean;
 		openPrecision: () => void;
@@ -6,6 +8,42 @@
 	};
 
 	let { showPrecision, openPrecision, closePrecision }: Props = $props();
+	let bottomCloseAction = $state<HTMLButtonElement | null>(null);
+	let showFloatingClose = $state(false);
+
+	const bottomCloseVisible = () => {
+		if (!bottomCloseAction) return false;
+
+		const rect = bottomCloseAction.getBoundingClientRect();
+		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
+	};
+
+	const updateFloatingClose = () => {
+		showFloatingClose = showPrecision && !bottomCloseVisible();
+	};
+
+	onMount(() => {
+		const handleViewportChange = () => {
+			updateFloatingClose();
+		};
+
+		updateFloatingClose();
+		window.addEventListener('scroll', handleViewportChange, { passive: true });
+		window.addEventListener('resize', handleViewportChange);
+
+		return () => {
+			window.removeEventListener('scroll', handleViewportChange);
+			window.removeEventListener('resize', handleViewportChange);
+		};
+	});
+
+	$effect(() => {
+		showPrecision;
+		if (typeof window === 'undefined') return;
+		void tick().then(() => {
+			updateFloatingClose();
+		});
+	});
 </script>
 
 <section class="card about-section">
@@ -31,6 +69,13 @@
 			</div>
 		{/if}
 		{#if showPrecision}
+			{#if showFloatingClose}
+				<div class="detail-floating-close">
+					<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
+						Close
+					</button>
+				</div>
+			{/if}
 			<article id="precision" class="detail-card" tabindex="-1">
 				<h3 id="precision-head" class="detail-title" tabindex="-1">Semantic Control</h3>
 				<p class="detail-standfirst">
@@ -52,7 +97,12 @@
 					independent human employment reference.
 				</p>
 				<div class="detail-card-actions">
-					<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
+					<button
+						bind:this={bottomCloseAction}
+						class="cta cta-resume section-cta-about"
+						type="button"
+						onclick={closePrecision}
+					>
 						Close
 					</button>
 				</div>
