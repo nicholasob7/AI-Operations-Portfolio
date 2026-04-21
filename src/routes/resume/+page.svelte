@@ -192,7 +192,6 @@
 
 	const allSkillsOpen = $derived(openSkillIndices.length === technicalSkills.length);
 	const anySkillsOpen = $derived(openSkillIndices.length > 0);
-	const openSkillCount = $derived(openSkillIndices.length);
 
 	const toggleSkill = (index: number) => {
 		if (allSkillsOpen) {
@@ -381,7 +380,7 @@
 				<p class="section-note">Click + for one category at a time.</p>
 			</div>
 			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
-				{allSkillsOpen ? 'Collapse all' : 'View all'}
+				{allSkillsOpen ? 'Collapse' : 'View all'}
 			</button>
 		</div>
 
@@ -423,7 +422,7 @@
 		{#if anySkillsOpen}
 			<div class="skills-footer-actions">
 				<button bind:this={bottomSkillsCollapse} class="section-reset-button" type="button" onclick={collapseSkills}>
-					{openSkillCount === 1 ? 'Collapse open category' : 'Collapse open categories'}
+					Collapse
 				</button>
 			</div>
 		{/if}
@@ -979,8 +978,38 @@
 		.resume-scroll-actions {
 			top: 0.55rem;
 			right: 0.85rem;
-			left: 0.85rem;
-			justify-content: stretch;
+			left: auto;
+			gap: 0.35rem;
+			padding: 0.35rem;
+			border: 1px solid rgba(167, 213, 255, 0.22);
+			border-radius: 999px;
+			background: rgba(10, 18, 34, 0.58);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+			box-shadow:
+				0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+				0 12px 26px rgba(4, 9, 22, 0.28);
+			justify-content: flex-end;
+		}
+
+		.resume-scroll-actions .resume-print-link,
+		.resume-scroll-actions .resume-home-link,
+		.resume-scroll-actions .resume-scroll-collapse {
+			width: auto;
+			min-width: 0;
+			padding: 0.56rem 0.8rem;
+		}
+
+		.resume-scroll-actions .resume-print-link {
+			order: 1;
+		}
+
+		.resume-scroll-actions .resume-home-link {
+			order: 2;
+		}
+
+		.resume-scroll-actions .resume-scroll-collapse {
+			order: 3;
 		}
 	}
 </style>
