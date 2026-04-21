@@ -165,13 +165,6 @@
 				<li>Confirmed outcomes stayed separate from assumptions that needed more evidence</li>
 			</ul>
 
-			<hr />
-			<h2>Attribution Note</h2>
-			<p class="doc-note">
-				This portfolio description was prepared with AI-assisted drafting support. Repository artifacts,
-				validation records, and operational observations were used to summarize the work while preserving
-				confidentiality.
-			</p>
 			<div bind:this={bottomActions} class="doc-actions">
 				<a
 					class="doc-cta doc-cta-print"

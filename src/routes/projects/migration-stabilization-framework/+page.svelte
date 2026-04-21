@@ -137,12 +137,6 @@
 				</li>
 			</ul>
 
-			<hr />
-			<h2>Attribution Note</h2>
-			<p class="doc-note">
-				This portfolio description was prepared with AI-assisted drafting support. Repository artifacts and
-				technical documents were used to summarize the work while preserving confidentiality.
-			</p>
 			<div bind:this={bottomActions} class="doc-actions">
 				<a
 					class="doc-cta doc-cta-print"
