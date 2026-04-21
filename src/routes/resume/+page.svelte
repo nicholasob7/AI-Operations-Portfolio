@@ -377,7 +377,9 @@
 		<div class="section-head">
 			<div class="section-head-copy">
 				<h2>Technical Skills</h2>
-				<p class="section-note">Click + for one category at a time.</p>
+				<p class="section-note">
+					{allSkillsOpen ? 'Click - = close to one category' : 'Click + = open one category'}
+				</p>
 			</div>
 			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
 				{allSkillsOpen ? 'Collapse' : 'View all'}
