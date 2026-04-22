@@ -4,6 +4,14 @@ Static SvelteKit portfolio site for Nicko O'Brien, focused on AI-forward IT oper
 
 The site is built as a fully prerendered static site with `@sveltejs/adapter-static`.
 
+## Template reuse note
+
+This repository can be reused as a template, but the current deployed instance is canonically bound to `https://nicko.obrienai.com`.
+
+If you clone or adapt this repo for another site, update `src/lib/site.ts` to your own canonical origin before deployment. Canonical metadata and sitemap output derive from that source.
+
+If you do not change it, your cloned site may emit the wrong canonical public URLs.
+
 ## Purpose
 
 This repository is not just a portfolio shell. It is built to present resume and case-study material in a way that reduces reader effort.
