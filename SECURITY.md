@@ -31,6 +31,7 @@ This repository is intentionally host-neutral. Production-only controls that dep
 The current repo-level baseline is:
 
 - SvelteKit-managed CSP for prerendered static output
+- checked-in `static/_headers` for hosts that honor static header manifests
 - pinned `cookie` dependency override in `package.json`
 - static public assets only
 
@@ -41,7 +42,7 @@ When this site is deployed to Cloudflare Pages, apply the following at the Cloud
 - serve the production site on a custom domain over HTTPS
 - enable Always Use HTTPS
 - enable HSTS only after the final domain setup is stable and all intended subdomains are HTTPS-safe
-- add security headers through Cloudflare Pages custom headers (`_headers`) or the equivalent Pages header configuration
+- use the checked-in `static/_headers` file or an equivalent Pages header configuration
 
 Recommended host-applied headers:
 
@@ -57,6 +58,7 @@ Recommended host-applied indexing rules:
 ## CSP Boundary
 
 The site currently manages its main CSP in SvelteKit so that script hashes are generated automatically during build.
+For prerendered output, that policy is emitted into the generated HTML as a `<meta http-equiv="content-security-policy">` tag rather than a host response header.
 
 Do not add a second host-managed `Content-Security-Policy` later unless that policy is being intentionally coordinated with or replacing the SvelteKit-managed policy. Two separate CSP sources increase drift risk and can produce unexpectedly stricter combined behavior.
 
@@ -66,3 +68,9 @@ If a later deployment requires header-only protections that a prerendered meta C
 - HSTS
 
 If a future deployment chooses to move CSP fully to the host layer, remove or redesign the repo-managed CSP at the same time rather than running two independent policies in parallel.
+
+## Content Rendering Boundary
+
+Current XSS safety depends on hard-coded Svelte and static HTML content only.
+
+Do not introduce `{@html}`, `innerHTML`, markdown/frontmatter/CMS ingestion, or other raw content rendering without explicit security review and a defined sanitization and output-encoding boundary.
