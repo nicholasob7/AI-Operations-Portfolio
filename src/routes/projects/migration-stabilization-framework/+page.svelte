@@ -71,10 +71,9 @@
 		<div class="doc-text" aria-label="Migration stabilization project details">
 			<h2>Summary</h2>
 			<p class="doc-summary">
-				Built from the successful remediation work in Case 1, this project turns validated fix logic into a
-				framework for controlled deployment. Because packaging beyond remediation was blocked
-				by external factors, the current version reached successful test-device validation, with full
-				production completion still pending.
+				Built from the successful remediation script development work, this project turns validated fix
+				logic into a framework for controlled deployment. Active reconstruction of installation packaging
+				has reached successful test-device validation, with full production deployment still pending.
 			</p>
 
 			<h2>What We Found</h2>
