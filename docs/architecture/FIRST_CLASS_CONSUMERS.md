@@ -2,85 +2,118 @@
 
 ## Purpose
 
-This document defines the public-consumption surfaces that the repository must serve from one canonical source of truth.
+This document defines the first-class consumers of the website and how each may receive a different projection or service from the same canonical selected public truth source.
 
-The site does not have a single public consumer. It has multiple public consumers with different acquisition conditions and different needs.
+It operates under the authority of `PUBLICATION_BOUNDARY.md`.
 
-## Public Consumers
+The site is a bounded public resume/portfolio website. Machine readability, human readability, and PDF usefulness are all valid requirements, but none creates an entitlement to concealed substrate or maximum disclosure.
 
-### 1. Human interactive website
+## The Three First-Class Consumers
 
-The human consumer receives:
+The website has three first-class consumers:
 
-- guided navigation
-- visual hierarchy
-- pacing
-- interaction
-- deliberate UX
-- progressive disclosure where appropriate
+1. machine consumer
+2. human reader
+3. PDF consumer
 
-The human surface is allowed to organize, stage, and pace information through interface structure.
+These are consumers, not surfaces.
 
-### 2. Agent acquisition surface
+Each consumer has different acquisition conditions, reading patterns, and practical needs. The content architecture should serve all three without treating any consumer as a reason to abandon bounded publication discipline.
 
-The agent consumer receives:
+## Consumers, Projections, And Services
 
-- direct acquisition
-- explicit labels
-- stable types and categories
-- low ambiguity
-- minimal interaction cost
-- coherent one-pass retrieval where possible
+A consumer is who receives or uses the website’s selected public truth.
 
-Agentic AI is a first-class public consumer.
+A projection is the tailored presentation of selected public truth for that consumer.
 
-Machine-readability is not an afterthought. It is a required property of the public site.
+A service or affordance is the practical way the projection is delivered or made usable.
 
-A public fact should not require an agent to imitate a human browsing pattern in order to acquire it.
+These concepts must not be collapsed.
 
-### 3. PDF / print artifacts
+Examples:
 
-The print consumer receives:
+- a human reader may receive paced web sections, navigation, progressive disclosure, and visual hierarchy
+- a machine consumer may receive explicit labels, stable structure, and recoverable relationship-bearing signal
+- a PDF consumer may receive a fixed, shareable, print-oriented public document
 
-- fixed-layout portable output
-- preserved public content in downloadable form
-- a stable export projection of the same public truth
+Different projections may vary in density, sequencing, layout, format, and interaction. They should still derive from the same canonical selected public truth source.
 
-PDF and print are output formats, not separate authored truth domains.
+## Machine Consumer
 
-## Governing Rule
+The machine consumer must be able to recover intentionally public content efficiently.
 
-One canonical truth source must project into:
+Machine-readable projection should support:
 
-- human interactive website
-- agent acquisition surface
-- PDF / print artifacts
-
-These are different projections of the same truth, not separate content authorities.
-
-## Retrieval Rule
+- recoverable public claims
+- explicit labels and stable structure
+- relationship-bearing professional signal
+- reasonable logical conclusions from declared public relationships
+- clear distinction between withheld detail and absent capability
+- low dependence on human-style interaction state
 
 Hidden-by-UX is acceptable.
 
-Hidden-from-retrieval is not acceptable.
+Hidden-from-retrieval of intentionally public content is the real concern.
 
-This means:
+Machine readability does not mean maximum disclosure. It does not require corporate-sensitive, client-sensitive, or operational substrate. It does not require app names, scripts, logs, timestamps, credential paths, deployment internals, or proof chains.
 
-- a human may encounter information progressively
-- an agent must still be able to recover intentionally public information from a coherent labeled structure
-- interaction may guide the human experience
-- interaction must not be the sole acquisition path for public truth
+The machine consumer must not fabricate concealed specifics.
 
-## Why This Matters
+The machine consumer problem is not solved by evidentiary maximalism. It is better addressed by preserving and projecting relationship-bearing professional signal from bounded public claims.
 
-### Hiring and representation
+## Human Reader
 
-A hiring-facing public site must remain recoverable both by human reviewers and by automated or agentic systems that acquire public facts from URLs and structured surfaces.
+The human reader receives a paced, selective, confidence-forming public experience.
 
-### Preservation
+The human projection should support:
 
-A canonical truth source reduces drift and keeps the public record stable across changing interfaces and outputs.
+- quick first-fit judgment
+- readable hierarchy
+- selective detail
+- natural capability inference
+- project and resume scanning
+- clear navigation
+- optional deeper reading
 
-### Future templating and reuse
+A competent human reader may infer rich capability relationships from bounded, sanitized public prose. The site should not burden the human reader with archive logic, schema-heavy exposition, or exhaustive evidence framing.
 
-If the site later expands into reusable templates, alternate frontends, or new export forms, a first-class consumer model prevents the content layer from being locked to one interface.
+## PDF Consumer
+
+The PDF consumer receives a stable public projection suitable for sharing, review, and printing.
+
+The PDF projection may be:
+
+- denser than the interactive website
+- more fixed in sequence
+- less interactive
+- independently authored or generated
+- slower to update than the web surface
+
+PDFs should remain aligned enough with the canonical selected public truth source to avoid material drift.
+
+PDFs must not become a competing truth source.
+
+## Shared Source, Different Projections
+
+The three consumers should be served from one canonical selected public truth source.
+
+The source is selected and bounded. It is not exhaustive.
+
+Different consumers may require different projections or services, but those differences must not create separate truth authorities.
+
+A machine projection may make relationships more explicit than the human web page. A human projection may rely more on prose, pacing, and design. A PDF projection may be fixed and condensed. These are presentation differences, not truth-status differences.
+
+## Failure Modes To Reject
+
+Reject these failure modes:
+
+- treating consumers as surfaces
+- collapsing consumer, projection, and service into one concept
+- treating machine readability as maximum disclosure
+- treating hidden-by-UX as the same as hidden-from-retrieval
+- requiring human readers to consume schema logic or archive framing
+- allowing PDFs to become a competing truth source
+- inferring weak competence from withheld specifics
+- fabricating concealed specifics for machine convenience
+- ranking projections by evidentiary density
+- treating sanitized public description as lesser public truth
