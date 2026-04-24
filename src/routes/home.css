@@ -1,6 +1,10 @@
 	:root {
 		--bg-0: #060912;
 		--bg-1: #0b1326;
+		--page-intro-overlay-ease: cubic-bezier(0.12, 0.72, 0.16, 1);
+		--page-intro-content-fade-duration: 5400ms;
+		--page-intro-content-ease: var(--page-intro-overlay-ease);
+		--page-intro-overlay-fade-duration: 5400ms;
 		--panel: rgba(14, 22, 42, 0.78);
 		--text-main: #e8eefc;
 		--text-muted: #aab8d8;
@@ -16,6 +20,10 @@
 		--title-cyan: #4f90ae;
 		--title-violet: #5f5197;
 		--title-green: #457b64;
+	}
+
+	html {
+		scrollbar-gutter: stable;
 	}
 
 	body {
@@ -52,6 +60,16 @@
 		padding: 3rem 1.25rem 4rem;
 		display: grid;
 		gap: 1.5rem;
+		opacity: 1;
+		transition: opacity var(--page-intro-content-fade-duration) var(--page-intro-content-ease);
+	}
+
+	.page.page-intro-content-hidden {
+		opacity: 0;
+	}
+
+	.page.page-intro-content-crossfading {
+		opacity: 1;
 	}
 
 	.page::before {
@@ -120,8 +138,8 @@
 		opacity: 1;
 		transform: translateY(0) scale(1);
 		transition:
-			opacity 900ms ease,
-			transform 900ms ease;
+			opacity var(--page-intro-overlay-fade-duration) var(--page-intro-overlay-ease),
+			transform var(--page-intro-overlay-fade-duration) var(--page-intro-overlay-ease);
 		background:
 			radial-gradient(circle at 50% 18%, rgba(56, 93, 156, 0.36) 0%, rgba(8, 13, 24, 0) 44%),
 			linear-gradient(180deg, #050912 0%, #0b1326 100%);
@@ -138,7 +156,7 @@
 
 	.page-intro-overlay-fading {
 		opacity: 0;
-		transform: scale(1.012);
+		transform: scale(1.006);
 	}
 
 	.page-intro-overlay-image {
@@ -1471,6 +1489,10 @@
 
 		.cta,
 		.projects article {
+			transition: none;
+		}
+
+		.page {
 			transition: none;
 		}
 
