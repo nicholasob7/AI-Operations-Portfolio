@@ -291,6 +291,30 @@ export const canonicalSource: {
 				progressionNote: 'Testing to validation to live deployment progression.'
 			},
 			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_migration_project',
+			contextType: 'project_context',
+			contextNote:
+				'Reduced public migration stabilization framework detail for enterprise application deployment control.',
+			sourceSurface: 'projects.migration',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Public migration framework detail retained in bounded form.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_migration_progression',
+			contextType: 'status_context',
+			contextNote:
+				'Validated test-device reconstruction with production rollout still pending controlled deployment.',
+			sourceSurface: 'projects.migration',
+			statusOrProgression: {
+				status: 'pending',
+				progressionNote: 'Successful test-device validation with production rollout pending.'
+			},
+			releaseState: 'retain'
 		}
 	],
 	signals: [
@@ -334,7 +358,14 @@ export const canonicalSource: {
 			id: 'sig_migration_capability',
 			signalClass: 'capability',
 			signalNote: 'Migration stabilization and package-control capability derived from live remediation work.',
-			supportingIds: ['clm_home_migration_card', 'rel_home_migration_card_to_capability'],
+			supportingIds: [
+				'clm_home_migration_card',
+				'clm_migration_summary',
+				'clm_migration_findings',
+				'clm_migration_helped',
+				'rel_home_migration_card_to_capability',
+				'rel_migration_summary_to_capability'
+			],
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Current active selected-work signal.'
@@ -346,10 +377,33 @@ export const canonicalSource: {
 			id: 'sig_migration_confidence',
 			signalClass: 'confidence',
 			signalNote: 'Confidence signal from reproducible and audit-ready migration stabilization framing.',
-			supportingIds: ['clm_home_migration_card', 'rel_home_migration_card_to_confidence'],
+			supportingIds: [
+				'clm_home_migration_card',
+				'clm_migration_results',
+				'clm_migration_helped',
+				'rel_home_migration_card_to_confidence',
+				'rel_migration_results_to_confidence'
+			],
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Project is active, but the framework signal is already publicly expressed.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_migration_judgment',
+			signalClass: 'judgment',
+			signalNote:
+				'Judgment signaled through clear boundaries, traceability, shared review access, and reusable rollout discipline.',
+			supportingIds: [
+				'clm_migration_findings',
+				'clm_migration_worked',
+				'rel_migration_worked_to_judgment'
+			],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Migration framework remains bounded but judgment-rich.'
 			},
 			inferenceLabel: 'strongly_implied',
 			releaseState: 'retain'
@@ -578,7 +632,13 @@ export const canonicalSource: {
 			id: 'sig_remediation_capability',
 			signalClass: 'capability',
 			signalNote: 'Scripting and remediation capability in live enterprise incident context.',
-			supportingIds: ['clm_remediation_summary', 'rel_remediation_action_to_progression'],
+			supportingIds: [
+				'clm_remediation_summary',
+				'clm_remediation_build',
+				'clm_remediation_helped',
+				'rel_remediation_action_to_progression',
+				'rel_remediation_build_to_capability'
+			],
 			statusOrProgression: {
 				status: 'in_production_use',
 				progressionNote: 'Capability strengthened by staged progression into live use.'
@@ -590,7 +650,12 @@ export const canonicalSource: {
 			id: 'sig_remediation_confidence',
 			signalClass: 'confidence',
 			signalNote: 'Confidence supported by testing, validation, and controlled production use.',
-			supportingIds: ['clm_remediation_progression', 'rel_remediation_progression_to_confidence'],
+			supportingIds: [
+				'clm_remediation_progression',
+				'clm_remediation_use',
+				'rel_remediation_progression_to_confidence',
+				'rel_remediation_use_to_confidence'
+			],
 			statusOrProgression: {
 				status: 'validated',
 				progressionNote: 'Testing to validation to live deployment.'
@@ -602,7 +667,13 @@ export const canonicalSource: {
 			id: 'sig_remediation_judgment',
 			signalClass: 'judgment',
 			signalNote: 'Disciplined separation of successful remediation from out-of-scope failures.',
-			supportingIds: ['clm_remediation_boundary', 'rel_remediation_boundary_to_judgment'],
+			supportingIds: [
+				'clm_remediation_boundary',
+				'clm_remediation_findings',
+				'clm_remediation_helped',
+				'rel_remediation_boundary_to_judgment',
+				'rel_remediation_findings_to_judgment'
+			],
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: ''
@@ -751,7 +822,7 @@ export const canonicalSource: {
 			claimKind: 'project_card_summary',
 			claimOrigin: 'descriptive_summary',
 			sourceSurface: 'homepage.selected-work',
-			contextIds: ['ctx_home_selected_work'],
+			contextIds: ['ctx_home_selected_work', 'ctx_migration_project', 'ctx_migration_progression'],
 			signalIds: ['sig_migration_capability', 'sig_migration_confidence'],
 			statusOrProgression: {
 				status: 'active',
@@ -1474,6 +1545,195 @@ export const canonicalSource: {
 				'pdf_detail',
 				'query_relevance_candidate'
 			]
+		},
+		{
+			id: 'clm_remediation_build',
+			claimText:
+				'Built with AI-assisted support and standard tooling, then shaped through staged testing, user-context targeting, cache cleanup, shortcut control, binary checks, and JSON-compatible status output for downstream parsing.',
+			claimKind: 'project_workflow',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.remediation',
+			contextIds: ['ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_remediation_capability', 'sig_remediation_confidence'],
+			statusOrProgression: {
+				status: 'validated',
+				progressionNote: 'Workflow matured from non-production testing to live use.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Build workflow is public; exact internal tooling and deployment substrate remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_remediation_findings',
+			claimText:
+				'Incidents clustered in upgrade scenarios rather than clean first-time installs. Publicly stated causes included cache drift, profile contamination, mixed shortcut paths, duplicate variants, validation gaps, and stale per-profile state.',
+			claimKind: 'project_findings',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.remediation',
+			contextIds: ['ctx_remediation_project'],
+			signalIds: ['sig_remediation_judgment'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Failure pattern and root-cause framing were established through live incident review.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Failure pattern is public; exact application and client substrate remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_remediation_use',
+			claimText:
+				'The script served as the main evidence item in revised deployment-package work, linked remediation actions to observed symptoms, and was approved for controlled live use on single endpoints while broader wrapper lifecycle testing remained separate.',
+			claimKind: 'project_application',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.remediation',
+			contextIds: ['ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_remediation_confidence', 'sig_remediation_judgment'],
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: 'Controlled live approval and bounded deployment use are publicly stated.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Operational packaging and deployment specifics remain intentionally undisclosed.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_remediation_helped',
+			claimText:
+				'Remediation actions targeted real observed failures, refinement decisions followed test-device and production outcomes, defensive design handled environment variants, and confirmed outcomes stayed separate from assumptions needing more evidence.',
+			claimKind: 'project_reasoning',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.remediation',
+			contextIds: ['ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_remediation_capability', 'sig_remediation_judgment'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Public explanation of why the remediation work held up under live conditions.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Reasoning model is public; lower-level environment specifics remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_migration_summary',
+			claimText:
+				'Built from successful remediation script work, this migration-stabilization project turns validated fix logic into a framework for controlled deployment. Installation-package reconstruction reached successful test-device validation, with full production rollout still pending.',
+			claimKind: 'project_summary',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.migration',
+			contextIds: ['ctx_migration_project', 'ctx_migration_progression'],
+			signalIds: ['sig_migration_capability', 'sig_migration_confidence', 'sig_migration_judgment'],
+			statusOrProgression: {
+				status: 'pending',
+				progressionNote: 'Validated on test devices, with production deployment still pending.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Framework summary is public; package, client, and deployment substrate remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_migration_findings',
+			claimText:
+				'Publicly stated findings included user-context drift, cache conflicts, shortcut issues, installer weak points, validation gaps, and mapped links from live remediation steps to new package controls with explicit change tracking.',
+			claimKind: 'project_findings',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.migration',
+			contextIds: ['ctx_migration_project'],
+			signalIds: ['sig_migration_capability', 'sig_migration_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Findings inform the current active stabilization framework.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Failure classes and control mapping are public; exact package substrate remains bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_migration_results',
+			claimText:
+				'Test-device validation resolved duplicate paths, intermittent launch failures, and workaround drift while reducing installation ambiguity through earlier failure detection. Records were assembled for review, change submission, and later audit, with production rollout still pending.',
+			claimKind: 'project_results',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.migration',
+			contextIds: ['ctx_migration_project', 'ctx_migration_progression'],
+			signalIds: ['sig_migration_confidence'],
+			statusOrProgression: {
+				status: 'validated',
+				progressionNote: 'Validated on test devices, not yet fully rolled out to production.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Validation outcome is public; underlying package and deployment internals remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_migration_helped',
+			claimText:
+				'The framework helped technical teams with control mapping, smoke tests, integrity checks, and package comparisons; helped business and compliance readers with clear summaries and confidence statements; prepared change materials; and left behind a reusable process for future migrations.',
+			claimKind: 'project_application',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.migration',
+			contextIds: ['ctx_migration_project'],
+			signalIds: ['sig_migration_capability', 'sig_migration_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Framework utility is public even while rollout completion remains pending.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Stakeholder-facing utility is public; internal change-process detail remains bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_migration_worked',
+			claimText:
+				'The framework worked because each control stayed linked to installer behavior, remediation results, or endpoint state; findings stayed separate from assumptions and open questions; one structure served technical, compliance, operations, and documentation audiences; and the process is reusable for similar enterprise migrations.',
+			claimKind: 'project_reasoning',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.migration',
+			contextIds: ['ctx_migration_project', 'ctx_migration_progression'],
+			signalIds: ['sig_migration_judgment', 'sig_migration_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Public explanation of why the stabilization approach is reusable and reviewable.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Reasoning and traceability model are public; concealed package substrate is not.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
 		}
 	],
 	relationships: [
@@ -1555,6 +1815,60 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Active framework with reproducible and audit-ready framing.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_migration_summary_to_capability',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_migration_summary',
+			toId: 'sig_migration_capability',
+			relationshipNote:
+				'Migration summary supports bounded capability inference for controlled deployment reconstruction and stabilization.',
+			statusOrProgression: {
+				status: 'pending',
+				progressionNote: 'Validated framework with rollout still pending.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_migration_results_to_confidence',
+			relationshipType: 'testing_to_confidence',
+			fromId: 'clm_migration_results',
+			toId: 'sig_migration_confidence',
+			relationshipNote:
+				'Test-device validation and prepared review records strengthen the bounded migration confidence signal.',
+			statusOrProgression: {
+				status: 'validated',
+				progressionNote: 'Validation complete; production rollout remains pending.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_migration_worked_to_judgment',
+			relationshipType: 'judgment_to_boundary',
+			fromId: 'clm_migration_worked',
+			toId: 'sig_migration_judgment',
+			relationshipNote:
+				'Explicit traceability, separation of findings from assumptions, and reusable process framing support the bounded judgment signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
 			},
 			inferenceLabel: 'strongly_implied',
 			releaseState: 'retain',
@@ -1830,6 +2144,60 @@ export const canonicalSource: {
 			relationshipNote: 'Public scope boundary signals disciplined judgment.',
 			statusOrProgression: {
 				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_remediation_build_to_capability',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_remediation_build',
+			toId: 'sig_remediation_capability',
+			relationshipNote:
+				'Public build workflow and technical controls strengthen the bounded remediation capability signal.',
+			statusOrProgression: {
+				status: 'validated',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_remediation_use_to_confidence',
+			relationshipType: 'testing_to_confidence',
+			fromId: 'clm_remediation_use',
+			toId: 'sig_remediation_confidence',
+			relationshipNote:
+				'Controlled live approval and explicit evidence role strengthen the bounded remediation confidence signal.',
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_remediation_findings_to_judgment',
+			relationshipType: 'judgment_to_boundary',
+			fromId: 'clm_remediation_findings',
+			toId: 'sig_remediation_judgment',
+			relationshipNote:
+				'Public incident pattern analysis and scoped boundary handling support the remediation judgment signal.',
+			statusOrProgression: {
+				status: 'complete',
 				progressionNote: ''
 			},
 			inferenceLabel: 'strongly_implied',

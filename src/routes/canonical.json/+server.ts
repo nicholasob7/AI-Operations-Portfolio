@@ -166,11 +166,18 @@ const surfaceSpecs = [
 		notes: ['Published qualifications and certifications.']
 	},
 	{
-		id: 'projects.remediation_slice',
-		label: 'Remediation Project Slice',
-		surface_type: 'project_slice',
+		id: 'projects.remediation_detail',
+		label: 'Remediation Project Detail',
+		surface_type: 'project_detail',
 		coverage_status: 'covered',
-		notes: ['Bounded public remediation project slice only, not the full project page.']
+		notes: ['Full bounded public remediation project page coverage.']
+	},
+	{
+		id: 'projects.migration_detail',
+		label: 'Migration Stabilization Project Detail',
+		surface_type: 'project_detail',
+		coverage_status: 'covered',
+		notes: ['Full bounded public migration stabilization project page coverage.']
 	}
 ];
 
@@ -212,7 +219,7 @@ const entrySpecs = [
 		entry_type: 'support_entry',
 		public_summary:
 			'Selected-work summaries for remediation and migration work as currently surfaced on the homepage.',
-		contextIds: ['ctx_home_selected_work', 'ctx_remediation_project'],
+		contextIds: ['ctx_home_selected_work', 'ctx_remediation_project', 'ctx_migration_project'],
 		claimIds: ['clm_home_remediation_card', 'clm_home_migration_card'],
 		relationshipIds: [
 			'rel_home_remediation_card_to_capability',
@@ -275,21 +282,61 @@ const entrySpecs = [
 		projection_notes: ['Includes bounded qualification of the governance description basis.']
 	},
 	{
-		id: 'project-remediation-slice',
-		surface_id: 'projects.remediation_slice',
-		label: 'Remediation Project Slice',
-		entry_type: 'project_slice',
+		id: 'project-remediation-detail',
+		surface_id: 'projects.remediation_detail',
+		label: 'Remediation Project Detail',
+		entry_type: 'project_detail',
 		public_summary:
-			'Bounded remediation slice covering summary, staged progression into live use, and explicit scope boundary.',
+			'Full bounded remediation project detail covering build workflow, findings, operational use, live progression, and explicit scope discipline.',
 		contextIds: ['ctx_remediation_project', 'ctx_remediation_progression'],
-		claimIds: ['clm_remediation_summary', 'clm_remediation_progression', 'clm_remediation_boundary'],
+		claimIds: [
+			'clm_remediation_summary',
+			'clm_remediation_build',
+			'clm_remediation_findings',
+			'clm_remediation_use',
+			'clm_remediation_helped',
+			'clm_remediation_progression',
+			'clm_remediation_boundary'
+		],
 		relationshipIds: [
 			'rel_remediation_action_to_progression',
 			'rel_remediation_progression_to_confidence',
-			'rel_remediation_boundary_to_judgment'
+			'rel_remediation_boundary_to_judgment',
+			'rel_remediation_build_to_capability',
+			'rel_remediation_use_to_confidence',
+			'rel_remediation_findings_to_judgment'
 		],
 		signalIds: ['sig_remediation_capability', 'sig_remediation_confidence', 'sig_remediation_judgment'],
-		projection_notes: ['This is a bounded project slice, not a projection of the full remediation page.']
+		projection_notes: [
+			'Full bounded public remediation project page.',
+			'Operational substrate remains intentionally withheld.'
+		]
+	},
+	{
+		id: 'project-migration-detail',
+		surface_id: 'projects.migration_detail',
+		label: 'Migration Stabilization Project Detail',
+		entry_type: 'project_detail',
+		public_summary:
+			'Full bounded migration project detail covering framework summary, findings, validated results, stakeholder utility, and reusable review discipline.',
+		contextIds: ['ctx_migration_project', 'ctx_migration_progression'],
+		claimIds: [
+			'clm_migration_summary',
+			'clm_migration_findings',
+			'clm_migration_results',
+			'clm_migration_helped',
+			'clm_migration_worked'
+		],
+		relationshipIds: [
+			'rel_migration_summary_to_capability',
+			'rel_migration_results_to_confidence',
+			'rel_migration_worked_to_judgment'
+		],
+		signalIds: ['sig_migration_capability', 'sig_migration_confidence', 'sig_migration_judgment'],
+		projection_notes: [
+			'Full bounded public migration stabilization project page.',
+			'Validated test-device progress is represented without disclosing concealed package substrate.'
+		]
 	},
 	{
 		id: 'resume-identity-and-context',
