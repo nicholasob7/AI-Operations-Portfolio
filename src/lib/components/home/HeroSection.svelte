@@ -55,7 +55,7 @@
 			<a class="cta cta-github cta-feature" href={githubUrl} target="_blank" rel="noopener noreferrer me"
 				>GitHub<span class="sr-only"> (opens in new tab)</span></a
 			>
-			<a class="cta cta-resume" href="/resume">Resume</a>
+			<a class="cta cta-resume" href="/resume" data-sveltekit-preload-code="hover">Resume</a>
 			<button
 				class="cta cta-contact"
 				type="button"
