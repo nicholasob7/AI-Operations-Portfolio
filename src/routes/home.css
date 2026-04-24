@@ -29,6 +29,10 @@
 		color: var(--text-main);
 	}
 
+	body.home-intro-active {
+		overflow: hidden;
+	}
+
 	body::after {
 		content: '';
 		position: fixed;
@@ -105,40 +109,48 @@
 		z-index: 1;
 	}
 
-	.hero-portrait-overlay {
-		position: absolute;
+	.page-intro-overlay {
+		position: fixed;
 		inset: 0;
-		z-index: 2;
+		z-index: 200;
 		overflow: hidden;
-		pointer-events: none;
+		display: grid;
+		place-items: center;
+		pointer-events: auto;
 		opacity: 1;
 		transform: translateY(0) scale(1);
 		transition:
-			opacity 680ms ease,
-			transform 680ms ease;
-		background: linear-gradient(180deg, rgba(6, 9, 18, 0.06) 0%, rgba(6, 9, 18, 0.2) 100%);
+			opacity 900ms ease,
+			transform 900ms ease;
+		background:
+			radial-gradient(circle at 50% 18%, rgba(56, 93, 156, 0.36) 0%, rgba(8, 13, 24, 0) 44%),
+			linear-gradient(180deg, #050912 0%, #0b1326 100%);
 	}
 
-	.hero-portrait-overlay::after {
+	.page-intro-overlay::after {
 		content: '';
 		position: absolute;
 		inset: 0;
 		background:
-			linear-gradient(180deg, rgba(8, 12, 22, 0.08) 0%, rgba(8, 12, 22, 0.36) 100%),
-			linear-gradient(90deg, rgba(8, 12, 22, 0.18) 0%, rgba(8, 12, 22, 0.04) 48%, rgba(8, 12, 22, 0.22) 100%);
+			linear-gradient(180deg, rgba(8, 12, 22, 0.04) 0%, rgba(8, 12, 22, 0.22) 100%),
+			linear-gradient(90deg, rgba(8, 12, 22, 0.32) 0%, rgba(8, 12, 22, 0.08) 18%, rgba(8, 12, 22, 0.08) 82%, rgba(8, 12, 22, 0.32) 100%);
 	}
 
-	.hero-portrait-overlay-fading {
+	.page-intro-overlay-fading {
 		opacity: 0;
-		transform: translateY(-0.35rem) scale(1.018);
+		transform: scale(1.012);
 	}
 
-	.hero-portrait-overlay-image {
+	.page-intro-overlay-image {
+		position: relative;
+		z-index: 1;
 		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center 30%;
+		width: min(100vw, 100vh);
+		height: min(100vw, 100vh);
+		max-width: 100vw;
+		max-height: 100vh;
+		object-fit: contain;
+		object-position: center center;
 	}
 
 	.hero-aurora {
@@ -1462,11 +1474,11 @@
 			transition: none;
 		}
 
-		.hero-portrait-overlay {
+		.page-intro-overlay {
 			transition: none;
 		}
 
-		.hero-portrait-overlay-fading {
+		.page-intro-overlay-fading {
 			transform: none;
 		}
 	}
