@@ -73,7 +73,11 @@
 			<p class="project-outcome">
 				Outcome: Standardized production remediation with an evidence-driven validation workflow.
 			</p>
-			<a class="cta cta-resume section-cta-remediation" href="/projects/remediation-script-development">
+			<a
+				class="cta cta-resume section-cta-remediation"
+				href="/projects/remediation-script-development"
+				data-sveltekit-preload-code="hover"
+			>
 				Complete
 			</a>
 		</article>
@@ -85,7 +89,11 @@
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
-			<a class="cta cta-resume section-cta-migration" href="/projects/migration-stabilization-framework">
+			<a
+				class="cta cta-resume section-cta-migration"
+				href="/projects/migration-stabilization-framework"
+				data-sveltekit-preload-code="hover"
+			>
 				Active
 			</a>
 		</article>
