@@ -137,6 +137,8 @@ They may differ in:
 
 They should not differ by maintaining separate public truth regimes.
 
+Project-level machine projections must not create parallel slice/detail entries for the same artifact unless the entries serve distinct consumer roles not already served by another surface.
+
 PDFs may lag if separately authored. That is a projection-management issue, not a separate truth authority.
 
 When public website content, machine-readable content, and PDFs diverge materially, the issue is alignment and drift, not evidence failure.
