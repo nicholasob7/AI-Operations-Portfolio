@@ -13,7 +13,7 @@
 	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterProfilePath = 'x.com/nicho0101';
-	const homepagePortraitHoldMs = 1000;
+	const homepagePortraitHoldMs = 800;
 	const homepagePortraitFadeMs = 1200;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(false);
@@ -214,24 +214,29 @@
 		fadeHomepagePortraitOverlay = false;
 		syncHomepageOverlayBodyState();
 
-		if (prefersReducedMotion) {
-			homepagePortraitDismissTimer = setTimeout(() => {
-				showHomepagePortraitOverlay = false;
-				homepagePortraitDismissTimer = null;
-				syncHomepageOverlayBodyState();
-			}, homepagePortraitHoldMs);
-		} else {
-			homepagePortraitFadeTimer = setTimeout(() => {
-				homepagePortraitFadeTimer = null;
-				dismissHomepagePortraitOverlay();
-			}, homepagePortraitHoldMs);
-		}
-
 		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
 		window.addEventListener('keydown', dismissOnInteraction);
 		window.addEventListener('wheel', dismissOnInteraction, { passive: true });
 		window.addEventListener('scroll', dismissOnInteraction, { passive: true });
 		window.addEventListener('mousemove', dismissOnMouseMove, { passive: true });
+
+		void afterLayoutSettles().then(() => {
+			if (!showHomepagePortraitOverlay) return;
+
+			if (prefersReducedMotion) {
+				homepagePortraitDismissTimer = setTimeout(() => {
+					showHomepagePortraitOverlay = false;
+					homepagePortraitDismissTimer = null;
+					syncHomepageOverlayBodyState();
+				}, homepagePortraitHoldMs);
+				return;
+			}
+
+			homepagePortraitFadeTimer = setTimeout(() => {
+				homepagePortraitFadeTimer = null;
+				dismissHomepagePortraitOverlay();
+			}, homepagePortraitHoldMs);
+		});
 
 		return () => {
 			clearHomepagePortraitTimers();
@@ -299,7 +304,11 @@
 	</div>
 {/if}
 
-<main class="page">
+<main
+	class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
+	class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
+	class="page"
+>
 	<HeroSection
 		{githubUrl}
 		{linkedInProfilePath}
