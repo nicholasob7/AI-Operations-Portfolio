@@ -139,6 +139,28 @@ export const canonicalSource: {
 			releaseState: 'retain'
 		},
 		{
+			id: 'ctx_home_contact',
+			contextType: 'publication_context',
+			contextNote: 'Homepage public contact and profile channel details exposed through interaction.',
+			sourceSurface: 'homepage.contact',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public contact surface on the homepage.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_home_selected_work',
+			contextType: 'publication_context',
+			contextNote: 'Homepage selected-work summaries for current public projects.',
+			sourceSurface: 'homepage.selected-work',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current project-card summaries on the homepage.'
+			},
+			releaseState: 'retain'
+		},
+		{
 			id: 'ctx_quality',
 			contextType: 'quality_context',
 			contextNote: 'Homepage natural-language and semantic-control material.',
@@ -168,6 +190,83 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: ''
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_identity',
+			contextType: 'publication_context',
+			contextNote: 'Resume header identity, location, contact, and focus framing.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public resume identity block.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_context',
+			contextType: 'publication_context',
+			contextNote: 'Resume context section covering self-directed AI growth and technical development.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public resume context points.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_initiative',
+			contextType: 'project_context',
+			contextNote: 'Resume initiative-in-scope section for active remediation and package reconstruction work.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'mixed_or_transitional',
+				progressionNote: 'Completed remediation work and active package reconstruction are both present.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_delegated_scope',
+			contextType: 'role_context',
+			contextNote: 'Resume delegated-scope section covering vendor queue, escalation reduction, and process redesign work.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current delegated operational scope.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_progression',
+			contextType: 'status_context',
+			contextNote: 'Resume role-progression map from service desk foundation to AI-forward operational delivery.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public progression map on the resume.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_skills',
+			contextType: 'role_context',
+			contextNote: 'Resume technical-skills taxonomy covering administration, support, troubleshooting, and AI in operations.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public technical-skills section.'
+			},
+			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_resume_qualifications',
+			contextType: 'publication_context',
+			contextNote: 'Resume qualifications and certification section.',
+			sourceSurface: 'resume.page',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public qualifications list.'
 			},
 			releaseState: 'retain'
 		},
@@ -230,6 +329,122 @@ export const canonicalSource: {
 			},
 			inferenceLabel: 'reasonably_inferable',
 			releaseState: 'retain_with_care'
+		},
+		{
+			id: 'sig_migration_capability',
+			signalClass: 'capability',
+			signalNote: 'Migration stabilization and package-control capability derived from live remediation work.',
+			supportingIds: ['clm_home_migration_card', 'rel_home_migration_card_to_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current active selected-work signal.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_migration_confidence',
+			signalClass: 'confidence',
+			signalNote: 'Confidence signal from reproducible and audit-ready migration stabilization framing.',
+			supportingIds: ['clm_home_migration_card', 'rel_home_migration_card_to_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Project is active, but the framework signal is already publicly expressed.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_resume_capability',
+			signalClass: 'capability',
+			signalNote:
+				'Broad enterprise IT operations capability across service desk, endpoint support, vendor coordination, process improvement, and AI-assisted operational work.',
+			supportingIds: [
+				'clm_resume_identity',
+				'clm_resume_initiative_completed',
+				'clm_resume_delegated_scope',
+				'clm_resume_progression_foundation',
+				'clm_resume_progression_trusted_scope',
+				'clm_resume_progression_specialist_scope',
+				'clm_resume_progression_ai_delivery',
+				'clm_resume_skills_identity_access',
+				'clm_resume_skills_m365',
+				'clm_resume_skills_endpoint',
+				'clm_resume_skills_enterprise_apps',
+				'clm_resume_skills_network',
+				'clm_resume_skills_service_ops',
+				'clm_resume_skills_knowledge',
+				'clm_resume_skills_ai_ops',
+				'rel_resume_identity_to_capability'
+			],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Capability surface across the current public resume.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_resume_confidence',
+			signalClass: 'confidence',
+			signalNote:
+				'Confidence supported by role progression, validated production work, trusted operational scope, and public qualifications.',
+			supportingIds: [
+				'clm_resume_initiative_completed',
+				'clm_resume_initiative_active',
+				'clm_resume_progression_trusted_scope',
+				'clm_resume_progression_ai_delivery',
+				'clm_resume_qualifications',
+				'rel_resume_initiative_completed_to_confidence',
+				'rel_resume_qualifications_to_confidence'
+			],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Confidence grows through trusted scope and validated delivery.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_resume_judgment',
+			signalClass: 'judgment',
+			signalNote:
+				'Judgment signaled through process redesign, traceability improvement, escalation reduction, and disciplined scope handling.',
+			supportingIds: [
+				'clm_resume_delegated_scope',
+				'clm_resume_progression_specialist_scope',
+				'clm_resume_initiative_completed',
+				'rel_resume_delegated_to_judgment',
+				'rel_resume_specialist_to_judgment'
+			],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Operational judgment is publicly visible in delegated and specialist scope.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_resume_direction',
+			signalClass: 'direction',
+			signalNote:
+				'AI-forward operational delivery and continued technical growth are part of the public professional direction.',
+			supportingIds: [
+				'clm_resume_identity',
+				'clm_resume_context_points',
+				'clm_resume_initiative_active',
+				'clm_resume_progression_ai_delivery',
+				'clm_resume_skills_ai_ops',
+				'rel_resume_context_to_direction',
+				'rel_resume_ai_delivery_to_direction',
+				'rel_resume_ai_skills_to_direction'
+			],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume direction is AI-forward within enterprise operations.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
 		},
 		{
 			id: 'sig_quality_capability',
@@ -415,6 +630,138 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
 				note: 'No named internal systems, vendors, or operational substrate.'
+			},
+			projectionTags: [
+				'machine_recoverable',
+				'human_summary',
+				'pdf_summary',
+				'query_relevance_candidate'
+			]
+		},
+		{
+			id: 'clm_home_contact_email',
+			claimText: 'nicko.obrien.ai@gmail.com',
+			claimKind: 'contact_email',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'homepage.contact',
+			contextIds: ['ctx_home_contact'],
+			signalIds: [],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public email contact channel.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
+		},
+		{
+			id: 'clm_home_contact_github',
+			claimText: 'https://github.com/nicholasob7',
+			claimKind: 'public_profile_url',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'homepage.contact',
+			contextIds: ['ctx_home_contact'],
+			signalIds: [],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public GitHub profile channel.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
+		},
+		{
+			id: 'clm_home_contact_linkedin',
+			claimText: 'linkedin.com/in/nicholasfobrien/',
+			claimKind: 'public_profile_path',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'homepage.contact',
+			contextIds: ['ctx_home_contact'],
+			signalIds: [],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public LinkedIn profile channel.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
+		},
+		{
+			id: 'clm_home_contact_twitter',
+			claimText: 'x.com/nicho0101',
+			claimKind: 'public_profile_path',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'homepage.contact',
+			contextIds: ['ctx_home_contact'],
+			signalIds: [],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public X/Twitter profile channel.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
+		},
+		{
+			id: 'clm_home_remediation_card',
+			claimText:
+				'Script Development. AI-assisted endpoint remediation for live post-deployment incidents. Built for production validation. Outcome: Standardized production remediation with an evidence-driven validation workflow.',
+			claimKind: 'project_card_summary',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'homepage.selected-work',
+			contextIds: ['ctx_home_selected_work', 'ctx_remediation_project'],
+			signalIds: ['sig_remediation_capability', 'sig_remediation_confidence'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Homepage selected-work card marked Complete.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Project summary remains bounded and does not expose concealed operational substrate.'
+			},
+			projectionTags: [
+				'machine_recoverable',
+				'human_summary',
+				'pdf_summary',
+				'query_relevance_candidate'
+			]
+		},
+		{
+			id: 'clm_home_migration_card',
+			claimText:
+				'Migration Framework. Evidence-driven migration stabilization methodology. Turns live remediation into robust package controls. Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.',
+			claimKind: 'project_card_summary',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'homepage.selected-work',
+			contextIds: ['ctx_home_selected_work'],
+			signalIds: ['sig_migration_capability', 'sig_migration_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Homepage selected-work card marked Active.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Migration framework summary remains bounded and does not disclose client or package substrate.'
 			},
 			projectionTags: [
 				'machine_recoverable',
@@ -670,6 +1017,384 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_identity',
+			claimText:
+				'Nicholas Francis O’Brien. Lower Hutt, New Zealand. nicko.obrien.ai@gmail.com. AI-Forward | Enterprise IT Operations | Process Improvement.',
+			claimKind: 'resume_identity',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_identity'],
+			signalIds: ['sig_resume_capability', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public resume header.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_summary', 'pdf_summary', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_context_points',
+			claimText:
+				'Deeply engaged in learning and applying AI in my own time. Building projects at different scales. Personal investment supports continued technical growth.',
+			claimKind: 'resume_context',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_context'],
+			signalIds: ['sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public resume context section.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_initiative_completed',
+			claimText:
+				'Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. The script was not at fault. This led to investigation of the install package itself.',
+			claimKind: 'resume_initiative_completed',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: 'Completed remediation work has passed validation and entered controlled production use.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Major vendor application is intentionally unnamed and package substrate remains bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_initiative_active',
+			claimText:
+				'Rebuilding the enterprise app package from the proven fix. Test-device validation is complete. Further rollout stages remain.',
+			claimKind: 'resume_initiative_active',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative'],
+			signalIds: ['sig_resume_confidence', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Package reconstruction is active, validated on a test device, and pending further rollout.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Enterprise package specifics remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_delegated_scope',
+			claimText:
+				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved traceability across related requests. Cut staff time and repeat work. Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model.',
+			claimKind: 'resume_delegated_scope',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_delegated_scope'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current delegated operational and vendor-facing scope.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Vendor names and internal workflow substrate remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_progression_foundation',
+			claimText:
+				'Service Desk Foundation. Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Foundational stage in the public progression map.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client names are omitted while environment scale and sectors remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_progression_trusted_scope',
+			claimText:
+				'Trusted Operational Scope. Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle tasks within service desk scope.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Trusted operational scope stage in the public progression map.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client identity remains bounded while trusted scope signal remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_progression_specialist_scope',
+			claimText:
+				'Specialist and Improvement Scope. Became the SME for privileged access requests across admin, local admin, shared, and external account types. Took on vendor-facing queue and transition responsibilities beyond normal front-line scope. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Reduced avoidable escalation, improved traceability, and cut staff time and repeat work.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression', 'ctx_resume_delegated_scope'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Specialist and improvement scope stage in the public progression map.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Internal privileged-access and queue substrate remain bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_progression_ai_delivery',
+			claimText:
+				'AI-Forward Operational Delivery. Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application. Moved the work from test-device validation into controlled production use for individual endpoint failures. Turned remediation results into evidence for package investigation and rebuild work. Continued into enterprise package reconstruction from the proven fix.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression', 'ctx_resume_initiative'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current AI-forward delivery stage with continuing package reconstruction.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Vendor application and package substrate remain intentionally bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_identity_access',
+			claimText:
+				'Identity and access administration: Active Directory, Entra ID, local admin, guest accounts, privileged access, account lifecycle.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_m365',
+			claimText:
+				'Messaging and Microsoft 365 support: Exchange Online, mailbox creation, mailbox access, shared mailboxes, distribution groups, Microsoft 365 support.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_endpoint',
+			claimText:
+				'Endpoint and device administration: Intune, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_enterprise_apps',
+			claimText:
+				'Enterprise applications and deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Specific applications remain unnamed while capability signal remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_network',
+			claimText:
+				'Network and connectivity troubleshooting: DNS issues, connectivity faults, first-line network diagnosis, escalation to specialist teams.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_service_ops',
+			claimText:
+				'Service operations and remote support: Jira Service Management, triage, incident and request handling, escalation, queue workflows, remote support.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_knowledge',
+			claimText:
+				'Knowledge, process, and documentation: documentation, knowledge base use and creation, troubleshooting steps, workflow traceability.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_skills_ai_ops',
+			claimText:
+				'AI in IT operations: AI-assisted research, troubleshooting, scripting, package rebuild, workflow improvement.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_qualifications',
+			claimText:
+				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training.',
+			claimKind: 'resume_qualifications',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_qualifications'],
+			signalIds: ['sig_resume_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public qualifications list.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_remediation_summary',
 			claimText:
 				'Built and deployed a remediation script for live post-deployment incidents. It targeted profile corruption, cache drift, and launch inconsistency. The script moved from testing into production use and became part of a wider stabilization effort.',
@@ -788,6 +1513,57 @@ export const canonicalSource: {
 			}
 		},
 		{
+			id: 'rel_home_remediation_card_to_capability',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_home_remediation_card',
+			toId: 'sig_remediation_capability',
+			relationshipNote: 'Homepage remediation card summary supports the bounded remediation capability signal.',
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Homepage selected-work card marked Complete.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_home_migration_card_to_capability',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_home_migration_card',
+			toId: 'sig_migration_capability',
+			relationshipNote: 'Homepage migration card summary supports the bounded migration capability signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Homepage selected-work card marked Active.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_home_migration_card_to_confidence',
+			relationshipType: 'project_status_to_claim_strength',
+			fromId: 'clm_home_migration_card',
+			toId: 'sig_migration_confidence',
+			relationshipNote: 'Homepage migration card outcome and framing support a bounded confidence signal for the active project.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Active framework with reproducible and audit-ready framing.'
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
 			id: 'rel_quality_precision_to_capability',
 			relationshipType: 'language_precision_to_semantic_control',
 			fromId: 'clm_quality_summary',
@@ -873,6 +1649,142 @@ export const canonicalSource: {
 			releaseState: 'retain_with_care',
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_identity_to_capability',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_identity',
+			toId: 'sig_resume_capability',
+			relationshipNote: 'Resume header and focus line explicitly frame core enterprise IT operations capability.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_context_to_direction',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_context_points',
+			toId: 'sig_resume_direction',
+			relationshipNote: 'Self-directed AI learning and project-building support the public direction signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_initiative_completed_to_confidence',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_initiative_completed',
+			toId: 'sig_resume_confidence',
+			relationshipNote: 'Validated production entry and fault isolation strengthen the bounded confidence signal.',
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_delegated_to_judgment',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_delegated_scope',
+			toId: 'sig_resume_judgment',
+			relationshipNote: 'Delegated scope and process redesign work support the bounded judgment signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_specialist_to_judgment',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_progression_specialist_scope',
+			toId: 'sig_resume_judgment',
+			relationshipNote: 'Specialist and improvement scope supports the public judgment and traceability signal.',
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_ai_delivery_to_direction',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_progression_ai_delivery',
+			toId: 'sig_resume_direction',
+			relationshipNote: 'AI-forward operational delivery stage strengthens the public direction signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_ai_skills_to_direction',
+			relationshipType: 'claim_to_signal',
+			fromId: 'clm_resume_skills_ai_ops',
+			toId: 'sig_resume_direction',
+			relationshipNote: 'AI in IT operations skill group supports the public AI-forward direction signal.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_resume_qualifications_to_confidence',
+			relationshipType: 'public_statement_to_confidence',
+			fromId: 'clm_resume_qualifications',
+			toId: 'sig_resume_confidence',
+			relationshipNote: 'Published qualifications support a bounded confidence signal without overclaiming.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
 				note: ''
 			}
 		},

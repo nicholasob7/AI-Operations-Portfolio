@@ -64,6 +64,36 @@ const entries = [
 		signalIds: ['sig_home_capability', 'sig_home_direction', 'sig_home_judgment']
 	},
 	{
+		id: 'homepage-public-channels',
+		sourceSurface: 'homepage.contact',
+		contextIds: ['ctx_home_contact'],
+		claimIds: [
+			'clm_home_contact_email',
+			'clm_home_contact_github',
+			'clm_home_contact_linkedin',
+			'clm_home_contact_twitter'
+		],
+		relationshipIds: [],
+		signalIds: []
+	},
+	{
+		id: 'homepage-selected-work-summaries',
+		sourceSurface: 'homepage.selected-work',
+		contextIds: ['ctx_home_selected_work', 'ctx_remediation_project'],
+		claimIds: ['clm_home_remediation_card', 'clm_home_migration_card'],
+		relationshipIds: [
+			'rel_home_remediation_card_to_capability',
+			'rel_home_migration_card_to_capability',
+			'rel_home_migration_card_to_confidence'
+		],
+		signalIds: [
+			'sig_remediation_capability',
+			'sig_remediation_confidence',
+			'sig_migration_capability',
+			'sig_migration_confidence'
+		]
+	},
+	{
 		id: 'homepage-quality-semantic-control',
 		sourceSurface: 'homepage.quality',
 		contextIds: ['ctx_quality'],
@@ -111,6 +141,68 @@ const entries = [
 			'rel_remediation_boundary_to_judgment'
 		],
 		signalIds: ['sig_remediation_capability', 'sig_remediation_confidence', 'sig_remediation_judgment']
+	},
+	{
+		id: 'resume-identity-and-context',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_identity', 'ctx_resume_context'],
+		claimIds: ['clm_resume_identity', 'clm_resume_context_points'],
+		relationshipIds: ['rel_resume_identity_to_capability', 'rel_resume_context_to_direction'],
+		signalIds: ['sig_resume_capability', 'sig_resume_direction']
+	},
+	{
+		id: 'resume-initiative-scope',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
+		claimIds: ['clm_resume_initiative_completed', 'clm_resume_initiative_active'],
+		relationshipIds: ['rel_resume_initiative_completed_to_confidence'],
+		signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_direction', 'sig_resume_judgment']
+	},
+	{
+		id: 'resume-delegated-scope',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_delegated_scope'],
+		claimIds: ['clm_resume_delegated_scope'],
+		relationshipIds: ['rel_resume_delegated_to_judgment'],
+		signalIds: ['sig_resume_capability', 'sig_resume_judgment']
+	},
+	{
+		id: 'resume-role-progression',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_progression', 'ctx_resume_initiative', 'ctx_resume_delegated_scope'],
+		claimIds: [
+			'clm_resume_progression_foundation',
+			'clm_resume_progression_trusted_scope',
+			'clm_resume_progression_specialist_scope',
+			'clm_resume_progression_ai_delivery'
+		],
+		relationshipIds: ['rel_resume_specialist_to_judgment', 'rel_resume_ai_delivery_to_direction'],
+		signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment', 'sig_resume_direction']
+	},
+	{
+		id: 'resume-technical-skills',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_skills'],
+		claimIds: [
+			'clm_resume_skills_identity_access',
+			'clm_resume_skills_m365',
+			'clm_resume_skills_endpoint',
+			'clm_resume_skills_enterprise_apps',
+			'clm_resume_skills_network',
+			'clm_resume_skills_service_ops',
+			'clm_resume_skills_knowledge',
+			'clm_resume_skills_ai_ops'
+		],
+		relationshipIds: ['rel_resume_ai_skills_to_direction'],
+		signalIds: ['sig_resume_capability', 'sig_resume_judgment', 'sig_resume_direction']
+	},
+	{
+		id: 'resume-qualifications',
+		sourceSurface: 'resume.page',
+		contextIds: ['ctx_resume_qualifications'],
+		claimIds: ['clm_resume_qualifications'],
+		relationshipIds: ['rel_resume_qualifications_to_confidence'],
+		signalIds: ['sig_resume_confidence']
 	}
 ].map((entry) => ({
 		...entry,
