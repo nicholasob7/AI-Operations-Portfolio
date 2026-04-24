@@ -60,7 +60,9 @@
 			>
 				Print
 			</a>
-			<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home</a>
+			<a class="doc-cta" data-sveltekit-reload data-sveltekit-preload-code="hover" href="/#deployment-head"
+				>Home</a
+			>
 		</div>
 	{/if}
 
@@ -172,7 +174,13 @@
 				>
 					Print
 				</a>
-				<a class="doc-cta" data-sveltekit-reload href="/#deployment-head">Home</a>
+				<a
+					class="doc-cta"
+					data-sveltekit-reload
+					data-sveltekit-preload-code="hover"
+					href="/#deployment-head"
+					>Home</a
+				>
 			</div>
 		</div>
 	</section>

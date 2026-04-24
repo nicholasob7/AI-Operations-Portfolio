@@ -292,7 +292,14 @@
 			>
 				Print
 			</a>
-			<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home</a>
+			<a
+				class="resume-home-link"
+				data-sveltekit-reload
+				data-sveltekit-preload-code="hover"
+				href="/#hero-head"
+			>
+				Home
+			</a>
 		</div>
 	{/if}
 
@@ -448,7 +455,14 @@
 		>
 			Print
 		</a>
-		<a class="resume-home-link" data-sveltekit-reload href="/#hero-head">Home</a>
+		<a
+			class="resume-home-link"
+			data-sveltekit-reload
+			data-sveltekit-preload-code="hover"
+			href="/#hero-head"
+		>
+			Home
+		</a>
 		<a class="resume-home-link" href="#resume-top">Top</a>
 	</div>
 </main>
