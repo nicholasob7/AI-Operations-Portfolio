@@ -13,8 +13,8 @@
 	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterProfilePath = 'x.com/nicho0101';
-	const homepagePortraitHoldMs = 800;
-	const homepagePortraitFadeMs = 1200;
+	const homepagePortraitHoldMs = 500;
+	const homepagePortraitFadeMs = 1800;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(false);
 	let fadeHomepagePortraitOverlay = $state(false);
