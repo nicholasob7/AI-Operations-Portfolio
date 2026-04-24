@@ -16,11 +16,13 @@
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
+	let homepagePortraitImage: HTMLImageElement | null = $state(null);
 	let showHomepagePortraitOverlay = $state(false);
 	let fadeHomepagePortraitOverlay = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
+	let removeHomepageDismissListeners: (() => void) | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
 	const showResumeOptions = $derived(openPanel === 'resume');
 	const showEmailOptions = $derived(openPanel === 'email');
@@ -86,9 +88,20 @@
 		if (copyResetTimer) clearTimeout(copyResetTimer);
 	};
 
+	const clearHomepagePendingState = () => {
+		if (!browser) return;
+		document.documentElement.classList.remove('home-intro-pending');
+	};
+
 	const syncHomepageOverlayBodyState = () => {
 		if (!browser) return;
 		document.body.classList.toggle('home-intro-active', showHomepagePortraitOverlay);
+	};
+
+	const clearHomepageDismissListeners = () => {
+		if (!removeHomepageDismissListeners) return;
+		removeHomepageDismissListeners();
+		removeHomepageDismissListeners = null;
 	};
 
 	const clearHomepagePortraitTimers = () => {
@@ -96,6 +109,28 @@
 		if (homepagePortraitDismissTimer) clearTimeout(homepagePortraitDismissTimer);
 		homepagePortraitFadeTimer = null;
 		homepagePortraitDismissTimer = null;
+	};
+
+	const waitForHomepagePortraitReady = async () => {
+		const image = homepagePortraitImage;
+		if (!image) return;
+
+		if (typeof image.decode === 'function') {
+			try {
+				await image.decode();
+				return;
+			} catch {
+				// Fall through to load/error completion handling.
+			}
+		}
+
+		if (image.complete) return;
+
+		await new Promise<void>((resolve) => {
+			const finalize = () => resolve();
+			image.addEventListener('load', finalize, { once: true });
+			image.addEventListener('error', finalize, { once: true });
+		});
 	};
 
 	const dismissHomepagePortraitOverlay = (immediate = false) => {
@@ -106,6 +141,7 @@
 		if (immediate) {
 			fadeHomepagePortraitOverlay = false;
 			showHomepagePortraitOverlay = false;
+			clearHomepageDismissListeners();
 			syncHomepageOverlayBodyState();
 			return;
 		}
@@ -115,6 +151,7 @@
 			showHomepagePortraitOverlay = false;
 			fadeHomepagePortraitOverlay = false;
 			homepagePortraitDismissTimer = null;
+			clearHomepageDismissListeners();
 			syncHomepageOverlayBodyState();
 		}, homepagePortraitFadeMs);
 	};
@@ -209,24 +246,48 @@
 		const dismissOnInteraction = () => {
 			dismissHomepagePortraitOverlay(true);
 		};
+		const attachHomepageDismissListeners = (includeNoisyListeners: boolean) => {
+			clearHomepageDismissListeners();
+
+			window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
+			window.addEventListener('keydown', dismissOnInteraction);
+
+			if (includeNoisyListeners) {
+				window.addEventListener('wheel', dismissOnInteraction, { passive: true });
+				window.addEventListener('scroll', dismissOnInteraction, { passive: true });
+				window.addEventListener('mousemove', dismissOnMouseMove, { passive: true });
+			}
+
+			removeHomepageDismissListeners = () => {
+				window.removeEventListener('pointerdown', dismissOnInteraction);
+				window.removeEventListener('keydown', dismissOnInteraction);
+				window.removeEventListener('wheel', dismissOnInteraction);
+				window.removeEventListener('scroll', dismissOnInteraction);
+				window.removeEventListener('mousemove', dismissOnMouseMove);
+			};
+		};
 
 		showHomepagePortraitOverlay = true;
 		fadeHomepagePortraitOverlay = false;
 		syncHomepageOverlayBodyState();
+		attachHomepageDismissListeners(false);
 
-		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
-		window.addEventListener('keydown', dismissOnInteraction);
-		window.addEventListener('wheel', dismissOnInteraction, { passive: true });
-		window.addEventListener('scroll', dismissOnInteraction, { passive: true });
-		window.addEventListener('mousemove', dismissOnMouseMove, { passive: true });
+		void tick().then(() => {
+			clearHomepagePendingState();
+		});
 
-		void afterLayoutSettles().then(() => {
+		void afterLayoutSettles().then(async () => {
 			if (!showHomepagePortraitOverlay) return;
+			await waitForHomepagePortraitReady();
+			if (!showHomepagePortraitOverlay) return;
+
+			attachHomepageDismissListeners(true);
 
 			if (prefersReducedMotion) {
 				homepagePortraitDismissTimer = setTimeout(() => {
 					showHomepagePortraitOverlay = false;
 					homepagePortraitDismissTimer = null;
+					clearHomepageDismissListeners();
 					syncHomepageOverlayBodyState();
 				}, homepagePortraitHoldMs);
 				return;
@@ -240,19 +301,18 @@
 
 		return () => {
 			clearHomepagePortraitTimers();
+			clearHomepageDismissListeners();
+			clearHomepagePendingState();
 			document.body.classList.remove('home-intro-active');
-			window.removeEventListener('pointerdown', dismissOnInteraction);
-			window.removeEventListener('keydown', dismissOnInteraction);
-			window.removeEventListener('wheel', dismissOnInteraction);
-			window.removeEventListener('scroll', dismissOnInteraction);
-			window.removeEventListener('mousemove', dismissOnMouseMove);
 		};
 	});
 
 	onDestroy(() => {
 		resetCopiedTarget();
 		clearHomepagePortraitTimers();
+		clearHomepageDismissListeners();
 		if (browser) {
+			clearHomepagePendingState();
 			document.body.classList.remove('home-intro-active');
 		}
 	});
@@ -284,25 +344,28 @@
 		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
 	<link rel="preload" as="image" href="/images/homepage-portrait.jpg" />
+	<script>
+		document.documentElement.classList.add('home-intro-pending');
+	</script>
 </svelte:head>
 
-{#if showHomepagePortraitOverlay}
-	<div
-		class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
-		class="page-intro-overlay"
-		aria-hidden="true"
-	>
-		<img
-			class="page-intro-overlay-image"
-			src="/images/homepage-portrait.jpg"
-			alt=""
-			width="1254"
-			height="1254"
-			decoding="async"
-			fetchpriority="high"
-		/>
-	</div>
-{/if}
+<div
+	class:page-intro-overlay-active={showHomepagePortraitOverlay}
+	class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
+	class="page-intro-overlay"
+	aria-hidden="true"
+>
+	<img
+		bind:this={homepagePortraitImage}
+		class="page-intro-overlay-image"
+		src="/images/homepage-portrait.jpg"
+		alt=""
+		width="1254"
+		height="1254"
+		decoding="async"
+		fetchpriority="high"
+	/>
+</div>
 
 <main
 	class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
