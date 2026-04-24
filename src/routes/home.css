@@ -22,6 +22,10 @@
 		--title-green: #457b64;
 	}
 
+	html {
+		scrollbar-gutter: stable;
+	}
+
 	body {
 		margin: 0;
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
