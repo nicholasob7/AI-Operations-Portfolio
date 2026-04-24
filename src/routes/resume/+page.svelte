@@ -294,7 +294,6 @@
 			</a>
 			<a
 				class="resume-home-link"
-				data-sveltekit-reload
 				data-sveltekit-preload-code="hover"
 				href="/#hero-head"
 			>
@@ -457,7 +456,6 @@
 		</a>
 		<a
 			class="resume-home-link"
-			data-sveltekit-reload
 			data-sveltekit-preload-code="hover"
 			href="/#hero-head"
 		>
