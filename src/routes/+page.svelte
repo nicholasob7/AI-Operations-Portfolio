@@ -14,7 +14,7 @@
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterProfilePath = 'x.com/nicho0101';
 	const homepagePortraitHoldMs = 500;
-	const homepagePortraitFadeMs = 1800;
+	const homepagePortraitFadeMs = 5400;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(false);
 	let fadeHomepagePortraitOverlay = $state(false);
