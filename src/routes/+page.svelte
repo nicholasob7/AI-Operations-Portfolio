@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { onDestroy, tick } from 'svelte';
+	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -13,8 +13,14 @@
 	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterProfilePath = 'x.com/nicho0101';
+	const heroPortraitHoldMs = 520;
+	const heroPortraitFadeMs = 680;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
+	let showHeroPortraitOverlay = $state(false);
+	let fadeHeroPortraitOverlay = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+	let heroPortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
+	let heroPortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
 	const showResumeOptions = $derived(openPanel === 'resume');
 	const showEmailOptions = $derived(openPanel === 'email');
@@ -78,6 +84,32 @@
 	const resetCopiedTarget = () => {
 		copiedTarget = null;
 		if (copyResetTimer) clearTimeout(copyResetTimer);
+	};
+
+	const clearHeroPortraitTimers = () => {
+		if (heroPortraitFadeTimer) clearTimeout(heroPortraitFadeTimer);
+		if (heroPortraitDismissTimer) clearTimeout(heroPortraitDismissTimer);
+		heroPortraitFadeTimer = null;
+		heroPortraitDismissTimer = null;
+	};
+
+	const dismissHeroPortraitOverlay = (immediate = false) => {
+		if (!showHeroPortraitOverlay) return;
+
+		clearHeroPortraitTimers();
+
+		if (immediate) {
+			fadeHeroPortraitOverlay = false;
+			showHeroPortraitOverlay = false;
+			return;
+		}
+
+		fadeHeroPortraitOverlay = true;
+		heroPortraitDismissTimer = setTimeout(() => {
+			showHeroPortraitOverlay = false;
+			fadeHeroPortraitOverlay = false;
+			heroPortraitDismissTimer = null;
+		}, heroPortraitFadeMs);
 	};
 
 	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
@@ -161,8 +193,46 @@
 		navigateHome('tail-head');
 	};
 
+	onMount(() => {
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const dismissOnInteraction = () => {
+			dismissHeroPortraitOverlay(true);
+		};
+
+		showHeroPortraitOverlay = true;
+		fadeHeroPortraitOverlay = false;
+
+		if (prefersReducedMotion) {
+			heroPortraitDismissTimer = setTimeout(() => {
+				showHeroPortraitOverlay = false;
+				heroPortraitDismissTimer = null;
+			}, heroPortraitHoldMs);
+		} else {
+			heroPortraitFadeTimer = setTimeout(() => {
+				heroPortraitFadeTimer = null;
+				dismissHeroPortraitOverlay();
+			}, heroPortraitHoldMs);
+		}
+
+		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
+		window.addEventListener('keydown', dismissOnInteraction);
+		window.addEventListener('wheel', dismissOnInteraction, { passive: true });
+		window.addEventListener('scroll', dismissOnInteraction, { passive: true });
+		window.addEventListener('mousemove', dismissOnInteraction, { passive: true });
+
+		return () => {
+			clearHeroPortraitTimers();
+			window.removeEventListener('pointerdown', dismissOnInteraction);
+			window.removeEventListener('keydown', dismissOnInteraction);
+			window.removeEventListener('wheel', dismissOnInteraction);
+			window.removeEventListener('scroll', dismissOnInteraction);
+			window.removeEventListener('mousemove', dismissOnInteraction);
+		};
+	});
+
 	onDestroy(() => {
 		resetCopiedTarget();
+		clearHeroPortraitTimers();
 	});
 
 	$effect(() => {
@@ -191,6 +261,7 @@
 		name="twitter:description"
 		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
+	<link rel="preload" as="image" href="/images/homepage-portrait.jpg" />
 </svelte:head>
 
 <main class="page">
@@ -213,6 +284,8 @@
 		{copyEmail}
 		{copyLinkedInProfilePath}
 		{copyTwitterProfilePath}
+		{showHeroPortraitOverlay}
+		{fadeHeroPortraitOverlay}
 	/>
 
 	<AboutSection {showPrecision} {openPrecision} {closePrecision} />

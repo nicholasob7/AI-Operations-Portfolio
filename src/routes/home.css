@@ -105,6 +105,42 @@
 		z-index: 1;
 	}
 
+	.hero-portrait-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		overflow: hidden;
+		pointer-events: none;
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		transition:
+			opacity 680ms ease,
+			transform 680ms ease;
+		background: linear-gradient(180deg, rgba(6, 9, 18, 0.06) 0%, rgba(6, 9, 18, 0.2) 100%);
+	}
+
+	.hero-portrait-overlay::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(180deg, rgba(8, 12, 22, 0.08) 0%, rgba(8, 12, 22, 0.36) 100%),
+			linear-gradient(90deg, rgba(8, 12, 22, 0.18) 0%, rgba(8, 12, 22, 0.04) 48%, rgba(8, 12, 22, 0.22) 100%);
+	}
+
+	.hero-portrait-overlay-fading {
+		opacity: 0;
+		transform: translateY(-0.35rem) scale(1.018);
+	}
+
+	.hero-portrait-overlay-image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 30%;
+	}
+
 	.hero-aurora {
 		position: absolute;
 		inset: -35% -10% auto -10%;
@@ -1424,6 +1460,14 @@
 		.cta,
 		.projects article {
 			transition: none;
+		}
+
+		.hero-portrait-overlay {
+			transition: none;
+		}
+
+		.hero-portrait-overlay-fading {
+			transform: none;
 		}
 	}
 

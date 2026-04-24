@@ -9,6 +9,8 @@
 		showSocialOptions: boolean;
 		showLinkedInSocialDetails: boolean;
 		showTwitterSocialDetails: boolean;
+		showHeroPortraitOverlay: boolean;
+		fadeHeroPortraitOverlay: boolean;
 		copiedTarget: 'email' | 'linkedin' | 'twitter' | null;
 		toggleResumeOptions: () => void;
 		toggleEmailOptions: () => void;
@@ -30,6 +32,8 @@
 		showSocialOptions,
 		showLinkedInSocialDetails,
 		showTwitterSocialDetails,
+		showHeroPortraitOverlay,
+		fadeHeroPortraitOverlay,
 		copiedTarget,
 		toggleResumeOptions,
 		toggleEmailOptions,
@@ -44,6 +48,23 @@
 
 <section id="hero-head" class="hero card" tabindex="-1">
 	<div class="hero-aurora" aria-hidden="true"></div>
+	{#if showHeroPortraitOverlay}
+		<div
+			class:hero-portrait-overlay-fading={fadeHeroPortraitOverlay}
+			class="hero-portrait-overlay"
+			aria-hidden="true"
+		>
+			<img
+				class="hero-portrait-overlay-image"
+				src="/images/homepage-portrait.jpg"
+				alt=""
+				width="1254"
+				height="1254"
+				decoding="async"
+				fetchpriority="high"
+			/>
+		</div>
+	{/if}
 	<h1>Nicko O'Brien</h1>
 	<p class="tagline">AI Operations Portfolio</p>
 	<p class="proof">
