@@ -187,6 +187,7 @@ const entrySpecs = [
 		surface_id: 'homepage.hero',
 		label: 'Homepage Hero Summary',
 		entry_type: 'summary_entry',
+		entry_semantic_type: 'summary_surface',
 		public_summary:
 			'Homepage identity summary for AI-forward enterprise operations and deterministic AI delivery.',
 		contextIds: ['ctx_home_publication', 'ctx_home_enterprise_ops'],
@@ -200,6 +201,7 @@ const entrySpecs = [
 		surface_id: 'homepage.contact',
 		label: 'Homepage Public Channels',
 		entry_type: 'support_entry',
+		entry_semantic_type: 'contact_surface',
 		public_summary: 'Public contact and profile channels intentionally exposed on the homepage.',
 		contextIds: ['ctx_home_contact'],
 		claimIds: [
@@ -217,6 +219,7 @@ const entrySpecs = [
 		surface_id: 'homepage.selected_work',
 		label: 'Homepage Selected Work Summaries',
 		entry_type: 'support_entry',
+		entry_semantic_type: 'project_summary_surface',
 		public_summary:
 			'Selected-work summaries for remediation and migration work as currently surfaced on the homepage.',
 		contextIds: ['ctx_home_selected_work', 'ctx_remediation_project', 'ctx_migration_project'],
@@ -239,6 +242,7 @@ const entrySpecs = [
 		surface_id: 'homepage.quality',
 		label: 'Homepage Quality and Semantic Control',
 		entry_type: 'detail_entry',
+		entry_semantic_type: 'capability_surface',
 		public_summary:
 			'Homepage quality block covering semantic control, language precision, analytical characterization, and qualification note.',
 		contextIds: ['ctx_quality'],
@@ -257,6 +261,7 @@ const entrySpecs = [
 		surface_id: 'homepage.personal',
 		label: 'Homepage Personal and Governance',
 		entry_type: 'detail_entry',
+		entry_semantic_type: 'governance_surface',
 		public_summary:
 			'Homepage governance block covering public direction, governance structure, human escalation boundaries, and qualifying note.',
 		contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
@@ -286,6 +291,7 @@ const entrySpecs = [
 		surface_id: 'projects.remediation_detail',
 		label: 'Remediation Project Detail',
 		entry_type: 'project_detail',
+		entry_semantic_type: 'project_narrative',
 		public_summary:
 			'Full bounded remediation project detail covering build workflow, findings, operational use, live progression, and explicit scope discipline.',
 		contextIds: ['ctx_remediation_project', 'ctx_remediation_progression'],
@@ -317,6 +323,7 @@ const entrySpecs = [
 		surface_id: 'projects.migration_detail',
 		label: 'Migration Stabilization Project Detail',
 		entry_type: 'project_detail',
+		entry_semantic_type: 'project_narrative',
 		public_summary:
 			'Full bounded migration project detail covering framework summary, findings, validated results, stakeholder utility, and reusable review discipline.',
 		contextIds: ['ctx_migration_project', 'ctx_migration_progression'],
@@ -343,6 +350,7 @@ const entrySpecs = [
 		surface_id: 'resume.identity_context',
 		label: 'Resume Identity and Context',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'summary_surface',
 		public_summary: 'Resume header identity plus context statements about AI growth, projects, and technical direction.',
 		contextIds: ['ctx_resume_identity', 'ctx_resume_context'],
 		claimIds: ['clm_resume_identity', 'clm_resume_context_points'],
@@ -355,6 +363,7 @@ const entrySpecs = [
 		surface_id: 'resume.initiative_scope',
 		label: 'Resume Initiative Scope',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'role_scope',
 		public_summary:
 			'Resume initiative section covering completed remediation delivery and active package reconstruction work.',
 		contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
@@ -368,6 +377,7 @@ const entrySpecs = [
 		surface_id: 'resume.delegated_scope',
 		label: 'Resume Delegated Scope',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'role_scope',
 		public_summary:
 			'Resume delegated-scope section covering vendor liaison, printer queue ownership, escalation reduction, and process redesign.',
 		contextIds: ['ctx_resume_delegated_scope'],
@@ -381,6 +391,7 @@ const entrySpecs = [
 		surface_id: 'resume.role_progression',
 		label: 'Resume Role Progression',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'progression_map',
 		public_summary:
 			'Resume progression map from service desk foundation to trusted scope, specialist improvement work, and AI-forward operational delivery.',
 		contextIds: ['ctx_resume_progression', 'ctx_resume_initiative', 'ctx_resume_delegated_scope'],
@@ -399,6 +410,7 @@ const entrySpecs = [
 		surface_id: 'resume.technical_skills',
 		label: 'Resume Technical Skills',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'capability_surface',
 		public_summary:
 			'Resume technical-skills taxonomy covering identity and access, Microsoft 365, endpoint support, enterprise applications, networking, service operations, documentation, and AI in IT operations.',
 		contextIds: ['ctx_resume_skills'],
@@ -421,6 +433,7 @@ const entrySpecs = [
 		surface_id: 'resume.qualifications',
 		label: 'Resume Qualifications',
 		entry_type: 'resume_section',
+		entry_semantic_type: 'qualification_surface',
 		public_summary: 'Resume qualifications and certifications currently published on the web resume.',
 		contextIds: ['ctx_resume_qualifications'],
 		claimIds: ['clm_resume_qualifications'],
@@ -499,6 +512,7 @@ const entries = entrySpecs.map((entry) => {
 		surface_id: entry.surface_id,
 		label: entry.label,
 		entry_type: entry.entry_type,
+		entry_semantic_type: entry.entry_semantic_type,
 		public_summary: entry.public_summary,
 		claims,
 		signals,
@@ -528,7 +542,18 @@ const body = {
 		scope: 'bounded public canonical coverage currently implemented in the repository',
 		coverage_note:
 			'This projection reflects currently migrated canonical coverage only and does not imply total site coverage.',
-		freshness: 'build-time projection from repo canonical source'
+		freshness: 'build-time projection from repo canonical source',
+		entry_semantic_types: {
+			summary_surface: 'Identity or orientation summary surface.',
+			contact_surface: 'Public contact or profile channel surface.',
+			project_summary_surface: 'Short-form project summary surface distinct from full project detail.',
+			capability_surface: 'Capability-oriented surface where skills or operating strengths are primary.',
+			governance_surface: 'Governance, direction, control-boundary, or discretion-oriented surface.',
+			project_narrative: 'Full bounded project-detail narrative with claims, signals, and progression.',
+			role_scope: 'Resume section describing bounded role, responsibility, or initiative scope.',
+			progression_map: 'Resume section primarily describing staged progression or trajectory.',
+			qualification_surface: 'Qualification or certification surface contributing bounded confidence signal.'
+		}
 	},
 	coverage: {
 		covered_surface_ids: surfaces
