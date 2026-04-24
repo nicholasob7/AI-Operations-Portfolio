@@ -303,14 +303,27 @@
 	{/if}
 
 	<header bind:this={heroPanel} class="panel hero-panel">
-		<h1>Nicholas Francis O'Brien</h1>
-		<p class="hero-subtitle">Web Resume</p>
-		<p class="contact-line">
-			<span>Lower Hutt, New Zealand</span>
-			<span aria-hidden="true">|</span>
-			<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
-		</p>
-		<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+		<div class="hero-panel-content">
+			<div class="hero-copy">
+				<h1>Nicholas Francis O'Brien</h1>
+				<p class="hero-subtitle">Web Resume</p>
+				<p class="contact-line">
+					<span>Lower Hutt, New Zealand</span>
+					<span aria-hidden="true">|</span>
+					<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
+				</p>
+				<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+			</div>
+			<div class="hero-portrait">
+				<img
+					src="/images/resume-portrait.jpg"
+					alt="Portrait of Nicholas Francis O'Brien"
+					width="1254"
+					height="1254"
+					decoding="async"
+				/>
+			</div>
+		</div>
 	</header>
 
 	<section class="panel">
@@ -499,6 +512,38 @@
 
 	.hero-panel {
 		gap: 0.5rem;
+	}
+
+	.hero-panel-content {
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.hero-copy {
+		display: grid;
+		gap: 0.5rem;
+		min-width: 0;
+	}
+
+	.hero-portrait {
+		width: clamp(5.25rem, 22vw, 6.5rem);
+		aspect-ratio: 1;
+		justify-self: start;
+		overflow: hidden;
+		border-radius: 0.95rem;
+		border: 1px solid rgba(148, 208, 255, 0.34);
+		background: rgba(12, 20, 35, 0.72);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+			0 12px 22px rgba(4, 9, 22, 0.18);
+	}
+
+	.hero-portrait img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 28%;
 	}
 
 	h1 {
@@ -906,6 +951,17 @@
 		.panel {
 			padding: 1.2rem 1.25rem;
 			border-radius: 1rem;
+		}
+
+		.hero-panel-content {
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+			gap: 1.35rem;
+		}
+
+		.hero-portrait {
+			width: 7rem;
+			justify-self: end;
 		}
 
 		h1 {
