@@ -73,13 +73,13 @@
 			<p class="project-outcome">
 				Outcome: Standardized production remediation with an evidence-driven validation workflow.
 			</p>
-			<a
-				class="cta cta-resume section-cta-remediation"
-				href="/projects/remediation-script-development"
-				data-sveltekit-preload-code="hover"
-			>
-				Complete
-			</a>
+				<a
+					class="cta cta-resume section-cta-remediation"
+					href="/projects/remediation-script-development"
+					data-sveltekit-preload-code="hover"
+				>
+					View Script Development
+				</a>
 		</article>
 		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
 			<h3>Migration Framework</h3>
@@ -89,13 +89,13 @@
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
-			<a
-				class="cta cta-resume section-cta-migration"
-				href="/projects/migration-stabilization-framework"
-				data-sveltekit-preload-code="hover"
-			>
-				Active
-			</a>
+				<a
+					class="cta cta-resume section-cta-migration"
+					href="/projects/migration-stabilization-framework"
+					data-sveltekit-preload-code="hover"
+				>
+					View Migration Framework
+				</a>
 		</article>
 		<article id="eliora-head" class="project-card project-card-governance" tabindex="-1">
 			<h3>AI Governance</h3>
@@ -105,15 +105,15 @@
 			</p>
 			<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
 			{#if !showPersonal}
-				<button
-					class="cta cta-resume section-cta-eliora"
-					type="button"
-					aria-expanded={showPersonal}
-					aria-controls="overview"
-					onclick={openPersonal}
-				>
-					Personal
-				</button>
+					<button
+						class="cta cta-resume section-cta-eliora"
+						type="button"
+						aria-expanded={showPersonal}
+						aria-controls="overview"
+						onclick={openPersonal}
+					>
+						View AI Governance
+					</button>
 			{/if}
 		</article>
 		{#if showPersonal}

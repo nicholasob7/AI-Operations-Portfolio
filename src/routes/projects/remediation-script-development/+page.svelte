@@ -53,16 +53,17 @@
 <main class="doc-page">
 	{#if showScrollActions}
 		<div class="doc-scroll-actions">
-			<a
-				class="doc-cta doc-cta-print"
-				href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
-				download="Remediation_Script_Development_Portfolio_BW.pdf"
-			>
-				Print
-			</a>
-			<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#deployment-head"
-				>Home</a
-			>
+				<a
+					class="doc-cta doc-cta-print"
+					href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
+					download="Remediation_Script_Development_Portfolio_BW.pdf"
+				>
+					Print
+				</a>
+				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
+				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#deployment-head"
+					>Back to Migration Framework</a
+				>
 		</div>
 	{/if}
 
@@ -167,20 +168,21 @@
 			</ul>
 
 			<div bind:this={bottomActions} class="doc-actions">
-				<a
-					class="doc-cta doc-cta-print"
-					href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
-					download="Remediation_Script_Development_Portfolio_BW.pdf"
-				>
-					Print
-				</a>
-				<a
-					class="doc-cta"
-					data-sveltekit-preload-code="hover"
-					href="/#deployment-head"
-					>Home</a
-				>
-			</div>
+					<a
+						class="doc-cta doc-cta-print"
+						href="/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
+						download="Remediation_Script_Development_Portfolio_BW.pdf"
+					>
+						Print
+					</a>
+					<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
+					<a
+						class="doc-cta"
+						data-sveltekit-preload-code="hover"
+						href="/#deployment-head"
+						>Back to Migration Framework</a
+					>
+				</div>
 		</div>
 	</section>
 </main>
