@@ -60,7 +60,7 @@
 			>
 				Print
 			</a>
-			<a class="doc-cta" data-sveltekit-reload data-sveltekit-preload-code="hover" href="/#tail-head"
+			<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#tail-head"
 				>Home</a
 			>
 		</div>
@@ -148,7 +148,6 @@
 				</a>
 				<a
 					class="doc-cta"
-					data-sveltekit-reload
 					data-sveltekit-preload-code="hover"
 					href="/#tail-head"
 					>Home</a
