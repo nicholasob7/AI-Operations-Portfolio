@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { onDestroy, tick } from 'svelte';
+	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -13,8 +13,14 @@
 	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
 	const twitterProfilePath = 'x.com/nicho0101';
+	const homepagePortraitHoldMs = 1000;
+	const homepagePortraitFadeMs = 1200;
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
+	let showHomepagePortraitOverlay = $state(false);
+	let fadeHomepagePortraitOverlay = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
+	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
 	const showResumeOptions = $derived(openPanel === 'resume');
 	const showEmailOptions = $derived(openPanel === 'email');
@@ -78,6 +84,39 @@
 	const resetCopiedTarget = () => {
 		copiedTarget = null;
 		if (copyResetTimer) clearTimeout(copyResetTimer);
+	};
+
+	const syncHomepageOverlayBodyState = () => {
+		if (!browser) return;
+		document.body.classList.toggle('home-intro-active', showHomepagePortraitOverlay);
+	};
+
+	const clearHomepagePortraitTimers = () => {
+		if (homepagePortraitFadeTimer) clearTimeout(homepagePortraitFadeTimer);
+		if (homepagePortraitDismissTimer) clearTimeout(homepagePortraitDismissTimer);
+		homepagePortraitFadeTimer = null;
+		homepagePortraitDismissTimer = null;
+	};
+
+	const dismissHomepagePortraitOverlay = (immediate = false) => {
+		if (!showHomepagePortraitOverlay) return;
+
+		clearHomepagePortraitTimers();
+
+		if (immediate) {
+			fadeHomepagePortraitOverlay = false;
+			showHomepagePortraitOverlay = false;
+			syncHomepageOverlayBodyState();
+			return;
+		}
+
+		fadeHomepagePortraitOverlay = true;
+		homepagePortraitDismissTimer = setTimeout(() => {
+			showHomepagePortraitOverlay = false;
+			fadeHomepagePortraitOverlay = false;
+			homepagePortraitDismissTimer = null;
+			syncHomepageOverlayBodyState();
+		}, homepagePortraitFadeMs);
 	};
 
 	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
@@ -161,8 +200,56 @@
 		navigateHome('tail-head');
 	};
 
+	onMount(() => {
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const dismissOnMouseMove = (event: MouseEvent) => {
+			if (event.movementX === 0 && event.movementY === 0) return;
+			dismissHomepagePortraitOverlay(true);
+		};
+		const dismissOnInteraction = () => {
+			dismissHomepagePortraitOverlay(true);
+		};
+
+		showHomepagePortraitOverlay = true;
+		fadeHomepagePortraitOverlay = false;
+		syncHomepageOverlayBodyState();
+
+		if (prefersReducedMotion) {
+			homepagePortraitDismissTimer = setTimeout(() => {
+				showHomepagePortraitOverlay = false;
+				homepagePortraitDismissTimer = null;
+				syncHomepageOverlayBodyState();
+			}, homepagePortraitHoldMs);
+		} else {
+			homepagePortraitFadeTimer = setTimeout(() => {
+				homepagePortraitFadeTimer = null;
+				dismissHomepagePortraitOverlay();
+			}, homepagePortraitHoldMs);
+		}
+
+		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
+		window.addEventListener('keydown', dismissOnInteraction);
+		window.addEventListener('wheel', dismissOnInteraction, { passive: true });
+		window.addEventListener('scroll', dismissOnInteraction, { passive: true });
+		window.addEventListener('mousemove', dismissOnMouseMove, { passive: true });
+
+		return () => {
+			clearHomepagePortraitTimers();
+			document.body.classList.remove('home-intro-active');
+			window.removeEventListener('pointerdown', dismissOnInteraction);
+			window.removeEventListener('keydown', dismissOnInteraction);
+			window.removeEventListener('wheel', dismissOnInteraction);
+			window.removeEventListener('scroll', dismissOnInteraction);
+			window.removeEventListener('mousemove', dismissOnMouseMove);
+		};
+	});
+
 	onDestroy(() => {
 		resetCopiedTarget();
+		clearHomepagePortraitTimers();
+		if (browser) {
+			document.body.classList.remove('home-intro-active');
+		}
 	});
 
 	$effect(() => {
@@ -191,7 +278,26 @@
 		name="twitter:description"
 		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
+	<link rel="preload" as="image" href="/images/homepage-portrait.jpg" />
 </svelte:head>
+
+{#if showHomepagePortraitOverlay}
+	<div
+		class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
+		class="page-intro-overlay"
+		aria-hidden="true"
+	>
+		<img
+			class="page-intro-overlay-image"
+			src="/images/homepage-portrait.jpg"
+			alt=""
+			width="1254"
+			height="1254"
+			decoding="async"
+			fetchpriority="high"
+		/>
+	</div>
+{/if}
 
 <main class="page">
 	<HeroSection
