@@ -436,29 +436,20 @@
 		</div>
 	{/if}
 
-	<header bind:this={heroPanel} class="panel hero-panel">
-		<div class="hero-panel-content">
-			<div class="hero-copy">
-				<h1>Nicholas Francis O'Brien</h1>
-				<p class="hero-subtitle">Web Resume</p>
-				<p class="contact-line">
-					<span>Lower Hutt, New Zealand</span>
-					<span aria-hidden="true">|</span>
-					<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
-				</p>
-				<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+		<header bind:this={heroPanel} class="panel hero-panel">
+			<div class="hero-panel-content">
+				<div class="hero-copy">
+					<h1>Nicholas Francis O'Brien</h1>
+					<p class="hero-subtitle">Web Resume</p>
+					<p class="contact-line">
+						<span>Lower Hutt, New Zealand</span>
+						<span aria-hidden="true">|</span>
+						<a href="mailto:nicko.obrien.ai@gmail.com">nicko.obrien.ai@gmail.com</a>
+					</p>
+					<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+				</div>
 			</div>
-			<div class="hero-portrait">
-				<img
-					src="/images/resume-portrait.jpg"
-					alt="Portrait of Nicholas Francis O'Brien"
-					width="1254"
-					height="1254"
-					decoding="async"
-				/>
-			</div>
-		</div>
-	</header>
+		</header>
 
 	<section class="panel">
 		<h2>Context</h2>
