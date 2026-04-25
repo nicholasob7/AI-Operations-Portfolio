@@ -842,27 +842,6 @@
 		min-width: 0;
 	}
 
-	.hero-portrait {
-		width: clamp(5.25rem, 22vw, 6.5rem);
-		aspect-ratio: 1;
-		justify-self: start;
-		overflow: hidden;
-		border-radius: 0.95rem;
-		border: 1px solid rgba(148, 208, 255, 0.34);
-		background: rgba(12, 20, 35, 0.72);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-			0 12px 22px rgba(4, 9, 22, 0.18);
-	}
-
-	.hero-portrait img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center 28%;
-	}
-
 	h1 {
 		margin: 0;
 		font-size: clamp(1.95rem, 4.8vw, 2.85rem);
@@ -887,7 +866,6 @@
 		color: #96dcff;
 	}
 
-	.hero-subtitle,
 	.focus-line,
 	.experience-panel h3,
 	.experience-panel h4,
@@ -900,13 +878,6 @@
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-	}
-
-	.hero-subtitle {
-		font-size: 1.35rem;
-		line-height: 1.12;
-		font-weight: 600;
-		letter-spacing: 0.02em;
 	}
 
 	h3 {
@@ -1326,11 +1297,6 @@
 			grid-template-columns: minmax(0, 1fr) auto;
 			align-items: center;
 			gap: 1.35rem;
-		}
-
-		.hero-portrait {
-			width: 7rem;
-			justify-self: end;
 		}
 
 		h1 {

@@ -273,20 +273,6 @@
 		max-width: none;
 	}
 
-	.doc-note {
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		font-size: 0.83rem;
-		line-height: 1.55;
-		color: #b2c7e6;
-	}
-
-	hr {
-		border: 0;
-		height: 1px;
-		background: rgba(190, 215, 242, 0.24);
-		margin: 1.1rem 0 0.8rem;
-	}
-
 	.doc-actions {
 		margin-top: 1rem;
 		display: flex;
@@ -376,11 +362,6 @@
 
 		.doc-text h2 {
 			font-size: 1.24rem;
-		}
-
-		.doc-note {
-			font-size: 1.5rem;
-			line-height: 1.58;
 		}
 
 		.doc-cta {
