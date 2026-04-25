@@ -36,6 +36,7 @@
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(homeUsesPortraitEntry);
 	let fadeHomepagePortraitOverlay = $state(false);
+	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
 	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
 	let showPersonal = $state(false);
 	let showPrecision = $state(false);
@@ -132,6 +133,10 @@
 	const syncHomepageOverlayBodyState = () => {
 		if (!browser) return;
 		document.body.classList.toggle('home-intro-active', showHomepagePortraitOverlay);
+		document.body.classList.toggle(
+			'home-intro-interaction-ready',
+			showHomepagePortraitOverlay && homepageInteractionReady
+		);
 	};
 
 	const clearHomepagePortraitTimers = () => {
@@ -186,75 +191,89 @@
 	};
 
 	const toggleEmailOptions = () => {
+		if (!homepageEntrySettled) return;
 		resetCopiedTarget();
 		navigateHome('hero-head', showEmailOptions ? undefined : 'email');
 	};
 
 	const toggleResumeOptions = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('hero-head', showResumeOptions ? undefined : 'resume');
 	};
 
 	const toggleSocialOptions = () => {
+		if (!homepageEntrySettled) return;
 		resetCopiedTarget();
 		navigateHome('hero-head', showSocialOptions ? undefined : 'social');
 	};
 
 	const toggleLinkedInSocialDetails = () => {
+		if (!homepageEntrySettled) return;
 		resetCopiedTarget();
 		navigateHome('hero-head', 'social', showLinkedInSocialDetails ? undefined : 'linkedin');
 	};
 
 	const toggleTwitterSocialDetails = () => {
+		if (!homepageEntrySettled) return;
 		resetCopiedTarget();
 		navigateHome('hero-head', 'social', showTwitterSocialDetails ? undefined : 'twitter');
 	};
 
 	const openPersonal = () => {
+		if (!homepageEntrySettled) return;
 		showPersonal = true;
 		void focusAndScrollToHash('overview-head');
 	};
 
 	const closePersonal = () => {
+		if (!homepageEntrySettled) return;
 		showPersonal = false;
 		window.history.replaceState(window.history.state, '', getCanonicalUrl(aiGovernanceEntrySurface));
 		void focusAndScrollToHash('eliora-head');
 	};
 
 	const openPrecision = () => {
+		if (!homepageEntrySettled) return;
 		showPrecision = true;
 		void focusAndScrollToHash('about-head');
 	};
 
 	const closePrecision = () => {
+		if (!homepageEntrySettled) return;
 		showPrecision = false;
 		window.history.replaceState(window.history.state, '', getCanonicalUrl(qualityEntrySurface));
 		void focusAndScrollToHash('about-head');
 	};
 
 	const openComplete = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('remediation-head', 'case-1');
 	};
 
 	const closeComplete = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('deployment-head');
 	};
 
 	const openActive = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('deployment-head', 'case-2');
 	};
 
 	const closeActive = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('tail-head');
 	};
 
 	onMount(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-		if (shouldCollapseOnReload(aiGovernanceEntrySurface)) showPersonal = false;
-		if (shouldCollapseOnReload(qualityEntrySurface)) showPrecision = false;
-		showHomepagePortraitOverlay = homeUsesPortraitEntry;
-		fadeHomepagePortraitOverlay = false;
-		homepageEntrySettled = !homeUsesPortraitEntry;
+			if (shouldCollapseOnReload(aiGovernanceEntrySurface)) showPersonal = false;
+			if (shouldCollapseOnReload(qualityEntrySurface)) showPrecision = false;
+			showHomepagePortraitOverlay = homeUsesPortraitEntry;
+			fadeHomepagePortraitOverlay = false;
+			homepageInteractionReady = !homeUsesPortraitEntry;
+			homepageEntrySettled = !homeUsesPortraitEntry;
 		previousScrollRestoration = window.history.scrollRestoration;
 		window.history.scrollRestoration = 'manual';
 		syncHomepageOverlayBodyState();
@@ -272,30 +291,34 @@
 					completeHomepageEntry();
 				}, homepagePortraitHoldMs);
 				return;
-			}
+				}
 
 			homepagePortraitFadeTimer = setTimeout(() => {
 				homepagePortraitFadeTimer = null;
+				homepageInteractionReady = true;
+				syncHomepageOverlayBodyState();
 				dismissHomepagePortraitOverlay();
 			}, homepagePortraitHoldMs);
 		});
 
-			return () => {
-				clearHomepagePortraitTimers();
-				document.body.classList.remove('home-intro-active');
-				if (previousScrollRestoration) {
-					window.history.scrollRestoration = previousScrollRestoration;
-				}
-			};
-		});
+				return () => {
+					clearHomepagePortraitTimers();
+					document.body.classList.remove('home-intro-active');
+					document.body.classList.remove('home-intro-interaction-ready');
+					if (previousScrollRestoration) {
+						window.history.scrollRestoration = previousScrollRestoration;
+					}
+				};
+			});
 
-	onDestroy(() => {
-		resetCopiedTarget();
-		clearHomepagePortraitTimers();
-		if (browser) {
-			document.body.classList.remove('home-intro-active');
-		}
-	});
+		onDestroy(() => {
+			resetCopiedTarget();
+			clearHomepagePortraitTimers();
+			if (browser) {
+				document.body.classList.remove('home-intro-active');
+				document.body.classList.remove('home-intro-interaction-ready');
+			}
+		});
 
 	$effect(() => {
 		if (!browser || !page.url.hash || legacyHomepageHashes.has(page.url.hash)) return;
@@ -328,12 +351,13 @@
 	{/if}
 </svelte:head>
 
-{#if showHomepagePortraitOverlay && homeEntryImage}
-	<div
-		class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
-		class="page-intro-overlay"
-		aria-hidden="true"
-	>
+	{#if showHomepagePortraitOverlay && homeEntryImage}
+		<div
+			class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
+			class="page-intro-overlay"
+			aria-hidden="true"
+			style:pointer-events="none"
+		>
 		<img
 			class="page-intro-overlay-image"
 			src={homeEntryImage}
@@ -346,11 +370,12 @@
 	</div>
 {/if}
 
-<main
-	class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
-	class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
-	class="page"
->
+	<main
+		class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
+		class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
+		class="page"
+		style:pointer-events={homepageInteractionReady ? 'auto' : 'none'}
+	>
 	<HeroSection
 		{githubUrl}
 		{linkedInProfilePath}

@@ -37,9 +37,15 @@
 		color: var(--text-main);
 	}
 
-	body.home-intro-active {
-		overflow: hidden;
-	}
+body.home-intro-active {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+body.home-intro-active.home-intro-interaction-ready {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
 
 	body::after {
 		content: '';
