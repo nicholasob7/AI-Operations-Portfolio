@@ -254,136 +254,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		text-align: center;
 	}
 
-	.hero-subpanel {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.45rem;
-		align-items: center;
-		padding: 0.78rem 0.88rem;
-		border-radius: 0.9rem;
-		background:
-			linear-gradient(rgba(16, 27, 50, 0.74), rgba(16, 27, 50, 0.74)) padding-box,
-			linear-gradient(
-					125deg,
-					rgba(47, 209, 255, 0.28),
-					rgba(110, 63, 177, 0.42),
-					rgba(30, 141, 106, 0.36)
-				)
-				border-box;
-		border: 1px solid transparent;
-		box-shadow:
-			0 0 0 1px rgba(228, 241, 255, 0.04) inset,
-			0 10px 24px rgba(7, 14, 33, 0.24);
-	}
-
-	.email-subactions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.45rem;
-		align-items: center;
-	}
-
-	.resume-subactions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.45rem;
-		align-items: center;
-	}
-
-	.social-subactions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.8rem;
-		align-items: stretch;
-	}
-
-.email-plain {
-	margin: 0;
-	display: flex;
-	align-items: center;
-	box-sizing: border-box;
-	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-	font-size: 0.96rem;
-	font-weight: 700;
-	line-height: 1.24;
-	letter-spacing: 0.012em;
-	color: #d8e7ff;
-	padding: 0.45rem 0.75rem;
-	min-height: 2.7rem;
-	border-radius: 999px;
-	border: 1px solid rgba(190, 215, 242, 0.52);
-	background: linear-gradient(120deg, #32464e 0%, #36495b 55%, #1e4b41 100%);
-	user-select: text;
-}
-
-.profile-link-plain {
-	margin: 0;
-	display: grid;
-	grid-template-columns: minmax(0, 1fr);
-	align-items: center;
-	box-sizing: border-box;
-	font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-	font-size: 0.96rem;
-	font-weight: 700;
-	line-height: 1.24;
-	letter-spacing: 0.012em;
-	color: #d8e7ff;
-	padding: 0.45rem 0.75rem;
-	min-height: 2.7rem;
-	border-radius: 0.9rem;
-	border: 1px solid rgba(190, 215, 242, 0.42);
-	background: linear-gradient(120deg, rgba(50, 70, 78, 0.82) 0%, rgba(54, 73, 91, 0.82) 55%, rgba(30, 75, 65, 0.82) 100%);
-	text-decoration: none;
-	user-select: text;
-	word-break: break-word;
-}
-
-.social-selector-group {
-	flex-basis: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.45rem;
-	align-items: center;
-}
-
-.social-detail {
-	flex-basis: 100%;
-	display: flex;
-	flex-wrap: nowrap;
-	gap: 0.55rem;
-	align-items: center;
-}
-
-.profile-platform {
-	font-weight: 700;
-	color: rgba(238, 246, 255, 0.96);
-}
-
-.profile-url {
-	color: #d8e7ff;
-	word-break: break-word;
-}
-
-.social-detail > .profile-link-plain {
-	flex: 0 1 auto;
-	max-width: calc(100% - 8rem);
-}
-
-.social-detail > .cta {
-	flex: 0 0 auto;
-}
-
-.cta-social-option {
-	--btn-start: #3a5456;
-	--btn-mid: #405064;
-	--btn-end: #205649;
-	--btn-start-hover: #476a6d;
-	--btn-mid-hover: #51657d;
-	--btn-end-hover: #2a6b5b;
-	--btn-text: #f3f7ff;
-	--btn-text-hover: #ffffff;
-}
-
 	.status-strip {
 		display: flex;
 		flex-wrap: wrap;
@@ -547,7 +417,6 @@ body.home-intro-active.home-intro-interaction-ready {
 	}
 
 	.hero-actions > .cta,
-	.hero-subpanel > .cta,
 	.detail-action > .cta,
 	.detail-card-actions > .cta,
 	.projects .project-card > .cta {
@@ -583,17 +452,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		--btn-text-hover: #ffffff;
 	}
 
-	.cta-contact {
-		--btn-start: #3c5856;
-		--btn-mid: #415466;
-		--btn-end: #22594a;
-		--btn-start-hover: #4a6e6a;
-		--btn-mid-hover: #536980;
-		--btn-end-hover: #2d705e;
-		--btn-text: #f3f7ff;
-		--btn-text-hover: #ffffff;
-	}
-
 	.cta-resume {
 		--btn-start: #3a5254;
 		--btn-mid: #3f4f64;
@@ -605,32 +463,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		--btn-text-hover: #ffffff;
 	}
 
-	.cta-social {
-		--btn-start: #3a5456;
-		--btn-mid: #405064;
-		--btn-end: #205649;
-		--btn-start-hover: #476a6d;
-		--btn-mid-hover: #51657d;
-		--btn-end-hover: #2a6b5b;
-		--btn-text: #f3f7ff;
-		--btn-text-hover: #ffffff;
-	}
-
-	.cta-contact-sub {
-		--btn-start: #314a57;
-		--btn-mid: #365161;
-		--btn-end: #1f4c43;
-		--btn-start-hover: #3d5f6f;
-		--btn-mid-hover: #456477;
-		--btn-end-hover: #286055;
-		--btn-text: #eaf4ff;
-		--btn-text-hover: #ffffff;
-		font-size: 0.84rem;
-		padding: 0.36rem 0.62rem;
-		min-height: 2.35rem;
-		min-width: 0;
-	}
-
 	.cta-github {
 		--btn-start: #3b7b63;
 		--btn-mid: #2a5f4d;
@@ -640,28 +472,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		--btn-end-hover: #275547;
 		--btn-text: #e9fff4;
 		--btn-text-hover: #f6fffb;
-	}
-
-	.cta-linkedin {
-		--btn-start: #3a5456;
-		--btn-mid: #405064;
-		--btn-end: #205649;
-		--btn-start-hover: #476a6d;
-		--btn-mid-hover: #51657d;
-		--btn-end-hover: #2a6b5b;
-		--btn-text: #f3f7ff;
-		--btn-text-hover: #ffffff;
-	}
-
-	.cta-twitter {
-		--btn-start: #3d5a5c;
-		--btn-mid: #445467;
-		--btn-end: #24594b;
-		--btn-start-hover: #4c7072;
-		--btn-mid-hover: #55697f;
-		--btn-end-hover: #2e6e5e;
-		--btn-text: #f3f7ff;
-		--btn-text-hover: #ffffff;
 	}
 
 	.hero-actions > .cta-github {
@@ -680,24 +490,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		--btn-start-hover: #54857b;
 		--btn-mid-hover: #427169;
 		--btn-end-hover: #2e5850;
-	}
-
-	.hero-actions > .cta-contact {
-		--btn-start: #4a676d;
-		--btn-mid: #41585d;
-		--btn-end: #2c4544;
-		--btn-start-hover: #5a7d83;
-		--btn-mid-hover: #4f6c71;
-		--btn-end-hover: #375856;
-	}
-
-	.hero-actions > .cta-social {
-		--btn-start: #516065;
-		--btn-mid: #495256;
-		--btn-end: #344140;
-		--btn-start-hover: #64757b;
-		--btn-mid-hover: #596467;
-		--btn-end-hover: #415250;
 	}
 
 	.section-cta-about {
@@ -1077,56 +869,16 @@ body.home-intro-active.home-intro-interaction-ready {
 			margin-top: 1.35rem;
 		}
 
-		.links > .hero-actions:first-child:not(:has(+ .hero-subpanel)) {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
-			max-width: calc(var(--homepage-action-width) * 2 + 0.7rem);
-			align-items: stretch;
-		}
-
-		.links > .hero-actions:first-child:not(:has(+ .hero-subpanel)) > .cta {
+		.links > .hero-actions:first-child > .cta {
 			width: var(--homepage-action-width);
 			justify-content: center;
 			text-align: center;
 		}
 
-		.links > .hero-actions:first-child:has(+ .hero-subpanel),
-		.links > .hero-actions + .hero-subpanel + .hero-actions {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
-			max-width: calc(var(--homepage-action-width) * 2 + 0.7rem);
-			align-items: stretch;
-		}
-
-		.links > .hero-actions:first-child:has(+ .hero-subpanel) > .cta,
-		.links > .hero-actions + .hero-subpanel + .hero-actions > .cta,
-		.hero-subpanel.resume-subactions > .cta {
-			width: var(--homepage-action-width);
-			justify-content: center;
-			text-align: center;
-		}
-
-		.hero-subpanel.resume-subactions > .cta-hero-print {
-			width: calc(var(--homepage-action-width) + 4rem);
-		}
-
-		.hero-subpanel.resume-subactions {
-			display: grid;
-			grid-template-columns:
-				minmax(0, var(--homepage-action-width))
-				minmax(0, calc(var(--homepage-action-width) + 4rem));
-			max-width: calc(var(--homepage-action-width) * 2 + 4rem + 0.7rem + 2.56rem);
-		}
-
-		.hero-actions,
-		.hero-subpanel,
-		.email-subactions,
-		.resume-subactions,
-		.social-subactions {
+		.hero-actions {
 			gap: 0.7rem;
 		}
 
-		.hero-subpanel,
 		.about-panel,
 		.projects article,
 		.detail-card {
@@ -1139,13 +891,6 @@ body.home-intro-active.home-intro-interaction-ready {
 			--cta-size-block: 2.95rem;
 			padding: 0.62rem 1.02rem;
 			font-size: 1.02rem;
-		}
-
-		.email-plain,
-		.profile-link-plain {
-			font-size: 1.08rem;
-			padding: 0.62rem 1.02rem;
-			min-height: 2.95rem;
 		}
 
 		.cta-feature {
@@ -1385,36 +1130,20 @@ body.home-intro-active.home-intro-interaction-ready {
 	}
 
 @media (max-width: 820px) {
-	.hero-subpanel,
-	.email-subactions,
-	.resume-subactions,
-	.social-subactions {
-			display: grid;
-			grid-template-columns: 1fr;
-			align-items: stretch;
-	}
-
-	.hero-subpanel > *,
-	.email-subactions > *,
-	.resume-subactions > *,
-	.social-subactions > *,
 	.detail-card-actions > * {
-			width: 100%;
-			max-width: 100%;
+		width: 100%;
+		max-width: 100%;
 	}
 
 	.projects .project-card > .cta,
-	.resume-subactions > .cta,
-	.hero-subpanel > .cta,
 	.detail-card-actions > .cta {
-			justify-content: center;
-			text-align: center;
+		justify-content: center;
+		text-align: center;
 	}
 
 	.detail-card-actions {
-			justify-content: stretch;
+		justify-content: stretch;
 	}
-
 }
 
 	@media (max-width: 640px) {
@@ -1452,15 +1181,6 @@ body.home-intro-active.home-intro-interaction-ready {
 		.hero-actions > .cta {
 			width: 100%;
 			justify-content: center;
-			text-align: center;
-		}
-
-		.hero-subpanel,
-		.resume-subactions {
-			padding: 0.72rem 0.76rem;
-		}
-
-		.email-plain {
 			text-align: center;
 		}
 

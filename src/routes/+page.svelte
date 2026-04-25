@@ -16,10 +16,7 @@
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
 	import './home.css';
 
-	const contactEmail = 'nicko.obrien.ai@gmail.com';
-	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
-	const twitterProfilePath = 'x.com/nicho0101';
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
 	const homeEntrySurface = resolveEntrySurface('home');
@@ -33,36 +30,25 @@
 		'#eliora-head',
 		'#overview-head'
 	]);
-	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(homeUsesPortraitEntry);
 	let fadeHomepagePortraitOverlay = $state(false);
 	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
 	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
 	let showPersonal = $state(false);
 	let showPrecision = $state(false);
-	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let previousScrollRestoration: History['scrollRestoration'] | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
-	const showResumeOptions = $derived(openPanel === 'resume');
-	const showEmailOptions = $derived(openPanel === 'email');
-	const showSocialOptions = $derived(openPanel === 'social');
-	const openSocialOption = $derived(browser ? (page.url.searchParams.get('social') ?? '') : '');
-	const showLinkedInSocialDetails = $derived(showSocialOptions && openSocialOption === 'linkedin');
-	const showTwitterSocialDetails = $derived(showSocialOptions && openSocialOption === 'twitter');
 	const showComplete = $derived(openPanel === 'case-1');
 	const showActive = $derived(openPanel === 'case-2');
 
-	const homepageHref = (hash: string, open?: string, social?: string) => {
+	const homepageHref = (hash: string, open?: string) => {
 		const url = new URL(page.url);
 		url.pathname = '/';
 		url.search = '';
 		if (open) {
 			url.searchParams.set('open', open);
-			if (social) {
-				url.searchParams.set('social', social);
-			}
 		}
 		url.hash = `#${hash}`;
 		return `${url.pathname}${url.search}${url.hash}`;
@@ -111,8 +97,8 @@
 		}
 	};
 
-	const navigateHome = (hash: string, open?: string, social?: string) => {
-		void goto(homepageHref(hash, open, social), {
+	const navigateHome = (hash: string, open?: string) => {
+		void goto(homepageHref(hash, open), {
 			keepFocus: true,
 			noScroll: true
 		}).then(() => focusAndScrollToHash(hash));
@@ -123,11 +109,6 @@
 		window.scrollTo({ top: 0, behavior: 'auto' });
 		normalizeHomepageUrl();
 		await focusAndScrollToHash('hero-head');
-	};
-
-	const resetCopiedTarget = () => {
-		copiedTarget = null;
-		if (copyResetTimer) clearTimeout(copyResetTimer);
 	};
 
 	const syncHomepageOverlayBodyState = () => {
@@ -163,60 +144,6 @@
 			homepagePortraitDismissTimer = null;
 			completeHomepageEntry();
 		}, homepagePortraitFadeMs);
-	};
-
-	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
-		try {
-			await navigator.clipboard.writeText(value);
-			copiedTarget = target;
-			if (copyResetTimer) clearTimeout(copyResetTimer);
-			copyResetTimer = setTimeout(() => {
-				copiedTarget = null;
-			}, 1800);
-		} catch {
-			copiedTarget = null;
-		}
-	};
-
-	const copyEmail = async () => {
-		await copyText(contactEmail, 'email');
-	};
-
-	const copyLinkedInProfilePath = async () => {
-		await copyText(linkedInProfilePath, 'linkedin');
-	};
-
-	const copyTwitterProfilePath = async () => {
-		await copyText(twitterProfilePath, 'twitter');
-	};
-
-	const toggleEmailOptions = () => {
-		if (!homepageEntrySettled) return;
-		resetCopiedTarget();
-		navigateHome('hero-head', showEmailOptions ? undefined : 'email');
-	};
-
-	const toggleResumeOptions = () => {
-		if (!homepageEntrySettled) return;
-		navigateHome('hero-head', showResumeOptions ? undefined : 'resume');
-	};
-
-	const toggleSocialOptions = () => {
-		if (!homepageEntrySettled) return;
-		resetCopiedTarget();
-		navigateHome('hero-head', showSocialOptions ? undefined : 'social');
-	};
-
-	const toggleLinkedInSocialDetails = () => {
-		if (!homepageEntrySettled) return;
-		resetCopiedTarget();
-		navigateHome('hero-head', 'social', showLinkedInSocialDetails ? undefined : 'linkedin');
-	};
-
-	const toggleTwitterSocialDetails = () => {
-		if (!homepageEntrySettled) return;
-		resetCopiedTarget();
-		navigateHome('hero-head', 'social', showTwitterSocialDetails ? undefined : 'twitter');
 	};
 
 	const openPersonal = () => {
@@ -311,11 +238,10 @@
 				};
 			});
 
-		onDestroy(() => {
-			resetCopiedTarget();
-			clearHomepagePortraitTimers();
-			if (browser) {
-				document.body.classList.remove('home-intro-active');
+	onDestroy(() => {
+		clearHomepagePortraitTimers();
+		if (browser) {
+			document.body.classList.remove('home-intro-active');
 				document.body.classList.remove('home-intro-interaction-ready');
 			}
 		});
@@ -378,25 +304,7 @@
 	>
 	<HeroSection
 		{githubUrl}
-		{linkedInProfilePath}
-		{twitterProfilePath}
-		{contactEmail}
-		navigationReady={homepageInteractionReady}
-		entrySettled={homepageEntrySettled}
-		{showResumeOptions}
-		{showEmailOptions}
-		{showSocialOptions}
-		{showLinkedInSocialDetails}
-		{showTwitterSocialDetails}
-		{copiedTarget}
-		{toggleResumeOptions}
-		{toggleEmailOptions}
-		{toggleSocialOptions}
-		{toggleLinkedInSocialDetails}
-		{toggleTwitterSocialDetails}
-		{copyEmail}
-		{copyLinkedInProfilePath}
-		{copyTwitterProfilePath}
+		interactionReady={homepageInteractionReady}
 	/>
 
 	<AboutSection entrySettled={homepageEntrySettled} {showPrecision} {openPrecision} {closePrecision} />
