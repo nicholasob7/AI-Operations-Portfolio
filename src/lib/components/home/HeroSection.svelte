@@ -4,6 +4,8 @@
 		linkedInProfilePath: string;
 		twitterProfilePath: string;
 		contactEmail: string;
+		navigationReady: boolean;
+		entrySettled: boolean;
 		showResumeOptions: boolean;
 		showEmailOptions: boolean;
 		showSocialOptions: boolean;
@@ -25,6 +27,8 @@
 		linkedInProfilePath,
 		twitterProfilePath,
 		contactEmail,
+		navigationReady,
+		entrySettled,
 		showResumeOptions,
 		showEmailOptions,
 		showSocialOptions,
@@ -52,36 +56,63 @@
 	</p>
 	<div class="links">
 		<div class="hero-actions" aria-label="Primary actions">
-			<a class="cta cta-github cta-feature" href={githubUrl} target="_blank" rel="noopener noreferrer me"
-				>GitHub<span class="sr-only"> (opens in new tab)</span></a
-			>
-			<a class="cta cta-resume" href="/resume" data-sveltekit-preload-code="hover">Resume</a>
-			<button
-				class="cta cta-contact"
-				type="button"
-				aria-expanded={showEmailOptions}
-				aria-controls="email-subactions"
-				onclick={toggleEmailOptions}
-			>
-				{showEmailOptions ? 'Hide Email' : 'Email'}
-			</button>
-			<button
-				class="cta cta-social"
-				type="button"
-				aria-expanded={showSocialOptions}
-				aria-controls="social-subactions"
-				onclick={toggleSocialOptions}
-			>
-				{showSocialOptions ? 'Hide Social' : 'Social'}
-			</button>
+					<a
+						aria-disabled={!navigationReady}
+						class="cta cta-github cta-feature"
+						href={githubUrl}
+						rel="noopener noreferrer me"
+						style:pointer-events={navigationReady ? 'auto' : 'none'}
+						tabindex={navigationReady ? undefined : -1}
+						target="_blank"
+					>
+						GitHub<span class="sr-only"> (opens in new tab)</span>
+					</a>
+				<a
+					aria-disabled={!navigationReady}
+					class="cta cta-resume"
+					data-sveltekit-preload-code="hover"
+					href="/resume"
+					style:pointer-events={navigationReady ? 'auto' : 'none'}
+					tabindex={navigationReady ? undefined : -1}
+				>
+					Resume
+				</a>
+				<button
+					class="cta cta-contact"
+					disabled={!entrySettled}
+					type="button"
+					aria-expanded={showEmailOptions}
+					aria-controls="email-subactions"
+					onclick={toggleEmailOptions}
+					style:pointer-events={entrySettled ? 'auto' : 'none'}
+				>
+					{showEmailOptions ? 'Hide Email' : 'Email'}
+				</button>
+				<button
+					class="cta cta-social"
+					disabled={!entrySettled}
+					type="button"
+					aria-expanded={showSocialOptions}
+					aria-controls="social-subactions"
+					onclick={toggleSocialOptions}
+					style:pointer-events={entrySettled ? 'auto' : 'none'}
+				>
+					{showSocialOptions ? 'Hide Social' : 'Social'}
+				</button>
 		</div>
 
 		{#if showEmailOptions}
 			<div class="hero-subpanel email-subactions" id="email-subactions" aria-label="Email actions" tabindex="-1">
 				<p class="email-plain">{contactEmail}</p>
-				<button class="cta cta-contact-sub" type="button" onclick={copyEmail}>
-					{copiedTarget === 'email' ? 'Copied Email' : 'Copy Email'}
-				</button>
+					<button
+						class="cta cta-contact-sub"
+						disabled={!entrySettled}
+						type="button"
+						onclick={copyEmail}
+						style:pointer-events={entrySettled ? 'auto' : 'none'}
+					>
+						{copiedTarget === 'email' ? 'Copied Email' : 'Copy Email'}
+					</button>
 				<p class="sr-only" aria-live="polite">
 					{copiedTarget === 'email' ? 'Email address copied to clipboard.' : ''}
 				</p>
@@ -91,21 +122,39 @@
 		{#if showSocialOptions}
 			<div class="hero-subpanel social-subactions" id="social-subactions" aria-label="Social actions" tabindex="-1">
 				<div class="social-selector-group" aria-label="Social platform choices">
-					<button class="cta cta-social-option" type="button" onclick={toggleLinkedInSocialDetails}>
-						{showLinkedInSocialDetails ? 'Hide LinkedIn' : 'LinkedIn'}
-					</button>
-					<button class="cta cta-social-option" type="button" onclick={toggleTwitterSocialDetails}>
-						{showTwitterSocialDetails ? 'Hide X/Twitter' : 'X/Twitter'}
-					</button>
+						<button
+							class="cta cta-social-option"
+							disabled={!entrySettled}
+							type="button"
+							onclick={toggleLinkedInSocialDetails}
+							style:pointer-events={entrySettled ? 'auto' : 'none'}
+						>
+							{showLinkedInSocialDetails ? 'Hide LinkedIn' : 'LinkedIn'}
+						</button>
+						<button
+							class="cta cta-social-option"
+							disabled={!entrySettled}
+							type="button"
+							onclick={toggleTwitterSocialDetails}
+							style:pointer-events={entrySettled ? 'auto' : 'none'}
+						>
+							{showTwitterSocialDetails ? 'Hide X/Twitter' : 'X/Twitter'}
+						</button>
 				</div>
 				{#if showLinkedInSocialDetails}
 					<div class="social-detail">
 						<p class="profile-link-plain">
 							<span class="profile-url">{linkedInProfilePath}</span>
 						</p>
-						<button class="cta cta-contact-sub" type="button" onclick={copyLinkedInProfilePath}>
-							{copiedTarget === 'linkedin' ? 'Copied' : 'Copy'}
-						</button>
+							<button
+								class="cta cta-contact-sub"
+								disabled={!entrySettled}
+								type="button"
+								onclick={copyLinkedInProfilePath}
+								style:pointer-events={entrySettled ? 'auto' : 'none'}
+							>
+								{copiedTarget === 'linkedin' ? 'Copied' : 'Copy'}
+							</button>
 					</div>
 				{/if}
 				{#if showTwitterSocialDetails}
@@ -113,9 +162,15 @@
 						<p class="profile-link-plain">
 							<span class="profile-url">{twitterProfilePath}</span>
 						</p>
-						<button class="cta cta-contact-sub" type="button" onclick={copyTwitterProfilePath}>
-							{copiedTarget === 'twitter' ? 'Copied' : 'Copy'}
-						</button>
+							<button
+								class="cta cta-contact-sub"
+								disabled={!entrySettled}
+								type="button"
+								onclick={copyTwitterProfilePath}
+								style:pointer-events={entrySettled ? 'auto' : 'none'}
+							>
+								{copiedTarget === 'twitter' ? 'Copied' : 'Copy'}
+							</button>
 					</div>
 				{/if}
 				<p class="sr-only" aria-live="polite">

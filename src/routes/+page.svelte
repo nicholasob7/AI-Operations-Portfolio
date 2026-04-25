@@ -381,6 +381,8 @@
 		{linkedInProfilePath}
 		{twitterProfilePath}
 		{contactEmail}
+		navigationReady={homepageInteractionReady}
+		entrySettled={homepageEntrySettled}
 		{showResumeOptions}
 		{showEmailOptions}
 		{showSocialOptions}
@@ -397,11 +399,13 @@
 		{copyTwitterProfilePath}
 	/>
 
-	<AboutSection {showPrecision} {openPrecision} {closePrecision} />
+	<AboutSection entrySettled={homepageEntrySettled} {showPrecision} {openPrecision} {closePrecision} />
 
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProjectsSection
+		navigationReady={homepageInteractionReady}
+		entrySettled={homepageEntrySettled}
 		{showPersonal}
 		{showComplete}
 		{showActive}
@@ -413,6 +417,6 @@
 		{closeActive}
 	/>
 
-		<ProfileTail {returnToTop} />
+		<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
 		<div class="page-end-spacer" aria-hidden="true"></div>
 	</main>

@@ -2,6 +2,8 @@
 	import { onMount, tick } from 'svelte';
 
 	type Props = {
+		navigationReady: boolean;
+		entrySettled: boolean;
 		showPersonal: boolean;
 		showComplete: boolean;
 		showActive: boolean;
@@ -14,6 +16,8 @@
 	};
 
 	let {
+		navigationReady,
+		entrySettled,
 		showPersonal,
 		showComplete,
 		showActive,
@@ -73,11 +77,14 @@
 			<p class="project-outcome">
 				Outcome: Standardized production remediation with an evidence-driven validation workflow.
 			</p>
-				<a
-					class="cta cta-resume section-cta-remediation"
-					href="/projects/remediation-script-development"
-					data-sveltekit-preload-code="hover"
-				>
+					<a
+						aria-disabled={!navigationReady}
+						class="cta cta-resume section-cta-remediation"
+						href="/projects/remediation-script-development"
+						data-sveltekit-preload-code="hover"
+						style:pointer-events={navigationReady ? 'auto' : 'none'}
+						tabindex={navigationReady ? undefined : -1}
+					>
 					View Script Development
 				</a>
 		</article>
@@ -89,11 +96,14 @@
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
-				<a
-					class="cta cta-resume section-cta-migration"
-					href="/projects/migration-stabilization-framework"
-					data-sveltekit-preload-code="hover"
-				>
+					<a
+						aria-disabled={!navigationReady}
+						class="cta cta-resume section-cta-migration"
+						href="/projects/migration-stabilization-framework"
+						data-sveltekit-preload-code="hover"
+						style:pointer-events={navigationReady ? 'auto' : 'none'}
+						tabindex={navigationReady ? undefined : -1}
+					>
 					View Migration Framework
 				</a>
 		</article>
@@ -105,13 +115,15 @@
 			</p>
 			<p class="project-outcome">Outcome: Built a repeatable reasoning framework for complex input.</p>
 			{#if !showPersonal}
-					<button
-						class="cta cta-resume section-cta-eliora"
-						type="button"
-						aria-expanded={showPersonal}
-						aria-controls="overview"
-						onclick={openPersonal}
-					>
+						<button
+							class="cta cta-resume section-cta-eliora"
+							disabled={!entrySettled}
+							type="button"
+							aria-expanded={showPersonal}
+							aria-controls="overview"
+							onclick={openPersonal}
+							style:pointer-events={entrySettled ? 'auto' : 'none'}
+						>
 						View AI Governance
 					</button>
 			{/if}
@@ -141,12 +153,14 @@
 					development history. It is not a hypothetical project brief.
 				</p>
 				<div class="detail-card-actions">
-					<button
-						bind:this={bottomCloseAction}
-						class="cta cta-resume section-cta-eliora"
-						type="button"
-						onclick={closePersonal}
-					>
+						<button
+							bind:this={bottomCloseAction}
+							class="cta cta-resume section-cta-eliora"
+							disabled={!entrySettled}
+							type="button"
+							onclick={closePersonal}
+							style:pointer-events={entrySettled ? 'auto' : 'none'}
+						>
 						Close
 					</button>
 				</div>
@@ -156,9 +170,15 @@
 </section>
 
 {#if showPersonal && showFloatingClose}
-	<div class="detail-floating-close">
-		<button class="cta cta-resume section-cta-eliora" type="button" onclick={closePersonal}>
-			Close
-		</button>
-	</div>
-{/if}
+		<div class="detail-floating-close">
+			<button
+				class="cta cta-resume section-cta-eliora"
+				disabled={!entrySettled}
+				type="button"
+				onclick={closePersonal}
+				style:pointer-events={entrySettled ? 'auto' : 'none'}
+			>
+				Close
+			</button>
+		</div>
+	{/if}
