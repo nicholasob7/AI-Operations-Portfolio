@@ -377,69 +377,14 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Nicholas Francis O'Brien | Resume</title>
-	<meta
-		name="description"
-		content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
-	/>
-	<link rel="preload" as="image" href="/images/resume-portrait.jpg" />
-	<style>
-		html.resume-intro-pending body {
-			margin: 0;
-			overflow-x: hidden;
-			overflow-y: scroll;
-			background:
-				radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
-				radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
-				linear-gradient(165deg, #070d18 0%, #111b2f 55%, #0c1629 100%);
-		}
-
-		.resume-page.resume-intro-content-boot {
-			opacity: 0;
-		}
-
-		html.resume-intro-pending .resume-page.resume-intro-content-boot {
-			opacity: 0;
-			transition: none;
-		}
-
-		.resume-intro-overlay.resume-intro-overlay-boot {
-			position: fixed;
-			inset: 0;
-			z-index: 120;
-			display: grid;
-			place-items: center;
-			padding: 1.25rem;
-			opacity: 1;
-			visibility: visible;
-			pointer-events: none;
-			background:
-				radial-gradient(circle at 50% 18%, rgba(74, 113, 171, 0.24) 0%, rgba(9, 16, 29, 0) 42%),
-				linear-gradient(180deg, #060b14 0%, #0f1a2d 100%);
-		}
-
-		html.resume-intro-pending .resume-intro-overlay.resume-intro-overlay-boot {
-			opacity: 1;
-			visibility: visible;
-			transform: none;
-			transition: none;
-		}
-
-		.resume-intro-overlay.resume-intro-overlay-boot .resume-intro-overlay-image {
-			display: block;
-			width: min(100vw, 100vh);
-			height: min(100vw, 100vh);
-			max-width: 100vw;
-			max-height: 100vh;
-			object-fit: contain;
-			object-position: center center;
-		}
-	</style>
-	<script>
-		document.documentElement.classList.add('resume-intro-pending');
-	</script>
-</svelte:head>
+	<svelte:head>
+		<title>Nicholas Francis O'Brien | Resume</title>
+		<meta
+			name="description"
+			content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
+		/>
+		<link rel="preload" as="image" href="/images/resume-portrait.jpg" />
+	</svelte:head>
 
 <div
 	class:resume-intro-overlay-boot={resumeIntroBooting}
@@ -678,13 +623,18 @@
 		}
 
 		:global(body) {
-			margin: 0;
 			color: #e7edf8;
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 			background:
 				radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
 				radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
 				linear-gradient(165deg, #070d18 0%, #111b2f 55%, #0c1629 100%);
+		}
+
+		:global(html.resume-intro-pending body) {
+			margin: 0;
+			overflow-x: hidden;
+			overflow-y: scroll;
 		}
 
 		.resume-intro-overlay {
@@ -720,6 +670,16 @@
 			visibility: visible;
 		}
 
+		.resume-intro-overlay.resume-intro-overlay-boot {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		:global(html.resume-intro-pending) .resume-intro-overlay.resume-intro-overlay-boot {
+			transform: none;
+			transition: none;
+		}
+
 		.resume-intro-overlay.resume-intro-overlay-fading {
 			opacity: 0;
 			transform: scale(1.003);
@@ -749,6 +709,15 @@
 
 		.resume-page.resume-intro-content-hidden {
 			opacity: 0;
+		}
+
+		.resume-page.resume-intro-content-boot {
+			opacity: 0;
+		}
+
+		:global(html.resume-intro-pending) .resume-page.resume-intro-content-boot {
+			opacity: 0;
+			transition: none;
 		}
 
 		.resume-page.resume-intro-content-crossfading {
