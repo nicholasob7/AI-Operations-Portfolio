@@ -15,9 +15,17 @@
 	const twitterProfilePath = 'x.com/nicho0101';
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
+	const legacyHomepageHashes = new Set([
+		'#hero-head',
+		'#about-head',
+		'#eliora-head',
+		'#overview-head'
+	]);
 	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
 	let showHomepagePortraitOverlay = $state(false);
 	let fadeHomepagePortraitOverlay = $state(false);
+	let showPersonal = $state(false);
+	let showPrecision = $state(false);
 	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
@@ -28,8 +36,6 @@
 	const openSocialOption = $derived(browser ? (page.url.searchParams.get('social') ?? '') : '');
 	const showLinkedInSocialDetails = $derived(showSocialOptions && openSocialOption === 'linkedin');
 	const showTwitterSocialDetails = $derived(showSocialOptions && openSocialOption === 'twitter');
-	const showPersonal = $derived(openPanel === 'overview');
-	const showPrecision = $derived(openPanel === 'precision');
 	const showComplete = $derived(openPanel === 'case-1');
 	const showActive = $derived(openPanel === 'case-2');
 
@@ -51,6 +57,22 @@
 		await tick();
 		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
 		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+	};
+
+	const normalizeHomepageUrl = () => {
+		if (!browser) return;
+		const normalizedUrl = new URL(window.location.href);
+		normalizedUrl.pathname = '/';
+		normalizedUrl.search = '';
+		normalizedUrl.hash = '';
+		window.history.replaceState(window.history.state, '', normalizedUrl.pathname);
+	};
+
+	const hasLegacyHomepageUrlState = () => {
+		if (!browser) return false;
+		const url = new URL(window.location.href);
+		const open = url.searchParams.get('open');
+		return open === 'precision' || open === 'overview' || legacyHomepageHashes.has(url.hash);
 	};
 
 	const focusAndScrollToHash = async (hash: string) => {
@@ -79,6 +101,13 @@
 			keepFocus: true,
 			noScroll: true
 		}).then(() => focusAndScrollToHash(hash));
+	};
+
+	const returnToTop = async () => {
+		if (!browser) return;
+		window.scrollTo({ top: 0, behavior: 'auto' });
+		normalizeHomepageUrl();
+		await focusAndScrollToHash('hero-head');
 	};
 
 	const resetCopiedTarget = () => {
@@ -169,19 +198,25 @@
 	};
 
 	const openPersonal = () => {
-		navigateHome('overview-head', 'overview');
+		showPersonal = true;
+		void focusAndScrollToHash('overview-head');
 	};
 
 	const closePersonal = () => {
-		navigateHome('eliora-head');
+		showPersonal = false;
+		normalizeHomepageUrl();
+		void focusAndScrollToHash('eliora-head');
 	};
 
 	const openPrecision = () => {
-		navigateHome('about-head', 'precision');
+		showPrecision = true;
+		void focusAndScrollToHash('about-head');
 	};
 
 	const closePrecision = () => {
-		navigateHome('about-head');
+		showPrecision = false;
+		normalizeHomepageUrl();
+		void focusAndScrollToHash('about-head');
 	};
 
 	const openComplete = () => {
@@ -213,6 +248,13 @@
 		showHomepagePortraitOverlay = true;
 		fadeHomepagePortraitOverlay = false;
 		syncHomepageOverlayBodyState();
+		if (hasLegacyHomepageUrlState()) {
+			normalizeHomepageUrl();
+			window.scrollTo({ top: 0, behavior: 'auto' });
+			void afterLayoutSettles().then(() => {
+				window.scrollTo({ top: 0, behavior: 'auto' });
+			});
+		}
 
 		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
 		window.addEventListener('keydown', dismissOnInteraction);
@@ -258,7 +300,7 @@
 	});
 
 	$effect(() => {
-		if (!browser || !page.url.hash) return;
+		if (!browser || !page.url.hash || legacyHomepageHashes.has(page.url.hash)) return;
 		void focusAndScrollToHash(page.url.hash);
 	});
 </script>
@@ -346,6 +388,6 @@
 		{closeActive}
 	/>
 
-	<ProfileTail />
-	<div class="page-end-spacer" aria-hidden="true"></div>
-</main>
+		<ProfileTail {returnToTop} />
+		<div class="page-end-spacer" aria-hidden="true"></div>
+	</main>
