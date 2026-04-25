@@ -53,16 +53,17 @@
 <main class="doc-page">
 	{#if showScrollActions}
 		<div class="doc-scroll-actions">
-			<a
-				class="doc-cta doc-cta-print"
-				href="/appprojects/Portfolio_Description_bw.pdf"
-				download="Portfolio_Description_BW.pdf"
-			>
-				Print
-			</a>
-			<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#tail-head"
-				>Home</a
-			>
+				<a
+					class="doc-cta doc-cta-print"
+					href="/appprojects/Portfolio_Description_bw.pdf"
+					download="Portfolio_Description_BW.pdf"
+				>
+					Print
+				</a>
+				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
+				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#selected-work-head"
+					>Back to Selected Work</a
+				>
 		</div>
 	{/if}
 
@@ -139,20 +140,21 @@
 			</ul>
 
 			<div bind:this={bottomActions} class="doc-actions">
-				<a
-					class="doc-cta doc-cta-print"
-					href="/appprojects/Portfolio_Description_bw.pdf"
-					download="Portfolio_Description_BW.pdf"
-				>
-					Print
-				</a>
-				<a
-					class="doc-cta"
-					data-sveltekit-preload-code="hover"
-					href="/#tail-head"
-					>Home</a
-				>
-			</div>
+					<a
+						class="doc-cta doc-cta-print"
+						href="/appprojects/Portfolio_Description_bw.pdf"
+						download="Portfolio_Description_BW.pdf"
+					>
+						Print
+					</a>
+					<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
+					<a
+						class="doc-cta"
+						data-sveltekit-preload-code="hover"
+						href="/#selected-work-head"
+						>Back to Selected Work</a
+					>
+				</div>
 		</div>
 	</section>
 </main>
