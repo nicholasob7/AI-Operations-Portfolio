@@ -130,6 +130,7 @@
 	const completeHomepageEntry = () => {
 		showHomepagePortraitOverlay = false;
 		fadeHomepagePortraitOverlay = false;
+		homepageInteractionReady = true;
 		homepageEntrySettled = true;
 		syncHomepageOverlayBodyState();
 	};
