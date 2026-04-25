@@ -33,6 +33,8 @@ resolve_chrome_bin() {
 
 readonly chrome_bin="$(resolve_chrome_bin)"
 
+node --experimental-strip-types "$repo_root/scripts/render-pdf-html.mjs" migration
+
 generate_pdf() {
 	local input_html="$1"
 	local output_pdf="$2"
@@ -72,5 +74,5 @@ generate_pdf \
 	"$repo_root/static/appprojects/Remediation_Script_Development_Portfolio_bw.pdf"
 
 generate_pdf \
-	"$repo_root/scripts/portfolio-description-bw.html" \
+	"$repo_root/scripts/generated/portfolio-description-bw.html" \
 	"$repo_root/static/appprojects/Portfolio_Description_bw.pdf"

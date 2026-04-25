@@ -27,3 +27,6 @@ vite.config.ts.timestamp-*
 
 # Local archive snapshots
 /scripts/archive
+
+# Generated local PDF HTML
+/scripts/generated
