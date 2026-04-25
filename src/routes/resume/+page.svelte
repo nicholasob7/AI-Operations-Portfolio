@@ -1,10 +1,14 @@
-<script lang="ts">
+	<script lang="ts">
 	import { browser } from '$app/environment';
+	import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
 	import { onMount, tick } from 'svelte';
 
 	const resumePortraitHoldMs = 800;
 	const resumePortraitFadeMs = 7200;
 	const resumeIntroPendingClass = 'resume-intro-pending';
+	const resumeEntrySurface = resolveEntrySurface('resume');
+	const resumeEntryImage = getEntryImage(resumeEntrySurface);
+	const resumeUsesPortraitEntry = isPortraitEntry(resumeEntrySurface);
 
 	type SkillGroup = {
 		title: string;
@@ -186,11 +190,11 @@
 	let openSkillIndices = $state<number[]>([]);
 	let showScrollActions = $state(false);
 	let showSkillsCollapseAction = $state(false);
-	if (browser) {
+	if (browser && resumeUsesPortraitEntry) {
 		document.documentElement.classList.add(resumeIntroPendingClass);
 	}
 
-	let showResumePortraitOverlay = $state(browser);
+	let showResumePortraitOverlay = $state(browser && resumeUsesPortraitEntry);
 	let fadeResumePortraitOverlay = $state(false);
 	let resumeIntroBooting = $state(true);
 	let resumeRevealSettled = $state(false);
@@ -321,16 +325,27 @@
 			updateFloatingActions();
 		};
 
-		showResumePortraitOverlay = true;
+		showResumePortraitOverlay = resumeUsesPortraitEntry;
 		fadeResumePortraitOverlay = false;
-		resumeIntroBooting = true;
-		resumeRevealSettled = false;
+		resumeIntroBooting = resumeUsesPortraitEntry;
+		resumeRevealSettled = !resumeUsesPortraitEntry;
 		syncResumeIntroBodyState();
 
 		window.scrollTo({ top: 0, behavior: 'auto' });
 		updateFloatingActions();
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		window.addEventListener('resize', handleScroll);
+
+		if (!resumeUsesPortraitEntry) {
+			clearResumeIntroPendingState();
+			return () => {
+				clearResumePortraitTimers();
+				clearResumeIntroPendingState();
+				document.body.classList.remove('resume-intro-active');
+				window.removeEventListener('scroll', handleScroll);
+				window.removeEventListener('resize', handleScroll);
+			};
+		}
 
 		void afterLayoutSettles().then(async () => {
 			if (!showResumePortraitOverlay) return;
@@ -383,27 +398,31 @@
 			name="description"
 			content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
 		/>
-		<link rel="preload" as="image" href="/images/resume-portrait.jpg" />
+		{#if resumeEntryImage}
+			<link rel="preload" as="image" href={resumeEntryImage} />
+		{/if}
 	</svelte:head>
 
-<div
-	class:resume-intro-overlay-boot={resumeIntroBooting}
-	class:resume-intro-overlay-active={showResumePortraitOverlay}
-	class:resume-intro-overlay-fading={fadeResumePortraitOverlay}
-	class="resume-intro-overlay"
-	aria-hidden="true"
->
-	<img
-		bind:this={resumeIntroImage}
-		class="resume-intro-overlay-image"
-		src="/images/resume-portrait.jpg"
-		alt=""
-		width="1254"
-		height="1254"
-		decoding="async"
-		fetchpriority="high"
-	/>
-</div>
+{#if resumeEntryImage}
+	<div
+		class:resume-intro-overlay-boot={resumeIntroBooting}
+		class:resume-intro-overlay-active={showResumePortraitOverlay}
+		class:resume-intro-overlay-fading={fadeResumePortraitOverlay}
+		class="resume-intro-overlay"
+		aria-hidden="true"
+	>
+		<img
+			bind:this={resumeIntroImage}
+			class="resume-intro-overlay-image"
+			src={resumeEntryImage}
+			alt=""
+			width="1254"
+			height="1254"
+			decoding="async"
+			fetchpriority="high"
+		/>
+	</div>
+{/if}
 
 <main
 	id="resume-top"
