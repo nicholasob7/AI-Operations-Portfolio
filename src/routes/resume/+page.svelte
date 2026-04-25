@@ -1,5 +1,10 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { onMount, tick } from 'svelte';
+
+	const resumePortraitHoldMs = 800;
+	const resumePortraitFadeMs = 7200;
+	const resumeIntroPendingClass = 'resume-intro-pending';
 
 	type SkillGroup = {
 		title: string;
@@ -181,10 +186,21 @@
 	let openSkillIndices = $state<number[]>([]);
 	let showScrollActions = $state(false);
 	let showSkillsCollapseAction = $state(false);
+	if (browser) {
+		document.documentElement.classList.add(resumeIntroPendingClass);
+	}
+
+	let showResumePortraitOverlay = $state(browser);
+	let fadeResumePortraitOverlay = $state(false);
+	let resumeIntroBooting = $state(true);
+	let resumeRevealSettled = $state(false);
 	let bottomActions = $state<HTMLDivElement | null>(null);
 	let heroPanel = $state<HTMLElement | null>(null);
 	let topSkillsToggle = $state<HTMLButtonElement | null>(null);
 	let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
+	let resumeIntroImage = $state<HTMLImageElement | null>(null);
+	let resumePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
+	let resumePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const allSkillIndices = technicalSkills.map((_, index) => index);
 
@@ -244,17 +260,109 @@
 			anySkillsOpen && topSkillsToggleScrolledOut() && !bottomSkillsCollapseVisible();
 	};
 
+	const afterLayoutSettles = async () => {
+		await tick();
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+	};
+
+	const syncResumeIntroBodyState = () => {
+		if (typeof document === 'undefined') return;
+		document.body.classList.toggle('resume-intro-active', showResumePortraitOverlay);
+	};
+
+	const clearResumePortraitTimers = () => {
+		if (resumePortraitFadeTimer) clearTimeout(resumePortraitFadeTimer);
+		if (resumePortraitDismissTimer) clearTimeout(resumePortraitDismissTimer);
+		resumePortraitFadeTimer = null;
+		resumePortraitDismissTimer = null;
+	};
+
+	const clearResumeIntroPendingState = () => {
+		if (typeof document === 'undefined') return;
+		document.documentElement.classList.remove(resumeIntroPendingClass);
+	};
+
+	const completeResumeReveal = () => {
+		showResumePortraitOverlay = false;
+		fadeResumePortraitOverlay = false;
+		resumeIntroBooting = false;
+		resumeRevealSettled = true;
+		syncResumeIntroBodyState();
+		clearResumeIntroPendingState();
+	};
+
+	const waitForResumePortraitImage = async () => {
+		const image = resumeIntroImage;
+		if (!image) return;
+		if (image.complete) {
+			try {
+				await image.decode?.();
+			} catch {
+				// decode failures should not block the reveal lifecycle
+			}
+			return;
+		}
+
+		await new Promise<void>((resolve) => {
+			const handleReady = () => {
+				image.removeEventListener('load', handleReady);
+				image.removeEventListener('error', handleReady);
+				resolve();
+			};
+
+			image.addEventListener('load', handleReady, { once: true });
+			image.addEventListener('error', handleReady, { once: true });
+		});
+	};
+
 	onMount(() => {
 		const handleScroll = () => {
 			updateFloatingActions();
 		};
+
+		showResumePortraitOverlay = true;
+		fadeResumePortraitOverlay = false;
+		resumeIntroBooting = true;
+		resumeRevealSettled = false;
+		syncResumeIntroBodyState();
 
 		window.scrollTo({ top: 0, behavior: 'auto' });
 		updateFloatingActions();
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		window.addEventListener('resize', handleScroll);
 
+		void afterLayoutSettles().then(async () => {
+			if (!showResumePortraitOverlay) return;
+
+			await waitForResumePortraitImage();
+			if (!showResumePortraitOverlay) return;
+
+			const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			if (prefersReducedMotion) {
+				resumePortraitDismissTimer = setTimeout(() => {
+					resumePortraitDismissTimer = null;
+					completeResumeReveal();
+				}, resumePortraitHoldMs);
+				return;
+			}
+
+			resumePortraitFadeTimer = setTimeout(() => {
+				resumePortraitFadeTimer = null;
+				resumeIntroBooting = false;
+				fadeResumePortraitOverlay = true;
+				clearResumeIntroPendingState();
+				resumePortraitDismissTimer = setTimeout(() => {
+					resumePortraitDismissTimer = null;
+					completeResumeReveal();
+				}, resumePortraitFadeMs);
+			}, resumePortraitHoldMs);
+		});
+
 		return () => {
+			clearResumePortraitTimers();
+			clearResumeIntroPendingState();
+			document.body.classList.remove('resume-intro-active');
 			window.removeEventListener('scroll', handleScroll);
 			window.removeEventListener('resize', handleScroll);
 		};
@@ -275,13 +383,94 @@
 		name="description"
 		content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
 	/>
+	<link rel="preload" as="image" href="/images/resume-portrait.jpg" />
+	<style>
+		html.resume-intro-pending body {
+			margin: 0;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			background:
+				radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
+				radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
+				linear-gradient(165deg, #070d18 0%, #111b2f 55%, #0c1629 100%);
+		}
+
+		.resume-page.resume-intro-content-boot {
+			opacity: 0;
+		}
+
+		html.resume-intro-pending .resume-page.resume-intro-content-boot {
+			opacity: 0;
+			transition: none;
+		}
+
+		.resume-intro-overlay.resume-intro-overlay-boot {
+			position: fixed;
+			inset: 0;
+			z-index: 120;
+			display: grid;
+			place-items: center;
+			padding: 1.25rem;
+			opacity: 1;
+			visibility: visible;
+			pointer-events: none;
+			background:
+				radial-gradient(circle at 50% 18%, rgba(74, 113, 171, 0.24) 0%, rgba(9, 16, 29, 0) 42%),
+				linear-gradient(180deg, #060b14 0%, #0f1a2d 100%);
+		}
+
+		html.resume-intro-pending .resume-intro-overlay.resume-intro-overlay-boot {
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+			transition: none;
+		}
+
+		.resume-intro-overlay.resume-intro-overlay-boot .resume-intro-overlay-image {
+			display: block;
+			width: min(100vw, 100vh);
+			height: min(100vw, 100vh);
+			max-width: 100vw;
+			max-height: 100vh;
+			object-fit: contain;
+			object-position: center center;
+		}
+	</style>
+	<script>
+		document.documentElement.classList.add('resume-intro-pending');
+	</script>
 </svelte:head>
 
-	<main id="resume-top" class="resume-page">
-	{#if showScrollActions}
-		<div class="resume-scroll-actions">
-			{#if showSkillsCollapseAction}
-				<button class="section-reset-button resume-scroll-collapse" type="button" onclick={collapseSkills}>
+<div
+	class:resume-intro-overlay-boot={resumeIntroBooting}
+	class:resume-intro-overlay-active={showResumePortraitOverlay}
+	class:resume-intro-overlay-fading={fadeResumePortraitOverlay}
+	class="resume-intro-overlay"
+	aria-hidden="true"
+>
+	<img
+		bind:this={resumeIntroImage}
+		class="resume-intro-overlay-image"
+		src="/images/resume-portrait.jpg"
+		alt=""
+		width="1254"
+		height="1254"
+		decoding="async"
+		fetchpriority="high"
+	/>
+</div>
+
+<main
+	id="resume-top"
+	class:resume-intro-content-boot={resumeIntroBooting}
+	class:resume-intro-content-hidden={showResumePortraitOverlay && !fadeResumePortraitOverlay}
+	class:resume-intro-content-crossfading={fadeResumePortraitOverlay}
+	class="resume-page"
+>
+		{#if showScrollActions && resumeRevealSettled}
+			<div class="resume-scroll-actions">
+				{#if showSkillsCollapseAction}
+					<button class="section-reset-button resume-scroll-collapse" type="button" onclick={collapseSkills}>
 					Collapse
 				</button>
 			{/if}
@@ -475,27 +664,96 @@
 				Home
 			</a>
 		<a class="resume-home-link" href="#resume-top">Top</a>
-	</div>
-</main>
+		</div>
+	</main>
 
-<style>
-	:global(body) {
-		margin: 0;
-		color: #e7edf8;
+	<style>
+		:global(html) {
+			scrollbar-gutter: stable;
+		}
+
+		:global(body.resume-intro-active) {
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+
+		:global(body) {
+			margin: 0;
+			color: #e7edf8;
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		background:
-			radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
-			radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
-			linear-gradient(165deg, #070d18 0%, #111b2f 55%, #0c1629 100%);
-	}
+			background:
+				radial-gradient(circle at 10% 0%, rgba(39, 102, 171, 0.24), transparent 32%),
+				radial-gradient(circle at 90% 10%, rgba(29, 131, 113, 0.22), transparent 28%),
+				linear-gradient(165deg, #070d18 0%, #111b2f 55%, #0c1629 100%);
+		}
 
-	.resume-page {
-		max-width: 1320px;
-		margin: 0 auto;
-		padding: 1.2rem 1rem 2.4rem;
-		display: grid;
-		gap: 0.9rem;
-	}
+		.resume-intro-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 120;
+			display: grid;
+			place-items: center;
+			padding: 1.25rem;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transform: translateY(0) scale(1);
+			background:
+				radial-gradient(circle at 50% 18%, rgba(74, 113, 171, 0.24) 0%, rgba(9, 16, 29, 0) 42%),
+				linear-gradient(180deg, #060b14 0%, #0f1a2d 100%);
+				transition:
+					opacity 7200ms cubic-bezier(0.12, 0.72, 0.16, 1),
+					transform 7200ms cubic-bezier(0.12, 0.72, 0.16, 1);
+		}
+
+		.resume-intro-overlay::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background:
+				linear-gradient(180deg, rgba(8, 12, 22, 0.04) 0%, rgba(8, 12, 22, 0.18) 100%),
+				linear-gradient(90deg, rgba(8, 12, 22, 0.22) 0%, rgba(8, 12, 22, 0.06) 20%, rgba(8, 12, 22, 0.06) 80%, rgba(8, 12, 22, 0.22) 100%);
+		}
+
+		.resume-intro-overlay.resume-intro-overlay-active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.resume-intro-overlay.resume-intro-overlay-fading {
+			opacity: 0;
+			transform: scale(1.003);
+		}
+
+		.resume-intro-overlay-image {
+			position: relative;
+			z-index: 1;
+			display: block;
+			width: min(100vw, 100vh);
+			height: min(100vw, 100vh);
+			max-width: 100vw;
+			max-height: 100vh;
+			object-fit: contain;
+			object-position: center center;
+		}
+
+		.resume-page {
+			max-width: 1320px;
+			margin: 0 auto;
+			padding: 1.2rem 1rem 2.4rem;
+			display: grid;
+			gap: 0.9rem;
+			opacity: 1;
+				transition: opacity 7200ms cubic-bezier(0.12, 0.72, 0.16, 1);
+		}
+
+		.resume-page.resume-intro-content-hidden {
+			opacity: 0;
+		}
+
+		.resume-page.resume-intro-content-crossfading {
+			opacity: 1;
+		}
 
 	.panel {
 		display: grid;
@@ -1025,9 +1283,9 @@
 		}
 	}
 
-	@media (max-width: 760px) {
-		.resume-page {
-			padding: 1rem 0.85rem 1.9rem;
+		@media (max-width: 760px) {
+			.resume-page {
+				padding: 1rem 0.85rem 1.9rem;
 		}
 	}
 
@@ -1095,7 +1353,18 @@
 		}
 
 		.resume-scroll-actions .resume-scroll-collapse {
-			order: 3;
+				order: 3;
+			}
 		}
-	}
-</style>
+
+		@media print {
+			.resume-intro-overlay {
+				display: none !important;
+			}
+
+			.resume-page {
+				opacity: 1 !important;
+				transition: none !important;
+			}
+		}
+	</style>
