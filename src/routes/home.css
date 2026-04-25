@@ -133,16 +133,16 @@ body.home-intro-active.home-intro-interaction-ready {
 		z-index: 1;
 	}
 
-	.page-intro-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 200;
-		overflow: hidden;
-		display: grid;
-		place-items: center;
-		pointer-events: auto;
-		opacity: 1;
-		transform: translateY(0) scale(1);
+.page-intro-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+	opacity: 1;
+	transform: translateY(0) scale(1);
 		transition:
 			opacity var(--page-intro-overlay-fade-duration) var(--page-intro-overlay-ease),
 			transform var(--page-intro-overlay-fade-duration) var(--page-intro-overlay-ease);

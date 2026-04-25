@@ -60,7 +60,8 @@ const hasParentPath = (surface: EntrySurface): surface is EntrySurface & ChildSu
 
 export const isPortraitEntry = (surface: EntrySurface) => surface.mode === 'portrait' && !!surface.image;
 
-export const getEntryImage = (surface: EntrySurface) => surface.image ?? null;
+export const getEntryImage = (surface: EntrySurface) =>
+	'image' in surface ? surface.image ?? null : null;
 
 export const getCanonicalUrl = (surface: EntrySurface) => surface.canonicalUrl;
 

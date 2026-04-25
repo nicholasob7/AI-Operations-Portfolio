@@ -283,10 +283,9 @@
 			class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
 			class="page-intro-overlay"
 			aria-hidden="true"
-			style:pointer-events="none"
 		>
-		<img
-			class="page-intro-overlay-image"
+			<img
+				class="page-intro-overlay-image"
 			src={homeEntryImage}
 			alt=""
 			width="1254"
@@ -301,11 +300,9 @@
 		class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
 		class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
 		class="page"
-		style:pointer-events={homepageInteractionReady ? 'auto' : 'none'}
 	>
 	<HeroSection
 		{githubUrl}
-		interactionReady={homepageInteractionReady}
 	/>
 
 	<AboutSection entrySettled={homepageEntrySettled} {showPrecision} {openPrecision} {closePrecision} />
