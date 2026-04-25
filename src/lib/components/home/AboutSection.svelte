@@ -2,12 +2,13 @@
 	import { onMount, tick } from 'svelte';
 
 	type Props = {
+		entrySettled: boolean;
 		showPrecision: boolean;
 		openPrecision: () => void;
 		closePrecision: () => void;
 	};
 
-	let { showPrecision, openPrecision, closePrecision }: Props = $props();
+	let { entrySettled, showPrecision, openPrecision, closePrecision }: Props = $props();
 	let bottomCloseAction = $state<HTMLButtonElement | null>(null);
 	let showFloatingClose = $state(false);
 
@@ -56,13 +57,15 @@
 		</p>
 		{#if !showPrecision}
 			<div class="detail-action">
-				<button
-					class="cta cta-resume section-cta-about"
-					type="button"
-					aria-expanded={showPrecision}
-					aria-controls="precision"
-					onclick={openPrecision}
-				>
+					<button
+						class="cta cta-resume section-cta-about"
+						disabled={!entrySettled}
+						type="button"
+						aria-expanded={showPrecision}
+						aria-controls="precision"
+						onclick={openPrecision}
+						style:pointer-events={entrySettled ? 'auto' : 'none'}
+					>
 					Quality
 				</button>
 			</div>
@@ -87,12 +90,14 @@
 					independent employment reference.
 				</p>
 				<div class="detail-card-actions">
-					<button
-						bind:this={bottomCloseAction}
-						class="cta cta-resume section-cta-about"
-						type="button"
-						onclick={closePrecision}
-					>
+						<button
+							bind:this={bottomCloseAction}
+							class="cta cta-resume section-cta-about"
+							disabled={!entrySettled}
+							type="button"
+							onclick={closePrecision}
+							style:pointer-events={entrySettled ? 'auto' : 'none'}
+						>
 						Close
 					</button>
 				</div>
@@ -102,9 +107,15 @@
 </section>
 
 {#if showPrecision && showFloatingClose}
-	<div class="detail-floating-close">
-		<button class="cta cta-resume section-cta-about" type="button" onclick={closePrecision}>
-			Close
-		</button>
-	</div>
-{/if}
+		<div class="detail-floating-close">
+			<button
+				class="cta cta-resume section-cta-about"
+				disabled={!entrySettled}
+				type="button"
+				onclick={closePrecision}
+				style:pointer-events={entrySettled ? 'auto' : 'none'}
+			>
+				Close
+			</button>
+		</div>
+	{/if}

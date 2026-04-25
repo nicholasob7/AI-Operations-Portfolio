@@ -1,5 +1,22 @@
+<script lang="ts">
+	type Props = {
+		entrySettled: boolean;
+		returnToTop: () => void;
+	};
+
+	let { entrySettled, returnToTop }: Props = $props();
+</script>
+
 <section id="tail-head" class="card profile-tail">
 	<div class="tail-actions">
-		<a class="cta cta-return-top" href="/#hero-head">Return to Top</a>
+		<button
+			class="cta cta-return-top"
+			disabled={!entrySettled}
+			type="button"
+			onclick={returnToTop}
+			style:pointer-events={entrySettled ? 'auto' : 'none'}
+		>
+			Return to Top
+		</button>
 	</div>
 </section>

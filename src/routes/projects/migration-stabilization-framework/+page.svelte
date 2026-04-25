@@ -1,6 +1,8 @@
-<script lang="ts">
+	<script lang="ts">
+	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import { onMount } from 'svelte';
 
+	const migrationEntrySurface = resolveEntrySurface('migrationProject');
 	let showScrollActions = $state(false);
 	let bottomActions: HTMLDivElement | null = null;
 	let docCard: HTMLElement | null = null;
@@ -29,7 +31,9 @@
 			updateScrollActions();
 		};
 
-		window.scrollTo({ top: 0, behavior: 'auto' });
+		if (migrationEntrySurface.mode === 'none') {
+			window.scrollTo({ top: 0, behavior: 'auto' });
+		}
 
 		updateScrollActions();
 		window.addEventListener('scroll', handleScroll, { passive: true });

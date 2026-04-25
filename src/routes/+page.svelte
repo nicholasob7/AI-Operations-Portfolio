@@ -2,6 +2,13 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import {
+		getCanonicalUrl,
+		getEntryImage,
+		isPortraitEntry,
+		resolveEntrySurface,
+		shouldCollapseOnReload
+	} from '$lib/entry-surfaces';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
@@ -9,39 +16,39 @@
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
 	import './home.css';
 
-	const contactEmail = 'nicko.obrien.ai@gmail.com';
-	const linkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
 	const githubUrl = 'https://github.com/nicholasob7';
-	const twitterProfilePath = 'x.com/nicho0101';
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
-	let copiedTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
-	let showHomepagePortraitOverlay = $state(false);
+	const homeEntrySurface = resolveEntrySurface('home');
+	const qualityEntrySurface = resolveEntrySurface('quality');
+	const aiGovernanceEntrySurface = resolveEntrySurface('aiGovernance');
+	const homeEntryImage = getEntryImage(homeEntrySurface);
+	const homeUsesPortraitEntry = isPortraitEntry(homeEntrySurface);
+	const legacyHomepageHashes = new Set([
+		'#hero-head',
+		'#about-head',
+		'#eliora-head',
+		'#overview-head'
+	]);
+	let showHomepagePortraitOverlay = $state(homeUsesPortraitEntry);
 	let fadeHomepagePortraitOverlay = $state(false);
-	let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
+	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
+	let showPersonal = $state(false);
+	let showPrecision = $state(false);
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
+	let previousScrollRestoration: History['scrollRestoration'] | null = null;
 	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
-	const showResumeOptions = $derived(openPanel === 'resume');
-	const showEmailOptions = $derived(openPanel === 'email');
-	const showSocialOptions = $derived(openPanel === 'social');
-	const openSocialOption = $derived(browser ? (page.url.searchParams.get('social') ?? '') : '');
-	const showLinkedInSocialDetails = $derived(showSocialOptions && openSocialOption === 'linkedin');
-	const showTwitterSocialDetails = $derived(showSocialOptions && openSocialOption === 'twitter');
-	const showPersonal = $derived(openPanel === 'overview');
-	const showPrecision = $derived(openPanel === 'precision');
 	const showComplete = $derived(openPanel === 'case-1');
 	const showActive = $derived(openPanel === 'case-2');
 
-	const homepageHref = (hash: string, open?: string, social?: string) => {
+	const homepageHref = (hash: string, open?: string) => {
 		const url = new URL(page.url);
 		url.pathname = '/';
 		url.search = '';
 		if (open) {
 			url.searchParams.set('open', open);
-			if (social) {
-				url.searchParams.set('social', social);
-			}
 		}
 		url.hash = `#${hash}`;
 		return `${url.pathname}${url.search}${url.hash}`;
@@ -51,6 +58,22 @@
 		await tick();
 		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
 		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+	};
+
+	const normalizeHomepageUrl = () => {
+		if (!browser) return;
+		const normalizedUrl = new URL(window.location.href);
+		normalizedUrl.pathname = getCanonicalUrl(homeEntrySurface);
+		normalizedUrl.search = '';
+		normalizedUrl.hash = '';
+		window.history.replaceState(window.history.state, '', normalizedUrl.pathname);
+	};
+
+	const hasLegacyHomepageUrlState = () => {
+		if (!browser) return false;
+		const url = new URL(window.location.href);
+		const open = url.searchParams.get('open');
+		return open === 'precision' || open === 'overview' || legacyHomepageHashes.has(url.hash);
 	};
 
 	const focusAndScrollToHash = async (hash: string) => {
@@ -74,21 +97,27 @@
 		}
 	};
 
-	const navigateHome = (hash: string, open?: string, social?: string) => {
-		void goto(homepageHref(hash, open, social), {
+	const navigateHome = (hash: string, open?: string) => {
+		void goto(homepageHref(hash, open), {
 			keepFocus: true,
 			noScroll: true
 		}).then(() => focusAndScrollToHash(hash));
 	};
 
-	const resetCopiedTarget = () => {
-		copiedTarget = null;
-		if (copyResetTimer) clearTimeout(copyResetTimer);
+	const returnToTop = async () => {
+		if (!browser) return;
+		window.scrollTo({ top: 0, behavior: 'auto' });
+		normalizeHomepageUrl();
+		await focusAndScrollToHash('hero-head');
 	};
 
 	const syncHomepageOverlayBodyState = () => {
 		if (!browser) return;
 		document.body.classList.toggle('home-intro-active', showHomepagePortraitOverlay);
+		document.body.classList.toggle(
+			'home-intro-interaction-ready',
+			showHomepagePortraitOverlay && homepageInteractionReady
+		);
 	};
 
 	const clearHomepagePortraitTimers = () => {
@@ -98,167 +127,127 @@
 		homepagePortraitDismissTimer = null;
 	};
 
-	const dismissHomepagePortraitOverlay = (immediate = false) => {
+	const completeHomepageEntry = () => {
+		showHomepagePortraitOverlay = false;
+		fadeHomepagePortraitOverlay = false;
+		homepageEntrySettled = true;
+		syncHomepageOverlayBodyState();
+	};
+
+	const dismissHomepagePortraitOverlay = () => {
 		if (!showHomepagePortraitOverlay) return;
 
 		clearHomepagePortraitTimers();
 
-		if (immediate) {
-			fadeHomepagePortraitOverlay = false;
-			showHomepagePortraitOverlay = false;
-			syncHomepageOverlayBodyState();
-			return;
-		}
-
 		fadeHomepagePortraitOverlay = true;
 		homepagePortraitDismissTimer = setTimeout(() => {
-			showHomepagePortraitOverlay = false;
-			fadeHomepagePortraitOverlay = false;
 			homepagePortraitDismissTimer = null;
-			syncHomepageOverlayBodyState();
+			completeHomepageEntry();
 		}, homepagePortraitFadeMs);
 	};
 
-	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
-		try {
-			await navigator.clipboard.writeText(value);
-			copiedTarget = target;
-			if (copyResetTimer) clearTimeout(copyResetTimer);
-			copyResetTimer = setTimeout(() => {
-				copiedTarget = null;
-			}, 1800);
-		} catch {
-			copiedTarget = null;
-		}
-	};
-
-	const copyEmail = async () => {
-		await copyText(contactEmail, 'email');
-	};
-
-	const copyLinkedInProfilePath = async () => {
-		await copyText(linkedInProfilePath, 'linkedin');
-	};
-
-	const copyTwitterProfilePath = async () => {
-		await copyText(twitterProfilePath, 'twitter');
-	};
-
-	const toggleEmailOptions = () => {
-		resetCopiedTarget();
-		navigateHome('hero-head', showEmailOptions ? undefined : 'email');
-	};
-
-	const toggleResumeOptions = () => {
-		navigateHome('hero-head', showResumeOptions ? undefined : 'resume');
-	};
-
-	const toggleSocialOptions = () => {
-		resetCopiedTarget();
-		navigateHome('hero-head', showSocialOptions ? undefined : 'social');
-	};
-
-	const toggleLinkedInSocialDetails = () => {
-		resetCopiedTarget();
-		navigateHome('hero-head', 'social', showLinkedInSocialDetails ? undefined : 'linkedin');
-	};
-
-	const toggleTwitterSocialDetails = () => {
-		resetCopiedTarget();
-		navigateHome('hero-head', 'social', showTwitterSocialDetails ? undefined : 'twitter');
-	};
-
 	const openPersonal = () => {
-		navigateHome('overview-head', 'overview');
+		if (!homepageEntrySettled) return;
+		showPersonal = true;
+		void focusAndScrollToHash('overview-head');
 	};
 
 	const closePersonal = () => {
-		navigateHome('eliora-head');
+		if (!homepageEntrySettled) return;
+		showPersonal = false;
+		window.history.replaceState(window.history.state, '', getCanonicalUrl(aiGovernanceEntrySurface));
+		void focusAndScrollToHash('eliora-head');
 	};
 
 	const openPrecision = () => {
-		navigateHome('about-head', 'precision');
+		if (!homepageEntrySettled) return;
+		showPrecision = true;
+		void focusAndScrollToHash('about-head');
 	};
 
 	const closePrecision = () => {
-		navigateHome('about-head');
+		if (!homepageEntrySettled) return;
+		showPrecision = false;
+		window.history.replaceState(window.history.state, '', getCanonicalUrl(qualityEntrySurface));
+		void focusAndScrollToHash('about-head');
 	};
 
 	const openComplete = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('remediation-head', 'case-1');
 	};
 
 	const closeComplete = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('deployment-head');
 	};
 
 	const openActive = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('deployment-head', 'case-2');
 	};
 
 	const closeActive = () => {
+		if (!homepageEntrySettled) return;
 		navigateHome('tail-head');
 	};
 
 	onMount(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		const dismissOnMouseMove = (event: MouseEvent) => {
-			if (event.movementX === 0 && event.movementY === 0) return;
-			dismissHomepagePortraitOverlay(true);
-		};
-		const dismissOnInteraction = () => {
-			dismissHomepagePortraitOverlay(true);
-		};
 
-		showHomepagePortraitOverlay = true;
-		fadeHomepagePortraitOverlay = false;
+			if (shouldCollapseOnReload(aiGovernanceEntrySurface)) showPersonal = false;
+			if (shouldCollapseOnReload(qualityEntrySurface)) showPrecision = false;
+			showHomepagePortraitOverlay = homeUsesPortraitEntry;
+			fadeHomepagePortraitOverlay = false;
+			homepageInteractionReady = !homeUsesPortraitEntry;
+			homepageEntrySettled = !homeUsesPortraitEntry;
+		previousScrollRestoration = window.history.scrollRestoration;
+		window.history.scrollRestoration = 'manual';
 		syncHomepageOverlayBodyState();
-
-		window.addEventListener('pointerdown', dismissOnInteraction, { passive: true });
-		window.addEventListener('keydown', dismissOnInteraction);
-		window.addEventListener('wheel', dismissOnInteraction, { passive: true });
-		window.addEventListener('scroll', dismissOnInteraction, { passive: true });
-		window.addEventListener('mousemove', dismissOnMouseMove, { passive: true });
+		if (hasLegacyHomepageUrlState()) {
+			normalizeHomepageUrl();
+		}
+		window.scrollTo({ top: 0, behavior: 'auto' });
 
 		void afterLayoutSettles().then(() => {
 			if (!showHomepagePortraitOverlay) return;
 
 			if (prefersReducedMotion) {
 				homepagePortraitDismissTimer = setTimeout(() => {
-					showHomepagePortraitOverlay = false;
 					homepagePortraitDismissTimer = null;
-					syncHomepageOverlayBodyState();
+					completeHomepageEntry();
 				}, homepagePortraitHoldMs);
 				return;
-			}
+				}
 
 			homepagePortraitFadeTimer = setTimeout(() => {
 				homepagePortraitFadeTimer = null;
+				homepageInteractionReady = true;
+				syncHomepageOverlayBodyState();
 				dismissHomepagePortraitOverlay();
 			}, homepagePortraitHoldMs);
 		});
 
-		return () => {
-			clearHomepagePortraitTimers();
-			document.body.classList.remove('home-intro-active');
-			window.removeEventListener('pointerdown', dismissOnInteraction);
-			window.removeEventListener('keydown', dismissOnInteraction);
-			window.removeEventListener('wheel', dismissOnInteraction);
-			window.removeEventListener('scroll', dismissOnInteraction);
-			window.removeEventListener('mousemove', dismissOnMouseMove);
-		};
-	});
+				return () => {
+					clearHomepagePortraitTimers();
+					document.body.classList.remove('home-intro-active');
+					document.body.classList.remove('home-intro-interaction-ready');
+					if (previousScrollRestoration) {
+						window.history.scrollRestoration = previousScrollRestoration;
+					}
+				};
+			});
 
 	onDestroy(() => {
-		resetCopiedTarget();
 		clearHomepagePortraitTimers();
 		if (browser) {
 			document.body.classList.remove('home-intro-active');
-		}
-	});
+				document.body.classList.remove('home-intro-interaction-ready');
+			}
+		});
 
 	$effect(() => {
-		if (!browser || !page.url.hash) return;
+		if (!browser || !page.url.hash || legacyHomepageHashes.has(page.url.hash)) return;
 		void focusAndScrollToHash(page.url.hash);
 	});
 </script>
@@ -283,18 +272,21 @@
 		name="twitter:description"
 		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
 	/>
-	<link rel="preload" as="image" href="/images/homepage-portrait.jpg" />
+	{#if homeEntryImage}
+		<link rel="preload" as="image" href={homeEntryImage} />
+	{/if}
 </svelte:head>
 
-{#if showHomepagePortraitOverlay}
-	<div
-		class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
-		class="page-intro-overlay"
-		aria-hidden="true"
-	>
+	{#if showHomepagePortraitOverlay && homeEntryImage}
+		<div
+			class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
+			class="page-intro-overlay"
+			aria-hidden="true"
+			style:pointer-events="none"
+		>
 		<img
 			class="page-intro-overlay-image"
-			src="/images/homepage-portrait.jpg"
+			src={homeEntryImage}
 			alt=""
 			width="1254"
 			height="1254"
@@ -304,37 +296,24 @@
 	</div>
 {/if}
 
-<main
-	class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
-	class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
-	class="page"
->
+	<main
+		class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
+		class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
+		class="page"
+		style:pointer-events={homepageInteractionReady ? 'auto' : 'none'}
+	>
 	<HeroSection
 		{githubUrl}
-		{linkedInProfilePath}
-		{twitterProfilePath}
-		{contactEmail}
-		{showResumeOptions}
-		{showEmailOptions}
-		{showSocialOptions}
-		{showLinkedInSocialDetails}
-		{showTwitterSocialDetails}
-		{copiedTarget}
-		{toggleResumeOptions}
-		{toggleEmailOptions}
-		{toggleSocialOptions}
-		{toggleLinkedInSocialDetails}
-		{toggleTwitterSocialDetails}
-		{copyEmail}
-		{copyLinkedInProfilePath}
-		{copyTwitterProfilePath}
+		interactionReady={homepageInteractionReady}
 	/>
 
-	<AboutSection {showPrecision} {openPrecision} {closePrecision} />
+	<AboutSection entrySettled={homepageEntrySettled} {showPrecision} {openPrecision} {closePrecision} />
 
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProjectsSection
+		navigationReady={homepageInteractionReady}
+		entrySettled={homepageEntrySettled}
 		{showPersonal}
 		{showComplete}
 		{showActive}
@@ -346,6 +325,6 @@
 		{closeActive}
 	/>
 
-	<ProfileTail />
-	<div class="page-end-spacer" aria-hidden="true"></div>
-</main>
+		<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
+		<div class="page-end-spacer" aria-hidden="true"></div>
+	</main>
