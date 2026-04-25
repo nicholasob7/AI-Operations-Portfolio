@@ -33,6 +33,8 @@ resolve_chrome_bin() {
 
 readonly chrome_bin="$(resolve_chrome_bin)"
 
+node --experimental-strip-types "$repo_root/scripts/render-pdf-html.mjs" resume
+
 generate_pdf() {
 	local input_html="$1"
 	local output_pdf="$2"
@@ -68,9 +70,9 @@ generate_pdf() {
 }
 
 generate_pdf \
-	"$repo_root/scripts/resume-bw.html" \
+	"$repo_root/scripts/generated/resume-bw.html" \
 	"$repo_root/static/resume-bw.pdf"
 
 generate_pdf \
-	"$repo_root/scripts/resume-color.html" \
+	"$repo_root/scripts/generated/resume-color.html" \
 	"$repo_root/static/resume-color.pdf"
