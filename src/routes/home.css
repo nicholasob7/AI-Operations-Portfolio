@@ -628,6 +628,7 @@ body.home-intro-active.home-intro-interaction-ready {
 	.about-panel p {
 		max-width: 88ch;
 	}
+
 	.projects {
 		display: grid;
 		gap: 0.9rem;
@@ -1041,6 +1042,12 @@ body.home-intro-active.home-intro-interaction-ready {
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
 			0 10px 22px rgba(4, 9, 22, 0.2);
+	}
+
+	.detail-floating-close-group {
+		display: grid;
+		gap: 0.5rem;
+		justify-items: end;
 	}
 
 	.detail-list {
