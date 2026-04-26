@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import {
 		getCanonicalUrl,
@@ -11,9 +10,9 @@
 	} from '$lib/entry-surfaces';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
-	import AboutSection from '$lib/components/home/AboutSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
+	import SelfDirectedSection from '$lib/components/home/SelfDirectedSection.svelte';
 	import './home.css';
 
 	const githubUrl = 'https://github.com/nicholasob7';
@@ -39,20 +38,6 @@
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let previousScrollRestoration: History['scrollRestoration'] | null = null;
-	const openPanel = $derived(browser ? (page.url.searchParams.get('open') ?? '') : '');
-	const showComplete = $derived(openPanel === 'case-1');
-	const showActive = $derived(openPanel === 'case-2');
-
-	const homepageHref = (hash: string, open?: string) => {
-		const url = new URL(page.url);
-		url.pathname = '/';
-		url.search = '';
-		if (open) {
-			url.searchParams.set('open', open);
-		}
-		url.hash = `#${hash}`;
-		return `${url.pathname}${url.search}${url.hash}`;
-	};
 
 	const afterLayoutSettles = async () => {
 		await tick();
@@ -72,8 +57,7 @@
 	const hasLegacyHomepageUrlState = () => {
 		if (!browser) return false;
 		const url = new URL(window.location.href);
-		const open = url.searchParams.get('open');
-		return open === 'precision' || open === 'overview' || legacyHomepageHashes.has(url.hash);
+		return legacyHomepageHashes.has(url.hash);
 	};
 
 	const focusAndScrollToHash = async (hash: string) => {
@@ -95,13 +79,6 @@
 		if (target instanceof HTMLElement) {
 			target.focus({ preventScroll: true });
 		}
-	};
-
-	const navigateHome = (hash: string, open?: string) => {
-		void goto(homepageHref(hash, open), {
-			keepFocus: true,
-			noScroll: true
-		}).then(() => focusAndScrollToHash(hash));
 	};
 
 	const returnToTop = async () => {
@@ -171,26 +148,6 @@
 		showPrecision = false;
 		window.history.replaceState(window.history.state, '', getCanonicalUrl(qualityEntrySurface));
 		void focusAndScrollToHash('about-head');
-	};
-
-	const openComplete = () => {
-		if (!homepageEntrySettled) return;
-		navigateHome('remediation-head', 'case-1');
-	};
-
-	const closeComplete = () => {
-		if (!homepageEntrySettled) return;
-		navigateHome('deployment-head');
-	};
-
-	const openActive = () => {
-		if (!homepageEntrySettled) return;
-		navigateHome('deployment-head', 'case-2');
-	};
-
-	const closeActive = () => {
-		if (!homepageEntrySettled) return;
-		navigateHome('tail-head');
 	};
 
 	onMount(() => {
@@ -305,24 +262,22 @@
 		{githubUrl}
 	/>
 
-	<AboutSection entrySettled={homepageEntrySettled} {showPrecision} {openPrecision} {closePrecision} />
+	<ProjectsSection
+		navigationReady={homepageInteractionReady}
+	/>
 
 	<div class="section-divider" aria-hidden="true"></div>
 
-	<ProjectsSection
-		navigationReady={homepageInteractionReady}
+	<SelfDirectedSection
 		entrySettled={homepageEntrySettled}
 		{showPersonal}
-		{showComplete}
-		{showActive}
+		{showPrecision}
 		{openPersonal}
 		{closePersonal}
-		{openComplete}
-		{closeComplete}
-		{openActive}
-		{closeActive}
+		{openPrecision}
+		{closePrecision}
 	/>
 
-		<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
-		<div class="page-end-spacer" aria-hidden="true"></div>
-	</main>
+	<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
+	<div class="page-end-spacer" aria-hidden="true"></div>
+</main>
