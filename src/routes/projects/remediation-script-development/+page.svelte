@@ -66,7 +66,7 @@
 				</a>
 				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
 				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#deployment-head"
-					>Back to Migration Framework</a
+					>Next Fix</a
 				>
 		</div>
 	{/if}
@@ -184,7 +184,7 @@
 						class="doc-cta"
 						data-sveltekit-preload-code="hover"
 						href="/#deployment-head"
-						>Back to Migration Framework</a
+						>Next Fix</a
 					>
 				</div>
 		</div>

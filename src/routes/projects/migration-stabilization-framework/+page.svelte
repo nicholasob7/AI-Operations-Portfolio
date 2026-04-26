@@ -66,7 +66,7 @@
 				</a>
 				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
 				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#selected-work-head"
-					>Back to Selected Work</a
+					>Next</a
 				>
 		</div>
 	{/if}
@@ -156,7 +156,7 @@
 						class="doc-cta"
 						data-sveltekit-preload-code="hover"
 						href="/#selected-work-head"
-						>Back to Selected Work</a
+						>Next</a
 					>
 				</div>
 		</div>
