@@ -84,7 +84,7 @@
 					onclick={openPersonal}
 					style:pointer-events={entrySettled ? 'auto' : 'none'}
 				>
-					View AI Governance
+					Eliora
 				</button>
 			{/if}
 		</article>

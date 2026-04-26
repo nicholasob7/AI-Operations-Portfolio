@@ -10,7 +10,7 @@
 	<h2 id="selected-work-head" tabindex="-1">Selected Work</h2>
 	<div class="projects">
 		<article id="remediation-head" class="project-card project-card-remediation" tabindex="-1">
-			<h3>Script Development</h3>
+			<h3>Script Fix</h3>
 			<p class="project-summary">
 				AI-assisted endpoint remediation for live post-deployment incidents. Built for production validation.
 			</p>
@@ -25,11 +25,11 @@
 						style:pointer-events={navigationReady ? 'auto' : 'none'}
 						tabindex={navigationReady ? undefined : -1}
 					>
-					View Script Development
+					Script Fix
 				</a>
 		</article>
 		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
-			<h3>Migration Framework</h3>
+			<h3>Migration Fix</h3>
 			<p class="project-summary">
 				Evidence-driven migration stabilization methodology. Turns live remediation into robust package controls.
 			</p>
@@ -44,7 +44,7 @@
 						style:pointer-events={navigationReady ? 'auto' : 'none'}
 						tabindex={navigationReady ? undefined : -1}
 					>
-					View Migration Framework
+					Migration Fix
 				</a>
 		</article>
 	</div>
