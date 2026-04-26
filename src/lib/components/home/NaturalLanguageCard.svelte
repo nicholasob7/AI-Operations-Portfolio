@@ -80,7 +80,7 @@
 			onclick={openPrecision}
 			style:pointer-events={entrySettled ? 'auto' : 'none'}
 		>
-			Quality
+			Language
 		</button>
 	{/if}
 </article>
