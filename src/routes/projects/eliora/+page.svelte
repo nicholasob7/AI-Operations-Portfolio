@@ -160,23 +160,20 @@
 			line-height: 1.18;
 		}
 
-		h2,
-		.detail-highlight {
-			color: #5ed8ff;
-		}
+			h2,
+			.detail-highlight {
+				color: transparent;
+				background: linear-gradient(90deg, #5f9bb5 0%, #69579a 50%, #4b8068 100%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
 
 		.detail-list {
 			display: grid;
 			gap: 0.45rem;
 			padding-left: 1.35rem;
 			list-style: disc outside;
-		}
-
-		.detail-note {
-			padding: 0.9rem 1rem;
-			border: 1px solid rgba(190, 215, 242, 0.24);
-			border-radius: 0.85rem;
-			background: linear-gradient(120deg, rgba(38, 94, 120, 0.34), rgba(71, 54, 117, 0.36));
 		}
 
 		.actions {
