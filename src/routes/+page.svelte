@@ -239,6 +239,6 @@
 		navigationReady={homepageInteractionReady}
 	/>
 
-	<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
+	<ProfileTail entrySettled={homepageInteractionReady} {returnToTop} />
 	<div class="page-end-spacer" aria-hidden="true"></div>
 </main>
