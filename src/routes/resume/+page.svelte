@@ -1,7 +1,8 @@
-	<script lang="ts">
-	import { browser } from '$app/environment';
-	import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
-	import { onMount, tick } from 'svelte';
+		<script lang="ts">
+		import { browser } from '$app/environment';
+		import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
+		import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
+		import { onMount, tick } from 'svelte';
 
 	const resumeLocation = 'Lower Hutt, New Zealand';
 	const resumeContactEmail = 'nicko.obrien.ai@gmail.com';
@@ -191,23 +192,19 @@
 		'NTT internal certifications, including AI training'
 	];
 
-	let openSkillIndices = $state<number[]>([]);
-	let showScrollActions = $state(false);
-	let showSkillsCollapseAction = $state(false);
+		let openSkillIndices = $state<number[]>([]);
+		let showSkillsCollapseAction = $state(false);
 	if (browser && resumeUsesPortraitEntry) {
 		document.documentElement.classList.add(resumeIntroPendingClass);
 	}
 
 	let showResumePortraitOverlay = $state(browser && resumeUsesPortraitEntry);
 	let fadeResumePortraitOverlay = $state(false);
-	let resumeIntroBooting = $state(true);
-	let resumeInteractionReady = $state(!resumeUsesPortraitEntry);
-	let resumeRevealSettled = $state(false);
-	let copiedContactTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
-	let bottomActions = $state<HTMLDivElement | null>(null);
-	let heroPanel = $state<HTMLElement | null>(null);
-	let topSkillsToggle = $state<HTMLButtonElement | null>(null);
-	let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
+		let resumeIntroBooting = $state(true);
+		let resumeInteractionReady = $state(!resumeUsesPortraitEntry);
+		let copiedContactTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
+		let topSkillsToggle = $state<HTMLButtonElement | null>(null);
+		let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
 	let resumeIntroImage = $state<HTMLImageElement | null>(null);
 	let resumePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let resumePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
@@ -235,20 +232,6 @@
 		openSkillIndices = [];
 	};
 
-	const bottomActionsVisible = () => {
-		if (!bottomActions) return false;
-
-		const rect = bottomActions.getBoundingClientRect();
-		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
-	};
-
-	const heroPanelScrolledOut = () => {
-		if (!heroPanel) return false;
-
-		const rect = heroPanel.getBoundingClientRect();
-		return rect.bottom < 24;
-	};
-
 	const topSkillsToggleScrolledOut = () => {
 		if (!topSkillsToggle) return false;
 
@@ -263,13 +246,45 @@
 		return rect.top < window.innerHeight - 24 && rect.bottom > 24;
 	};
 
-	const updateFloatingActions = () => {
-		const hideForBottomActions = bottomActionsVisible();
-		showScrollActions = !hideForBottomActions && heroPanelScrolledOut();
-
+	const updateActionAvailability = () => {
 		showSkillsCollapseAction =
 			anySkillsOpen && topSkillsToggleScrolledOut() && !bottomSkillsCollapseVisible();
 	};
+
+	const resumeActions = $derived(
+		[
+			...(showSkillsCollapseAction
+				? [
+						{
+							id: 'collapse',
+							label: 'Collapse',
+							type: 'button',
+							onclick: collapseSkills
+						} satisfies DestinationAction
+					]
+				: []),
+			{
+				id: 'print',
+				label: 'Print',
+				type: 'link',
+				href: '/resume-bw.pdf',
+				download: 'Nicholas_Francis_OBrien_Resume_BW.pdf'
+			},
+			{
+				id: 'home',
+				label: 'Home',
+				type: 'link',
+				href: '/',
+				preload: true
+			},
+			{
+				id: 'top',
+				label: 'Top',
+				type: 'link',
+				href: '#resume-top'
+			}
+		] satisfies DestinationAction[]
+	);
 
 	const afterLayoutSettles = async () => {
 		await tick();
@@ -299,7 +314,6 @@
 		fadeResumePortraitOverlay = false;
 		resumeIntroBooting = false;
 		resumeInteractionReady = true;
-		resumeRevealSettled = true;
 		syncResumeIntroBodyState();
 		clearResumeIntroPendingState();
 	};
@@ -355,18 +369,17 @@
 
 	onMount(() => {
 		const handleScroll = () => {
-			updateFloatingActions();
+			updateActionAvailability();
 		};
 
 		showResumePortraitOverlay = resumeUsesPortraitEntry;
 		fadeResumePortraitOverlay = false;
 		resumeIntroBooting = resumeUsesPortraitEntry;
 		resumeInteractionReady = !resumeUsesPortraitEntry;
-		resumeRevealSettled = !resumeUsesPortraitEntry;
 		syncResumeIntroBodyState();
 
 		window.scrollTo({ top: 0, behavior: 'auto' });
-		updateFloatingActions();
+		updateActionAvailability();
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		window.addEventListener('resize', handleScroll);
 
@@ -423,7 +436,7 @@
 		openSkillIndices.length;
 		if (typeof window === 'undefined') return;
 		void tick().then(() => {
-			updateFloatingActions();
+			updateActionAvailability();
 		});
 	});
 </script>
@@ -467,31 +480,9 @@
 	class:resume-intro-content-crossfading={fadeResumePortraitOverlay}
 	class="resume-page"
 >
-		{#if showScrollActions && resumeRevealSettled}
-			<div class="resume-scroll-actions">
-				{#if showSkillsCollapseAction}
-					<button class="section-reset-button resume-scroll-collapse" type="button" onclick={collapseSkills}>
-					Collapse
-				</button>
-			{/if}
-			<a
-				class="resume-print-link resume-print-link-bw"
-				href="/resume-bw.pdf"
-				download="Nicholas_Francis_OBrien_Resume_BW.pdf"
-			>
-				Print
-			</a>
-				<a
-					class="resume-home-link"
-					data-sveltekit-preload-code="hover"
-					href="/"
-				>
-					Home
-				</a>
-		</div>
-	{/if}
+	<DestinationActions actions={resumeActions} panelId="resume-destination-actions" />
 
-		<header bind:this={heroPanel} class="panel hero-panel">
+			<header class="panel hero-panel">
 			<div class="hero-panel-content">
 				<div class="hero-copy">
 					<h1>Nicholas Francis O'Brien</h1>
@@ -683,24 +674,7 @@
 		</ul>
 	</section>
 
-	<div bind:this={bottomActions} class="resume-actions">
-		<a
-			class="resume-print-link resume-print-link-bw"
-			href="/resume-bw.pdf"
-			download="Nicholas_Francis_OBrien_Resume_BW.pdf"
-		>
-			Print
-		</a>
-			<a
-				class="resume-home-link"
-				data-sveltekit-preload-code="hover"
-				href="/"
-			>
-				Home
-			</a>
-		<a class="resume-home-link" href="#resume-top">Top</a>
-		</div>
-	</main>
+		</main>
 
 	<style>
 		:global(html) {
@@ -790,7 +764,7 @@
 		.resume-page {
 			max-width: 1320px;
 			margin: 0 auto;
-			padding: 1.2rem 1rem 2.4rem;
+			padding: 1.2rem 1rem calc(6.5rem + env(safe-area-inset-bottom));
 			display: grid;
 			gap: 0.9rem;
 			opacity: 1;
@@ -968,13 +942,9 @@
 		letter-spacing: 0.02em;
 	}
 
-	a {
-		color: #9ed7ff;
-	}
-
-	.experience-panel {
-		gap: 0.9rem;
-	}
+		.experience-panel {
+			gap: 0.9rem;
+		}
 
 	.experience-panel .core-role-start {
 		color: transparent;
@@ -1204,89 +1174,12 @@
 		color: #8fe3ff;
 	}
 
-	.resume-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.55rem;
-		justify-content: flex-start;
-	}
-
-	.resume-scroll-actions {
-		position: fixed;
-		top: 0.85rem;
-		right: max(1rem, calc((100vw - 1320px) / 2 + 1rem));
-		z-index: 30;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		justify-content: flex-end;
-		pointer-events: auto;
-	}
-
-	.resume-scroll-actions .resume-print-link,
-	.resume-scroll-actions .resume-home-link,
-	.resume-scroll-actions .resume-scroll-collapse {
-		min-height: 2.45rem;
-		padding: 0.56rem 0.92rem;
-		font-size: 0.84rem;
-		backdrop-filter: none;
-		-webkit-backdrop-filter: none;
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-			0 10px 22px rgba(4, 9, 22, 0.2);
-	}
-
-	.resume-scroll-actions .resume-print-link {
-		background: transparent;
-	}
-
-	.resume-scroll-actions .resume-home-link {
-		background: transparent;
-	}
-
-	.resume-scroll-actions .resume-scroll-collapse {
-		background: transparent;
-	}
-
-	.resume-print-link,
-	.resume-home-link {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.8rem;
-		padding: 0.72rem 1.1rem;
-		border: 1px solid rgba(181, 226, 197, 0.45);
-		border-radius: 999px;
-		text-decoration: none;
-		font-size: 0.92rem;
-		font-weight: 700;
-		letter-spacing: 0.01em;
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-			0 12px 24px rgba(4, 9, 22, 0.24);
-	}
-
-	.resume-print-link {
-		background: linear-gradient(135deg, rgba(87, 112, 147, 0.88), rgba(79, 120, 101, 0.88));
-		color: #f4f8ff;
-	}
-
-	.resume-home-link {
-		background: rgba(20, 32, 53, 0.85);
-		border-color: rgba(148, 202, 255, 0.28);
-		color: #d9e9ff;
-	}
-
-	.resume-scroll-collapse {
-		backdrop-filter: blur(10px);
-	}
-
-	@media (min-width: 960px) {
-		.resume-page {
-			max-width: 1320px;
-			padding: 2rem 1.25rem 3rem;
-			gap: 1.1rem;
-		}
+		@media (min-width: 960px) {
+			.resume-page {
+				max-width: 1320px;
+				padding: 2rem 1.25rem calc(6.75rem + env(safe-area-inset-bottom));
+				gap: 1.1rem;
+			}
 
 		.panel {
 			padding: 1.2rem 1.25rem;
@@ -1359,18 +1252,13 @@
 			line-height: 1.58;
 		}
 
-		.resume-print-link,
-		.resume-home-link,
-		.resume-scroll-collapse {
-			font-size: 0.96rem;
 		}
-	}
 
-		@media (max-width: 760px) {
-			.resume-page {
-				padding: 1rem 0.85rem 1.9rem;
+			@media (max-width: 760px) {
+				.resume-page {
+					padding: 1rem 0.85rem calc(6.5rem + env(safe-area-inset-bottom));
+			}
 		}
-	}
 
 	@media (max-width: 520px) {
 		h1 {
@@ -1404,46 +1292,7 @@
 			padding-left: 1.65rem;
 		}
 
-		.resume-print-link,
-		.resume-home-link,
-		.resume-scroll-collapse {
-			width: 100%;
-		}
-
-		.resume-scroll-actions {
-			top: 0.55rem;
-			right: 0.85rem;
-			left: auto;
-			gap: 0.35rem;
-			padding: 0.35rem;
-			border: 1px solid rgba(167, 213, 255, 0.22);
-			border-radius: 999px;
-			box-shadow:
-				0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-				0 12px 26px rgba(4, 9, 22, 0.28);
-			justify-content: flex-end;
-		}
-
-		.resume-scroll-actions .resume-print-link,
-		.resume-scroll-actions .resume-home-link,
-		.resume-scroll-actions .resume-scroll-collapse {
-			width: auto;
-			min-width: 0;
-			padding: 0.56rem 0.8rem;
-		}
-
-		.resume-scroll-actions .resume-print-link {
-			order: 1;
-		}
-
-		.resume-scroll-actions .resume-home-link {
-			order: 2;
-		}
-
-		.resume-scroll-actions .resume-scroll-collapse {
-				order: 3;
 			}
-		}
 
 		@media print {
 			.resume-intro-overlay {
