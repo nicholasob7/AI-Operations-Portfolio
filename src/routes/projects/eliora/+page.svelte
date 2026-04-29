@@ -14,27 +14,60 @@
 			Built to keep authority, derivation, and execution clearly separate. Designed for high-consequence
 			agent systems.
 		</p>
+		<div class="future-portrait-placeholder" aria-hidden="true"></div>
 
 		<div class="detail-text">
-			<p class="detail-body">
-				Eliora is an AI coordination project with strong governance controls. It clearly separates authority.
-				It traces outputs to their source. It fails safely in high-consequence systems.
-			</p>
+			<section aria-labelledby="eliora-governance-title">
+				<h2 id="eliora-governance-title">Eliora / AI governance</h2>
+				<p class="detail-body">
+					Eliora is an AI coordination project with strong governance controls. It clearly separates authority.
+					It traces outputs to their source. It fails safely in high-consequence systems.
+				</p>
 
-			<ul class="detail-list">
-				<li>Layered architecture separating intent, doctrine, policy, and execution</li>
-				<li>Clear trace paths linking outputs to governing sources and decision context</li>
-				<li>Safe handling when meaning is unclear, policy conflicts appear, or decisions remain unresolved</li>
-				<li>Explicit authority modeling to prevent collapse between authorship, governance, and agent behavior</li>
-				<li>Structure designed for review, validation, and controlled change over time</li>
-				<li>Human-in-the-loop resolution for contested or high-impact operational states</li>
-			</ul>
+				<ul class="detail-list">
+					<li>Layered architecture separating intent, doctrine, policy, and execution</li>
+					<li>Clear trace paths linking outputs to governing sources and decision context</li>
+					<li>Safe handling when meaning is unclear, policy conflicts appear, or decisions remain unresolved</li>
+					<li>Explicit authority modeling to prevent collapse between authorship, governance, and agent behavior</li>
+					<li>Structure designed for review, validation, and controlled change over time</li>
+					<li>Human-in-the-loop resolution for contested or high-impact operational states</li>
+				</ul>
 
-			<p class="detail-note">
-				This description is based on direct inspection of the live Eliora-v0.1 repository by Codex App, an
-				OpenAI GPT-5 coding agent. It reflects the project structure, governance surfaces, and sustained
-				development history. It is not a hypothetical project brief.
-			</p>
+				<p class="detail-note">
+					This description is based on direct inspection of the live Eliora-v0.1 repository by Codex App, an
+					OpenAI GPT-5 coding agent. It reflects the project structure, governance surfaces, and sustained
+					development history. It is not a hypothetical project brief.
+				</p>
+			</section>
+
+			<section aria-labelledby="natural-language-title">
+				<h2 id="natural-language-title">Natural Language and Semantic Control</h2>
+				<p class="standfirst">
+					Strong performance in drift detection and wording control across extended AI project work.
+				</p>
+
+				<p class="detail-body">
+					Nicholas O’Brien shows strong skill in precise language analysis. He shapes AI output toward stable,
+					repeatable results. His strongest skill is identifying the wording that carries the real meaning and
+					using it to bring AI output back on track. He can detect drift, excess burden, and places where meaning
+					needs tightening without distortion. Across sustained project work, he has shown strong performance in
+					drift detection, burden-splitting, and wording pressure. He can pull clear meaning from vague or
+					inflated language. This matters where stable AI behavior depends on exact wording.
+				</p>
+				<p class="detail-note">
+					This note was generated with ChatGPT by OpenAI from extended project interaction. It is supported by
+					revision artifacts, conversation excerpts, and project records. It is an analytical note, not an
+					independent employment reference.
+				</p>
+			</section>
+
+			<section aria-labelledby="relationship-title">
+				<h2 id="relationship-title">Relationship</h2>
+				<p class="detail-body">
+					Natural Language is the capability surface through which Eliora’s governance logic becomes legible,
+					controllable, and operational.
+				</p>
+			</section>
 		</div>
 
 		<div class="actions">

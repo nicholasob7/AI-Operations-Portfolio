@@ -39,13 +39,13 @@
 				practical tooling, stable systems, and dependable outcomes.
 			</p>
 			<a
-				aria-disabled={!navigationReady}
-				class="cta cta-resume section-cta-about"
-				data-sveltekit-preload-code="hover"
-				href="/projects/natural-language"
-				style:pointer-events={navigationReady ? 'auto' : 'none'}
-				tabindex={navigationReady ? undefined : -1}
-			>
+					aria-disabled={!navigationReady}
+					class="cta cta-resume section-cta-about"
+					data-sveltekit-preload-code="hover"
+					href="/projects/eliora"
+					style:pointer-events={navigationReady ? 'auto' : 'none'}
+					tabindex={navigationReady ? undefined : -1}
+				>
 				Language
 			</a>
 		</article>
