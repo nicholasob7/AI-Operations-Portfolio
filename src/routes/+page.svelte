@@ -5,8 +5,7 @@
 		getCanonicalUrl,
 		getEntryImage,
 		isPortraitEntry,
-		resolveEntrySurface,
-		shouldCollapseOnReload
+		resolveEntrySurface
 	} from '$lib/entry-surfaces';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
@@ -19,8 +18,6 @@
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
 	const homeEntrySurface = resolveEntrySurface('home');
-	const qualityEntrySurface = resolveEntrySurface('quality');
-	const aiGovernanceEntrySurface = resolveEntrySurface('aiGovernance');
 	const homeEntryImage = getEntryImage(homeEntrySurface);
 	const homeUsesPortraitEntry = isPortraitEntry(homeEntrySurface);
 	const legacyHomepageHashes = new Set([
@@ -33,8 +30,6 @@
 	let fadeHomepagePortraitOverlay = $state(false);
 	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
 	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
-	let showPersonal = $state(false);
-	let showPrecision = $state(false);
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let previousScrollRestoration: History['scrollRestoration'] | null = null;
@@ -124,37 +119,9 @@
 		}, homepagePortraitFadeMs);
 	};
 
-	const openPersonal = () => {
-		if (!homepageEntrySettled) return;
-		showPersonal = true;
-		void focusAndScrollToHash('overview-head');
-	};
-
-	const closePersonal = () => {
-		if (!homepageEntrySettled) return;
-		showPersonal = false;
-		window.history.replaceState(window.history.state, '', getCanonicalUrl(aiGovernanceEntrySurface));
-		void focusAndScrollToHash('eliora-head');
-	};
-
-	const openPrecision = () => {
-		if (!homepageEntrySettled) return;
-		showPrecision = true;
-		void focusAndScrollToHash('about-head');
-	};
-
-	const closePrecision = () => {
-		if (!homepageEntrySettled) return;
-		showPrecision = false;
-		window.history.replaceState(window.history.state, '', getCanonicalUrl(qualityEntrySurface));
-		void focusAndScrollToHash('about-head');
-	};
-
 	onMount(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-			if (shouldCollapseOnReload(aiGovernanceEntrySurface)) showPersonal = false;
-			if (shouldCollapseOnReload(qualityEntrySurface)) showPrecision = false;
 			showHomepagePortraitOverlay = homeUsesPortraitEntry;
 			fadeHomepagePortraitOverlay = false;
 			homepageInteractionReady = !homeUsesPortraitEntry;
@@ -269,15 +236,9 @@
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<SelfDirectedSection
-		entrySettled={homepageEntrySettled}
-		{showPersonal}
-		{showPrecision}
-		{openPersonal}
-		{closePersonal}
-		{openPrecision}
-		{closePrecision}
+		navigationReady={homepageInteractionReady}
 	/>
 
-	<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
+	<ProfileTail entrySettled={homepageInteractionReady} {returnToTop} />
 	<div class="page-end-spacer" aria-hidden="true"></div>
 </main>

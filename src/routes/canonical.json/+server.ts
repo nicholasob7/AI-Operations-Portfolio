@@ -110,18 +110,18 @@ const surfaceSpecs = [
 		notes: ['Project-card summaries for currently surfaced public work.']
 	},
 	{
-		id: 'homepage.quality',
-		label: 'Homepage Quality and Semantic Control',
+		id: 'projects.natural_language',
+		label: 'Natural Language and Semantic Control Project Page',
 		surface_type: 'quality_surface',
 		coverage_status: 'covered',
-		notes: ['Language, semantic-control, and analytical qualification material.']
+		notes: ['Natural-language, semantic-control, and analytical qualification route material.']
 	},
 	{
-		id: 'homepage.personal',
-		label: 'Homepage Personal and Governance',
+		id: 'projects.eliora',
+		label: 'Eliora AI Governance Project Page',
 		surface_type: 'personal_surface',
 		coverage_status: 'covered',
-		notes: ['Governance direction, control boundaries, and public qualification note.']
+		notes: ['Eliora governance direction, control boundaries, and public qualification note.']
 	},
 	{
 		id: 'resume.identity_context',
@@ -238,13 +238,13 @@ const entrySpecs = [
 		projection_notes: ['Selected-work card summaries remain bounded and do not replace full project-detail surfaces.']
 	},
 	{
-		id: 'homepage-quality-semantic-control',
-		surface_id: 'homepage.quality',
-		label: 'Homepage Quality and Semantic Control',
+		id: 'project-natural-language-semantic-control',
+		surface_id: 'projects.natural_language',
+		label: 'Natural Language and Semantic Control',
 		entry_type: 'detail_entry',
 		entry_semantic_type: 'capability_surface',
 		public_summary:
-			'Homepage quality block covering semantic control, language precision, analytical characterization, and qualification note.',
+			'Natural Language route covering semantic control, language precision, analytical characterization, and qualification note.',
 		contextIds: ['ctx_quality'],
 		claimIds: ['clm_quality_summary', 'clm_quality_standfirst', 'clm_quality_body', 'clm_quality_note'],
 		relationshipIds: ['rel_quality_precision_to_capability', 'rel_quality_note_to_confidence'],
@@ -257,13 +257,13 @@ const entrySpecs = [
 		projection_notes: ['Includes the analytical/generated note and its qualifying public note.']
 	},
 	{
-		id: 'homepage-personal-governance',
-		surface_id: 'homepage.personal',
-		label: 'Homepage Personal and Governance',
+		id: 'project-eliora-governance',
+		surface_id: 'projects.eliora',
+		label: 'Eliora AI Governance',
 		entry_type: 'detail_entry',
 		entry_semantic_type: 'governance_surface',
 		public_summary:
-			'Homepage governance block covering public direction, governance structure, human escalation boundaries, and qualifying note.',
+			'Eliora route covering public direction, governance structure, human escalation boundaries, and qualifying note.',
 		contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
 		claimIds: [
 			'clm_governance_card_summary',

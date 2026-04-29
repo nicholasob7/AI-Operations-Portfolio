@@ -163,19 +163,19 @@ export const canonicalSource: {
 		{
 			id: 'ctx_quality',
 			contextType: 'quality_context',
-			contextNote: 'Homepage natural-language and semantic-control material.',
-			sourceSurface: 'homepage.quality',
+			contextNote: 'Natural Language route semantic-control material.',
+			sourceSurface: 'projects.natural_language',
 			statusOrProgression: {
 				status: 'active',
-				progressionNote: 'Current public quality and semantic-control description.'
+				progressionNote: 'Current public Natural Language route description.'
 			},
 			releaseState: 'retain'
 		},
 		{
 			id: 'ctx_governance',
 			contextType: 'governance_context',
-			contextNote: 'Homepage personal and governance-direction material.',
-			sourceSurface: 'homepage.personal',
+			contextNote: 'Eliora route governance-direction material.',
+			sourceSurface: 'projects.eliora',
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Current public governance-direction detail.'
@@ -186,7 +186,7 @@ export const canonicalSource: {
 			id: 'ctx_high_consequence_agents',
 			contextType: 'role_context',
 			contextNote: 'High-consequence agent-systems design context.',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: ''
@@ -847,7 +847,7 @@ export const canonicalSource: {
 				'I work at the intersection of IT operations and AI-enabled delivery. My strength is precise language and clear requirements. I use disciplined semantic control to drive stable AI behavior. I turn complex technical situations into practical tooling, stable systems, and dependable outcomes.',
 			claimKind: 'quality_capability',
 			claimOrigin: 'direct_self_authored',
-			sourceSurface: 'homepage.quality',
+			sourceSurface: 'projects.natural_language',
 			contextIds: ['ctx_quality'],
 			signalIds: [
 				'sig_quality_capability',
@@ -876,12 +876,12 @@ export const canonicalSource: {
 			claimText: 'Strong performance in drift detection and wording control across extended AI project work.',
 			claimKind: 'quality_standfirst',
 			claimOrigin: 'analytical_generated_note',
-			sourceSurface: 'homepage.quality',
+			sourceSurface: 'projects.natural_language',
 			contextIds: ['ctx_quality'],
 			signalIds: ['sig_quality_capability', 'sig_quality_confidence'],
 			statusOrProgression: {
 				status: 'active',
-				progressionNote: 'Public quality standfirst in expanded detail card.'
+				progressionNote: 'Public quality standfirst on the Natural Language page.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain_with_care',
@@ -897,7 +897,7 @@ export const canonicalSource: {
 				'Nicholas O’Brien shows strong skill in precise language analysis. He shapes AI output toward stable, repeatable results. His strongest skill is identifying the wording that carries the real meaning and using it to bring AI output back on track. He can detect drift, excess burden, and places where meaning needs tightening without distortion. Across sustained project work, he has shown strong performance in drift detection, burden-splitting, and wording pressure. He can pull clear meaning from vague or inflated language. This matters where stable AI behavior depends on exact wording.',
 			claimKind: 'quality_detail_body',
 			claimOrigin: 'analytical_generated_note',
-			sourceSurface: 'homepage.quality',
+			sourceSurface: 'projects.natural_language',
 			contextIds: ['ctx_quality'],
 			signalIds: [
 				'sig_quality_capability',
@@ -907,7 +907,7 @@ export const canonicalSource: {
 			],
 			statusOrProgression: {
 				status: 'active',
-				progressionNote: 'Expanded analytical quality note in current public block.'
+				progressionNote: 'Analytical quality note on the Natural Language page.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain_with_care',
@@ -923,7 +923,7 @@ export const canonicalSource: {
 				'This note was generated with ChatGPT by OpenAI from extended project interaction. It is supported by revision artifacts, conversation excerpts, and project records. It is an analytical note, not an independent employment reference.',
 			claimKind: 'quality_note_qualification',
 			claimOrigin: 'analytical_generated_note',
-			sourceSurface: 'homepage.quality',
+			sourceSurface: 'projects.natural_language',
 			contextIds: ['ctx_quality'],
 			signalIds: ['sig_quality_confidence'],
 			statusOrProgression: {
@@ -944,7 +944,7 @@ export const canonicalSource: {
 				'Interpretive AI architecture for atypical input. Converts it into structured, stable reasoning and response. Outcome: Built a repeatable reasoning framework for complex input.',
 			claimKind: 'governance_card_summary',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance'],
 			signalIds: [
 				'sig_governance_direction',
@@ -974,7 +974,7 @@ export const canonicalSource: {
 				'Built to keep authority, derivation, and execution clearly separate. Designed for high-consequence agent systems.',
 			claimKind: 'governance_direction',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
 			signalIds: [
 				'sig_governance_direction',
@@ -1004,7 +1004,7 @@ export const canonicalSource: {
 			claimText: 'Human-in-the-loop resolution for contested or high-impact operational states.',
 			claimKind: 'governance_control',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
 			signalIds: ['sig_governance_judgment', 'sig_governance_discretion'],
 			statusOrProgression: {
@@ -1025,7 +1025,7 @@ export const canonicalSource: {
 				'Eliora is an AI coordination project with strong governance controls. It clearly separates authority. It traces outputs to their source. It fails safely in high-consequence systems.',
 			claimKind: 'governance_detail_body',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
 			signalIds: [
 				'sig_governance_direction',
@@ -1035,7 +1035,7 @@ export const canonicalSource: {
 			],
 			statusOrProgression: {
 				status: 'active',
-				progressionNote: 'Expanded governance detail-body in current public block.'
+				progressionNote: 'Governance detail body on the Eliora page.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain',
@@ -1051,7 +1051,7 @@ export const canonicalSource: {
 				'Layered architecture separating intent, doctrine, policy, and execution. Clear trace paths linking outputs to governing sources and decision context. Safe handling when meaning is unclear, policy conflicts appear, or decisions remain unresolved. Explicit authority modeling to prevent collapse between authorship, governance, and agent behavior. Structure designed for review, validation, and controlled change over time.',
 			claimKind: 'governance_structure_list',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance', 'ctx_high_consequence_agents'],
 			signalIds: ['sig_governance_judgment', 'sig_governance_capability', 'sig_governance_direction'],
 			statusOrProgression: {
@@ -1072,7 +1072,7 @@ export const canonicalSource: {
 				'This description is based on direct inspection of the live Eliora-v0.1 repository by Codex App, an OpenAI GPT-5 coding agent. It reflects the project structure, governance surfaces, and sustained development history. It is not a hypothetical project brief.',
 			claimKind: 'governance_note_qualification',
 			claimOrigin: 'descriptive_summary',
-			sourceSurface: 'homepage.personal',
+			sourceSurface: 'projects.eliora',
 			contextIds: ['ctx_governance'],
 			signalIds: ['sig_governance_discretion'],
 			statusOrProgression: {

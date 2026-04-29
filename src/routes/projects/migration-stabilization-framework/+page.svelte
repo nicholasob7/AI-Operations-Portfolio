@@ -1,50 +1,50 @@
-	<script lang="ts">
-	import { resolveEntrySurface } from '$lib/entry-surfaces';
-	import { onMount } from 'svelte';
+		<script lang="ts">
+		import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
+		import { resolveEntrySurface } from '$lib/entry-surfaces';
+		import { onMount } from 'svelte';
 
-	const migrationEntrySurface = resolveEntrySurface('migrationProject');
-	let showScrollActions = $state(false);
-	let bottomActions: HTMLDivElement | null = null;
-	let docCard: HTMLElement | null = null;
+		const migrationEntrySurface = resolveEntrySurface('migrationProject');
 
-	onMount(() => {
-		const bottomActionsVisible = () => {
-			if (!bottomActions) return false;
-
-			const rect = bottomActions.getBoundingClientRect();
-			return rect.top < window.innerHeight - 24 && rect.bottom > 24;
-		};
-
-		const topOfCardScrolledOut = () => {
-			if (!docCard) return false;
-
-			const rect = docCard.getBoundingClientRect();
-			return rect.top < 24;
-		};
-
-		const updateScrollActions = () => {
-			const hideForBottomActions = bottomActionsVisible();
-			showScrollActions = !hideForBottomActions && topOfCardScrolledOut();
-		};
-
-		const handleScroll = () => {
-			updateScrollActions();
-		};
-
-		if (migrationEntrySurface.mode === 'none') {
+		const scrollToTop = () => {
 			window.scrollTo({ top: 0, behavior: 'auto' });
-		}
-
-		updateScrollActions();
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		window.addEventListener('resize', handleScroll);
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-			window.removeEventListener('resize', handleScroll);
 		};
-	});
-</script>
+
+		const migrationActions = [
+			{
+				id: 'print',
+				label: 'Print',
+				type: 'link',
+				href: '/appprojects/Portfolio_Description_bw.pdf',
+				download: 'Portfolio_Description_BW.pdf'
+			},
+			{
+				id: 'home',
+				label: 'Home',
+				type: 'link',
+				href: '/',
+				preload: true
+			},
+			{
+				id: 'next',
+				label: 'Next',
+				type: 'link',
+				href: '/#selected-work-head',
+				preload: true
+			},
+			{
+				id: 'top',
+				label: 'Top',
+				type: 'button',
+				onclick: scrollToTop
+			}
+		] satisfies DestinationAction[];
+
+		onMount(() => {
+			if (migrationEntrySurface.mode === 'none') {
+				window.scrollTo({ top: 0, behavior: 'auto' });
+			}
+		});
+	</script>
 
 <svelte:head>
 	<title>Enterprise Migration Stabilization Framework | Nicko O'Brien</title>
@@ -54,24 +54,10 @@
 	/>
 </svelte:head>
 
-<main class="doc-page">
-	{#if showScrollActions}
-		<div class="doc-scroll-actions">
-				<a
-					class="doc-cta doc-cta-print"
-					href="/appprojects/Portfolio_Description_bw.pdf"
-					download="Portfolio_Description_BW.pdf"
-				>
-					Print
-				</a>
-				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
-				<a class="doc-cta" data-sveltekit-preload-code="hover" href="/#selected-work-head"
-					>Back to Selected Work</a
-				>
-		</div>
-	{/if}
+	<main class="doc-page">
+		<DestinationActions actions={migrationActions} panelId="migration-destination-actions" />
 
-	<section bind:this={docCard} class="doc-card">
+		<section class="doc-card">
 		<p class="eyebrow">Project Detail</p>
 		<h1>Enterprise Application Migration Stabilization Framework</h1>
 
@@ -143,25 +129,9 @@
 				</li>
 			</ul>
 
-			<div bind:this={bottomActions} class="doc-actions">
-					<a
-						class="doc-cta doc-cta-print"
-						href="/appprojects/Portfolio_Description_bw.pdf"
-						download="Portfolio_Description_BW.pdf"
-					>
-						Print
-					</a>
-					<a class="doc-cta" data-sveltekit-preload-code="hover" href="/">Home</a>
-					<a
-						class="doc-cta"
-						data-sveltekit-preload-code="hover"
-						href="/#selected-work-head"
-						>Back to Selected Work</a
-					>
-				</div>
-		</div>
-	</section>
-</main>
+			</div>
+		</section>
+	</main>
 
 <style>
 	:global(body) {
@@ -175,11 +145,11 @@
 		color: #e8eefc;
 	}
 
-	.doc-page {
-		max-width: 1320px;
-		margin: 0 auto;
-		padding: 2rem 1.25rem 3rem;
-	}
+		.doc-page {
+			max-width: 1320px;
+			margin: 0 auto;
+			padding: 2rem 1.25rem calc(6.5rem + env(safe-area-inset-bottom));
+		}
 
 	.doc-card {
 		background:
@@ -273,76 +243,9 @@
 		max-width: none;
 	}
 
-	.doc-actions {
-		margin-top: 1rem;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-		justify-content: flex-start;
-	}
-
-	.doc-cta {
-		text-decoration: none;
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		padding: 0.45rem 0.75rem;
-		border-radius: 999px;
-		font-size: 0.9rem;
-		font-weight: 600;
-		letter-spacing: 0.01em;
-		color: #f3f7ff;
-		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
-		border: 1px solid rgba(193, 217, 255, 0.34);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-			0 8px 20px rgba(7, 14, 33, 0.35);
-	}
-
-	.doc-cta-print {
-		background: linear-gradient(120deg, #f5f7fb 0%, #d8dee9 55%, #bcc5d2 100%);
-		border-color: rgba(255, 255, 255, 0.4);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.35) inset,
-			0 8px 20px rgba(7, 14, 33, 0.28);
-		color: #142033;
-	}
-
-	.doc-scroll-actions {
-		position: fixed;
-		top: 0.85rem;
-		right: max(1rem, calc((100vw - 1320px) / 2 + 1rem));
-		z-index: 30;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		justify-content: flex-end;
-	}
-
-	.doc-scroll-actions .doc-cta {
-		min-height: 2.45rem;
-		padding: 0.56rem 0.92rem;
-		font-size: 0.84rem;
-		backdrop-filter: none;
-		-webkit-backdrop-filter: none;
-		text-shadow:
-			0 0 1px rgba(4, 9, 22, 0.96),
-			0 1px 2px rgba(4, 9, 22, 0.88);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-			0 10px 22px rgba(4, 9, 22, 0.2);
-		background: transparent;
-	}
-
-	.doc-scroll-actions .doc-cta-print {
-		background: transparent;
-		color: #f3f7ff;
-		text-shadow:
-			0 0 1px rgba(4, 9, 22, 0.96),
-			0 1px 2px rgba(4, 9, 22, 0.88);
-	}
-
-	@media (min-width: 960px) {
-		.doc-page {
-			max-width: 1320px;
+		@media (min-width: 960px) {
+			.doc-page {
+				max-width: 1320px;
 		}
 
 		.doc-card {
@@ -364,10 +267,7 @@
 			font-size: 1.24rem;
 		}
 
-		.doc-cta {
-			font-size: 0.96rem;
 		}
-	}
 
 	@media (max-width: 720px) {
 		.doc-text {
@@ -378,13 +278,5 @@
 			max-width: none;
 		}
 
-		.doc-scroll-actions {
-			top: 0.55rem;
-			right: 0.85rem;
-			left: auto;
-			gap: 0.35rem;
-			padding: 0.35rem;
-			justify-content: flex-end;
 		}
-	}
-</style>
+	</style>
