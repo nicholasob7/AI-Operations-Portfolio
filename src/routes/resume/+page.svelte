@@ -6,8 +6,14 @@
 
 	const resumeLocation = 'Lower Hutt, New Zealand';
 	const resumeContactEmail = 'nicko.obrien.ai@gmail.com';
-	const resumeLinkedInProfilePath = 'linkedin.com/in/nicholasfobrien/';
-	const resumeTwitterProfilePath = 'x.com/nicho0101';
+	const resumeWebsiteDisplay = 'nicko.obrienai.com';
+	const resumeWebsiteUrl = 'https://nicko.obrienai.com';
+	const resumeLinkedInProfileDisplay = 'linkedin.com/in/nicholasfobrien/';
+	const resumeLinkedInProfileUrl = 'https://linkedin.com/in/nicholasfobrien/';
+	const resumeGitHubDisplay = 'github.com/nicholasob7';
+	const resumeGitHubUrl = 'https://github.com/nicholasob7';
+	const resumeTwitterProfileDisplay = 'x.com/nicho0101';
+	const resumeTwitterProfileUrl = 'https://x.com/nicho0101';
 	const resumePortraitHoldMs = 800;
 	const resumePortraitFadeMs = 7200;
 	const resumeIntroPendingClass = 'resume-intro-pending';
@@ -24,6 +30,56 @@
 		title: string;
 		items: string[];
 	};
+
+	type ContactTarget = 'email' | 'website' | 'linkedin' | 'github' | 'twitter';
+
+	type ContactItem = {
+		id: ContactTarget;
+		label: string;
+		displayValue: string;
+		copyValue: string;
+		copiedMessage: string;
+	};
+
+	const resumeContactItems: ContactItem[] = [
+		{
+			id: 'email',
+			label: 'Email',
+			displayValue: resumeContactEmail,
+			copyValue: resumeContactEmail,
+			copiedMessage: 'Email address copied to clipboard.'
+		},
+		{
+			id: 'website',
+			label: 'Website',
+			displayValue: resumeWebsiteDisplay,
+			copyValue: resumeWebsiteUrl,
+			copiedMessage: 'Website address copied to clipboard.'
+		},
+		{
+			id: 'linkedin',
+			label: 'LinkedIn',
+			displayValue: resumeLinkedInProfileDisplay,
+			copyValue: resumeLinkedInProfileUrl,
+			copiedMessage: 'LinkedIn profile URL copied to clipboard.'
+		},
+		{
+			id: 'github',
+			label: 'GitHub',
+			displayValue: resumeGitHubDisplay,
+			copyValue: resumeGitHubUrl,
+			copiedMessage: 'GitHub profile URL copied to clipboard.'
+		},
+		{
+			id: 'twitter',
+			label: 'X',
+			displayValue: resumeTwitterProfileDisplay,
+			copyValue: resumeTwitterProfileUrl,
+			copiedMessage: 'X profile URL copied to clipboard.'
+		}
+	];
+	const resumePublicDetailItems = resumeContactItems.filter((item) => item.id === 'website');
+	const resumeContactChannelItems = resumeContactItems.filter((item) => item.id !== 'website');
 
 	const contextPoints = [
 		'Deeply engaged in learning and applying AI in my own time.',
@@ -202,7 +258,8 @@
 	let fadeResumePortraitOverlay = $state(false);
 		let resumeIntroBooting = $state(true);
 		let resumeInteractionReady = $state(!resumeUsesPortraitEntry);
-		let copiedContactTarget = $state<'email' | 'linkedin' | 'twitter' | null>(null);
+		let copiedContactTarget = $state<ContactTarget | null>(null);
+		let contactCopyMenuOpen = $state(false);
 		let topSkillsToggle = $state<HTMLButtonElement | null>(null);
 		let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
 	let resumeIntroImage = $state<HTMLImageElement | null>(null);
@@ -214,6 +271,11 @@
 
 	const allSkillsOpen = $derived(openSkillIndices.length === technicalSkills.length);
 	const anySkillsOpen = $derived(openSkillIndices.length > 0);
+	const copiedContactMessage = $derived(
+		copiedContactTarget
+			? (resumeContactItems.find((item) => item.id === copiedContactTarget)?.copiedMessage ?? '')
+			: ''
+	);
 
 	const toggleSkill = (index: number) => {
 		if (allSkillsOpen) {
@@ -318,7 +380,7 @@
 		clearResumeIntroPendingState();
 	};
 
-	const copyText = async (value: string, target: 'email' | 'linkedin' | 'twitter') => {
+	const copyContactValue = async (value: string, target: ContactTarget) => {
 		try {
 			await navigator.clipboard.writeText(value);
 			copiedContactTarget = target;
@@ -331,16 +393,18 @@
 		}
 	};
 
-	const copyEmail = async () => {
-		await copyText(resumeContactEmail, 'email');
+	const toggleContactCopyMenu = () => {
+		contactCopyMenuOpen = !contactCopyMenuOpen;
 	};
 
-	const copyLinkedInProfilePath = async () => {
-		await copyText(resumeLinkedInProfilePath, 'linkedin');
+	const closeContactCopyMenu = () => {
+		contactCopyMenuOpen = false;
 	};
 
-	const copyTwitterProfilePath = async () => {
-		await copyText(resumeTwitterProfilePath, 'twitter');
+	const handleResumeKeydown = (event: KeyboardEvent) => {
+		if (event.key === 'Escape') {
+			closeContactCopyMenu();
+		}
 	};
 
 	const waitForResumePortraitImage = async () => {
@@ -441,6 +505,8 @@
 	});
 </script>
 
+<svelte:window onkeydown={handleResumeKeydown} />
+
 	<svelte:head>
 		<title>Nicholas Francis O'Brien | Resume</title>
 		<meta
@@ -482,73 +548,22 @@
 >
 	<DestinationActions actions={resumeActions} panelId="resume-destination-actions" />
 
-			<header class="panel hero-panel">
-			<div class="hero-panel-content">
-				<div class="hero-copy">
-					<h1>Nicholas Francis O'Brien</h1>
-					<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
-					<div class="contact-band" aria-label="Contact details">
-						<div class="contact-band-row contact-band-row-static">
-							<span class="contact-band-value">{resumeLocation}</span>
-						</div>
-						<div class="contact-band-row">
-							<span class="contact-band-value">{resumeContactEmail}</span>
-							<button
-								class="contact-copy-button"
-								disabled={!resumeInteractionReady}
-								type="button"
-								onclick={copyEmail}
-								style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
-							>
-								{copiedContactTarget === 'email' ? 'Copied' : 'Copy'}
-							</button>
-						</div>
-						<div class="contact-band-row">
-							<span class="contact-band-value">{resumeLinkedInProfilePath}</span>
-							<button
-								class="contact-copy-button"
-								disabled={!resumeInteractionReady}
-								type="button"
-								onclick={copyLinkedInProfilePath}
-								style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
-							>
-								{copiedContactTarget === 'linkedin' ? 'Copied' : 'Copy'}
-							</button>
-						</div>
-						<div class="contact-band-row">
-							<span class="contact-band-value">{resumeTwitterProfilePath}</span>
-							<button
-								class="contact-copy-button"
-								disabled={!resumeInteractionReady}
-								type="button"
-								onclick={copyTwitterProfilePath}
-								style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
-							>
-								{copiedContactTarget === 'twitter' ? 'Copied' : 'Copy'}
-							</button>
-						</div>
-						<p class="sr-only" aria-live="polite">
-							{copiedContactTarget === 'email'
-								? 'Email address copied to clipboard.'
-								: copiedContactTarget === 'linkedin'
-									? 'LinkedIn profile URL copied to clipboard.'
-									: copiedContactTarget === 'twitter'
-										? 'X slash Twitter profile URL copied to clipboard.'
-										: ''}
-						</p>
-					</div>
+	<header class="panel hero-panel">
+		<div class="hero-panel-content">
+			<div class="hero-copy">
+				<h1>Nicholas Francis O'Brien</h1>
+				<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+				<div class="hero-context" aria-label="Context">
+					<p class="hero-context-label">Context</p>
+					<ul class="hero-context-list">
+						{#each contextPoints as point}
+							<li>{point}</li>
+						{/each}
+					</ul>
 				</div>
 			</div>
-		</header>
-
-	<section class="panel">
-		<h2>Context</h2>
-		<ul class="content-list">
-			{#each contextPoints as point}
-				<li>{point}</li>
-			{/each}
-		</ul>
-	</section>
+		</div>
+	</header>
 
 	<section class="panel experience-panel">
 		<h2>NTT, Wellington — Present</h2>
@@ -672,6 +687,58 @@
 				<li>{item}</li>
 			{/each}
 		</ul>
+	</section>
+
+	<section class="panel" aria-label="Public details and contact channels">
+		<h2 class="qualifications-heading">Public Details</h2>
+		<ul class="content-list">
+			<li>Location: {resumeLocation}</li>
+			{#each resumePublicDetailItems as item (item.id)}
+				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+			{/each}
+		</ul>
+
+		<h2 class="qualifications-heading">Contact Channels</h2>
+		<ul class="content-list">
+			{#each resumeContactChannelItems as item (item.id)}
+				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+			{/each}
+		</ul>
+
+		<div class="contact-copy-menu-wrap">
+			<button
+				aria-controls="resume-contact-copy-menu"
+				aria-expanded={contactCopyMenuOpen}
+				class="contact-copy-menu-trigger"
+				disabled={!resumeInteractionReady}
+				type="button"
+				onclick={toggleContactCopyMenu}
+				style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
+			>
+				{contactCopyMenuOpen ? 'Close menu' : 'Copy menu'}
+			</button>
+			{#if contactCopyMenuOpen}
+				<div
+					class="contact-copy-menu"
+					id="resume-contact-copy-menu"
+					aria-label="Copy contact value"
+				>
+					{#each resumeContactItems as item (item.id)}
+						<button
+							class="contact-copy-menu-item"
+							type="button"
+							onclick={() => copyContactValue(item.copyValue, item.id)}
+						>
+							<span>{item.label}</span>
+							<span class="contact-copy-menu-state">
+								{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+							</span>
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
+		<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
 	</section>
 
 		</main>
@@ -814,6 +881,7 @@
 		display: grid;
 		gap: 0.5rem;
 		min-width: 0;
+		max-width: 68rem;
 	}
 
 	h1 {
@@ -874,66 +942,161 @@
 		color: #8ed4ff;
 	}
 
-	.contact-band {
+	.hero-context {
 		display: grid;
-		gap: 0.5rem;
-		max-width: 52rem;
+		gap: 0.42rem;
+		max-width: 62rem;
+		padding-top: 0.35rem;
 	}
 
-	.contact-band-row {
+	.hero-context-label {
+		font-size: 0.7rem;
+		line-height: 1.1;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(127, 168, 214, 0.74);
+	}
+
+	.hero-context-list {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 0.55rem;
-		align-items: stretch;
+		gap: 0.38rem;
+		margin: 0;
+		padding-left: 1.05rem;
+		list-style: disc;
 	}
 
-	.contact-band-row-static {
-		grid-template-columns: minmax(0, 1fr);
-	}
-
-	.contact-band-value {
-		display: flex;
-		align-items: center;
-		min-width: 0;
-		min-height: 2.6rem;
-		padding: 0.52rem 0.82rem;
-		border-radius: 0.84rem;
-		border: 1px solid rgba(148, 208, 255, 0.22);
-		background:
-			linear-gradient(rgba(18, 31, 57, 0.68), rgba(18, 31, 57, 0.68)) padding-box,
-			linear-gradient(135deg, rgba(91, 166, 255, 0.2), rgba(77, 221, 183, 0.18)) border-box;
+	.hero-context-list li {
 		font-size: 0.92rem;
-		line-height: 1.4;
-		color: #c7d6ec;
-		word-break: break-word;
-		user-select: text;
+		line-height: 1.48;
+		color: #d3def1;
 	}
 
-	.contact-copy-button {
-		padding: 0.52rem 0.82rem;
-		border: 1px solid rgba(143, 205, 255, 0.28);
+	.hero-context-list li::marker {
+		color: #92dbff;
+	}
+
+	.contact-copy-value {
+		color: transparent;
+		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.contact-copy-menu-wrap {
+		position: relative;
+		justify-self: end;
+		grid-column: 1 / -1;
+		width: max-content;
+		max-width: 100%;
+		padding-top: 0.65rem;
+	}
+
+	.contact-copy-menu-trigger {
+		position: relative;
+		isolation: isolate;
+		min-height: 2.12rem;
+		padding: 0.54rem 0.9rem;
+		border: 1px solid transparent;
 		border-radius: 999px;
-		background: rgba(13, 24, 43, 0.72);
-		color: #d7e8ff;
+		background:
+			linear-gradient(120deg, rgba(12, 22, 42, 0.96), rgba(16, 30, 52, 0.96)) padding-box,
+			linear-gradient(120deg, #2fd1ff 0%, #9a63e8 52%, #39c69a 100%) border-box;
+		color: #f8fbff;
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		font-size: 0.84rem;
-		font-weight: 600;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		text-shadow: 0 1px 2px rgba(3, 8, 20, 0.72);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+			0 12px 26px rgba(4, 9, 22, 0.3);
 		cursor: pointer;
 	}
 
-	.contact-copy-button:hover {
-		border-color: rgba(154, 214, 255, 0.42);
-		background: rgba(18, 32, 56, 0.82);
+	.contact-copy-menu-trigger::before {
+		content: '';
+		position: absolute;
+		inset: -3px;
+		z-index: -1;
+		border-radius: inherit;
+		background: linear-gradient(
+			120deg,
+			rgba(47, 209, 255, 0.28),
+			rgba(154, 99, 232, 0.22),
+			rgba(57, 198, 154, 0.24)
+		);
+		filter: blur(7px);
+		opacity: 0.42;
+		pointer-events: none;
 	}
 
-	.contact-copy-button:focus-visible {
-		outline: 2px solid rgba(141, 214, 255, 0.9);
-		outline-offset: 2px;
+	.contact-copy-menu-trigger:hover,
+	.contact-copy-menu-trigger:focus-visible {
+		background:
+			linear-gradient(120deg, rgba(17, 31, 54, 0.98), rgba(21, 39, 60, 0.98)) padding-box,
+			linear-gradient(120deg, #2fd1ff 0%, #9a63e8 52%, #39c69a 100%) border-box;
+		outline: none;
 	}
 
-	.contact-copy-button:disabled {
-		opacity: 0.6;
+	.contact-copy-menu-trigger:focus-visible {
+		box-shadow:
+			0 0 0 2px rgba(141, 214, 255, 0.5),
+			0 12px 26px rgba(4, 9, 22, 0.3);
+	}
+
+	.contact-copy-menu-trigger:disabled {
+		opacity: 0.68;
 		cursor: default;
+	}
+
+	.contact-copy-menu {
+		position: absolute;
+		right: 0;
+		bottom: calc(100% + 0.5rem);
+		z-index: 20;
+		display: grid;
+		gap: 0.18rem;
+		width: min(15rem, calc(100vw - 2.2rem));
+		padding: 0.42rem;
+		border: 1px solid rgba(167, 213, 255, 0.3);
+		border-radius: 0.82rem;
+		background: rgba(10, 18, 34, 0.97);
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.035) inset,
+			0 16px 34px rgba(4, 9, 22, 0.38);
+	}
+
+	.contact-copy-menu-item {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 0.85rem;
+		align-items: center;
+		width: 100%;
+		padding: 0.46rem 0.5rem;
+		border: 0;
+		border-radius: 0.55rem;
+		background: transparent;
+		color: #dce8fb;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
+		font-size: 0.86rem;
+		font-weight: 700;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	.contact-copy-menu-item:hover,
+	.contact-copy-menu-item:focus-visible {
+		background: rgba(37, 67, 108, 0.56);
+		outline: none;
+	}
+
+	.contact-copy-menu-state {
+		color: #9fdcff;
+		font-size: 0.76rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
 
 	.focus-line {
@@ -1187,9 +1350,9 @@
 		}
 
 		.hero-panel-content {
-			grid-template-columns: minmax(0, 1fr) auto;
-			align-items: center;
-			gap: 1.35rem;
+			grid-template-columns: 1fr;
+			align-items: start;
+			gap: 1rem;
 		}
 
 		h1 {
@@ -1213,15 +1376,24 @@
 			line-height: 1.58;
 		}
 
-		.contact-band-value {
-			font-size: 0.98rem;
-			min-height: 2.8rem;
-			padding: 0.6rem 0.95rem;
+		.hero-context-list li {
+			font-size: 1.5rem;
+			line-height: 1.58;
 		}
 
-		.contact-copy-button {
-			font-size: 0.9rem;
-			padding: 0.6rem 0.95rem;
+		.hero-context-label {
+			font-size: 1rem;
+			line-height: 1.25;
+			color: #a7c8ef;
+		}
+
+		.contact-copy-menu-trigger,
+		.contact-copy-menu-item {
+			font-size: 1rem;
+		}
+
+		.contact-copy-menu-state {
+			font-size: 0.92rem;
 		}
 
 		.resume-page p,
@@ -1269,13 +1441,15 @@
 			font-size: 0.92rem;
 		}
 
-		.contact-band-row {
-			grid-template-columns: 1fr;
+		.contact-copy-menu-wrap {
+			justify-self: end;
+			width: max-content;
+			max-width: 100%;
 		}
 
-		.contact-band-value,
-		.contact-copy-button {
-			width: 100%;
+		.contact-copy-menu {
+			position: absolute;
+			width: min(15rem, calc(100vw - 2.2rem));
 		}
 
 		.panel,

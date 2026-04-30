@@ -72,14 +72,12 @@ The current UX direction favors:
   Homepage sections for hero actions, selected work, and about content.
 - `scripts/resume-bw.html`
   Print source for the B&W resume PDF.
-- `scripts/resume-color.html`
-  Print source for the color resume PDF.
 - `scripts/remediation-bw.html`
   Print source for the remediation project PDF.
 - `scripts/portfolio-description-bw.html`
   Print source for the migration project PDF.
 - `scripts/generate-resume-pdfs.sh`
-  Regenerates `static/resume-bw.pdf` and `static/resume-color.pdf`.
+  Regenerates `static/resume-bw.pdf`.
 - `scripts/generate-project-pdfs.sh`
   Regenerates the project B&W PDFs in `static/appprojects/`.
 - `static/`

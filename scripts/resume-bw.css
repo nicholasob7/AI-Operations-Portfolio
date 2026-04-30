@@ -67,6 +67,29 @@ h1 {
 	line-height: 1.24;
 }
 
+.hero-focus {
+	font-size: 10.6pt;
+	font-weight: 800;
+}
+
+.contact-block {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 3px 12px;
+	margin-top: 7px;
+	font-size: 9.4pt;
+	line-height: 1.25;
+}
+
+.contact-block p {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.contact-block strong {
+	font-weight: 700;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

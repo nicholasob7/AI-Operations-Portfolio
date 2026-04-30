@@ -730,6 +730,26 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
 		},
 		{
+			id: 'clm_home_contact_website',
+			claimText: 'https://nicko.obrienai.com',
+			claimKind: 'public_website_url',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'homepage.contact',
+			contextIds: ['ctx_home_contact'],
+			signalIds: [],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public website contact channel.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary']
+		},
+		{
 			id: 'clm_home_contact_github',
 			claimText: 'https://github.com/nicholasob7',
 			claimKind: 'public_profile_url',
