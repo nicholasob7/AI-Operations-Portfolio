@@ -1,4 +1,62 @@
-@import 'tailwindcss';
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	border-width: 0;
+	border-style: solid;
+	border-color: currentColor;
+}
+
+html {
+	line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+	margin: 0;
+}
+
+ul,
+ol {
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+}
+
+button {
+	padding: 0;
+	background-color: transparent;
+	background-image: none;
+}
+
+img,
+svg,
+video,
+canvas {
+	display: block;
+	max-width: 100%;
+}
 
 html,
 body {
