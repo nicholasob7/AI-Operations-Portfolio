@@ -689,69 +689,56 @@
 		</ul>
 	</section>
 
-	<section class="panel hero-panel" aria-label="Public details and contact channels">
-		<div class="hero-panel-content">
-			<div class="hero-copy">
-				<div class="contact-band" aria-label="Contact details">
-					<div class="contact-group">
-						<p class="contact-group-label">Public details</p>
-						<div class="contact-item contact-item-static">
-							<span class="contact-label">Location</span>
-							<span class="contact-value contact-value-static">{resumeLocation}</span>
-						</div>
-						{#each resumePublicDetailItems as item (item.id)}
-							<div class="contact-item">
-								<span class="contact-label">{item.label}</span>
-								<span class="contact-value contact-copy-value">{item.displayValue}</span>
-							</div>
-						{/each}
-					</div>
-					<div class="contact-group">
-						<p class="contact-group-label">Contact channels</p>
-						{#each resumeContactChannelItems as item (item.id)}
-							<div class="contact-item">
-								<span class="contact-label">{item.label}</span>
-								<span class="contact-value contact-copy-value">{item.displayValue}</span>
-							</div>
-						{/each}
-					</div>
-					<div class="contact-copy-menu-wrap">
+	<section class="panel" aria-label="Public details and contact channels">
+		<h2 class="qualifications-heading">Public Details</h2>
+		<ul class="content-list">
+			<li>Location: {resumeLocation}</li>
+			{#each resumePublicDetailItems as item (item.id)}
+				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+			{/each}
+		</ul>
+
+		<h2 class="qualifications-heading">Contact Channels</h2>
+		<ul class="content-list">
+			{#each resumeContactChannelItems as item (item.id)}
+				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+			{/each}
+		</ul>
+
+		<div class="contact-copy-menu-wrap">
+			<button
+				aria-controls="resume-contact-copy-menu"
+				aria-expanded={contactCopyMenuOpen}
+				class="contact-copy-menu-trigger"
+				disabled={!resumeInteractionReady}
+				type="button"
+				onclick={toggleContactCopyMenu}
+				style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
+			>
+				{contactCopyMenuOpen ? 'Close menu' : 'Copy menu'}
+			</button>
+			{#if contactCopyMenuOpen}
+				<div
+					class="contact-copy-menu"
+					id="resume-contact-copy-menu"
+					aria-label="Copy contact value"
+				>
+					{#each resumeContactItems as item (item.id)}
 						<button
-							aria-controls="resume-contact-copy-menu"
-							aria-expanded={contactCopyMenuOpen}
-							class="contact-copy-menu-trigger"
-							disabled={!resumeInteractionReady}
+							class="contact-copy-menu-item"
 							type="button"
-							onclick={toggleContactCopyMenu}
-							style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
+							onclick={() => copyContactValue(item.copyValue, item.id)}
 						>
-							{contactCopyMenuOpen ? 'Close menu' : 'Copy menu'}
+							<span>{item.label}</span>
+							<span class="contact-copy-menu-state">
+								{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+							</span>
 						</button>
-						{#if contactCopyMenuOpen}
-							<div
-								class="contact-copy-menu"
-								id="resume-contact-copy-menu"
-								aria-label="Copy contact value"
-							>
-								{#each resumeContactItems as item (item.id)}
-									<button
-										class="contact-copy-menu-item"
-										type="button"
-										onclick={() => copyContactValue(item.copyValue, item.id)}
-									>
-										<span>{item.label}</span>
-										<span class="contact-copy-menu-state">
-											{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
-										</span>
-									</button>
-								{/each}
-							</div>
-						{/if}
-					</div>
-					<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
+					{/each}
 				</div>
-			</div>
+			{/if}
 		</div>
+		<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
 	</section>
 
 		</main>
@@ -955,14 +942,6 @@
 		color: #8ed4ff;
 	}
 
-	.contact-band {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-		max-width: 62rem;
-		padding-top: 0.35rem;
-	}
-
 	.hero-context {
 		display: grid;
 		gap: 0.42rem;
@@ -995,54 +974,6 @@
 
 	.hero-context-list li::marker {
 		color: #92dbff;
-	}
-
-	.contact-group {
-		display: grid;
-		gap: 0.38rem;
-		min-width: 0;
-		align-content: start;
-	}
-
-	.contact-group-label {
-		margin-bottom: 0.06rem;
-		font-size: 0.7rem;
-		line-height: 1.1;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: #a7c8ef;
-	}
-
-	.contact-item {
-		display: grid;
-		grid-template-columns: clamp(7rem, 14vw, 10rem) minmax(0, 1fr);
-		gap: 0.2rem 1rem;
-		align-items: center;
-		width: 100%;
-		min-width: 0;
-		padding: 0.16rem 0;
-		border: 0;
-		background: transparent;
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		text-align: left;
-	}
-
-	.contact-label {
-		font-size: 0.68rem;
-		line-height: 1.1;
-		font-weight: 800;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: #b4cff4;
-	}
-
-	.contact-value {
-		font-size: 0.92rem;
-		line-height: 1.48;
-		color: #c7d6ec;
-		word-break: break-word;
-		user-select: text;
 	}
 
 	.contact-copy-value {
@@ -1445,26 +1376,11 @@
 			line-height: 1.58;
 		}
 
-		.contact-value {
-			font-size: 1.5rem;
-			line-height: 1.58;
-		}
-
 		.hero-context-list li {
 			font-size: 1.5rem;
 			line-height: 1.58;
 		}
 
-		.contact-item {
-			padding: 0.28rem 0;
-		}
-
-		.contact-label {
-			font-size: 0.98rem;
-			line-height: 1.25;
-		}
-
-		.contact-group-label,
 		.hero-context-label {
 			font-size: 1rem;
 			line-height: 1.25;
@@ -1523,24 +1439,6 @@
 
 		.focus-line {
 			font-size: 0.92rem;
-		}
-
-		.contact-band {
-			grid-template-columns: 1fr;
-			gap: 0.8rem;
-		}
-
-		.contact-item {
-			grid-template-columns: minmax(5.8rem, 7rem) minmax(0, 1fr);
-			align-items: end;
-		}
-
-		.contact-label {
-			grid-column: 1;
-		}
-
-		.contact-value {
-			grid-column: 2;
 		}
 
 		.contact-copy-menu-wrap {
