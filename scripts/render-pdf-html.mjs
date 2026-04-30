@@ -68,6 +68,9 @@ if (targetSet.has('migration')) {
 	await renderTemplate({
 		source: path.join(__dirname, 'portfolio-description-bw.html'),
 		destination: path.join(generatedDir, 'portfolio-description-bw.html'),
-		replacements: [['<!-- PDF_PILOT_MIGRATION_SUMMARY -->', escapeHtml(projection.migration.summary)]]
+		replacements: [
+			['href="case-bw.css"', 'href="../case-bw.css"'],
+			['<!-- PDF_PILOT_MIGRATION_SUMMARY -->', escapeHtml(projection.migration.summary)]
+		]
 	});
 }
