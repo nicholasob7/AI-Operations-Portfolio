@@ -709,11 +709,11 @@
 			<button
 				aria-controls="resume-contact-copy-menu"
 				aria-expanded={contactCopyMenuOpen}
+				class:contact-copy-menu-trigger-disabled={!resumeInteractionReady}
 				class="contact-copy-menu-trigger"
 				disabled={!resumeInteractionReady}
 				type="button"
 				onclick={toggleContactCopyMenu}
-				style:pointer-events={resumeInteractionReady ? 'auto' : 'none'}
 			>
 				{contactCopyMenuOpen ? 'Close menu' : 'Copy menu'}
 			</button>
@@ -1046,10 +1046,14 @@
 			0 12px 26px rgba(4, 9, 22, 0.3);
 	}
 
-	.contact-copy-menu-trigger:disabled {
-		opacity: 0.68;
-		cursor: default;
-	}
+		.contact-copy-menu-trigger:disabled {
+			opacity: 0.68;
+			cursor: default;
+		}
+
+		.contact-copy-menu-trigger-disabled {
+			pointer-events: none;
+		}
 
 	.contact-copy-menu {
 		position: absolute;

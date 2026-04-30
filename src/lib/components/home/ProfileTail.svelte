@@ -10,11 +10,11 @@
 <section id="tail-head" class="card profile-tail">
 	<div class="tail-actions">
 		<button
+			class:interaction-disabled={!entrySettled}
 			class="cta cta-return-top"
 			disabled={!entrySettled}
 			type="button"
 			onclick={returnToTop}
-			style:pointer-events={entrySettled ? 'auto' : 'none'}
 		>
 			Return to Top
 		</button>

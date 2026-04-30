@@ -110,11 +110,11 @@ const surfaceSpecs = [
 		notes: ['Project-card summaries for currently surfaced public work.']
 	},
 	{
-		id: 'projects.natural_language',
-		label: 'Natural Language and Semantic Control Project Page',
+		id: 'projects.eliora_natural_language',
+		label: 'Natural Language and Semantic Control Section',
 		surface_type: 'quality_surface',
 		coverage_status: 'covered',
-		notes: ['Natural-language, semantic-control, and analytical qualification route material.']
+		notes: ['Natural-language, semantic-control, and analytical qualification material on the Eliora page.']
 	},
 	{
 		id: 'projects.eliora',
@@ -240,12 +240,12 @@ const entrySpecs = [
 	},
 	{
 		id: 'project-natural-language-semantic-control',
-		surface_id: 'projects.natural_language',
+		surface_id: 'projects.eliora_natural_language',
 		label: 'Natural Language and Semantic Control',
 		entry_type: 'detail_entry',
 		entry_semantic_type: 'capability_surface',
 		public_summary:
-			'Natural Language route covering semantic control, language precision, analytical characterization, and qualification note.',
+			'Eliora page section covering semantic control, language precision, analytical characterization, and qualification note.',
 		contextIds: ['ctx_quality'],
 		claimIds: ['clm_quality_summary', 'clm_quality_standfirst', 'clm_quality_body', 'clm_quality_note'],
 		relationshipIds: ['rel_quality_precision_to_capability', 'rel_quality_note_to_confidence'],

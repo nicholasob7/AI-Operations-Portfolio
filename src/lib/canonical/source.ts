@@ -160,17 +160,17 @@ export const canonicalSource: {
 			},
 			releaseState: 'retain'
 		},
-		{
-			id: 'ctx_quality',
-			contextType: 'quality_context',
-			contextNote: 'Natural Language route semantic-control material.',
-			sourceSurface: 'projects.natural_language',
-			statusOrProgression: {
-				status: 'active',
-				progressionNote: 'Current public Natural Language route description.'
+			{
+				id: 'ctx_quality',
+				contextType: 'quality_context',
+				contextNote: 'Eliora page natural-language and semantic-control section material.',
+				sourceSurface: 'projects.eliora.natural_language',
+				statusOrProgression: {
+					status: 'active',
+					progressionNote: 'Current public Natural Language section description on the Eliora page.'
+				},
+				releaseState: 'retain'
 			},
-			releaseState: 'retain'
-		},
 		{
 			id: 'ctx_governance',
 			contextType: 'governance_context',

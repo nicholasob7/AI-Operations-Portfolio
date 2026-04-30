@@ -559,11 +559,15 @@ body.home-intro-active.home-intro-interaction-ready {
 			0 12px 26px rgba(7, 14, 33, 0.46);
 	}
 
-	.cta:focus-visible,
-	.projects article:focus-within {
-		outline: 3px solid var(--accent-purple);
-		outline-offset: 2px;
-	}
+		.cta:focus-visible,
+		.projects article:focus-within {
+			outline: 3px solid var(--accent-purple);
+			outline-offset: 2px;
+		}
+
+		.interaction-disabled {
+			pointer-events: none;
+		}
 
 	h2 {
 		display: inline-block;

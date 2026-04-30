@@ -17,16 +17,16 @@
 			<p class="project-outcome">
 				Outcome: Standardized production remediation with an evidence-driven validation workflow.
 			</p>
-					<a
-						aria-disabled={!navigationReady}
-						class="cta cta-resume section-cta-remediation"
-						href="/projects/remediation-script-development"
-						data-sveltekit-preload-code="hover"
-						style:pointer-events={navigationReady ? 'auto' : 'none'}
-						tabindex={navigationReady ? undefined : -1}
-					>
-					Script Fix
-				</a>
+			<a
+				aria-disabled={!navigationReady}
+				class:interaction-disabled={!navigationReady}
+				class="cta cta-resume section-cta-remediation"
+				href="/projects/remediation-script-development"
+				data-sveltekit-preload-code="hover"
+				tabindex={navigationReady ? undefined : -1}
+			>
+				Script Fix
+			</a>
 		</article>
 		<article id="deployment-head" class="project-card project-card-migration" tabindex="-1">
 			<h3>Migration Fix</h3>
@@ -36,16 +36,16 @@
 			<p class="project-outcome">
 				Outcome: Reproducible, audit-ready stabilization framework for enterprise deployment decisions.
 			</p>
-					<a
-						aria-disabled={!navigationReady}
-						class="cta cta-resume section-cta-migration"
-						href="/projects/migration-stabilization-framework"
-						data-sveltekit-preload-code="hover"
-						style:pointer-events={navigationReady ? 'auto' : 'none'}
-						tabindex={navigationReady ? undefined : -1}
-					>
-					Migration Fix
-				</a>
+			<a
+				aria-disabled={!navigationReady}
+				class:interaction-disabled={!navigationReady}
+				class="cta cta-resume section-cta-migration"
+				href="/projects/migration-stabilization-framework"
+				data-sveltekit-preload-code="hover"
+				tabindex={navigationReady ? undefined : -1}
+			>
+				Migration Fix
+			</a>
 		</article>
 	</div>
 </section>
