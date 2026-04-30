@@ -206,6 +206,7 @@ const entrySpecs = [
 		contextIds: ['ctx_home_contact'],
 		claimIds: [
 			'clm_home_contact_email',
+			'clm_home_contact_website',
 			'clm_home_contact_github',
 			'clm_home_contact_linkedin',
 			'clm_home_contact_twitter'
