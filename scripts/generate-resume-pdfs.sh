@@ -72,7 +72,3 @@ generate_pdf() {
 generate_pdf \
 	"$repo_root/scripts/generated/resume-bw.html" \
 	"$repo_root/static/resume-bw.pdf"
-
-generate_pdf \
-	"$repo_root/scripts/generated/resume-color.html" \
-	"$repo_root/static/resume-color.pdf"

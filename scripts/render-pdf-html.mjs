@@ -62,12 +62,6 @@ if (targetSet.has('resume')) {
 		destination: path.join(generatedDir, 'resume-bw.html'),
 		replacements
 	});
-
-	await renderTemplate({
-		source: path.join(__dirname, 'resume-color.html'),
-		destination: path.join(generatedDir, 'resume-color.html'),
-		replacements
-	});
 }
 
 if (targetSet.has('migration')) {
