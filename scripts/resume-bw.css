@@ -67,6 +67,11 @@ h1 {
 	line-height: 1.24;
 }
 
+.hero-focus {
+	font-size: 10.6pt;
+	font-weight: 800;
+}
+
 .contact-block {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
