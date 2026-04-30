@@ -29,11 +29,6 @@ body {
 	break-inside: auto;
 }
 
-.continuation-section {
-	page-break-inside: avoid;
-	break-inside: avoid;
-}
-
 .progression-section {
 	page-break-inside: auto;
 	break-inside: auto;
