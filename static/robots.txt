@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: /sitemap.xml
+Sitemap: https://nicko.obrienai.com/sitemap.xml

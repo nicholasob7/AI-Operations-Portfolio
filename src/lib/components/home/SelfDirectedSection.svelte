@@ -20,10 +20,10 @@
 				</p>
 				<a
 					aria-disabled={!navigationReady}
+					class:interaction-disabled={!navigationReady}
 					class="cta cta-resume section-cta-eliora"
-				data-sveltekit-preload-code="hover"
-				href="/projects/eliora"
-				style:pointer-events={navigationReady ? 'auto' : 'none'}
+					data-sveltekit-preload-code="hover"
+					href="/projects/eliora"
 					tabindex={navigationReady ? undefined : -1}
 				>
 					View

@@ -28,9 +28,8 @@ The current UX direction favors:
 
 ### Homepage action design
 
-- The homepage exposes Resume as a direct action, while Email and Social use controlled reveals rather than dumping every option on screen at once.
+- The homepage exposes resume, contact, and social actions through compact controls that avoid dense upfront navigation.
 - Each homepage project card exposes a single CTA rather than paired homepage view/download actions.
-- Copy-to-clipboard actions for email and social links reduce manual selection and copying.
 
 ### Long-page navigation convenience
 
@@ -68,20 +67,24 @@ The current UX direction favors:
   Case study page for the remediation script project.
 - `src/routes/projects/migration-stabilization-framework/+page.svelte`
   Case study page for the migration stabilization framework.
+- `src/routes/sitemap.xml/+server.ts`
+  Generated sitemap route derived from `src/lib/site.ts`.
+- `src/lib/content/resume.ts`
+  Shared resume content used by the web route and PDF HTML renderer.
+- `src/lib/content/project-details.ts`
+  Shared project detail content used by web project routes and PDF HTML generation.
 - `src/lib/components/home/`
   Homepage sections for hero actions, selected work, and about content.
-- `scripts/resume-bw.html`
-  Print source for the B&W resume PDF.
-- `scripts/remediation-bw.html`
-  Print source for the remediation project PDF.
-- `scripts/portfolio-description-bw.html`
-  Print source for the migration project PDF.
+- `scripts/render-pdf-html.mjs`
+  Renders print HTML into `scripts/generated/` from the shared content modules.
 - `scripts/generate-resume-pdfs.sh`
   Regenerates `static/resume-bw.pdf`.
 - `scripts/generate-project-pdfs.sh`
   Regenerates the project B&W PDFs in `static/appprojects/`.
+- `scripts/pdf-render-lib.sh`
+  Shared Chrome resolution and PDF writing helpers for PDF generation scripts.
 - `static/`
-  Public assets including generated PDFs, text exports, `robots.txt`, and `sitemap.xml`.
+  Public assets including generated PDFs and `robots.txt`. The sitemap is served by the SvelteKit route above.
 
 ## Local Development
 
@@ -133,7 +136,8 @@ Important:
 
 - The downloadable PDFs are static assets in `static/`.
 - They do not update automatically when the Svelte route copy changes.
-- If resume or project wording changes, update the corresponding print HTML in `scripts/` and regenerate the PDFs.
+- Resume and project print HTML is generated into `scripts/generated/` from shared content modules.
+- If resume or project wording changes, update the relevant shared content module and regenerate the PDFs.
 
 ## Suggested Validation Workflow
 
@@ -175,5 +179,5 @@ The app uses `@sveltejs/adapter-static` and `prerender = true`, so deployment is
 ## Notes
 
 - The site uses explicit CSP settings in `svelte.config.js`.
-- Styling is primarily hand-authored CSS rather than utility-first Tailwind markup, even though Tailwind is present in the toolchain.
+- Styling is primarily hand-authored CSS rather than utility-first Tailwind markup. Tailwind remains in the toolchain through `src/routes/layout.css` for its imported base behavior.
 - UX changes should preserve the reader-first navigation patterns already in place unless there is a clear reason to replace them.
