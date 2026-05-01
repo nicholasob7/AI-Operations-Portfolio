@@ -80,6 +80,7 @@
 			bind:this={panelElement}
 			class="destination-actions-panel"
 			id={panelId}
+			role="group"
 			aria-labelledby={triggerId}
 		>
 			<ul class="destination-actions-list">

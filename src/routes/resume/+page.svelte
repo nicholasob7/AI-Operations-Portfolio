@@ -534,6 +534,7 @@
 					bind:this={contactCopyMenuElement}
 					class="contact-copy-menu"
 					id="resume-contact-copy-menu"
+					role="group"
 					aria-label="Copy contact value"
 				>
 					{#each resumeContactItems as item (item.id)}
@@ -1293,6 +1294,17 @@
 			.resume-page {
 				opacity: 1 !important;
 				transition: none !important;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.resume-intro-overlay,
+			.resume-page {
+				transition: none;
+			}
+
+			.resume-intro-overlay.resume-intro-overlay-fading {
+				transform: none;
 			}
 		}
 	</style>
