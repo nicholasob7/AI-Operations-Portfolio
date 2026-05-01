@@ -21,7 +21,7 @@ const config = {
 				'default-src': ['self'],
 				'base-uri': ['self'],
 				'object-src': ['none'],
-				'script-src': ['self'],
+				'script-src': ['self', 'https://static.cloudflareinsights.com'],
 				'script-src-attr': ['none'],
 				'style-src': ['self', 'https://fonts.googleapis.com'],
 				'font-src': ['self', 'https://fonts.gstatic.com', 'data:'],
