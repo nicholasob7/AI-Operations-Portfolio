@@ -3,3 +3,6 @@ User-agent: *
 Disallow:
 
 Sitemap: https://nicko.obrienai.com/sitemap.xml
+
+# Machine-readable public profile:
+# https://nicko.obrienai.com/canonical.json
