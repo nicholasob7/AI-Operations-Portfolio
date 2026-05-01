@@ -38,6 +38,7 @@
 	let fadeHomepagePortraitOverlay = $state(false);
 	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
 	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
+	let homepageIntroImage = $state<HTMLImageElement | null>(null);
 	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let previousScrollRestoration: History['scrollRestoration'] | null = null;
@@ -127,6 +128,30 @@
 		}, homepagePortraitFadeMs);
 	};
 
+	const waitForHomepagePortraitImage = async () => {
+		const image = homepageIntroImage;
+		if (!image) return;
+		if (image.complete) {
+			try {
+				await image.decode?.();
+			} catch {
+				// decode failures should not block the reveal lifecycle
+			}
+			return;
+		}
+
+		await new Promise<void>((resolve) => {
+			const handleReady = () => {
+				image.removeEventListener('load', handleReady);
+				image.removeEventListener('error', handleReady);
+				resolve();
+			};
+
+			image.addEventListener('load', handleReady, { once: true });
+			image.addEventListener('error', handleReady, { once: true });
+		});
+	};
+
 	onMount(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -142,7 +167,10 @@
 		}
 		window.scrollTo({ top: 0, behavior: 'auto' });
 
-		void afterLayoutSettles().then(() => {
+		void afterLayoutSettles().then(async () => {
+			if (!showHomepagePortraitOverlay) return;
+
+			await waitForHomepagePortraitImage();
 			if (!showHomepagePortraitOverlay) return;
 
 			if (prefersReducedMotion) {
@@ -219,6 +247,7 @@
 			aria-hidden="true"
 		>
 			<img
+				bind:this={homepageIntroImage}
 				class="page-intro-overlay-image"
 			src={homeEntryImage}
 			alt=""
