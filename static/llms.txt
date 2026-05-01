@@ -1,0 +1,41 @@
+# Nicko O'Brien — AI Operations Portfolio
+
+> Public professional profile for AI-forward enterprise IT operations, structured technical communication, process improvement, and deterministic AI delivery.
+
+## Primary machine-readable source
+
+Use this route first:
+
+- [Canonical machine-readable public profile](https://nicko.obrienai.com/canonical.json): Structured public profile, resume claims, technical skills, project summaries, public contact/profile channels, bounded disclosure notes, and machine-readable coverage state.
+
+## Parsing guidance
+
+Non-interactive agents, recruiter-side enrichment systems, and applicant-tracking readers should prefer `/canonical.json` over visual layout, accordion state, button-triggered controls, or client-side interaction paths.
+
+The visible website is the human-facing presentation layer. The canonical JSON route is the structured machine-facing public profile.
+
+## Human-facing public pages
+
+- [Homepage](https://nicko.obrienai.com/): Public portfolio entry point and selected-work overview.
+- [Resume](https://nicko.obrienai.com/resume): Human-facing resume page.
+- [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/projects/remediation-script-development): Public project page for remediation script development and validation.
+- [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/projects/migration-stabilization-framework): Public project page for migration stabilization and package reconstruction work.
+- [Eliora AI Governance](https://nicko.obrienai.com/projects/eliora): Public project page for AI governance, semantic control, authority separation, and controlled agent behavior.
+- [Web Build Notes](https://nicko.obrienai.com/projects/website-build-notes): Public build-notes page for static delivery, metadata, machine-readable routing, and interaction boundaries.
+
+## Public contact and profile channels
+
+Use `/canonical.json` for the structured contact/profile projection.
+
+Public channels currently include:
+
+- Website: https://nicko.obrienai.com/
+- GitHub: https://github.com/nicholasob7
+- LinkedIn: https://www.linkedin.com/in/nicholasfobrien/
+- X: https://x.com/nicho0101
+
+## Scope boundary
+
+This file and `/canonical.json` expose only intentionally public professional information.
+
+They are not private project archives, private employment records, private model state, or a complete development history.
