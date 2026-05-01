@@ -16,13 +16,18 @@
 			type ResumeContactTarget as ContactTarget
 		} from '$lib/content/resume';
 		import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
+		import { canonicalOrigin } from '$lib/site';
 		import { onMount, tick } from 'svelte';
 
 	const resumePortraitHoldMs = 800;
 	const resumePortraitFadeMs = 7200;
+	const resumeTitle = "Nicholas Francis O'Brien | Resume";
+	const resumeDescription =
+		"Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery.";
 	const resumeIntroPendingClass = 'resume-intro-pending';
 	const resumeEntrySurface = resolveEntrySurface('resume');
 	const resumeEntryImage = getEntryImage(resumeEntrySurface);
+	const resumeSocialImage = resumeEntryImage ? `${canonicalOrigin}${resumeEntryImage}` : null;
 	const resumeUsesPortraitEntry = isPortraitEntry(resumeEntrySurface);
 
 		let openSkillIndices = $state<number[]>([]);
@@ -285,11 +290,23 @@
 <svelte:window onkeydown={handleResumeKeydown} />
 
 	<svelte:head>
-		<title>Nicholas Francis O'Brien | Resume</title>
-		<meta
-			name="description"
-			content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
-		/>
+		<title>{resumeTitle}</title>
+		<meta name="description" content={resumeDescription} />
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content={resumeTitle} />
+		<meta property="og:description" content={resumeDescription} />
+		<meta property="og:site_name" content="Nicko O'Brien" />
+		{#if resumeSocialImage}
+			<meta property="og:image" content={resumeSocialImage} />
+			<meta property="og:image:alt" content="Portrait image for Nicholas Francis O'Brien's resume page." />
+		{/if}
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={resumeTitle} />
+		<meta name="twitter:description" content={resumeDescription} />
+		{#if resumeSocialImage}
+			<meta name="twitter:image" content={resumeSocialImage} />
+			<meta name="twitter:image:alt" content="Portrait image for Nicholas Francis O'Brien's resume page." />
+		{/if}
 		{#if resumeEntryImage}
 			<link rel="preload" as="image" href={resumeEntryImage} />
 		{/if}
