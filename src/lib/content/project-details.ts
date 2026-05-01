@@ -318,16 +318,16 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 				{
 					type: 'list',
 					items: [
-						'The site is built as static files rather than served from a live application backend.',
-						'Browser and deployment rules are set so the site loads in a predictable way.',
-						'Repeated visits can reuse unchanged application files safely.',
-						'Each major route carries page identity and social preview information.',
-						'The site publishes a sitemap so public routes are declared in one place.',
-						'The site exposes selected public content in a machine-readable route.',
-						'Longer visual transitions respect reduced-motion preferences.',
-						'Floating action controls support keyboard operation, Escape close, and focus return.',
-						'Copy controls show that the copy action worked.',
-						'Older or redirected page anchors are handled without leaving the visitor at a dead position.'
+						'Built as static files rather than served from a live application backend.',
+						'Uses browser and deployment rules for predictable loading.',
+						'Reuses unchanged application files safely on repeat visits.',
+						'Gives each major route page identity and social preview information.',
+						'Publishes a sitemap so public routes are declared in one place.',
+						'Exposes selected public content through a machine-readable route.',
+						'Respects reduced-motion preferences during longer visual transitions.',
+						'Supports keyboard operation, Escape close, and focus return in floating action controls.',
+						'Confirms when copy actions succeed.',
+						'Handles older or redirected page anchors without leaving the visitor at a dead position.'
 					]
 				}
 			]
@@ -337,15 +337,15 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The portrait transition is visual entry behaviour, not application loading. Page controls become available from readiness state rather than waiting for the full fade to finish.'
+					text: 'The portrait transition is visual entry behaviour. It is not application loading. Control availability is handled separately from the fade sequence.'
 				},
 				{
 					type: 'list',
 					items: [
 						'Visual fade state and page readiness are handled separately.',
-						'Controls become available before the portrait fade has fully completed.',
+						'Controls are released before the portrait fade has fully completed.',
 						'Reduced-motion handling skips the long fade path.',
-						'Cleanup clears transition state after the intro is no longer needed.'
+						'Cleanup removes transition state after the intro is no longer needed.'
 					]
 				}
 			]
@@ -355,15 +355,15 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'Button-triggered action lists need clear close and focus behaviour. Copy controls need visible and accessible feedback after clipboard writes.'
+					text: 'Button-triggered action lists need clear close and focus behaviour. Clipboard actions need visible and accessible feedback.'
 				},
 				{
 					type: 'list',
 					items: [
 						'Floating actions behave like simple action lists rather than complex menu widgets.',
 						'Escape closes the action list.',
-						'Focus returns to the control that opened the list.',
-						'Copy controls report success after writing to the clipboard.',
+						'Focus returns to the control that opened it.',
+						'Copy actions report success after writing to the clipboard.',
 						'Copy feedback clears after a short delay.',
 						'Resume collapse controls appear only when there is something relevant to collapse.'
 					]
@@ -375,16 +375,16 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The site exposes public structure through route metadata, a manual sitemap, and a bounded canonical JSON endpoint. These surfaces describe selected public content outside the visible page layout.'
+					text: 'The website exposes public structure through route metadata, a manual sitemap, and a bounded canonical JSON endpoint. These surfaces describe selected public content outside the visible page layout.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Each route declares its public identity for browsers and link previews.',
-						'The sitemap lists the public routes intentionally exposed by the site.',
-						'The canonical JSON route gives machines a structured version of selected public content.',
-						'The machine-readable route is limited to public claims and signals.',
-						'The machine-readable route is not a full private model of the website or its development process.'
+						'Routes declare public identity for browsers and link previews.',
+						'The sitemap lists intentionally exposed public routes.',
+						'/canonical.json gives machines a structured version of selected public content.',
+						'The machine-readable content is limited to public claims and signals.',
+						'It is not a private model of the website or its development process.'
 					]
 				}
 			]
@@ -394,16 +394,16 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The public site is built as static output. Delivery behaviour is defined through generated HTML, static assets, and deployment headers.'
+					text: 'The public website is built as static output. Delivery behaviour is defined through generated HTML, static assets, and deployment headers.'
 				},
 				{
 					type: 'list',
 					items: [
-						'The site can be served as static output.',
-						'Delivery behaviour is controlled through generated files and headers.',
+						'Generated files can be served without a dynamic application backend.',
+						'Deployment headers define browser-facing delivery rules.',
 						'Security policy is present in the generated HTML.',
 						'Long-lived caching is limited to hashed application files.',
-						'The public site does not require a dynamic application server to render pages.'
+						'Public pages do not require a dynamic application server to render.'
 					]
 				}
 			]
@@ -413,7 +413,7 @@ export const websiteBuildNotesProjectDetail: ProjectDetail = {
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The practical constraint is consistency. Visual effects must not control page availability, interaction controls must report state, public data must stay bounded, and delivery rules must stay explicit.'
+					text: 'The practical constraint is consistency. Visual effects, interaction state, public data, and delivery rules must keep their proper limits.'
 				},
 				{
 					type: 'list',
