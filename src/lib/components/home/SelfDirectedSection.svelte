@@ -15,15 +15,29 @@
 					Interpretive AI architecture for atypical input. Uses precise language and semantic control to produce
 					stable, structured reasoning and response.
 				</p>
-				<p class="project-outcome">
-					Outcome: Built a repeatable reasoning and governance framework for complex input.
-				</p>
 				<a
 					aria-disabled={!navigationReady}
 					class:interaction-disabled={!navigationReady}
 					class="cta cta-resume section-cta-eliora"
 					data-sveltekit-preload-code="hover"
 					href="/projects/eliora"
+					tabindex={navigationReady ? undefined : -1}
+				>
+					View
+				</a>
+			</article>
+			<article id="website-build-notes-head" class="project-card project-card-build-notes" tabindex="-1">
+				<h3>Web Build Notes</h3>
+				<p class="project-summary">
+					Build notes for the website’s transition behaviour, interaction controls, public structure, and static
+					delivery.
+				</p>
+				<a
+					aria-disabled={!navigationReady}
+					class:interaction-disabled={!navigationReady}
+					class="cta cta-resume section-cta-eliora"
+					data-sveltekit-preload-code="hover"
+					href="/projects/website-build-notes"
 					tabindex={navigationReady ? undefined : -1}
 				>
 					View

@@ -315,6 +315,17 @@ export const canonicalSource: {
 				progressionNote: 'Successful test-device validation with production rollout pending.'
 			},
 			releaseState: 'retain'
+		},
+		{
+			id: 'ctx_website_build_notes',
+			contextType: 'publication_context',
+			contextNote: 'Web Build Notes project page covering selected website implementation behaviours.',
+			sourceSurface: 'projects.website_build_notes',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public build-notes page for the website.'
+			},
+			releaseState: 'retain'
 		}
 	],
 	signals: [
@@ -677,6 +688,19 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain'
+		},
+		{
+			id: 'sig_website_build_notes_judgment',
+			signalClass: 'judgment',
+			signalNote:
+				'Implementation judgment signaled through separated transition state, explicit control feedback, bounded public data, and static delivery rules.',
+			supportingIds: ['clm_website_build_notes_summary', 'rel_website_build_notes_to_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public build-notes signal.'
 			},
 			inferenceLabel: 'strongly_implied',
 			releaseState: 'retain'
@@ -1754,6 +1778,27 @@ export const canonicalSource: {
 				note: 'Reasoning and traceability model are public; concealed package substrate is not.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_website_build_notes_summary',
+			claimText:
+				'Web Build Notes documents selected website implementation behaviours for transition state, interaction controls, public structure, and static delivery while keeping public data bounded and delivery rules explicit.',
+			claimKind: 'project_summary',
+			claimOrigin: 'descriptive_summary',
+			sourceSurface: 'projects.website_build_notes',
+			contextIds: ['ctx_website_build_notes'],
+			signalIds: ['sig_website_build_notes_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current public build-notes project page.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
 		}
 	],
 	relationships: [
@@ -1889,6 +1934,24 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: ''
+			},
+			inferenceLabel: 'strongly_implied',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			}
+		},
+		{
+			id: 'rel_website_build_notes_to_judgment',
+			relationshipType: 'judgment_to_boundary',
+			fromId: 'clm_website_build_notes_summary',
+			toId: 'sig_website_build_notes_judgment',
+			relationshipNote:
+				'Build-notes summary supports a bounded judgment signal around transition state, control feedback, public data boundaries, and delivery rules.',
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current build-notes project framing.'
 			},
 			inferenceLabel: 'strongly_implied',
 			releaseState: 'retain',

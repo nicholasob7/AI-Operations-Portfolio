@@ -19,8 +19,8 @@
 		import { canonicalOrigin } from '$lib/site';
 		import { onMount, tick } from 'svelte';
 
-	const resumePortraitHoldMs = 800;
-	const resumePortraitFadeMs = 7200;
+	const resumePortraitHoldMs = 500;
+	const resumePortraitFadeMs = 5400;
 	const resumeTitle = "Nicholas Francis O'Brien | Resume";
 	const resumeDescription =
 		"Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery.";
@@ -597,8 +597,8 @@
 				radial-gradient(circle at 50% 18%, rgba(74, 113, 171, 0.24) 0%, rgba(9, 16, 29, 0) 42%),
 				linear-gradient(180deg, #060b14 0%, #0f1a2d 100%);
 				transition:
-					opacity 7200ms cubic-bezier(0.12, 0.72, 0.16, 1),
-					transform 7200ms cubic-bezier(0.12, 0.72, 0.16, 1);
+					opacity 5400ms cubic-bezier(0.12, 0.72, 0.16, 1),
+					transform 5400ms cubic-bezier(0.12, 0.72, 0.16, 1);
 		}
 
 		.resume-intro-overlay::after {
@@ -649,7 +649,7 @@
 			display: grid;
 			gap: 0.9rem;
 			opacity: 1;
-				transition: opacity 7200ms cubic-bezier(0.12, 0.72, 0.16, 1);
+				transition: opacity 5400ms cubic-bezier(0.12, 0.72, 0.16, 1);
 		}
 
 		.resume-page.resume-intro-content-hidden {

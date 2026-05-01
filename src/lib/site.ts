@@ -4,6 +4,7 @@ export const sitemapRoutes = [
 	'/',
 	'/resume',
 	'/projects/eliora',
+	'/projects/website-build-notes',
 	'/projects/remediation-script-development',
 	'/projects/migration-stabilization-framework'
 ] as const;

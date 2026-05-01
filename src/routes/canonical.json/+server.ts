@@ -178,6 +178,13 @@ const surfaceSpecs = [
 		surface_type: 'project_detail',
 		coverage_status: 'covered',
 		notes: ['Full bounded public migration stabilization project page coverage.']
+	},
+	{
+		id: 'projects.website_build_notes',
+		label: 'Web Build Notes Project Page',
+		surface_type: 'project_detail',
+		coverage_status: 'covered',
+		notes: ['Bounded public build-notes page for selected website behaviours and constraints.']
 	}
 ];
 
@@ -344,6 +351,23 @@ const entrySpecs = [
 		projection_notes: [
 			'Full bounded public migration stabilization project page.',
 			'Validated test-device progress is represented without disclosing concealed package substrate.'
+		]
+	},
+	{
+		id: 'project-website-build-notes',
+		surface_id: 'projects.website_build_notes',
+		label: 'Web Build Notes',
+		entry_type: 'project_detail',
+		entry_semantic_type: 'project_narrative',
+		public_summary:
+			'Bounded build notes for selected website transition behaviour, interaction controls, public structure, and static delivery.',
+		contextIds: ['ctx_website_build_notes'],
+		claimIds: ['clm_website_build_notes_summary'],
+		relationshipIds: ['rel_website_build_notes_to_judgment'],
+		signalIds: ['sig_website_build_notes_judgment'],
+		projection_notes: [
+			'Public project page coverage for the website itself.',
+			'Projection is limited to selected implementation behaviours and does not model the whole site.'
 		]
 	},
 	{

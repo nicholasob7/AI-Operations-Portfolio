@@ -300,3 +300,131 @@ export const elioraProjectDetail: ProjectDetail = {
 		}
 	]
 };
+
+export const websiteBuildNotesProjectDetail: ProjectDetail = {
+	title: 'Web Build Notes',
+	titleId: 'website-build-notes-title',
+	eyebrow: 'Project Detail',
+	ariaLabel: 'Website build notes project details',
+	sections: [
+		{
+			title: 'Implemented behaviours',
+			blocks: [
+				{
+					type: 'paragraph',
+					className: 'doc-summary',
+					text: 'The website rests on underlying build, delivery, metadata, and interaction behaviours that keep it predictable.'
+				},
+				{
+					type: 'list',
+					items: [
+						'The site is built as static files rather than served from a live application backend.',
+						'Browser and deployment rules are set so the site loads in a predictable way.',
+						'Repeated visits can reuse unchanged application files safely.',
+						'Each major route carries page identity and social preview information.',
+						'The site publishes a sitemap so public routes are declared in one place.',
+						'The site exposes selected public content in a machine-readable route.',
+						'Longer visual transitions respect reduced-motion preferences.',
+						'Floating action controls support keyboard operation, Escape close, and focus return.',
+						'Copy controls show that the copy action worked.',
+						'Older or redirected page anchors are handled without leaving the visitor at a dead position.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Portrait transition and navigation state',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'The portrait transition is visual entry behaviour, not application loading. Page controls become available from readiness state rather than waiting for the full fade to finish.'
+				},
+				{
+					type: 'list',
+					items: [
+						'Visual fade state and page readiness are handled separately.',
+						'Controls become available before the portrait fade has fully completed.',
+						'Reduced-motion handling skips the long fade path.',
+						'Cleanup clears transition state after the intro is no longer needed.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Interaction controls',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'Button-triggered action lists need clear close and focus behaviour. Copy controls need visible and accessible feedback after clipboard writes.'
+				},
+				{
+					type: 'list',
+					items: [
+						'Floating actions behave like simple action lists rather than complex menu widgets.',
+						'Escape closes the action list.',
+						'Focus returns to the control that opened the list.',
+						'Copy controls report success after writing to the clipboard.',
+						'Copy feedback clears after a short delay.',
+						'Resume collapse controls appear only when there is something relevant to collapse.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Public structure',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'The site exposes public structure through route metadata, a manual sitemap, and a bounded canonical JSON endpoint. These surfaces describe selected public content outside the visible page layout.'
+				},
+				{
+					type: 'list',
+					items: [
+						'Each route declares its public identity for browsers and link previews.',
+						'The sitemap lists the public routes intentionally exposed by the site.',
+						'The canonical JSON route gives machines a structured version of selected public content.',
+						'The machine-readable route is limited to public claims and signals.',
+						'The machine-readable route is not a full private model of the website or its development process.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Static delivery',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'The public site is built as static output. Delivery behaviour is defined through generated HTML, static assets, and deployment headers.'
+				},
+				{
+					type: 'list',
+					items: [
+						'The site can be served as static output.',
+						'Delivery behaviour is controlled through generated files and headers.',
+						'Security policy is present in the generated HTML.',
+						'Long-lived caching is limited to hashed application files.',
+						'The public site does not require a dynamic application server to render pages.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Closing',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'The practical constraint is consistency. Visual effects must not control page availability, interaction controls must report state, public data must stay bounded, and delivery rules must stay explicit.'
+				},
+				{
+					type: 'list',
+					items: [
+						'Visual effects must not decide when the page is usable.',
+						'Controls must show their state.',
+						'Machine-readable data must stay limited to public content.',
+						'Delivery behaviour must be explicit.'
+					]
+				}
+			]
+		}
+	]
+};
