@@ -44,6 +44,8 @@
 		let contactCopyMenuOpen = $state(false);
 		let topSkillsToggle = $state<HTMLButtonElement | null>(null);
 		let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
+		let contactCopyMenuTrigger = $state<HTMLButtonElement | null>(null);
+		let contactCopyMenuElement = $state<HTMLDivElement | null>(null);
 	let resumeIntroImage = $state<HTMLImageElement | null>(null);
 	let resumePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let resumePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
@@ -175,17 +177,32 @@
 		}
 	};
 
-	const toggleContactCopyMenu = () => {
-		contactCopyMenuOpen = !contactCopyMenuOpen;
+	const focusFirstContactCopyAction = async () => {
+		await tick();
+		contactCopyMenuElement?.querySelector<HTMLButtonElement>('.contact-copy-menu-item')?.focus();
 	};
 
-	const closeContactCopyMenu = () => {
+	const closeContactCopyMenu = ({ restoreFocus = false } = {}) => {
 		contactCopyMenuOpen = false;
+		if (restoreFocus) {
+			void tick().then(() => contactCopyMenuTrigger?.focus());
+		}
+	};
+
+	const toggleContactCopyMenu = () => {
+		if (contactCopyMenuOpen) {
+			closeContactCopyMenu();
+			return;
+		}
+
+		contactCopyMenuOpen = true;
+		void focusFirstContactCopyAction();
 	};
 
 	const handleResumeKeydown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
-			closeContactCopyMenu();
+		if (event.key === 'Escape' && contactCopyMenuOpen) {
+			event.preventDefault();
+			closeContactCopyMenu({ restoreFocus: true });
 		}
 	};
 
@@ -501,6 +518,7 @@
 
 		<div class="contact-copy-menu-wrap">
 			<button
+				bind:this={contactCopyMenuTrigger}
 				aria-controls="resume-contact-copy-menu"
 				aria-expanded={contactCopyMenuOpen}
 				class:contact-copy-menu-trigger-disabled={!resumeInteractionReady}
@@ -513,6 +531,7 @@
 			</button>
 			{#if contactCopyMenuOpen}
 				<div
+					bind:this={contactCopyMenuElement}
 					class="contact-copy-menu"
 					id="resume-contact-copy-menu"
 					aria-label="Copy contact value"
