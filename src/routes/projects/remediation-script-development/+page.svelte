@@ -6,6 +6,9 @@
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
 	const remediationEntrySurface = resolveEntrySurface('remediationProject');
+	const remediationTitle = "Post-Deployment Remediation Script Development | Nicko O'Brien";
+	const remediationDescription =
+		'Detailed portfolio entry for post-deployment remediation script development and validation.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
@@ -49,11 +52,15 @@
 </script>
 
 <svelte:head>
-	<title>Post-Deployment Remediation Script Development | Nicko O'Brien</title>
-	<meta
-		name="description"
-		content="Detailed portfolio entry for post-deployment remediation script development and validation."
-	/>
+	<title>{remediationTitle}</title>
+	<meta name="description" content={remediationDescription} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={remediationTitle} />
+	<meta property="og:description" content={remediationDescription} />
+	<meta property="og:site_name" content="Nicko O'Brien" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={remediationTitle} />
+	<meta name="twitter:description" content={remediationDescription} />
 </svelte:head>
 
 <ProjectDetailPage

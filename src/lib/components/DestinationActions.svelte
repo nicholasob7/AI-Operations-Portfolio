@@ -18,6 +18,8 @@
 </script>
 
 <script lang="ts">
+	import { tick } from 'svelte';
+
 	type Props = {
 		actions: DestinationAction[];
 		label?: string;
@@ -26,26 +28,47 @@
 
 	let { actions, label = 'Actions', panelId = 'destination-actions-panel' }: Props = $props();
 	let open = $state(false);
+	let panelElement = $state<HTMLDivElement | null>(null);
+	let triggerElement = $state<HTMLButtonElement | null>(null);
 
 	const triggerId = $derived(`${panelId}-trigger`);
 
-	const close = () => {
+	const focusTrigger = () => {
+		triggerElement?.focus();
+	};
+
+	const close = ({ restoreFocus = false } = {}) => {
 		open = false;
+		if (restoreFocus) {
+			void tick().then(focusTrigger);
+		}
+	};
+
+	const focusFirstAction = async () => {
+		await tick();
+		panelElement?.querySelector<HTMLElement>('.destination-action')?.focus();
 	};
 
 	const toggle = () => {
-		open = !open;
+		if (open) {
+			close();
+			return;
+		}
+
+		open = true;
+		void focusFirstAction();
 	};
 
 	const handleKeydown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
-			close();
+		if (event.key === 'Escape' && open) {
+			event.preventDefault();
+			close({ restoreFocus: true });
 		}
 	};
 
 	const runButtonAction = (action: Extract<DestinationAction, { type: 'button' }>) => {
 		action.onclick();
-		close();
+		close({ restoreFocus: true });
 	};
 </script>
 
@@ -53,7 +76,13 @@
 
 <div class="destination-actions">
 	{#if open}
-		<div class="destination-actions-panel" id={panelId} aria-labelledby={triggerId}>
+		<div
+			bind:this={panelElement}
+			class="destination-actions-panel"
+			id={panelId}
+			role="group"
+			aria-labelledby={triggerId}
+		>
 			<ul class="destination-actions-list">
 				{#each actions as action (action.id)}
 					<li>
@@ -63,7 +92,7 @@
 								data-sveltekit-preload-code={action.preload ? 'hover' : undefined}
 								download={action.download}
 								href={action.href}
-								onclick={close}
+								onclick={() => close()}
 							>
 								{action.label}
 							</a>
@@ -84,6 +113,7 @@
 	{/if}
 
 	<button
+		bind:this={triggerElement}
 		aria-controls={panelId}
 		aria-expanded={open}
 		class="destination-actions-trigger"

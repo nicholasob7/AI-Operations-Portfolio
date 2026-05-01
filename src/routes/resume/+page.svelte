@@ -16,13 +16,18 @@
 			type ResumeContactTarget as ContactTarget
 		} from '$lib/content/resume';
 		import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
+		import { canonicalOrigin } from '$lib/site';
 		import { onMount, tick } from 'svelte';
 
 	const resumePortraitHoldMs = 800;
 	const resumePortraitFadeMs = 7200;
+	const resumeTitle = "Nicholas Francis O'Brien | Resume";
+	const resumeDescription =
+		"Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery.";
 	const resumeIntroPendingClass = 'resume-intro-pending';
 	const resumeEntrySurface = resolveEntrySurface('resume');
 	const resumeEntryImage = getEntryImage(resumeEntrySurface);
+	const resumeSocialImage = resumeEntryImage ? `${canonicalOrigin}${resumeEntryImage}` : null;
 	const resumeUsesPortraitEntry = isPortraitEntry(resumeEntrySurface);
 
 		let openSkillIndices = $state<number[]>([]);
@@ -39,6 +44,8 @@
 		let contactCopyMenuOpen = $state(false);
 		let topSkillsToggle = $state<HTMLButtonElement | null>(null);
 		let bottomSkillsCollapse = $state<HTMLButtonElement | null>(null);
+		let contactCopyMenuTrigger = $state<HTMLButtonElement | null>(null);
+		let contactCopyMenuElement = $state<HTMLDivElement | null>(null);
 	let resumeIntroImage = $state<HTMLImageElement | null>(null);
 	let resumePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
 	let resumePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
@@ -170,17 +177,32 @@
 		}
 	};
 
-	const toggleContactCopyMenu = () => {
-		contactCopyMenuOpen = !contactCopyMenuOpen;
+	const focusFirstContactCopyAction = async () => {
+		await tick();
+		contactCopyMenuElement?.querySelector<HTMLButtonElement>('.contact-copy-menu-item')?.focus();
 	};
 
-	const closeContactCopyMenu = () => {
+	const closeContactCopyMenu = ({ restoreFocus = false } = {}) => {
 		contactCopyMenuOpen = false;
+		if (restoreFocus) {
+			void tick().then(() => contactCopyMenuTrigger?.focus());
+		}
+	};
+
+	const toggleContactCopyMenu = () => {
+		if (contactCopyMenuOpen) {
+			closeContactCopyMenu();
+			return;
+		}
+
+		contactCopyMenuOpen = true;
+		void focusFirstContactCopyAction();
 	};
 
 	const handleResumeKeydown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
-			closeContactCopyMenu();
+		if (event.key === 'Escape' && contactCopyMenuOpen) {
+			event.preventDefault();
+			closeContactCopyMenu({ restoreFocus: true });
 		}
 	};
 
@@ -285,11 +307,23 @@
 <svelte:window onkeydown={handleResumeKeydown} />
 
 	<svelte:head>
-		<title>Nicholas Francis O'Brien | Resume</title>
-		<meta
-			name="description"
-			content="Resume of Nicholas Francis O'Brien, focused on enterprise IT operations, process improvement, and AI-forward delivery."
-		/>
+		<title>{resumeTitle}</title>
+		<meta name="description" content={resumeDescription} />
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content={resumeTitle} />
+		<meta property="og:description" content={resumeDescription} />
+		<meta property="og:site_name" content="Nicko O'Brien" />
+		{#if resumeSocialImage}
+			<meta property="og:image" content={resumeSocialImage} />
+			<meta property="og:image:alt" content="Portrait image for Nicholas Francis O'Brien's resume page." />
+		{/if}
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={resumeTitle} />
+		<meta name="twitter:description" content={resumeDescription} />
+		{#if resumeSocialImage}
+			<meta name="twitter:image" content={resumeSocialImage} />
+			<meta name="twitter:image:alt" content="Portrait image for Nicholas Francis O'Brien's resume page." />
+		{/if}
 		{#if resumeEntryImage}
 			<link rel="preload" as="image" href={resumeEntryImage} />
 		{/if}
@@ -484,6 +518,7 @@
 
 		<div class="contact-copy-menu-wrap">
 			<button
+				bind:this={contactCopyMenuTrigger}
 				aria-controls="resume-contact-copy-menu"
 				aria-expanded={contactCopyMenuOpen}
 				class:contact-copy-menu-trigger-disabled={!resumeInteractionReady}
@@ -496,8 +531,10 @@
 			</button>
 			{#if contactCopyMenuOpen}
 				<div
+					bind:this={contactCopyMenuElement}
 					class="contact-copy-menu"
 					id="resume-contact-copy-menu"
+					role="group"
 					aria-label="Copy contact value"
 				>
 					{#each resumeContactItems as item (item.id)}
@@ -1257,6 +1294,17 @@
 			.resume-page {
 				opacity: 1 !important;
 				transition: none !important;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.resume-intro-overlay,
+			.resume-page {
+				transition: none;
+			}
+
+			.resume-intro-overlay.resume-intro-overlay-fading {
+				transform: none;
 			}
 		}
 	</style>

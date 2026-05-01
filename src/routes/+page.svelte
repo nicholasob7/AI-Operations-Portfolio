@@ -7,6 +7,7 @@
 		isPortraitEntry,
 		resolveEntrySurface
 	} from '$lib/entry-surfaces';
+	import { canonicalOrigin } from '$lib/site';
 	import { onDestroy, onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
@@ -17,8 +18,15 @@
 	const githubUrl = 'https://github.com/nicholasob7';
 	const homepagePortraitHoldMs = 500;
 	const homepagePortraitFadeMs = 5400;
+	const homeTitle = "Nicko O'Brien | AI-Forward IT Operations and Automation";
+	const homeSocialTitle = "Nicko O'Brien | Personal Website";
+	const homeDescription =
+		"Personal website of Nicko O'Brien, an AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery.";
+	const homeSocialDescription =
+		'AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery.';
 	const homeEntrySurface = resolveEntrySurface('home');
 	const homeEntryImage = getEntryImage(homeEntrySurface);
+	const homeSocialImage = homeEntryImage ? `${canonicalOrigin}${homeEntryImage}` : null;
 	const homeUsesPortraitEntry = isPortraitEntry(homeEntrySurface);
 	const legacyHomepageHashes = new Set([
 		'#hero-head',
@@ -178,25 +186,27 @@
 </script>
 
 <svelte:head>
-	<title>Nicko O'Brien | AI-Forward IT Operations and Automation</title>
+	<title>{homeTitle}</title>
 	<meta
 		name="description"
-		content="Personal website of Nicko O'Brien, an AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
+		content={homeDescription}
 	/>
 	<meta name="robots" content="index,follow" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Nicko O'Brien | Personal Website" />
-	<meta
-		property="og:description"
-		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
-	/>
+	<meta property="og:title" content={homeSocialTitle} />
+	<meta property="og:description" content={homeSocialDescription} />
 	<meta property="og:site_name" content="Nicko O'Brien" />
+	{#if homeSocialImage}
+		<meta property="og:image" content={homeSocialImage} />
+		<meta property="og:image:alt" content="Portrait image for Nicko O'Brien's portfolio site." />
+	{/if}
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Nicko O'Brien | Personal Website" />
-	<meta
-		name="twitter:description"
-		content="AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery."
-	/>
+	<meta name="twitter:title" content={homeSocialTitle} />
+	<meta name="twitter:description" content={homeSocialDescription} />
+	{#if homeSocialImage}
+		<meta name="twitter:image" content={homeSocialImage} />
+		<meta name="twitter:image:alt" content="Portrait image for Nicko O'Brien's portfolio site." />
+	{/if}
 	{#if homeEntryImage}
 		<link rel="preload" as="image" href={homeEntryImage} />
 	{/if}

@@ -3,6 +3,10 @@
 	import { elioraProjectDetail } from '$lib/content/project-details';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
+	const elioraTitle = "Eliora AI Governance | Nicko O'Brien";
+	const elioraDescription =
+		'Compact portfolio page describing Eliora as an AI governance and coordination project.';
+
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	};
@@ -32,11 +36,15 @@
 </script>
 
 <svelte:head>
-	<title>Eliora AI Governance | Nicko O'Brien</title>
-	<meta
-		name="description"
-		content="Compact portfolio page describing Eliora as an AI governance and coordination project."
-	/>
+	<title>{elioraTitle}</title>
+	<meta name="description" content={elioraDescription} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={elioraTitle} />
+	<meta property="og:description" content={elioraDescription} />
+	<meta property="og:site_name" content="Nicko O'Brien" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={elioraTitle} />
+	<meta name="twitter:description" content={elioraDescription} />
 </svelte:head>
 
 <ProjectDetailPage actions={elioraActions} detail={elioraProjectDetail} panelId="eliora-destination-actions" />
