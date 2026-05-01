@@ -1,8 +1,10 @@
 <script lang="ts">
 	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
 	import { elioraProjectDetail } from '$lib/content/project-details';
+	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
+	const elioraEntrySurface = resolveEntrySurface('elioraProject');
 	const elioraTitle = "Eliora AI Governance | Nicko O'Brien";
 	const elioraDescription =
 		'Compact portfolio page describing Eliora as an AI governance and coordination project.';
@@ -47,4 +49,9 @@
 	<meta name="twitter:description" content={elioraDescription} />
 </svelte:head>
 
-<ProjectDetailPage actions={elioraActions} detail={elioraProjectDetail} panelId="eliora-destination-actions" />
+<ProjectDetailPage
+	actions={elioraActions}
+	detail={elioraProjectDetail}
+	entrySurface={elioraEntrySurface}
+	panelId="eliora-destination-actions"
+/>

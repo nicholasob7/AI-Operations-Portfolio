@@ -2,7 +2,6 @@
 	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
 	import { migrationProjectDetail } from '$lib/content/project-details';
 	import { resolveEntrySurface } from '$lib/entry-surfaces';
-	import { onMount } from 'svelte';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
 	const migrationEntrySurface = resolveEntrySurface('migrationProject');
@@ -44,11 +43,6 @@
 		}
 	] satisfies DestinationAction[];
 
-	onMount(() => {
-		if (migrationEntrySurface.mode === 'none') {
-			window.scrollTo({ top: 0, behavior: 'auto' });
-		}
-	});
 </script>
 
 <svelte:head>
@@ -66,5 +60,6 @@
 <ProjectDetailPage
 	actions={migrationActions}
 	detail={migrationProjectDetail}
+	entrySurface={migrationEntrySurface}
 	panelId="migration-destination-actions"
 />
