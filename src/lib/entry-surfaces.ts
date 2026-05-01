@@ -22,13 +22,27 @@ export const entrySurfaces = {
 	},
 	remediationProject: {
 		path: '/projects/remediation-script-development',
-		mode: 'none',
+		mode: 'portrait',
+		image: '/images/spring-snow.jpg',
 		canonicalUrl: '/projects/remediation-script-development'
 	},
 	migrationProject: {
 		path: '/projects/migration-stabilization-framework',
-		mode: 'none',
+		mode: 'portrait',
+		image: '/images/sun-snow-mountain.jpg',
 		canonicalUrl: '/projects/migration-stabilization-framework'
+	},
+	elioraProject: {
+		path: '/projects/eliora',
+		mode: 'portrait',
+		image: '/images/banochburn-portrait.jpg',
+		canonicalUrl: '/projects/eliora'
+	},
+	websiteBuildNotesProject: {
+		path: '/projects/website-build-notes',
+		mode: 'portrait',
+		image: '/images/StClair-Sunrise.jpg',
+		canonicalUrl: '/projects/website-build-notes'
 	}
 } as const satisfies Record<string, PathSurface>;
 

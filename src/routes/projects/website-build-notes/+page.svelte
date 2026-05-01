@@ -1,8 +1,10 @@
 <script lang="ts">
 	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
 	import { websiteBuildNotesProjectDetail } from '$lib/content/project-details';
+	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
+	const websiteBuildNotesEntrySurface = resolveEntrySurface('websiteBuildNotesProject');
 	const websiteBuildNotesTitle = "Web Build Notes | Nicko O'Brien";
 	const websiteBuildNotesDescription =
 		"Build notes for the website's transition behaviour, interaction controls, public structure, and static delivery.";
@@ -50,5 +52,6 @@
 <ProjectDetailPage
 	actions={websiteBuildNotesActions}
 	detail={websiteBuildNotesProjectDetail}
+	entrySurface={websiteBuildNotesEntrySurface}
 	panelId="website-build-notes-destination-actions"
 />
