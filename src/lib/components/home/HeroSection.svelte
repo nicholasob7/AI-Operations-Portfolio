@@ -7,7 +7,12 @@
 </script>
 
 <section id="hero-head" class="hero card" tabindex="-1">
-	<div class="hero-aurora" aria-hidden="true"></div>
+	<div class="hero-aurora-stack" aria-hidden="true">
+		<div class="hero-aurora-frame hero-aurora-frame-1"></div>
+		<div class="hero-aurora-frame hero-aurora-frame-2"></div>
+		<div class="hero-aurora-frame hero-aurora-frame-3"></div>
+		<div class="hero-aurora-frame hero-aurora-frame-4"></div>
+	</div>
 	<h1>Nicko O'Brien</h1>
 	<p class="tagline">AI Operations Portfolio</p>
 	<p class="proof">
