@@ -178,6 +178,7 @@ body.home-intro-active.home-intro-interaction-ready {
 	}
 
 	.hero-aurora-stack {
+		display: none;
 		position: absolute;
 		inset: -35% -10% auto -10%;
 		height: 68%;
