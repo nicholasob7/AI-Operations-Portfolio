@@ -264,6 +264,10 @@
 		class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
 		class="page"
 	>
+	<section class="machine-profile-notice" aria-label="Machine-readable profile pointer">
+		<a href="/canonical.json" rel="alternate" type="application/json">Machine-readable profile: /canonical.json</a>
+	</section>
+
 	<HeroSection
 		{githubUrl}
 	/>
@@ -271,7 +275,6 @@
 	<ProjectsSection
 		navigationReady={homepageInteractionReady}
 	/>
-
 	<div class="section-divider" aria-hidden="true"></div>
 
 	<SelfDirectedSection

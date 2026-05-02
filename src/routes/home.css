@@ -1003,3 +1003,23 @@ body.home-intro-active.home-intro-interaction-ready {
 			transform: scaleX(0.98);
 		}
 	}
+
+.machine-profile-notice {
+	max-width: 72rem;
+	margin: 0 auto 0.5rem;
+	padding: 0 1rem;
+	font-size: 0.625rem;
+	line-height: 1;
+	opacity: 0.32;
+}
+
+.machine-profile-notice a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.machine-profile-notice a:hover,
+.machine-profile-notice a:focus {
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
