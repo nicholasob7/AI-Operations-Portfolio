@@ -649,7 +649,7 @@
 			display: grid;
 			gap: 0.9rem;
 			opacity: 1;
-				transition: opacity 5400ms cubic-bezier(0.12, 0.72, 0.16, 1);
+				transition: opacity 0ms cubic-bezier(0.12, 0.72, 0.16, 1);
 		}
 
 		.resume-page.resume-intro-content-hidden {
