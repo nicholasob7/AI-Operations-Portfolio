@@ -152,9 +152,7 @@
 {/if}
 
 <main class="doc-page">
-	{#if projectInteractionReady}
-		<DestinationActions {actions} {panelId} />
-	{/if}
+	<DestinationActions {actions} {panelId} />
 
 	<section class="doc-card" aria-labelledby={detail.titleId}>
 		<p class="eyebrow">{detail.eyebrow}</p>
@@ -207,7 +205,7 @@
 
 	:global(body.project-intro-active) {
 		overflow-x: hidden;
-		overflow-y: hidden;
+		overflow-y: scroll;
 	}
 
 	:global(body.project-intro-active.project-intro-interaction-ready) {
