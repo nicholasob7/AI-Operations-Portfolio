@@ -1006,24 +1006,20 @@ body.home-intro-active.home-intro-interaction-ready {
 
 .machine-profile-notice {
 	max-width: 72rem;
-	margin: 1rem auto 0;
-	padding: 0.75rem 1rem;
-	font-size: 0.875rem;
-	line-height: 1.5;
-	opacity: 0.78;
-}
-
-.machine-profile-notice h2 {
-	margin: 0 0 0.25rem;
-	font-size: 0.95rem;
-	font-weight: 600;
-}
-
-.machine-profile-notice p {
-	margin: 0;
+	margin: 0 auto 0.5rem;
+	padding: 0 1rem;
+	font-size: 0.625rem;
+	line-height: 1;
+	opacity: 0.32;
 }
 
 .machine-profile-notice a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.machine-profile-notice a:hover,
+.machine-profile-notice a:focus {
 	text-decoration: underline;
-	text-underline-offset: 0.15em;
+	text-underline-offset: 0.12em;
 }

@@ -264,18 +264,13 @@
 		class:page-intro-content-hidden={showHomepagePortraitOverlay && !fadeHomepagePortraitOverlay}
 		class="page"
 	>
+	<section class="machine-profile-notice" aria-label="Machine-readable profile pointer">
+		<a href="/canonical.json" rel="alternate" type="application/json">Machine-readable profile: /canonical.json</a>
+	</section>
+
 	<HeroSection
 		{githubUrl}
 	/>
-
-	<section class="machine-profile-notice" aria-labelledby="machine-profile-notice-title">
-		<h2 id="machine-profile-notice-title">Machine-readable profile</h2>
-		<p>
-			Non-interactive recruiter agents, applicant-tracking parsers, and LLM ingestion systems
-			should use <a href="/canonical.json">/canonical.json</a> for the canonical public profile,
-			resume claims, technical skills, project summaries, and public contact/profile channels.
-		</p>
-	</section>
 
 	<ProjectsSection
 		navigationReady={homepageInteractionReady}
