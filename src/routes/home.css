@@ -177,16 +177,43 @@ body.home-intro-active.home-intro-interaction-ready {
 		object-position: center center;
 	}
 
-	.hero-aurora {
+	.hero-aurora-stack {
 		position: absolute;
 		inset: -35% -10% auto -10%;
 		height: 68%;
-		background:
-			radial-gradient(55% 60% at 20% 50%, rgba(111, 255, 214, 0.26) 0%, transparent 60%),
-			radial-gradient(50% 60% at 45% 45%, rgba(154, 99, 232, 0.31) 0%, transparent 65%),
-			radial-gradient(45% 55% at 75% 50%, rgba(47, 209, 255, 0.25) 0%, transparent 62%);
-		filter: blur(18px) saturate(124%);
-		animation: aurora-drift 14s ease-in-out infinite alternate;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.hero-aurora-frame {
+		position: absolute;
+		inset: 0;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0;
+		will-change: opacity;
+		animation: aurora-frame-fade 32s linear infinite;
+	}
+
+	.hero-aurora-frame-1 {
+		background-image: url('/aurora/hero-aurora-01.webp');
+		animation-delay: 0s;
+	}
+
+	.hero-aurora-frame-2 {
+		background-image: url('/aurora/hero-aurora-02.webp');
+		animation-delay: 8s;
+	}
+
+	.hero-aurora-frame-3 {
+		background-image: url('/aurora/hero-aurora-03.webp');
+		animation-delay: 16s;
+	}
+
+	.hero-aurora-frame-4 {
+		background-image: url('/aurora/hero-aurora-04.webp');
+		animation-delay: 24s;
 	}
 
 	.eyebrow {
@@ -943,9 +970,13 @@ body.home-intro-active.home-intro-interaction-ready {
 
 	@media (prefers-reduced-motion: reduce) {
 		.card,
-		.hero-aurora,
+		.hero-aurora-frame,
 		.section-divider {
 			animation: none;
+		}
+
+		.hero-aurora-frame-1 {
+			opacity: 1;
 		}
 
 		.cta,
@@ -966,15 +997,21 @@ body.home-intro-active.home-intro-interaction-ready {
 		}
 	}
 
-	@keyframes aurora-drift {
+	@keyframes aurora-frame-fade {
 		0% {
-			transform: translateX(-2%) translateY(0%) scale(1);
+			opacity: 0;
 		}
-		50% {
-			transform: translateX(2%) translateY(3%) scale(1.05);
+		8% {
+			opacity: 1;
+		}
+		25% {
+			opacity: 1;
+		}
+		33% {
+			opacity: 0;
 		}
 		100% {
-			transform: translateX(-1%) translateY(-2%) scale(1.02);
+			opacity: 0;
 		}
 	}
 
