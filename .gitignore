@@ -30,3 +30,6 @@ vite.config.ts.timestamp-*
 
 # Generated local PDF HTML
 /scripts/generated
+
+# Local workflow library
+docs/workflow-library/
