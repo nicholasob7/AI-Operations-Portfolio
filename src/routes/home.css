@@ -491,11 +491,10 @@
 			0 12px 26px rgba(7, 14, 33, 0.46);
 	}
 
-		.cta:focus-visible,
-		.projects article:focus-within {
-			outline: 3px solid var(--accent-purple);
-			outline-offset: 2px;
-		}
+	.cta:focus-visible {
+		outline: 3px solid var(--accent-purple);
+		outline-offset: 2px;
+	}
 
 		.interaction-disabled {
 			pointer-events: none;
@@ -621,10 +620,6 @@
 		border: 1px solid transparent;
 		border-radius: 0.75rem;
 		position: relative;
-		transition:
-			border-color 140ms ease,
-			transform 140ms ease,
-			box-shadow 180ms ease;
 	}
 
 	.projects .project-card {
@@ -654,20 +649,6 @@
 			rgba(57, 198, 154, 0.95)
 		);
 		box-shadow: 0 0 18px rgba(154, 99, 232, 0.35);
-	}
-
-	.projects article:hover {
-		background:
-			linear-gradient(rgba(20, 34, 62, 0.86), rgba(20, 34, 62, 0.86)) padding-box,
-			linear-gradient(
-					130deg,
-					rgba(95, 224, 255, 0.92),
-					rgba(154, 99, 232, 1),
-					rgba(77, 228, 181, 0.98)
-				)
-				border-box;
-		transform: translateY(-1px);
-		box-shadow: 0 10px 30px rgba(8, 16, 35, 0.45);
 	}
 
 	.projects h3 {
@@ -924,8 +905,7 @@
 			opacity: 1;
 		}
 
-		.cta,
-		.projects article {
+		.cta {
 			transition: none;
 		}
 
