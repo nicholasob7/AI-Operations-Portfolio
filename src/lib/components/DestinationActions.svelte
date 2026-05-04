@@ -19,14 +19,25 @@
 
 <script lang="ts">
 	import { tick } from 'svelte';
+	import {
+		requestPortraitIntroReplay,
+		setPortraitIntroHandoff,
+		type PortraitIntroHandoff
+	} from '$lib/portrait-intro';
 
 	type Props = {
 		actions: DestinationAction[];
 		label?: string;
 		panelId?: string;
+		portraitHandoff?: PortraitIntroHandoff;
 	};
 
-	let { actions, label = 'Actions', panelId = 'destination-actions-panel' }: Props = $props();
+	let {
+		actions,
+		label = 'Actions',
+		panelId = 'destination-actions-panel',
+		portraitHandoff
+	}: Props = $props();
 	let open = $state(false);
 	let panelElement = $state<HTMLDivElement | null>(null);
 	let triggerElement = $state<HTMLButtonElement | null>(null);
@@ -67,8 +78,25 @@
 	};
 
 	const runButtonAction = (action: Extract<DestinationAction, { type: 'button' }>) => {
+		if (action.id === 'top' && portraitHandoff?.src) {
+			requestPortraitIntroReplay(portraitHandoff);
+		}
 		action.onclick();
 		close({ restoreFocus: true });
+	};
+
+	const shouldCarryPortrait = (action: Extract<DestinationAction, { type: 'link' }>) =>
+		!!portraitHandoff?.src &&
+		!action.download &&
+		(action.href === '/' || action.href.startsWith('/#') || action.href.startsWith('/projects/'));
+
+	const runLinkAction = (action: Extract<DestinationAction, { type: 'link' }>) => {
+		if (action.id === 'top' && portraitHandoff?.src) {
+			requestPortraitIntroReplay(portraitHandoff);
+		} else if (shouldCarryPortrait(action)) {
+			setPortraitIntroHandoff(portraitHandoff);
+		}
+		close();
 	};
 </script>
 
@@ -92,7 +120,7 @@
 								data-sveltekit-preload-code={action.preload ? 'hover' : undefined}
 								download={action.download}
 								href={action.href}
-								onclick={() => close()}
+								onclick={() => runLinkAction(action)}
 							>
 								{action.label}
 							</a>

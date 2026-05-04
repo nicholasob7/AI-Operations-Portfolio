@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import DestinationActions, { type DestinationAction } from './DestinationActions.svelte';
+	import PortraitIntro from './PortraitIntro.svelte';
 	import type { ProjectDetail, ProjectDetailListItem } from '$lib/content/project-details';
 	import { getEntryImage, isPortraitEntry, type EntrySurface } from '$lib/entry-surfaces';
 
@@ -12,147 +13,22 @@
 	};
 
 	let { actions, detail, panelId, entrySurface }: Props = $props();
-	const projectPortraitHoldMs = 500;
-	const projectPortraitFadeMs = 5400;
 	const projectUsesPortraitEntry = $derived(entrySurface ? isPortraitEntry(entrySurface) : false);
 	const projectEntryImage = $derived(entrySurface ? getEntryImage(entrySurface) : null);
-
-	let showProjectPortraitOverlay = $state(false);
-	let fadeProjectPortraitOverlay = $state(false);
-	let projectInteractionReady = $state(true);
-	let projectIntroImage = $state<HTMLImageElement | null>(null);
-	let projectPortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
-	let projectPortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const isLabelledItem = (
 		item: ProjectDetailListItem
 	): item is Extract<ProjectDetailListItem, { label: string }> => typeof item !== 'string';
 
-	const afterLayoutSettles = async () => {
-		await tick();
-		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-		await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-	};
-
-	const syncProjectOverlayBodyState = () => {
-		if (typeof document === 'undefined') return;
-		document.body.classList.toggle('project-intro-active', showProjectPortraitOverlay);
-		document.body.classList.toggle(
-			'project-intro-interaction-ready',
-			showProjectPortraitOverlay && projectInteractionReady
-		);
-	};
-
-	const clearProjectPortraitTimers = () => {
-		if (projectPortraitFadeTimer) clearTimeout(projectPortraitFadeTimer);
-		if (projectPortraitDismissTimer) clearTimeout(projectPortraitDismissTimer);
-		projectPortraitFadeTimer = null;
-		projectPortraitDismissTimer = null;
-	};
-
-	const completeProjectEntry = () => {
-		showProjectPortraitOverlay = false;
-		fadeProjectPortraitOverlay = false;
-		projectInteractionReady = true;
-		syncProjectOverlayBodyState();
-	};
-
-	const dismissProjectPortraitOverlay = () => {
-		if (!showProjectPortraitOverlay) return;
-
-		clearProjectPortraitTimers();
-
-		fadeProjectPortraitOverlay = true;
-		projectPortraitDismissTimer = setTimeout(() => {
-			projectPortraitDismissTimer = null;
-			completeProjectEntry();
-		}, projectPortraitFadeMs);
-	};
-
-	const waitForProjectPortraitImage = async () => {
-		const image = projectIntroImage;
-		if (!image) return;
-		if (image.complete) {
-			try {
-				await image.decode?.();
-			} catch {
-				// decode failures should not block the reveal lifecycle
-			}
-			return;
-		}
-
-		await new Promise<void>((resolve) => {
-			const handleReady = () => {
-				image.removeEventListener('load', handleReady);
-				image.removeEventListener('error', handleReady);
-				resolve();
-			};
-
-			image.addEventListener('load', handleReady, { once: true });
-			image.addEventListener('error', handleReady, { once: true });
-		});
-	};
-
 	onMount(() => {
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		showProjectPortraitOverlay = projectUsesPortraitEntry;
-		fadeProjectPortraitOverlay = false;
-		projectInteractionReady = !projectUsesPortraitEntry;
-		syncProjectOverlayBodyState();
 		window.scrollTo({ top: 0, behavior: 'auto' });
-
-		void afterLayoutSettles().then(async () => {
-			if (!showProjectPortraitOverlay) return;
-
-			await waitForProjectPortraitImage();
-			if (!showProjectPortraitOverlay) return;
-
-			if (prefersReducedMotion) {
-				projectPortraitDismissTimer = setTimeout(() => {
-					projectPortraitDismissTimer = null;
-					completeProjectEntry();
-				}, projectPortraitHoldMs);
-				return;
-			}
-
-			projectPortraitFadeTimer = setTimeout(() => {
-				projectPortraitFadeTimer = null;
-				projectInteractionReady = true;
-				syncProjectOverlayBodyState();
-				dismissProjectPortraitOverlay();
-			}, projectPortraitHoldMs);
-		});
-
-		return () => {
-			clearProjectPortraitTimers();
-			document.body.classList.remove('project-intro-active');
-			document.body.classList.remove('project-intro-interaction-ready');
-		};
 	});
 </script>
 
-{#if showProjectPortraitOverlay && projectEntryImage}
-	<div
-		class:project-intro-overlay-fading={fadeProjectPortraitOverlay}
-		class="project-intro-overlay"
-		aria-hidden="true"
-	>
-		<img
-			bind:this={projectIntroImage}
-			class="project-intro-overlay-image"
-			src={projectEntryImage}
-			alt=""
-			width="1254"
-			height="1254"
-			decoding="async"
-			fetchpriority="high"
-		/>
-	</div>
-{/if}
+<PortraitIntro src={projectEntryImage} enabled={projectUsesPortraitEntry} />
 
 <main class="doc-page">
-	<DestinationActions {actions} {panelId} />
+	<DestinationActions {actions} {panelId} portraitHandoff={{ src: projectEntryImage }} />
 
 	<section class="doc-card" aria-labelledby={detail.titleId}>
 		<p class="eyebrow">{detail.eyebrow}</p>
@@ -201,60 +77,6 @@
 			radial-gradient(circle at 90% 18%, rgba(30, 141, 106, 0.18) 0%, transparent 24%),
 			linear-gradient(170deg, #060912 0%, #0b1326 100%);
 		color: #e8eefc;
-	}
-
-	:global(body.project-intro-active) {
-		overflow-x: hidden;
-		overflow-y: scroll;
-	}
-
-	:global(body.project-intro-active.project-intro-interaction-ready) {
-		overflow-x: hidden;
-		overflow-y: scroll;
-	}
-
-	.project-intro-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 200;
-		overflow: hidden;
-		display: grid;
-		place-items: center;
-		pointer-events: none;
-		opacity: 1;
-		transform: translateY(0) scale(1);
-		transition:
-			opacity 5400ms cubic-bezier(0.12, 0.72, 0.16, 1),
-			transform 5400ms cubic-bezier(0.12, 0.72, 0.16, 1);
-		background:
-			radial-gradient(circle at 50% 18%, rgba(56, 93, 156, 0.36) 0%, rgba(8, 13, 24, 0) 44%),
-			linear-gradient(180deg, #050912 0%, #0b1326 100%);
-	}
-
-	.project-intro-overlay::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background:
-			linear-gradient(180deg, rgba(8, 12, 22, 0.04) 0%, rgba(8, 12, 22, 0.22) 100%),
-			linear-gradient(90deg, rgba(8, 12, 22, 0.32) 0%, rgba(8, 12, 22, 0.08) 18%, rgba(8, 12, 22, 0.08) 82%, rgba(8, 12, 22, 0.32) 100%);
-	}
-
-	.project-intro-overlay-fading {
-		opacity: 0;
-		transform: scale(1.006);
-	}
-
-	.project-intro-overlay-image {
-		position: relative;
-		z-index: 1;
-		display: block;
-		width: min(100vw, 100vh);
-		height: min(100vw, 100vh);
-		max-width: 100vw;
-		max-height: 100vh;
-		object-fit: contain;
-		object-position: center center;
 	}
 
 	.doc-page {
@@ -406,13 +228,4 @@
 		}
 	}
 
-	@media (prefers-reduced-motion: reduce) {
-		.project-intro-overlay {
-			transition: none;
-		}
-
-		.project-intro-overlay-fading {
-			transform: none;
-		}
-	}
-</style>
+	</style>

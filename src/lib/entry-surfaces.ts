@@ -35,7 +35,7 @@ export const entrySurfaces = {
 	elioraProject: {
 		path: '/projects/eliora',
 		mode: 'portrait',
-		image: '/images/banochburn-portrait.jpg',
+		image: '/images/mountain-square.jpg',
 		canonicalUrl: '/projects/eliora'
 	},
 	websiteBuildNotesProject: {

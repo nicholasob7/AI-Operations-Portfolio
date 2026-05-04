@@ -8,7 +8,9 @@
 		resolveEntrySurface
 	} from '$lib/entry-surfaces';
 	import { canonicalOrigin } from '$lib/site';
-	import { onDestroy, onMount, tick } from 'svelte';
+	import PortraitIntro, { type PortraitIntroState } from '$lib/components/PortraitIntro.svelte';
+	import { requestPortraitIntroReplay } from '$lib/portrait-intro';
+	import { onMount, tick } from 'svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
@@ -16,8 +18,6 @@
 	import './home.css';
 
 	const githubUrl = 'https://github.com/nicholasob7';
-	const homepagePortraitHoldMs = 500;
-	const homepagePortraitFadeMs = 5400;
 	const homeTitle = "Nicko O'Brien | AI-Forward IT Operations and Automation";
 	const homeSocialTitle = "Nicko O'Brien | Personal Website";
 	const homeDescription =
@@ -38,9 +38,6 @@
 	let fadeHomepagePortraitOverlay = $state(false);
 	let homepageInteractionReady = $state(!homeUsesPortraitEntry);
 	let homepageEntrySettled = $state(!homeUsesPortraitEntry);
-	let homepageIntroImage = $state<HTMLImageElement | null>(null);
-	let homepagePortraitFadeTimer: ReturnType<typeof setTimeout> | null = null;
-	let homepagePortraitDismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let previousScrollRestoration: History['scrollRestoration'] | null = null;
 
 	const afterLayoutSettles = async () => {
@@ -87,125 +84,33 @@
 
 	const returnToTop = async () => {
 		if (!browser) return;
+		requestPortraitIntroReplay({ src: homeEntryImage });
 		window.scrollTo({ top: 0, behavior: 'auto' });
 		normalizeHomepageUrl();
 		await focusAndScrollToHash('hero-head');
 	};
 
-	const syncHomepageOverlayBodyState = () => {
-		if (!browser) return;
-		document.body.classList.toggle('home-intro-active', showHomepagePortraitOverlay);
-		document.body.classList.toggle(
-			'home-intro-interaction-ready',
-			showHomepagePortraitOverlay && homepageInteractionReady
-		);
-	};
-
-	const clearHomepagePortraitTimers = () => {
-		if (homepagePortraitFadeTimer) clearTimeout(homepagePortraitFadeTimer);
-		if (homepagePortraitDismissTimer) clearTimeout(homepagePortraitDismissTimer);
-		homepagePortraitFadeTimer = null;
-		homepagePortraitDismissTimer = null;
-	};
-
-	const completeHomepageEntry = () => {
-		showHomepagePortraitOverlay = false;
-		fadeHomepagePortraitOverlay = false;
-		homepageInteractionReady = true;
-		homepageEntrySettled = true;
-		syncHomepageOverlayBodyState();
-	};
-
-	const dismissHomepagePortraitOverlay = () => {
-		if (!showHomepagePortraitOverlay) return;
-
-		clearHomepagePortraitTimers();
-
-		fadeHomepagePortraitOverlay = true;
-		homepagePortraitDismissTimer = setTimeout(() => {
-			homepagePortraitDismissTimer = null;
-			completeHomepageEntry();
-		}, homepagePortraitFadeMs);
-	};
-
-	const waitForHomepagePortraitImage = async () => {
-		const image = homepageIntroImage;
-		if (!image) return;
-		if (image.complete) {
-			try {
-				await image.decode?.();
-			} catch {
-				// decode failures should not block the reveal lifecycle
-			}
-			return;
-		}
-
-		await new Promise<void>((resolve) => {
-			const handleReady = () => {
-				image.removeEventListener('load', handleReady);
-				image.removeEventListener('error', handleReady);
-				resolve();
-			};
-
-			image.addEventListener('load', handleReady, { once: true });
-			image.addEventListener('error', handleReady, { once: true });
-		});
+	const handleHomepagePortraitState = (state: PortraitIntroState) => {
+		showHomepagePortraitOverlay = state.visible;
+		fadeHomepagePortraitOverlay = state.fading;
+		homepageInteractionReady = state.interactionReady;
+		homepageEntrySettled = state.settled;
 	};
 
 	onMount(() => {
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-			showHomepagePortraitOverlay = homeUsesPortraitEntry;
-			fadeHomepagePortraitOverlay = false;
-			homepageInteractionReady = !homeUsesPortraitEntry;
-			homepageEntrySettled = !homeUsesPortraitEntry;
 		previousScrollRestoration = window.history.scrollRestoration;
 		window.history.scrollRestoration = 'manual';
-		syncHomepageOverlayBodyState();
 		if (hasLegacyHomepageUrlState()) {
 			normalizeHomepageUrl();
 		}
 		window.scrollTo({ top: 0, behavior: 'auto' });
 
-		void afterLayoutSettles().then(async () => {
-			if (!showHomepagePortraitOverlay) return;
-
-			await waitForHomepagePortraitImage();
-			if (!showHomepagePortraitOverlay) return;
-
-			if (prefersReducedMotion) {
-				homepagePortraitDismissTimer = setTimeout(() => {
-					homepagePortraitDismissTimer = null;
-					completeHomepageEntry();
-				}, homepagePortraitHoldMs);
-				return;
-				}
-
-			homepagePortraitFadeTimer = setTimeout(() => {
-				homepagePortraitFadeTimer = null;
-				homepageInteractionReady = true;
-				syncHomepageOverlayBodyState();
-				dismissHomepagePortraitOverlay();
-			}, homepagePortraitHoldMs);
-		});
-
 				return () => {
-					clearHomepagePortraitTimers();
-					document.body.classList.remove('home-intro-active');
-					document.body.classList.remove('home-intro-interaction-ready');
 					if (previousScrollRestoration) {
 						window.history.scrollRestoration = previousScrollRestoration;
 					}
 				};
 			});
-
-	onDestroy(() => {
-		clearHomepagePortraitTimers();
-		if (browser) {
-			document.body.classList.remove('home-intro-active');
-				document.body.classList.remove('home-intro-interaction-ready');
-			}
-		});
 
 	$effect(() => {
 		if (!browser || !page.url.hash || legacyHomepageHashes.has(page.url.hash)) return;
@@ -240,24 +145,11 @@
 	{/if}
 </svelte:head>
 
-	{#if showHomepagePortraitOverlay && homeEntryImage}
-		<div
-			class:page-intro-overlay-fading={fadeHomepagePortraitOverlay}
-			class="page-intro-overlay"
-			aria-hidden="true"
-		>
-			<img
-				bind:this={homepageIntroImage}
-				class="page-intro-overlay-image"
-			src={homeEntryImage}
-			alt=""
-			width="1254"
-			height="1254"
-			decoding="async"
-			fetchpriority="high"
-		/>
-	</div>
-{/if}
+<PortraitIntro
+	src={homeEntryImage}
+	enabled={homeUsesPortraitEntry}
+	onStateChange={handleHomepagePortraitState}
+/>
 
 	<main
 		class:page-intro-content-crossfading={fadeHomepagePortraitOverlay}
@@ -281,6 +173,6 @@
 		navigationReady={homepageInteractionReady}
 	/>
 
-	<ProfileTail entrySettled={homepageInteractionReady} {returnToTop} />
+	<ProfileTail entrySettled={homepageEntrySettled} {returnToTop} />
 	<div class="page-end-spacer" aria-hidden="true"></div>
 </main>
