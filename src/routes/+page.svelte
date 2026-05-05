@@ -141,7 +141,7 @@
 		<meta name="twitter:image:alt" content="Portrait image for Nicko O'Brien's portfolio site." />
 	{/if}
 	{#if homeEntryImage}
-		<link rel="preload" as="image" href={homeEntryImage} />
+		<link rel="preload" as="image" href={homeEntryImage} fetchpriority="high" />
 	{/if}
 </svelte:head>
 
