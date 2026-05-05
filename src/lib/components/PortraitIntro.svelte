@@ -37,6 +37,7 @@
 	let settled = $state(true);
 	let booting = $state(false);
 	let introImage = $state<HTMLImageElement | null>(null);
+	let overlayInstance = $state(0);
 	let holdTimer: ReturnType<typeof setTimeout> | null = null;
 	let dismissTimer: ReturnType<typeof setTimeout> | null = null;
 	let introRunId = 0;
@@ -129,6 +130,9 @@
 		const runId = ++introRunId;
 
 		clearTimers();
+		if (shouldRun) {
+			overlayInstance += 1;
+		}
 		activeSrc = nextSrc;
 		activeAlt = nextAlt;
 		visible = shouldRun;
@@ -185,24 +189,26 @@
 </script>
 
 {#if visible && activeSrc}
-	<div
-		class:portrait-intro-overlay-fading={fading}
-		class="portrait-intro-overlay"
-		style:--portrait-intro-ease={portraitIntroEase}
-		style:--portrait-intro-fade-duration={portraitIntroFadeDuration}
-		aria-hidden="true"
-	>
-		<img
-			bind:this={introImage}
-			class="portrait-intro-overlay-image"
-			src={activeSrc}
-			alt={activeAlt}
-			width="1254"
-			height="1254"
-			decoding="async"
-			fetchpriority="high"
-		/>
-	</div>
+	{#key overlayInstance}
+		<div
+			class:portrait-intro-overlay-fading={fading}
+			class="portrait-intro-overlay"
+			style:--portrait-intro-ease={portraitIntroEase}
+			style:--portrait-intro-fade-duration={portraitIntroFadeDuration}
+			aria-hidden="true"
+		>
+			<img
+				bind:this={introImage}
+				class="portrait-intro-overlay-image"
+				src={activeSrc}
+				alt={activeAlt}
+				width="1254"
+				height="1254"
+				decoding="async"
+				fetchpriority="high"
+			/>
+		</div>
+	{/key}
 {/if}
 
 <style>
