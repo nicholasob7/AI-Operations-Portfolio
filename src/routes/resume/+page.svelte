@@ -143,35 +143,6 @@
 		}
 	};
 
-	const focusFirstContactCopyAction = async () => {
-		await tick();
-		contactCopyMenuElement?.querySelector<HTMLButtonElement>('.contact-copy-menu-item')?.focus();
-	};
-
-	const closeContactCopyMenu = ({ restoreFocus = false } = {}) => {
-		contactCopyMenuOpen = false;
-		if (restoreFocus) {
-			void tick().then(() => contactCopyMenuTrigger?.focus());
-		}
-	};
-
-	const toggleContactCopyMenu = () => {
-		if (contactCopyMenuOpen) {
-			closeContactCopyMenu();
-			return;
-		}
-
-		contactCopyMenuOpen = true;
-		void focusFirstContactCopyAction();
-	};
-
-	const handleResumeKeydown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape' && contactCopyMenuOpen) {
-			event.preventDefault();
-			closeContactCopyMenu({ restoreFocus: true });
-		}
-	};
-
 	onMount(() => {
 		const handleScroll = () => {
 			updateActionAvailability();
@@ -198,7 +169,6 @@
 	});
 </script>
 
-<svelte:window onkeydown={handleResumeKeydown} />
 
 	<svelte:head>
 		<title>{resumeTitle}</title>
@@ -388,53 +358,47 @@
 		<ul class="content-list">
 			<li>Location: {resumeLocation}</li>
 			{#each resumePublicDetailItems as item (item.id)}
-				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+				<li>
+					{item.label}:
+					<button
+						class="contact-copy-inline"
+						class:contact-copy-inline-copied={copiedContactTarget === item.id}
+						disabled={!resumeInteractionReady}
+						type="button"
+						aria-label={`Copy ${item.label}: ${item.copyValue}`}
+						onclick={() => copyContactValue(item.copyValue, item.id)}
+					>
+						<span class="contact-copy-value">{item.displayValue}</span>
+						<span class="contact-copy-inline-state" aria-hidden="true">
+							{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+						</span>
+					</button>
+				</li>
 			{/each}
 		</ul>
 
 		<h2 class="qualifications-heading">Contact Channels</h2>
 		<ul class="content-list">
 			{#each resumeContactChannelItems as item (item.id)}
-				<li>{item.label}: <span class="contact-copy-value">{item.displayValue}</span></li>
+				<li>
+					{item.label}:
+					<button
+						class="contact-copy-inline"
+						class:contact-copy-inline-copied={copiedContactTarget === item.id}
+						disabled={!resumeInteractionReady}
+						type="button"
+						aria-label={`Copy ${item.label}: ${item.copyValue}`}
+						onclick={() => copyContactValue(item.copyValue, item.id)}
+					>
+						<span class="contact-copy-value">{item.displayValue}</span>
+						<span class="contact-copy-inline-state" aria-hidden="true">
+							{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+						</span>
+					</button>
+				</li>
 			{/each}
 		</ul>
 
-		<div class="contact-copy-menu-wrap">
-			<button
-				bind:this={contactCopyMenuTrigger}
-				aria-controls="resume-contact-copy-menu"
-				aria-expanded={contactCopyMenuOpen}
-				class:contact-copy-menu-trigger-disabled={!resumeInteractionReady}
-				class="contact-copy-menu-trigger"
-				disabled={!resumeInteractionReady}
-				type="button"
-				onclick={toggleContactCopyMenu}
-			>
-				{contactCopyMenuOpen ? 'Close menu' : 'Copy menu'}
-			</button>
-			{#if contactCopyMenuOpen}
-				<div
-					bind:this={contactCopyMenuElement}
-					class="contact-copy-menu"
-					id="resume-contact-copy-menu"
-					role="group"
-					aria-label="Copy contact value"
-				>
-					{#each resumeContactItems as item (item.id)}
-						<button
-							class="contact-copy-menu-item"
-							type="button"
-							onclick={() => copyContactValue(item.copyValue, item.id)}
-						>
-							<span>{item.label}</span>
-							<span class="contact-copy-menu-state">
-								{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
-							</span>
-						</button>
-					{/each}
-				</div>
-			{/if}
-		</div>
 		<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
 	</section>
 
@@ -596,6 +560,36 @@
 	.hero-context-list li::marker {
 		color: #92dbff;
 	}
+	.contact-copy-inline {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.45rem;
+		min-height: 1.45em;
+		margin: 0;
+		padding: 0.08rem 0.18rem;
+		border: 0;
+		border-radius: 0.35rem;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		text-align: left;
+		vertical-align: baseline;
+		cursor: pointer;
+	}
+
+	.contact-copy-inline:disabled {
+		cursor: default;
+		opacity: 0.72;
+	}
+
+	.contact-copy-inline:focus-visible {
+		outline: 2px solid rgba(141, 214, 255, 0.56);
+		outline-offset: 0.16rem;
+	}
+
+	.contact-copy-inline:not(:disabled):hover {
+		background: rgba(37, 67, 108, 0.28);
+	}
 
 	.contact-copy-value {
 		color: transparent;
@@ -605,123 +599,24 @@
 		-webkit-text-fill-color: transparent;
 	}
 
-	.contact-copy-menu-wrap {
-		position: relative;
-		justify-self: end;
-		grid-column: 1 / -1;
-		width: max-content;
-		max-width: 100%;
-		padding-top: 0.65rem;
-	}
-
-	.contact-copy-menu-trigger {
-		position: relative;
-		isolation: isolate;
-		min-height: 2.12rem;
-		padding: 0.54rem 0.9rem;
-		border: 1px solid transparent;
-		border-radius: 999px;
-		background:
-			linear-gradient(120deg, rgba(12, 22, 42, 0.96), rgba(16, 30, 52, 0.96)) padding-box,
-			linear-gradient(120deg, #2fd1ff 0%, #9a63e8 52%, #39c69a 100%) border-box;
-		color: #f8fbff;
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.02em;
-		text-shadow: 0 1px 2px rgba(3, 8, 20, 0.72);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-			0 12px 26px rgba(4, 9, 22, 0.3);
-		cursor: pointer;
-	}
-
-	.contact-copy-menu-trigger::before {
-		content: '';
-		position: absolute;
-		inset: -3px;
-		z-index: -1;
-		border-radius: inherit;
-		background: linear-gradient(
-			120deg,
-			rgba(47, 209, 255, 0.28),
-			rgba(154, 99, 232, 0.22),
-			rgba(57, 198, 154, 0.24)
-		);
-		filter: blur(7px);
-		opacity: 0.42;
-		pointer-events: none;
-	}
-
-	.contact-copy-menu-trigger:hover,
-	.contact-copy-menu-trigger:focus-visible {
-		background:
-			linear-gradient(120deg, rgba(17, 31, 54, 0.98), rgba(21, 39, 60, 0.98)) padding-box,
-			linear-gradient(120deg, #2fd1ff 0%, #9a63e8 52%, #39c69a 100%) border-box;
-		outline: none;
-	}
-
-	.contact-copy-menu-trigger:focus-visible {
-		box-shadow:
-			0 0 0 2px rgba(141, 214, 255, 0.5),
-			0 12px 26px rgba(4, 9, 22, 0.3);
-	}
-
-		.contact-copy-menu-trigger:disabled {
-			opacity: 0.68;
-			cursor: default;
-		}
-
-		.contact-copy-menu-trigger-disabled {
-			pointer-events: none;
-		}
-
-	.contact-copy-menu {
-		position: absolute;
-		right: 0;
-		bottom: calc(100% + 0.5rem);
-		z-index: 20;
-		display: grid;
-		gap: 0.18rem;
-		width: min(15rem, calc(100vw - 2.2rem));
-		padding: 0.42rem;
-		border: 1px solid rgba(167, 213, 255, 0.3);
-		border-radius: 0.82rem;
-		background: rgba(10, 18, 34, 0.97);
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.035) inset,
-			0 16px 34px rgba(4, 9, 22, 0.38);
-	}
-
-	.contact-copy-menu-item {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 0.85rem;
-		align-items: center;
-		width: 100%;
-		padding: 0.46rem 0.5rem;
-		border: 0;
-		border-radius: 0.55rem;
-		background: transparent;
-		color: #dce8fb;
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		font-size: 0.86rem;
-		font-weight: 700;
-		text-align: left;
-		cursor: pointer;
-	}
-
-	.contact-copy-menu-item:hover,
-	.contact-copy-menu-item:focus-visible {
-		background: rgba(37, 67, 108, 0.56);
-		outline: none;
-	}
-
-	.contact-copy-menu-state {
+	.contact-copy-inline-state {
 		color: #9fdcff;
-		font-size: 0.76rem;
+		font-size: 0.72rem;
+		font-weight: 700;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
+		opacity: 0;
+		transform: translateY(-0.02rem);
+		transition:
+			opacity 160ms ease,
+			transform 160ms ease;
+	}
+
+	.contact-copy-inline:not(:disabled):hover .contact-copy-inline-state,
+	.contact-copy-inline:focus-visible .contact-copy-inline-state,
+	.contact-copy-inline-copied .contact-copy-inline-state {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.focus-line {
@@ -1011,13 +906,7 @@
 			line-height: 1.25;
 			color: #a7c8ef;
 		}
-
-		.contact-copy-menu-trigger,
-		.contact-copy-menu-item {
-			font-size: 1rem;
-		}
-
-		.contact-copy-menu-state {
+		.contact-copy-inline-state {
 			font-size: 0.92rem;
 		}
 
@@ -1065,16 +954,12 @@
 		.focus-line {
 			font-size: 0.92rem;
 		}
-
-		.contact-copy-menu-wrap {
-			justify-self: end;
-			width: max-content;
-			max-width: 100%;
+		.contact-copy-inline {
+			gap: 0.38rem;
 		}
 
-		.contact-copy-menu {
-			position: absolute;
-			width: min(15rem, calc(100vw - 2.2rem));
+		.contact-copy-inline-state {
+			opacity: 0.72;
 		}
 
 		.panel,
