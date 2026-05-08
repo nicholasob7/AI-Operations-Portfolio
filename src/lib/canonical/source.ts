@@ -1346,10 +1346,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_skills_identity_access',
-			claimText:
-				'Identity and access administration: Active Directory, Entra ID, local admin, guest accounts, privileged access, account lifecycle.',
+			{
+				id: 'clm_resume_skills_identity_access',
+				claimText:
+					'Identity and access administration: Active Directory, Entra ID, security groups, local admin, guest accounts, privileged access, account lifecycle.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1367,10 +1367,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_skills_m365',
-			claimText:
-				'Messaging and Microsoft 365 support: Exchange Online, mailbox creation, mailbox access, shared mailboxes, distribution groups, Microsoft 365 support.',
+			{
+				id: 'clm_resume_skills_m365',
+				claimText:
+					'Messaging and Microsoft 365 support: Microsoft 365 admin center, licensing, Exchange Online, mailbox creation, mailbox access, shared mailboxes, distribution groups, Microsoft 365 support.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1388,10 +1388,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_skills_endpoint',
-			claimText:
-				'Endpoint and device administration: Intune, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration.',
+			{
+				id: 'clm_resume_skills_endpoint',
+				claimText:
+					'Endpoint and device administration: Intune, hardware, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1451,10 +1451,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_skills_service_ops',
-			claimText:
-				'Service operations and remote support: Jira Service Management, triage, incident and request handling, escalation, queue workflows, remote support.',
+			{
+				id: 'clm_resume_skills_service_ops',
+				claimText:
+					'Service operations and remote support: ServiceNow, Jira Service Management, ITSM, triage, incident and request handling, escalation, queue workflows, remote support.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1472,10 +1472,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_skills_knowledge',
-			claimText:
-				'Knowledge, process, and documentation: documentation, knowledge base use and creation, troubleshooting steps, workflow traceability.',
+			{
+				id: 'clm_resume_skills_knowledge',
+				claimText:
+					'Knowledge, process, and documentation: remote/admin tools, documentation, knowledge base use and creation, troubleshooting steps, workflow traceability.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1514,10 +1514,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-		{
-			id: 'clm_resume_qualifications',
-			claimText:
-				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training.',
+			{
+				id: 'clm_resume_qualifications',
+				claimText:
+					'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework.',
 			claimKind: 'resume_qualifications',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',

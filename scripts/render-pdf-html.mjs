@@ -215,7 +215,7 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 <body>
 \t<main class="resume${projection.pdfLayout === 'it_support_compact' ? ' resume-compact-it-support' : ''}">
 \t\t<header class="hero section">
-\t\t\t<p class="eyebrow">Resume Emphasis: ${escapeHtml(projection.label)}</p>
+\t\t\t<p class="eyebrow">Resume: ${escapeHtml(projection.label)}</p>
 \t\t\t<h1>Nicholas Francis O'Brien</h1>
 \t\t\t${renderResumeHeroIntro(projection)}
 \t\t\t<div class="contact-block" aria-label="Contact details">

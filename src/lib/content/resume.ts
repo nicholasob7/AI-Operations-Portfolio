@@ -266,6 +266,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		items: [
 			'Active Directory',
 			'Entra ID',
+			'security groups',
 			'local admin',
 			'guest accounts',
 			'privileged access',
@@ -276,6 +277,8 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		id: 'm365',
 		title: 'Messaging and Microsoft 365 support',
 		items: [
+			'Microsoft 365 admin center',
+			'licensing',
 			'Exchange Online',
 			'mailbox creation',
 			'mailbox access',
@@ -289,6 +292,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		title: 'Endpoint and device administration',
 		items: [
 			'Intune',
+			'hardware',
 			'compliance',
 			'BitLocker recovery',
 			'Windows support',
@@ -323,7 +327,9 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		id: 'service_ops',
 		title: 'Service operations and remote support',
 		items: [
+			'ServiceNow',
 			'Jira Service Management',
+			'ITSM',
 			'triage',
 			'incident and request handling',
 			'escalation',
@@ -335,6 +341,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		id: 'knowledge_process',
 		title: 'Knowledge, process, and documentation',
 		items: [
+			'remote/admin tools',
 			'documentation',
 			'knowledge base use and creation',
 			'troubleshooting steps',
@@ -358,7 +365,8 @@ export const qualifications = [
 	'AWS Certified Cloud Practitioner',
 	'AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
 	'Bachelor of Arts, History and Political Science — Griffith University',
-	'NTT internal certifications, including AI training'
+	'NTT internal certifications, including AI training',
+	'NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework'
 ];
 
 export type ItSupportCompactExperienceBlock = {
