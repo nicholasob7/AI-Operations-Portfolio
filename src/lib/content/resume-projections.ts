@@ -20,7 +20,7 @@ export type ResumeExperienceBlockId = 'initiative' | 'delegated_scope' | 'role_p
 export type ResumeProjection = {
 	id: ResumeProjectionId;
 	label: string;
-	pdfLayout: 'standard' | 'it_support_compact';
+	pdfLayout: 'standard' | 'it_support_compact' | 'technical_operations_compact';
 	purpose: string;
 	intendedRoleFamilies: string[];
 	headline: string;
@@ -150,7 +150,7 @@ export const resumeProjections = [
 	{
 		id: 'technical_operations',
 		label: 'Technical Operations',
-		pdfLayout: 'standard',
+		pdfLayout: 'technical_operations_compact',
 		purpose:
 			'Systems support, application support, endpoint support, infrastructure support, and deployment support roles.',
 		intendedRoleFamilies: [
@@ -165,7 +165,7 @@ export const resumeProjections = [
 			'Enterprise support operator with current NTT DATA service desk grounding and hands-on endpoint, application, access, and deployment-support experience.',
 			'Strong fit for technical operations roles needing structured remediation, package reconstruction, privileged access handling, vendor application support, and process improvement.'
 		],
-		sectionOrder: defaultSectionOrder,
+		sectionOrder: ['experience', 'qualifications'],
 		experienceBlockOrder: ['initiative', 'delegated_scope', 'role_progression'],
 		promotedSkillGroupIds: [
 			'endpoint',

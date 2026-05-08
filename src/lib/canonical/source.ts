@@ -1223,6 +1223,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_technical_operations_summary_compact',
+			claimText:
+				'Technical Operations | Endpoint Support | Deployment Improvement. IT Service Desk Analyst at NTT DATA with hands-on technical operations experience across endpoint remediation, package reconstruction, vendor application support, deployment support, and privileged access handling. Additional scope includes endpoint performance and device health analysis, printer/vendor transition work, queue/process improvement, and AI-assisted research and scripting.',
+			claimKind: 'resume_summary',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_current_role', 'ctx_resume_progression', 'ctx_resume_initiative'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_direction', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current compact Technical Operations summary from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client and application identities remain bounded while technical operations scope and support signal remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_initiative_completed',
 			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to investigation of the install package itself.`,
 			claimKind: 'resume_initiative_completed',
@@ -1284,6 +1305,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_technical_operations_initiative_active_compact',
+			claimText:
+				'Rebuilding the enterprise app package from the proven fix; test-device validation is complete and further rollout stages remain.',
+			claimKind: 'resume_initiative_active',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative'],
+			signalIds: ['sig_resume_confidence', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations rendering of active package reconstruction from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Enterprise package specifics remain bounded while reconstruction and rollout status remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_delegated_scope',
 			claimText:
 				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved traceability across related requests. Cut staff time and repeat work. Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model.',
@@ -1322,6 +1364,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
 				note: 'Vendor names and internal workflow substrate remain bounded while queue, printer, and traceability scope remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_technical_operations_scope_compact',
+			claimText:
+				'Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling. Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope. Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.',
+			claimKind: 'resume_delegated_scope',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_delegated_scope', 'ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations scope from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Internal workflow and vendor substrate remain bounded while technical operations scope remains public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1493,6 +1556,27 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
+		{
+			id: 'clm_resume_technical_operations_skills_access_compact',
+			claimText:
+				'Access/admin: Active Directory, Entra ID, security groups, privileged access, account lifecycle, Microsoft 365 admin center, licensing.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations access/admin skill line from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
 			{
 				id: 'clm_resume_skills_m365',
 				claimText:
@@ -1578,6 +1662,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_technical_operations_skills_endpoint_compact',
+			claimText:
+				'Endpoint/device: Intune, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations endpoint/device skill line from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_skills_enterprise_apps',
 			claimText:
 				'Enterprise applications and deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support.',
@@ -1595,6 +1700,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
 				note: 'Specific applications remain unnamed while capability signal remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_technical_operations_skills_apps_compact',
+			claimText:
+				'Applications/deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations applications/deployment skill line from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Specific applications remain unnamed while application-support and deployment signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1704,6 +1830,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_technical_operations_skills_tooling_compact',
+			claimText:
+				'Tooling/process: ServiceNow, Jira Service Management, ITSM, remote/admin tools, troubleshooting, scripted fixes, PowerShell tooling, AI-assisted troubleshooting/scripting.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations tooling/process skill line from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_skills_ai_ops',
 			claimText:
 				'AI in IT operations: AI-assisted research, troubleshooting, scripting, package rebuild, workflow improvement.',
@@ -1724,10 +1871,10 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
-			{
-				id: 'clm_resume_qualifications',
-				claimText:
-					'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework.',
+		{
+			id: 'clm_resume_qualifications',
+			claimText:
+				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework.',
 			claimKind: 'resume_qualifications',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1736,6 +1883,27 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Current public qualifications list.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_technical_operations_qualifications_compact',
+			claimText:
+				'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support.',
+			claimKind: 'resume_qualifications',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_qualifications'],
+			signalIds: ['sig_resume_confidence'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact Technical Operations qualifications lines from the one-page resume projection.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain',

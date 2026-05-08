@@ -239,12 +239,31 @@ p {
 	font-size: 10.5pt;
 }
 
+.resume-compact-technical-operations {
+	font-size: 9.7pt;
+}
+
+.resume-compact-technical-operations .compact-section p,
+.resume-compact-technical-operations .compact-section li {
+	font-size: 9.85pt;
+	line-height: 1.2;
+}
+
 .resume-compact-it-support .hero {
 	padding-bottom: 8px;
 	margin-bottom: 8px;
 }
 
 .resume-compact-it-support .hero-line {
+	margin-top: 4px;
+}
+
+.resume-compact-technical-operations .hero {
+	padding-bottom: 7px;
+	margin-bottom: 8px;
+}
+
+.resume-compact-technical-operations .hero-line {
 	margin-top: 4px;
 }
 
@@ -255,8 +274,23 @@ p {
 	line-height: 1.2;
 }
 
+.resume-compact-technical-operations .contact-block {
+	margin-top: 5px;
+	gap: 2px 10px;
+	font-size: 9.05pt;
+	line-height: 1.18;
+}
+
 .resume-compact-it-support .section {
 	margin-bottom: 9px;
+}
+
+.resume-compact-technical-operations .section {
+	margin-bottom: 7px;
+}
+
+.resume-compact-technical-operations .compact-list {
+	margin-top: 3px;
 }
 
 .resume-compact-it-support h2 {

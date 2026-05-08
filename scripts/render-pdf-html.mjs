@@ -22,7 +22,13 @@ import {
 	resumeLinkedInProfileDisplay,
 	resumeLocation,
 	resumeTwitterProfileDisplay,
-	resumeWebsiteDisplay
+	resumeWebsiteDisplay,
+	technicalOperationsCompactQualifications,
+	technicalOperationsCoreSkillLines,
+	technicalOperationsScope,
+	technicalOperationsSelectedDelivery,
+	technicalOperationsSummary,
+	technicalOperationsSupportingFoundation
 } from '../src/lib/content/resume.ts';
 import {
 	defaultResumeProjectionId,
@@ -196,8 +202,49 @@ const renderItSupportCompactContent = () => `<section class="section compact-sec
 \t\t\t${renderBulletList(itSupportCompactQualifications, 'bullet-list compact-list')}
 \t\t</section>`;
 
+const renderTechnicalOperationsCompactContent = () => `<section class="section compact-section">
+\t\t\t<h2>Technical Operations Summary</h2>
+\t\t\t${renderParagraphList(technicalOperationsSummary)}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Current Employment</h2>
+\t\t\t<div class="employment-heading compact-employment-heading">
+\t\t\t\t<h3 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h3>
+\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
+\t\t\t</div>
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Selected Technical Delivery</h2>
+\t\t\t${renderBulletList(technicalOperationsSelectedDelivery, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Technical Operations Scope</h2>
+\t\t\t${renderBulletList(technicalOperationsScope, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Core Technical Operations Skills</h2>
+\t\t\t${renderBulletList(technicalOperationsCoreSkillLines, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Supporting Foundation</h2>
+\t\t\t${renderBulletList(technicalOperationsSupportingFoundation, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section compact-qualifications">
+\t\t\t<h2>Qualifications</h2>
+\t\t\t${renderBulletList(technicalOperationsCompactQualifications, 'bullet-list compact-list')}
+\t\t</section>`;
+
 const renderResumeHeroIntro = (projection) => {
-	if (projection.pdfLayout === 'it_support_compact') {
+	if (
+		projection.pdfLayout === 'it_support_compact' ||
+		projection.pdfLayout === 'technical_operations_compact'
+	) {
 		return `<p class="hero-line hero-focus">${escapeHtml(projection.headline)}</p>`;
 	}
 
@@ -213,7 +260,13 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 \t<link rel="stylesheet" href="../resume-bw.css" />
 </head>
 <body>
-\t<main class="resume${projection.pdfLayout === 'it_support_compact' ? ' resume-compact-it-support' : ''}">
+\t<main class="resume${
+		projection.pdfLayout === 'it_support_compact'
+			? ' resume-compact-it-support'
+			: projection.pdfLayout === 'technical_operations_compact'
+				? ' resume-compact-technical-operations'
+				: ''
+	}">
 \t\t<header class="hero section">
 \t\t\t<p class="eyebrow">Resume: ${escapeHtml(projection.label)}</p>
 \t\t\t<h1>Nicholas Francis O'Brien</h1>
@@ -231,6 +284,8 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 \t\t${
 			projection.pdfLayout === 'it_support_compact'
 				? renderItSupportCompactContent()
+				: projection.pdfLayout === 'technical_operations_compact'
+					? renderTechnicalOperationsCompactContent()
 				: projection.sectionOrder.map((sectionId) => renderResumeSection(projection, sectionId)).join('\n\n\t\t')
 		}
 \t</main>
