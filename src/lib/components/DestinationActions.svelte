@@ -93,7 +93,7 @@
 	const runLinkAction = (action: Extract<DestinationAction, { type: 'link' }>) => {
 		if (action.id === 'top' && portraitHandoff?.src) {
 			requestPortraitIntroReplay(portraitHandoff);
-		} else if (shouldCarryPortrait(action)) {
+		} else if (portraitHandoff && shouldCarryPortrait(action)) {
 			setPortraitIntroHandoff(portraitHandoff);
 		}
 		close();

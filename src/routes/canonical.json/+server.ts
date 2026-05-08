@@ -4,6 +4,7 @@ import {
 	resumeCurrentEmploymentLocationPeriodLine,
 	resumeCurrentEmploymentRoleLine
 } from '$lib/content/resume';
+import { defaultResumeProjectionId, resumeProjections } from '$lib/content/resume-projections';
 
 export const prerender = true;
 
@@ -26,6 +27,30 @@ const currentEmploymentProjection = {
 		role_employer: resumeCurrentEmploymentRoleLine,
 		location_period: resumeCurrentEmploymentLocationPeriodLine
 	}
+};
+
+const resumeProjectionMetadata = {
+	derived_from: 'single canonical resume data source',
+	factual_history_note:
+		'Role-emphasis projections are ordered views of the same facts, dates, and evidence base. They are not separate factual histories.',
+	default_projection_id: defaultResumeProjectionId,
+	items: resumeProjections.map((resumeProjection) => ({
+		id: resumeProjection.id,
+		label: resumeProjection.label,
+		intended_role_families: resumeProjection.intendedRoleFamilies,
+		summary: resumeProjection.purpose,
+		route:
+			resumeProjection.id === defaultResumeProjectionId
+				? '/resume'
+				: `/resume?emphasis=${resumeProjection.id}`,
+		download: resumeProjection.pdf.href,
+		download_filename: resumeProjection.pdf.filename,
+		section_order: resumeProjection.sectionOrder,
+		experience_block_order: resumeProjection.experienceBlockOrder,
+		promoted_skill_group_ids: resumeProjection.promotedSkillGroupIds,
+		promoted_scope_ids: resumeProjection.promotedScopeIds,
+		progression_order: resumeProjection.progressionOrder
+	}))
 };
 
 const includedClaimIds = new Set(
@@ -615,6 +640,7 @@ const body = {
 		not_yet_covered_note:
 			'Unmigrated site content remains outside this projection until it is added to the canonical source.'
 	},
+	resume_projections: resumeProjectionMetadata,
 	surfaces,
 	entries
 };

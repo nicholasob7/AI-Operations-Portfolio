@@ -2,12 +2,16 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { buildPdfProjectionPilot } from '../src/lib/canonical/pdf-projection.ts';
 import {
 	activeProjectActive,
 	activeProjectCompleted,
-	contextPoints,
 	delegatedScope,
+	itSupportAdditionalScope,
+	itSupportCompactQualifications,
+	itSupportCoreSkillLines,
+	itSupportProfessionalSummary,
+	itSupportRelevantExperience,
+	itSupportSelectedTechnicalImprovement,
 	progressionStages,
 	qualifications,
 	resumeContactEmail,
@@ -21,6 +25,12 @@ import {
 	resumeWebsiteDisplay
 } from '../src/lib/content/resume.ts';
 import {
+	defaultResumeProjectionId,
+	getProjectedProgressionStages,
+	getProjectedSkillGroups,
+	resumeProjections
+} from '../src/lib/content/resume-projections.ts';
+import {
 	migrationProjectDetail,
 	remediationProjectDetail
 } from '../src/lib/content/project-details.ts';
@@ -29,7 +39,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const generatedDir = path.join(__dirname, 'generated');
 
-const projection = buildPdfProjectionPilot();
 const requestedTargets = process.argv.slice(2);
 const targetSet = new Set(
 	requestedTargets.length > 0 ? requestedTargets : ['resume', 'remediation', 'migration']
@@ -48,8 +57,21 @@ const renderBulletList = (items, className = 'bullet-list') => {
 	return `<ul class="${className}">\n\t\t\t\t\t${renderedItems}\n\t\t\t\t</ul>`;
 };
 
-const renderResumeTechnicalSkills = () => {
-	const items = projection.resume.technicalSkills
+const renderParagraphList = (items, className = 'summary-paragraphs') =>
+	items.map((item) => `<p class="${className}">${escapeHtml(item)}</p>`).join('\n\t\t\t');
+
+const renderItSupportRelevantExperience = () =>
+	itSupportRelevantExperience
+		.map(
+			(stage) => `<section class="subsection compact-subsection progression-stage">
+\t\t\t\t\t<h3>${escapeHtml(stage.titleWithPeriod)}</h3>
+\t\t\t\t\t${renderBulletList(stage.items, 'bullet-list compact-list')}
+\t\t\t\t</section>`
+		)
+		.join('\n\n\t\t\t');
+
+const renderResumeTechnicalSkills = (projection) => {
+	const items = getProjectedSkillGroups(projection)
 		.map(
 			(group) =>
 				`<li><strong>${escapeHtml(group.title)}:</strong> ${group.items.map(escapeHtml).join(', ')}</li>`
@@ -59,8 +81,8 @@ const renderResumeTechnicalSkills = () => {
 	return `<ul class="bullet-list skill-list">\n\t\t\t\t\t${items}\n\t\t\t\t</ul>`;
 };
 
-const renderProgressionStages = () =>
-	progressionStages
+const renderProgressionStages = (projection) =>
+	getProjectedProgressionStages(projection)
 		.map(
 			(stage) => `<section class="subsection progression-stage">
 \t\t\t\t\t<h3>${escapeHtml(stage.title)}</h3>
@@ -70,19 +92,132 @@ const renderProgressionStages = () =>
 		)
 		.join('\n\n\t\t\t\t');
 
-const renderResumePdfHtml = () => `<!doctype html>
+const renderResumeInitiativeScope = () => `<section class="section">
+\t\t\t<h2>Initiative in Scope</h2>
+
+\t\t\t<section class="subsection nested">
+\t\t\t\t<h3>Active Project</h3>
+
+\t\t\t\t<section class="subsection nested-deep">
+\t\t\t\t\t<h4>Completed</h4>
+\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.completed.label)} | ${escapeHtml(resumeInitiativeMetadata.completed.period.display)}</p>
+\t\t\t\t\t${renderBulletList(activeProjectCompleted)}
+\t\t\t\t</section>
+
+\t\t\t\t<section class="subsection nested-deep">
+\t\t\t\t\t<h4>Active</h4>
+\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.active.label)} | ${escapeHtml(resumeInitiativeMetadata.active.period.display)}</p>
+\t\t\t\t\t${renderBulletList(activeProjectActive)}
+\t\t\t\t</section>
+\t\t\t</section>
+\t\t</section>`;
+
+const renderResumeDelegatedScope = () => `<section class="section">
+\t\t\t<h2>Delegated Scope</h2>
+\t\t\t${renderBulletList(delegatedScope)}
+\t\t</section>`;
+
+const renderResumeProgression = (projection) => `<section class="section progression-section">
+\t\t\t<h2>Role Progression Map <span class="inline-meta">From service desk baseline to AI-forward operational delivery</span></h2>
+
+\t\t\t\t${renderProgressionStages(projection)}
+\t\t</section>`;
+
+const renderExperienceBlock = (projection, blockId) => {
+	if (blockId === 'initiative') return renderResumeInitiativeScope();
+	if (blockId === 'delegated_scope') return renderResumeDelegatedScope();
+	return renderResumeProgression(projection);
+};
+
+const renderResumeExperience = (projection) => `<section class="section">
+\t\t\t<div class="employment-heading">
+\t\t\t\t<h2 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h2>
+\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
+\t\t\t</div>
+\t\t</section>
+
+\t\t${projection.experienceBlockOrder.map((blockId) => renderExperienceBlock(projection, blockId)).join('\n\n\t\t')}`;
+
+const renderResumeSection = (projection, sectionId) => {
+	if (sectionId === 'experience') return renderResumeExperience(projection);
+
+	if (sectionId === 'technical_skills') {
+		return `<section class="section">
+\t\t\t<h2>Technical Skills</h2>
+\t\t\t${renderResumeTechnicalSkills(projection)}
+\t\t</section>`;
+	}
+
+	if (sectionId === 'qualifications') {
+		return `<section class="section">
+\t\t\t<h2>Qualifications</h2>
+\t\t\t${renderBulletList(qualifications)}
+\t\t</section>`;
+	}
+
+	return '';
+};
+
+const renderItSupportCompactContent = () => `<section class="section compact-section">
+\t\t\t<h2>Professional Summary</h2>
+\t\t\t${renderParagraphList(itSupportProfessionalSummary)}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Current Employment</h2>
+\t\t\t<div class="employment-heading compact-employment-heading">
+\t\t\t\t<h3 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h3>
+\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
+\t\t\t</div>
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Core IT Support Skills</h2>
+\t\t\t${renderBulletList(itSupportCoreSkillLines, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Relevant Experience</h2>
+\t\t\t${renderItSupportRelevantExperience()}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Additional Scope</h2>
+\t\t\t${renderBulletList(itSupportAdditionalScope, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Selected Technical Improvement</h2>
+\t\t\t${renderBulletList(itSupportSelectedTechnicalImprovement, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section compact-qualifications">
+\t\t\t<h2>Qualifications</h2>
+\t\t\t${renderBulletList(itSupportCompactQualifications, 'bullet-list compact-list')}
+\t\t</section>`;
+
+const renderResumeHeroIntro = (projection) => {
+	if (projection.pdfLayout === 'it_support_compact') {
+		return `<p class="hero-line hero-focus">${escapeHtml(projection.headline)}</p>`;
+	}
+
+	return `<p class="hero-line hero-focus">${escapeHtml(projection.headline)}</p>
+\t\t\t${renderBulletList(projection.summary, 'bullet-list summary-list')}`;
+};
+
+const renderResumePdfHtml = (projection) => `<!doctype html>
 <html lang="en">
 <head>
 \t<meta charset="utf-8" />
-\t<title>Nicholas Francis O'Brien - Resume BW</title>
+\t<title>Nicholas Francis O'Brien - ${escapeHtml(projection.label)} Resume BW</title>
 \t<link rel="stylesheet" href="../resume-bw.css" />
 </head>
 <body>
-\t<main class="resume">
+\t<main class="resume${projection.pdfLayout === 'it_support_compact' ? ' resume-compact-it-support' : ''}">
 \t\t<header class="hero section">
-\t\t\t<p class="eyebrow">Resume</p>
+\t\t\t<p class="eyebrow">Resume Emphasis: ${escapeHtml(projection.label)}</p>
 \t\t\t<h1>Nicholas Francis O'Brien</h1>
-\t\t\t<p class="hero-line hero-focus">AI-Forward | Enterprise IT Operations | Process Improvement</p>
+\t\t\t${renderResumeHeroIntro(projection)}
 \t\t\t<div class="contact-block" aria-label="Contact details">
 \t\t\t\t<p><strong>Location:</strong> ${escapeHtml(resumeLocation)}</p>
 \t\t\t\t<p><strong>Email:</strong> ${escapeHtml(resumeContactEmail)}</p>
@@ -93,60 +228,11 @@ const renderResumePdfHtml = () => `<!doctype html>
 \t\t\t</div>
 \t\t</header>
 
-\t\t<section class="section">
-\t\t\t<h2>Context</h2>
-\t\t\t${renderBulletList(contextPoints)}
-\t\t</section>
-
-\t\t<section class="section">
-\t\t\t<div class="employment-heading">
-\t\t\t\t<h2 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h2>
-\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
-\t\t\t</div>
-
-\t\t\t<div class="section-grid">
-\t\t\t\t<section class="subsection">
-\t\t\t\t\t<h3>Initiative in Scope</h3>
-
-\t\t\t\t\t<section class="subsection nested">
-\t\t\t\t\t\t<h4>Active Project</h4>
-
-\t\t\t\t\t\t<section class="subsection nested-deep">
-\t\t\t\t\t\t\t<h5>Completed</h5>
-\t\t\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.completed.label)} | ${escapeHtml(resumeInitiativeMetadata.completed.period.display)}</p>
-\t\t\t\t\t\t\t${renderBulletList(activeProjectCompleted)}
-\t\t\t\t\t\t</section>
-
-\t\t\t\t\t\t<section class="subsection nested-deep">
-\t\t\t\t\t\t\t<h5>Active</h5>
-\t\t\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.active.label)} | ${escapeHtml(resumeInitiativeMetadata.active.period.display)}</p>
-\t\t\t\t\t\t\t${renderBulletList(activeProjectActive)}
-\t\t\t\t\t\t</section>
-\t\t\t\t\t</section>
-\t\t\t\t</section>
-
-\t\t\t\t<section class="subsection">
-\t\t\t\t\t<h3>Delegated Scope</h3>
-\t\t\t\t\t${renderBulletList(delegatedScope)}
-\t\t\t\t</section>
-\t\t\t</div>
-\t\t</section>
-
-\t\t<section class="section progression-section">
-\t\t\t<h2>Role Progression Map <span class="inline-meta">From service desk baseline to AI-forward operational delivery</span></h2>
-
-\t\t\t\t${renderProgressionStages()}
-\t\t</section>
-
-\t\t<section class="section">
-\t\t\t<h2>Technical Skills</h2>
-\t\t\t${renderResumeTechnicalSkills()}
-\t\t</section>
-
-\t\t<section class="section">
-\t\t\t<h2>Qualifications</h2>
-\t\t\t${renderBulletList(qualifications)}
-\t\t</section>
+\t\t${
+			projection.pdfLayout === 'it_support_compact'
+				? renderItSupportCompactContent()
+				: projection.sectionOrder.map((sectionId) => renderResumeSection(projection, sectionId)).join('\n\n\t\t')
+		}
 \t</main>
 </body>
 </html>
@@ -206,7 +292,20 @@ const renderProjectPdfHtml = (detail, title) => `<!doctype html>
 await mkdir(generatedDir, { recursive: true });
 
 if (targetSet.has('resume')) {
-	await writeFile(path.join(generatedDir, 'resume-bw.html'), renderResumePdfHtml(), 'utf8');
+	for (const resumeProjection of resumeProjections) {
+		await writeFile(
+			path.join(generatedDir, resumeProjection.pdf.generatedHtmlFilename),
+			renderResumePdfHtml(resumeProjection),
+			'utf8'
+		);
+	}
+
+	const defaultProjection = resumeProjections.find(
+		(resumeProjection) => resumeProjection.id === defaultResumeProjectionId
+	);
+	if (defaultProjection) {
+		await writeFile(path.join(generatedDir, 'resume-bw.html'), renderResumePdfHtml(defaultProjection), 'utf8');
+	}
 }
 
 if (targetSet.has('migration')) {

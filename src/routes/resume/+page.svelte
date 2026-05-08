@@ -4,7 +4,6 @@
 		import {
 			activeProjectActive,
 			activeProjectCompleted,
-			contextPoints,
 			delegatedScope,
 			progressionStages,
 			qualifications,
@@ -18,6 +17,15 @@
 			technicalSkills,
 			type ResumeContactTarget as ContactTarget
 		} from '$lib/content/resume';
+		import {
+			defaultResumeProjectionId,
+			getProjectedProgressionStages,
+			getProjectedScopeEvidence,
+			getProjectedSkillGroups,
+			isResumeProjectionId,
+			resumeProjections,
+			type ResumeProjectionId
+		} from '$lib/content/resume-projections';
 		import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
 		import { canonicalOrigin } from '$lib/site';
 		import { onMount, tick } from 'svelte';
@@ -37,6 +45,7 @@
 	let fadeResumePortraitOverlay = $state(false);
 		let resumeIntroBooting = $state(resumeUsesPortraitEntry);
 		let resumeInteractionReady = $state(!resumeUsesPortraitEntry);
+		let activeProjectionId = $state<ResumeProjectionId>(defaultResumeProjectionId);
 		let copiedContactTarget = $state<ContactTarget | null>(null);
 		let contactCopyMenuOpen = $state(false);
 		let topSkillsToggle = $state<HTMLButtonElement | null>(null);
@@ -45,9 +54,17 @@
 		let contactCopyMenuElement = $state<HTMLDivElement | null>(null);
 	let contactCopyResetTimer: ReturnType<typeof setTimeout> | null = null;
 
-	const allSkillIndices = technicalSkills.map((_, index) => index);
+	const activeProjection = $derived(
+		resumeProjections.find((projection) => projection.id === activeProjectionId) ?? resumeProjections[0]
+	);
+	const projectedTechnicalSkills = $derived(getProjectedSkillGroups(activeProjection));
+	const projectedProgressionStages = $derived(getProjectedProgressionStages(activeProjection));
+	const projectedScopeEvidence = $derived(getProjectedScopeEvidence(activeProjection));
+	const allSkillIndices = $derived(projectedTechnicalSkills.map((_, index) => index));
 
-	const allSkillsOpen = $derived(openSkillIndices.length === technicalSkills.length);
+	const allSkillsOpen = $derived(
+		projectedTechnicalSkills.length > 0 && openSkillIndices.length === projectedTechnicalSkills.length
+	);
 	const anySkillsOpen = $derived(openSkillIndices.length > 0);
 	const copiedContactMessage = $derived(
 		copiedContactTarget
@@ -107,8 +124,8 @@
 				id: 'print',
 				label: 'Print',
 				type: 'link',
-				href: '/resume-bw.pdf',
-				download: 'Nicholas_Francis_OBrien_Resume_BW.pdf'
+				href: activeProjection.pdf.href,
+				download: activeProjection.pdf.filename
 			},
 			{
 				id: 'home',
@@ -133,6 +150,21 @@
 		resumeInteractionReady = state.interactionReady;
 	};
 
+	const selectProjection = (projectionId: ResumeProjectionId) => {
+		activeProjectionId = projectionId;
+		openSkillIndices = [];
+
+		if (typeof window === 'undefined') return;
+
+		const url = new URL(window.location.href);
+		if (projectionId === defaultResumeProjectionId) {
+			url.searchParams.delete('emphasis');
+		} else {
+			url.searchParams.set('emphasis', projectionId);
+		}
+		window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+	};
+
 	const copyContactValue = async (value: string, target: ContactTarget) => {
 		try {
 			await navigator.clipboard.writeText(value);
@@ -147,6 +179,11 @@
 	};
 
 	onMount(() => {
+		const requestedProjection = new URLSearchParams(window.location.search).get('emphasis');
+		if (isResumeProjectionId(requestedProjection)) {
+			activeProjectionId = requestedProjection;
+		}
+
 		const handleScroll = () => {
 			updateActionAvailability();
 		};
@@ -161,6 +198,11 @@
 			window.removeEventListener('scroll', handleScroll);
 			window.removeEventListener('resize', handleScroll);
 		};
+	});
+
+	$effect(() => {
+		activeProjectionId;
+		openSkillIndices = [];
 	});
 
 	$effect(() => {
@@ -219,203 +261,249 @@
 		<div class="hero-panel-content">
 			<div class="hero-copy">
 				<h1>Nicholas Francis O'Brien</h1>
-				<p class="focus-line">AI-Forward | Enterprise IT Operations | Process Improvement</p>
-				<div class="hero-context" aria-label="Context">
-					<p class="hero-context-label">Context</p>
+				<p class="focus-line">{activeProjection.headline}</p>
+				<div class="hero-context" aria-label="Professional summary">
+					<p class="hero-context-label">Professional Summary</p>
 					<ul class="hero-context-list">
-						{#each contextPoints as point}
+						{#each activeProjection.summary as point}
 							<li>{point}</li>
 						{/each}
 					</ul>
+				</div>
+				<div class="projection-control" aria-label="Resume emphasis">
+					<div class="projection-control-copy">
+						<p class="hero-context-label">Resume emphasis</p>
+						<p class="projection-note">
+							Select the version closest to the role you are hiring for. Each view uses the same factual record and changes only ordering and emphasis.
+						</p>
+					</div>
+					<div class="projection-options" role="group" aria-label="Resume emphasis options">
+						{#each resumeProjections as projection}
+							<button
+								class:projection-option-active={activeProjection.id === projection.id}
+								class="projection-option"
+								type="button"
+								aria-pressed={activeProjection.id === projection.id}
+								onclick={() => selectProjection(projection.id)}
+							>
+								{projection.label}
+							</button>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<section class="panel experience-panel">
-		<div class="employment-heading">
-			<h2 class="employment-title">{resumeCurrentEmploymentRoleLine}</h2>
-			<p class="employment-meta">{resumeCurrentEmploymentLocationPeriodLine}</p>
-		</div>
+	{#each activeProjection.sectionOrder as sectionId}
+		{#if sectionId === 'experience'}
+			<section class="panel experience-panel">
+				<div class="employment-heading">
+					<h2 class="employment-title">{resumeCurrentEmploymentRoleLine}</h2>
+					<p class="employment-meta">{resumeCurrentEmploymentLocationPeriodLine}</p>
+				</div>
 
-		<div class="scope-grid">
-			<section class="scope-card">
-				<h3>Initiative in Scope</h3>
-
-				<section class="scope-card scope-card-nested">
-					<h4>Active Project</h4>
-
-					<section class="scope-card scope-card-deep">
-						<h5>Completed</h5>
-						<p class="scope-meta">
-							{resumeInitiativeMetadata.completed.label} | {resumeInitiativeMetadata.completed.period.display}
-						</p>
-						<ul class="content-list">
-							{#each activeProjectCompleted as point}
-								<li>{point}</li>
-							{/each}
-						</ul>
-					</section>
-
-					<section class="scope-card scope-card-deep">
-						<h5>Active</h5>
-						<p class="scope-meta">
-							{resumeInitiativeMetadata.active.label} | {resumeInitiativeMetadata.active.period.display}
-						</p>
-						<ul class="content-list">
-							{#each activeProjectActive as point}
-								<li>{point}</li>
-							{/each}
-						</ul>
-					</section>
+				<section class="scope-card emphasis-highlights">
+					<h3>Role Emphasis Highlights</h3>
+					<div class="progression-map">
+						{#each projectedScopeEvidence as scope}
+							<section class="progression-stage">
+								<h4>{scope.label}</h4>
+								{#if scope.meta}
+									<p class="stage-period">{scope.meta}</p>
+								{/if}
+								<ul class="content-list">
+									{#each scope.items as point}
+										<li>{point}</li>
+									{/each}
+								</ul>
+							</section>
+						{/each}
+					</div>
 				</section>
-			</section>
 
-			<section class="scope-card">
-				<h3>Delegated Scope</h3>
+				{#each activeProjection.experienceBlockOrder as blockId}
+					{#if blockId === 'initiative'}
+						<section class="scope-card">
+							<h3>Initiative in Scope</h3>
+
+							<section class="scope-card scope-card-nested">
+								<h4>Active Project</h4>
+
+								<section class="scope-card scope-card-deep">
+									<h5>Completed</h5>
+									<p class="scope-meta">
+										{resumeInitiativeMetadata.completed.label} | {resumeInitiativeMetadata.completed.period.display}
+									</p>
+									<ul class="content-list">
+										{#each activeProjectCompleted as point}
+											<li>{point}</li>
+										{/each}
+									</ul>
+								</section>
+
+								<section class="scope-card scope-card-deep">
+									<h5>Active</h5>
+									<p class="scope-meta">
+										{resumeInitiativeMetadata.active.label} | {resumeInitiativeMetadata.active.period.display}
+									</p>
+									<ul class="content-list">
+										{#each activeProjectActive as point}
+											<li>{point}</li>
+										{/each}
+									</ul>
+								</section>
+							</section>
+						</section>
+					{:else if blockId === 'delegated_scope'}
+						<section class="scope-card">
+							<h3>Delegated Scope</h3>
+							<ul class="content-list">
+								{#each delegatedScope as point}
+									<li>{point}</li>
+								{/each}
+							</ul>
+						</section>
+					{:else if blockId === 'role_progression'}
+						<section class="scope-card">
+							<h3>Role Progression Map</h3>
+							<p class="core-role-start">From service desk baseline to AI-forward operational delivery.</p>
+							<div class="progression-map">
+								{#each projectedProgressionStages as stage}
+									<section class="progression-stage">
+										<h4>{stage.title}</h4>
+										{#if stage.period}
+											<p class="stage-period">{stage.period.display}</p>
+										{/if}
+										<ul class="content-list">
+											{#each stage.items as point}
+												<li>{point}</li>
+											{/each}
+										</ul>
+									</section>
+								{/each}
+							</div>
+						</section>
+					{/if}
+				{/each}
+			</section>
+		{:else if sectionId === 'technical_skills'}
+			<section class="panel">
+				<div class="section-head">
+					<div class="section-head-copy">
+						<h2>Technical Skills</h2>
+						<p class="section-note">
+							{allSkillsOpen ? 'Close to one skill Click -' : 'Open one skill Click +'}
+						</p>
+					</div>
+					<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
+						{allSkillsOpen ? 'Collapse' : 'View all'}
+					</button>
+				</div>
+
+				<div class="skills-grid">
+					{#each projectedTechnicalSkills as group, index}
+						{@const isOpen = openSkillIndices.includes(index)}
+						<section class:skill-card-open={isOpen} class="skill-card">
+							<h3 class="skill-card-title">
+								<button
+									class="skill-card-button"
+									type="button"
+									id={`skill-trigger-${index}`}
+									aria-expanded={isOpen}
+									aria-controls={`skill-panel-${index}`}
+									onclick={() => toggleSkill(index)}
+								>
+									<span>{group.title}</span>
+									<span class="skill-card-icon" aria-hidden="true">{isOpen ? '-' : '+'}</span>
+								</button>
+							</h3>
+							{#if isOpen}
+								<div
+									class="skill-panel"
+									id={`skill-panel-${index}`}
+									role="region"
+									aria-labelledby={`skill-trigger-${index}`}
+								>
+									<ul class="content-list skill-detail-list">
+										{#each group.items as item}
+											<li>{item}</li>
+										{/each}
+									</ul>
+								</div>
+							{/if}
+						</section>
+					{/each}
+				</div>
+
+				{#if anySkillsOpen}
+					<div class="skills-footer-actions">
+						<button bind:this={bottomSkillsCollapse} class="section-reset-button" type="button" onclick={collapseSkills}>
+							Collapse
+						</button>
+					</div>
+				{/if}
+			</section>
+		{:else if sectionId === 'qualifications'}
+			<section class="panel">
+				<h2 class="qualifications-heading">Qualifications</h2>
 				<ul class="content-list">
-					{#each delegatedScope as point}
-						<li>{point}</li>
+					{#each qualifications as item}
+						<li>{item}</li>
 					{/each}
 				</ul>
 			</section>
-		</div>
+		{:else if sectionId === 'public_details'}
+			<section class="panel" aria-label="Public details and contact channels">
+				<h2 class="qualifications-heading">Public Details</h2>
+				<ul class="content-list">
+					<li>Location: {resumeLocation}</li>
+					{#each resumePublicDetailItems as item (item.id)}
+						<li>
+							{item.label}:
+							<button
+								class="contact-copy-inline"
+								class:contact-copy-inline-copied={copiedContactTarget === item.id}
+								disabled={!resumeInteractionReady}
+								type="button"
+								aria-label={`Copy ${item.label}: ${item.copyValue}`}
+								onclick={() => copyContactValue(item.copyValue, item.id)}
+							>
+								<span class="contact-copy-value">{item.displayValue}</span>
+								<span class="contact-copy-inline-state" aria-hidden="true">
+									{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+								</span>
+							</button>
+						</li>
+					{/each}
+				</ul>
 
-		<section class="scope-card">
-			<h3>Role Progression Map</h3>
-			<p class="core-role-start">From service desk baseline to AI-forward operational delivery.</p>
-			<div class="progression-map">
-				{#each progressionStages as stage}
-					<section class="progression-stage">
-						<h4>{stage.title}</h4>
-						{#if stage.period}
-							<p class="stage-period">{stage.period.display}</p>
-						{/if}
-						<ul class="content-list">
-							{#each stage.items as point}
-								<li>{point}</li>
-							{/each}
-						</ul>
-					</section>
-				{/each}
-			</div>
-		</section>
-	</section>
+				<h2 class="qualifications-heading">Contact Channels</h2>
+				<ul class="content-list">
+					{#each resumeContactChannelItems as item (item.id)}
+						<li>
+							{item.label}:
+							<button
+								class="contact-copy-inline"
+								class:contact-copy-inline-copied={copiedContactTarget === item.id}
+								disabled={!resumeInteractionReady}
+								type="button"
+								aria-label={`Copy ${item.label}: ${item.copyValue}`}
+								onclick={() => copyContactValue(item.copyValue, item.id)}
+							>
+								<span class="contact-copy-value">{item.displayValue}</span>
+								<span class="contact-copy-inline-state" aria-hidden="true">
+									{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
+								</span>
+							</button>
+						</li>
+					{/each}
+				</ul>
 
-	<section class="panel">
-		<div class="section-head">
-			<div class="section-head-copy">
-				<h2>Technical Skills</h2>
-				<p class="section-note">
-					{allSkillsOpen ? 'Close to one skill Click -' : 'Open one skill Click +'}
-				</p>
-			</div>
-			<button bind:this={topSkillsToggle} class="section-reset-button" type="button" onclick={toggleAllSkills}>
-				{allSkillsOpen ? 'Collapse' : 'View all'}
-			</button>
-		</div>
-
-		<div class="skills-grid">
-			{#each technicalSkills as group, index}
-				{@const isOpen = openSkillIndices.includes(index)}
-				<section class:skill-card-open={isOpen} class="skill-card">
-					<h3 class="skill-card-title">
-						<button
-							class="skill-card-button"
-							type="button"
-							id={`skill-trigger-${index}`}
-							aria-expanded={isOpen}
-							aria-controls={`skill-panel-${index}`}
-							onclick={() => toggleSkill(index)}
-						>
-							<span>{group.title}</span>
-							<span class="skill-card-icon" aria-hidden="true">{isOpen ? '-' : '+'}</span>
-						</button>
-					</h3>
-					{#if isOpen}
-						<div
-							class="skill-panel"
-							id={`skill-panel-${index}`}
-							role="region"
-							aria-labelledby={`skill-trigger-${index}`}
-						>
-							<ul class="content-list skill-detail-list">
-								{#each group.items as item}
-									<li>{item}</li>
-								{/each}
-							</ul>
-						</div>
-					{/if}
-				</section>
-			{/each}
-		</div>
-
-		{#if anySkillsOpen}
-			<div class="skills-footer-actions">
-				<button bind:this={bottomSkillsCollapse} class="section-reset-button" type="button" onclick={collapseSkills}>
-					Collapse
-				</button>
-			</div>
+				<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
+			</section>
 		{/if}
-	</section>
-
-	<section class="panel">
-		<h2 class="qualifications-heading">Qualifications</h2>
-		<ul class="content-list">
-			{#each qualifications as item}
-				<li>{item}</li>
-			{/each}
-		</ul>
-	</section>
-
-	<section class="panel" aria-label="Public details and contact channels">
-		<h2 class="qualifications-heading">Public Details</h2>
-		<ul class="content-list">
-			<li>Location: {resumeLocation}</li>
-			{#each resumePublicDetailItems as item (item.id)}
-				<li>
-					{item.label}:
-					<button
-						class="contact-copy-inline"
-						class:contact-copy-inline-copied={copiedContactTarget === item.id}
-						disabled={!resumeInteractionReady}
-						type="button"
-						aria-label={`Copy ${item.label}: ${item.copyValue}`}
-						onclick={() => copyContactValue(item.copyValue, item.id)}
-					>
-						<span class="contact-copy-value">{item.displayValue}</span>
-						<span class="contact-copy-inline-state" aria-hidden="true">
-							{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
-						</span>
-					</button>
-				</li>
-			{/each}
-		</ul>
-
-		<h2 class="qualifications-heading">Contact Channels</h2>
-		<ul class="content-list">
-			{#each resumeContactChannelItems as item (item.id)}
-				<li>
-					{item.label}:
-					<button
-						class="contact-copy-inline"
-						class:contact-copy-inline-copied={copiedContactTarget === item.id}
-						disabled={!resumeInteractionReady}
-						type="button"
-						aria-label={`Copy ${item.label}: ${item.copyValue}`}
-						onclick={() => copyContactValue(item.copyValue, item.id)}
-					>
-						<span class="contact-copy-value">{item.displayValue}</span>
-						<span class="contact-copy-inline-state" aria-hidden="true">
-							{copiedContactTarget === item.id ? 'Copied' : 'Copy'}
-						</span>
-					</button>
-				</li>
-			{/each}
-		</ul>
-
-		<p class="sr-only" aria-live="polite">{copiedContactMessage}</p>
-	</section>
+	{/each}
 
 		</main>
 
@@ -575,6 +663,56 @@
 	.hero-context-list li::marker {
 		color: #92dbff;
 	}
+
+	.projection-control {
+		display: grid;
+		gap: 0.55rem;
+		max-width: 62rem;
+		padding-top: 0.2rem;
+	}
+
+	.projection-control-copy {
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	.projection-note {
+		font-size: 0.9rem;
+		font-weight: 600;
+		line-height: 1.45;
+		color: #cfe6ff;
+	}
+
+	.projection-options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.44rem;
+	}
+
+	.projection-option {
+		min-height: 2.25rem;
+		padding: 0.42rem 0.72rem;
+		border: 1px solid rgba(143, 205, 255, 0.26);
+		border-radius: 999px;
+		background: rgba(13, 24, 43, 0.72);
+		color: #d7e8ff;
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
+		font-size: 0.84rem;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.projection-option:hover,
+	.projection-option-active {
+		border-color: rgba(154, 214, 255, 0.54);
+		background: rgba(25, 48, 84, 0.9);
+		color: #f3f7ff;
+	}
+
+	.projection-option:focus-visible {
+		outline: 2px solid rgba(141, 214, 255, 0.9);
+		outline-offset: 2px;
+	}
 	.contact-copy-inline {
 		display: inline-flex;
 		align-items: baseline;
@@ -690,12 +828,6 @@
 
 	.experience-panel h5 {
 		text-transform: none;
-	}
-
-	.scope-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.8rem;
 	}
 
 	.scope-card {
@@ -947,6 +1079,16 @@
 			font-size: 1rem;
 			line-height: 1.25;
 			color: #a7c8ef;
+		}
+
+		.projection-note {
+			font-size: 1.18rem;
+			line-height: 1.45;
+		}
+
+		.projection-option {
+			font-size: 1rem;
+			min-height: 2.5rem;
 		}
 		.contact-copy-inline-state {
 			font-size: 0.92rem;

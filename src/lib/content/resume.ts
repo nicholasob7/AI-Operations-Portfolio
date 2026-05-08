@@ -1,9 +1,30 @@
+export type ResumeSkillGroupId =
+	| 'identity_access'
+	| 'm365'
+	| 'endpoint'
+	| 'enterprise_apps'
+	| 'network'
+	| 'service_ops'
+	| 'knowledge_process'
+	| 'ai_ops';
+
+export type ResumeProgressionStageId =
+	| 'service_desk_foundation'
+	| 'dedicated_bau_transport'
+	| 'specialist_improvement'
+	| 'ai_forward_delivery';
+
+export type ResumeInitiativeId = 'endpoint_remediation' | 'package_reconstruction';
+export type ResumeScopeId = ResumeProgressionStageId | ResumeInitiativeId | 'delegated_scope';
+
 export type ResumeSkillGroup = {
+	id: ResumeSkillGroupId;
 	title: string;
 	items: string[];
 };
 
 export type ResumeProgressionStage = {
+	id: ResumeProgressionStageId;
 	title: string;
 	period?: ResumePeriod;
 	items: string[];
@@ -36,6 +57,7 @@ export type ResumeCurrentEmployment = {
 };
 
 export type ResumeInitiativeMetadata = {
+	id: ResumeInitiativeId;
 	label: string;
 	period: ResumePeriod;
 };
@@ -78,6 +100,7 @@ export const resumeCurrentEmploymentLocationPeriodLine =
 
 export const resumeInitiativeMetadata = {
 	completed: {
+		id: 'endpoint_remediation',
 		label: 'Endpoint Remediation / Script Fix',
 		period: {
 			startLabel: 'August 2025',
@@ -89,6 +112,7 @@ export const resumeInitiativeMetadata = {
 		}
 	},
 	active: {
+		id: 'package_reconstruction',
 		label: 'Package Reconstruction',
 		period: {
 			startLabel: 'February 2026',
@@ -155,7 +179,7 @@ export const activeProjectCompleted = [
 	'Tested approaches and script versions on a dedicated test device.',
 	'The script passed validation and entered production for individual endpoint failures.',
 	'L2 bundling with the existing install package failed.',
-	'The script was not at fault.',
+	'Used remediation results to identify package-level deployment issues requiring further reconstruction.',
 	'This led to investigation of the install package itself.'
 ];
 
@@ -178,14 +202,15 @@ export const delegatedScope = [
 
 export const progressionStages: ResumeProgressionStage[] = [
 	{
+		id: 'service_desk_foundation',
 		title: 'Service Desk Foundation',
 		period: {
 			startLabel: 'November 2022',
 			startIsoMonth: '2022-11',
-			endLabel: 'approx. end of 2023',
+			endLabel: 'late 2023',
 			endIsoMonth: null,
 			isCurrent: false,
-			display: 'November 2022 – approx. end of 2023'
+			display: 'November 2022 – late 2023'
 		},
 		items: [
 			'Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients.',
@@ -195,7 +220,8 @@ export const progressionStages: ResumeProgressionStage[] = [
 		]
 	},
 	{
-		title: 'Trusted Operational Scope',
+		id: 'dedicated_bau_transport',
+		title: 'Dedicated BAU Support — Major NZ Transport Client',
 		period: {
 			startLabel: '2023',
 			startIsoMonth: null,
@@ -212,6 +238,7 @@ export const progressionStages: ResumeProgressionStage[] = [
 		]
 	},
 	{
+		id: 'specialist_improvement',
 		title: 'Specialist and Improvement Scope',
 		items: [
 			'Became the SME for privileged access requests across admin, local admin, shared, and external account types.',
@@ -221,6 +248,7 @@ export const progressionStages: ResumeProgressionStage[] = [
 		]
 	},
 	{
+		id: 'ai_forward_delivery',
 		title: 'AI-Forward Operational Delivery',
 		items: [
 			'Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application.',
@@ -233,6 +261,7 @@ export const progressionStages: ResumeProgressionStage[] = [
 
 export const technicalSkills: ResumeSkillGroup[] = [
 	{
+		id: 'identity_access',
 		title: 'Identity and access administration',
 		items: [
 			'Active Directory',
@@ -244,6 +273,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'm365',
 		title: 'Messaging and Microsoft 365 support',
 		items: [
 			'Exchange Online',
@@ -255,6 +285,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'endpoint',
 		title: 'Endpoint and device administration',
 		items: [
 			'Intune',
@@ -267,6 +298,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'enterprise_apps',
 		title: 'Enterprise applications and deployment',
 		items: [
 			'vendor applications',
@@ -278,6 +310,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'network',
 		title: 'Network and connectivity troubleshooting',
 		items: [
 			'DNS issues',
@@ -287,6 +320,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'service_ops',
 		title: 'Service operations and remote support',
 		items: [
 			'Jira Service Management',
@@ -298,6 +332,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'knowledge_process',
 		title: 'Knowledge, process, and documentation',
 		items: [
 			'documentation',
@@ -307,6 +342,7 @@ export const technicalSkills: ResumeSkillGroup[] = [
 		]
 	},
 	{
+		id: 'ai_ops',
 		title: 'AI in IT operations',
 		items: [
 			'AI-assisted research',
@@ -323,4 +359,65 @@ export const qualifications = [
 	'AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
 	'Bachelor of Arts, History and Political Science — Griffith University',
 	'NTT internal certifications, including AI training'
+];
+
+export type ItSupportCompactExperienceBlock = {
+	stageId: ResumeProgressionStageId;
+	titleWithPeriod: string;
+	items: string[];
+};
+
+export const itSupportProfessionalSummary = [
+	'IT Service Desk Analyst at NTT DATA with nearly four years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues.',
+	'Dedicated BAU support analyst for a major New Zealand transport-sector client, contributing to 90%+ first-contact resolution through structured troubleshooting, documentation, resolution ownership, and escalation judgment.'
+];
+
+export const itSupportCoreSkillLines = [
+	'Service operations: ServiceNow, Jira Service Management; ITSM, incident/request ownership, escalation, SLA handling',
+	'Microsoft administration: Microsoft 365 admin center, Intune, Entra ID, Exchange; identity, licensing, compliance, endpoint, app, messaging support',
+	'Directory/access: Active Directory; account lifecycle, local/admin/privileged/service/shared/external access, security groups',
+	'Endpoint/hardware/network support: Windows troubleshooting, vendor apps, packaged installs, deployments, network troubleshooting, DNS/connectivity diagnosis',
+	'Technical tooling: remote/admin tools, knowledge bases, scripted fixes, PowerShell tooling, AI-assisted troubleshooting/scripting'
+];
+
+export const itSupportRelevantExperience: ItSupportCompactExperienceBlock[] = [
+	{
+		stageId: 'service_desk_foundation',
+		titleWithPeriod: 'Service Desk Foundation | November 2022 – late 2023',
+		items: [
+			'Supported users in a 5,000+ user environment across shared-service and single-organisation clients.',
+			'Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation.',
+			'Resolved user, endpoint, application, access, and network issues across remote enterprise support workflows.'
+		]
+	},
+	{
+		stageId: 'dedicated_bau_transport',
+		titleWithPeriod: 'Dedicated BAU Support — Major NZ Transport Client | 2023 – Present',
+		items: [
+			'Progressed into dedicated BAU support for a major transport-sector client.',
+			'Worked in a team sustaining 90%+ first-contact resolution.',
+			'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces.',
+			'Analysed endpoint performance and device health issues as part of day-to-day support.'
+		]
+	}
+];
+
+export const itSupportAdditionalScope = [
+	'SME for privileged access requests across admin, local admin, shared, and external account types.',
+	'Managed a printer queue serviced by a major external vendor.',
+	'Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope.',
+	'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.'
+];
+
+export const itSupportSelectedTechnicalImprovement = [
+	'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application.',
+	'Tested script versions on a dedicated test device.',
+	'Script passed validation and entered production for individual endpoint failures.',
+	'Used remediation results to identify package-level deployment issues requiring further reconstruction.'
+];
+
+export const itSupportCompactQualifications = [
+	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
+	'BA History and Political Science — Griffith University | NTT internal certifications, including AI training',
+	'NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework'
 ];

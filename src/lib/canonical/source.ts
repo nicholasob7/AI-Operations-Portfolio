@@ -1203,7 +1203,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_completed',
-			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. The script was not at fault. This led to investigation of the install package itself.`,
+			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to investigation of the install package itself.`,
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1265,7 +1265,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_progression_foundation',
 			claimText:
-				'Service Desk Foundation (November 2022 – approx. end of 2023). Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
+				'Service Desk Foundation (November 2022 – late 2023). Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1286,7 +1286,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_progression_trusted_scope',
 			claimText:
-				'Trusted Operational Scope (2023 – Present). Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle tasks within service desk scope.',
+				'Dedicated BAU Support — Major NZ Transport Client (2023 – Present). Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle tasks within service desk scope.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
