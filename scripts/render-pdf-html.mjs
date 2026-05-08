@@ -4,6 +4,12 @@ import { fileURLToPath } from 'node:url';
 
 import {
 	activeProjectActive,
+	aiProcessCompactQualifications,
+	aiProcessMethodLines,
+	aiProcessSelectedDelivery,
+	aiProcessSummary,
+	aiProcessSupportingFoundation,
+	aiProcessWorkflowImprovement,
 	activeProjectCompleted,
 	delegatedScope,
 	itSupportAdditionalScope,
@@ -240,10 +246,49 @@ const renderTechnicalOperationsCompactContent = () => `<section class="section c
 \t\t\t${renderBulletList(technicalOperationsCompactQualifications, 'bullet-list compact-list')}
 \t\t</section>`;
 
+const renderAiProcessCompactContent = () => `<section class="section compact-section">
+\t\t\t<h2>AI / Process Improvement Summary</h2>
+\t\t\t${renderParagraphList(aiProcessSummary)}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Current Employment</h2>
+\t\t\t<div class="employment-heading compact-employment-heading">
+\t\t\t\t<h3 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h3>
+\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
+\t\t\t</div>
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Selected AI-Enabled Delivery</h2>
+\t\t\t${renderBulletList(aiProcessSelectedDelivery, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Process / Workflow Improvement</h2>
+\t\t\t${renderBulletList(aiProcessWorkflowImprovement, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Core AI / Process Methods</h2>
+\t\t\t${renderBulletList(aiProcessMethodLines, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section">
+\t\t\t<h2>Supporting Enterprise Foundation</h2>
+\t\t\t${renderBulletList(aiProcessSupportingFoundation, 'bullet-list compact-list')}
+\t\t</section>
+
+\t\t<section class="section compact-section compact-qualifications">
+\t\t\t<h2>Qualifications</h2>
+\t\t\t${renderBulletList(aiProcessCompactQualifications, 'bullet-list compact-list')}
+\t\t</section>`;
+
 const renderResumeHeroIntro = (projection) => {
 	if (
 		projection.pdfLayout === 'it_support_compact' ||
-		projection.pdfLayout === 'technical_operations_compact'
+		projection.pdfLayout === 'technical_operations_compact' ||
+		projection.pdfLayout === 'ai_process_compact'
 	) {
 		return `<p class="hero-line hero-focus">${escapeHtml(projection.headline)}</p>`;
 	}
@@ -260,11 +305,13 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 \t<link rel="stylesheet" href="../resume-bw.css" />
 </head>
 <body>
-\t<main class="resume${
+	\t<main class="resume${
 		projection.pdfLayout === 'it_support_compact'
 			? ' resume-compact-it-support'
 			: projection.pdfLayout === 'technical_operations_compact'
 				? ' resume-compact-technical-operations'
+				: projection.pdfLayout === 'ai_process_compact'
+					? ' resume-compact-ai-process'
 				: ''
 	}">
 \t\t<header class="hero section">
@@ -286,6 +333,8 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 				? renderItSupportCompactContent()
 				: projection.pdfLayout === 'technical_operations_compact'
 					? renderTechnicalOperationsCompactContent()
+					: projection.pdfLayout === 'ai_process_compact'
+						? renderAiProcessCompactContent()
 				: projection.sectionOrder.map((sectionId) => renderResumeSection(projection, sectionId)).join('\n\n\t\t')
 		}
 \t</main>

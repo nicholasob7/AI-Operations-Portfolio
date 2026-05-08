@@ -249,6 +249,16 @@ p {
 	line-height: 1.2;
 }
 
+.resume-compact-ai-process {
+	font-size: 9.65pt;
+}
+
+.resume-compact-ai-process .compact-section p,
+.resume-compact-ai-process .compact-section li {
+	font-size: 9.7pt;
+	line-height: 1.18;
+}
+
 .resume-compact-it-support .hero {
 	padding-bottom: 8px;
 	margin-bottom: 8px;
@@ -267,6 +277,15 @@ p {
 	margin-top: 4px;
 }
 
+.resume-compact-ai-process .hero {
+	padding-bottom: 7px;
+	margin-bottom: 8px;
+}
+
+.resume-compact-ai-process .hero-line {
+	margin-top: 4px;
+}
+
 .resume-compact-it-support .contact-block {
 	margin-top: 5px;
 	gap: 2px 10px;
@@ -281,6 +300,13 @@ p {
 	line-height: 1.18;
 }
 
+.resume-compact-ai-process .contact-block {
+	margin-top: 5px;
+	gap: 2px 10px;
+	font-size: 9pt;
+	line-height: 1.16;
+}
+
 .resume-compact-it-support .section {
 	margin-bottom: 9px;
 }
@@ -290,6 +316,14 @@ p {
 }
 
 .resume-compact-technical-operations .compact-list {
+	margin-top: 3px;
+}
+
+.resume-compact-ai-process .section {
+	margin-bottom: 7px;
+}
+
+.resume-compact-ai-process .compact-list {
 	margin-top: 3px;
 }
 

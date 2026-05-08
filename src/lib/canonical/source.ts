@@ -1244,6 +1244,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_ai_process_summary_compact',
+			claimText:
+				'AI-Forward Operations | Process Improvement | Technical Analysis. Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems. Portfolio evidence includes endpoint remediation, evidence-based package investigation, workflow improvement, and practical AI use grounded in current NTT DATA service desk operations.',
+			claimKind: 'resume_summary',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_current_role', 'ctx_resume_progression', 'ctx_resume_initiative'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_direction', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current compact AI / Process Improvement summary from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client and application identities remain bounded while AI-assisted operational-improvement signal remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_initiative_completed',
 			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to investigation of the install package itself.`,
 			claimKind: 'resume_initiative_completed',
@@ -1281,6 +1302,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'sensitive_substrate_withheld',
 				note: 'Major vendor application remains intentionally unnamed while PowerShell remediation and production-use signal remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_ai_process_initiative_compact',
+			claimText:
+				'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application. Script passed validation and entered production for individual endpoint failures after dedicated test-device work. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+			claimKind: 'resume_initiative_completed',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: 'Compact AI / Process Improvement rendering of the completed remediation initiative from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Major vendor application remains intentionally unnamed while AI-assisted remediation and production-use signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1385,6 +1427,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
 				note: 'Internal workflow and vendor substrate remain bounded while technical operations scope remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_ai_process_workflow_compact',
+			claimText:
+				'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage. Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling. Applied AI-assisted research and coding to turn remediation results into evidence for package investigation and rebuild work.',
+			claimKind: 'resume_delegated_scope',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_delegated_scope', 'ctx_resume_progression', 'ctx_resume_initiative'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact AI / Process Improvement workflow-improvement scope from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Internal workflow substrate remains bounded while traceability and AI-assisted improvement signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1847,6 +1910,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'none',
 				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_ai_process_methods_compact',
+			claimText:
+				'AI-assisted operations: research, troubleshooting, scripting, remediation, package rebuild. Documentation/process: documentation, workflow traceability, troubleshooting steps, knowledge base use and creation. Enterprise investigation: vendor applications, packaged installs, application faults, deployment support. Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills', 'ctx_resume_initiative'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact AI / Process Improvement methods lines from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Specific applications remain unnamed while AI/process methods and operational-delivery signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},

@@ -465,3 +465,39 @@ export const technicalOperationsCompactQualifications = [
 	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
 	'NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support'
 ];
+
+export const aiProcessSummary = [
+	'Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems.',
+	'Portfolio evidence includes endpoint remediation, evidence-based package investigation, workflow improvement, and practical AI use grounded in current NTT DATA service desk operations.'
+];
+
+export const aiProcessSelectedDelivery = [
+	'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application.',
+	'Script passed validation and entered production for individual endpoint failures after dedicated test-device work.',
+	'Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+	'Rebuilding the enterprise app package from the proven fix; test-device validation is complete and further rollout stages remain.'
+];
+
+export const aiProcessWorkflowImprovement = [
+	'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.',
+	'Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope.',
+	'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling.',
+	'Applied AI-assisted research and coding to turn remediation results into evidence for package investigation and rebuild work.'
+];
+
+export const aiProcessMethodLines = [
+	'AI-assisted operations: research, troubleshooting, scripting, remediation, package rebuild',
+	'Documentation/process: documentation, workflow traceability, troubleshooting steps, knowledge base use and creation',
+	'Enterprise investigation: vendor applications, packaged installs, application faults, deployment support',
+	'Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools'
+];
+
+export const aiProcessSupportingFoundation = [
+	'Supported users in a 5,000+ user environment across shared-service and single-organisation clients.',
+	'Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation.'
+];
+
+export const aiProcessCompactQualifications = [
+	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
+	'NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support'
+];

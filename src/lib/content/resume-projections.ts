@@ -20,7 +20,7 @@ export type ResumeExperienceBlockId = 'initiative' | 'delegated_scope' | 'role_p
 export type ResumeProjection = {
 	id: ResumeProjectionId;
 	label: string;
-	pdfLayout: 'standard' | 'it_support_compact' | 'technical_operations_compact';
+	pdfLayout: 'standard' | 'it_support_compact' | 'technical_operations_compact' | 'ai_process_compact';
 	purpose: string;
 	intendedRoleFamilies: string[];
 	headline: string;
@@ -195,7 +195,7 @@ export const resumeProjections = [
 	{
 		id: 'ai_process',
 		label: 'AI / Process Improvement',
-		pdfLayout: 'standard',
+		pdfLayout: 'ai_process_compact',
 		purpose:
 			'AI-forward operations, process improvement, technical analyst, and automation-adjacent operations roles.',
 		intendedRoleFamilies: [
@@ -209,7 +209,7 @@ export const resumeProjections = [
 			'Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems.',
 			'Portfolio evidence includes machine-readable public structure, endpoint remediation work, and process redesign grounded in current NTT DATA service desk operations.'
 		],
-		sectionOrder: defaultSectionOrder,
+		sectionOrder: ['experience', 'qualifications'],
 		experienceBlockOrder: ['initiative', 'delegated_scope', 'role_progression'],
 		promotedSkillGroupIds: [
 			'ai_ops',
