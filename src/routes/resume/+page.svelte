@@ -10,6 +10,9 @@
 			qualifications,
 			resumeContactChannelItems,
 			resumeContactItems,
+			resumeCurrentEmploymentLocationPeriodLine,
+			resumeCurrentEmploymentRoleLine,
+			resumeInitiativeMetadata,
 			resumeLocation,
 			resumePublicDetailItems,
 			technicalSkills,
@@ -230,7 +233,10 @@
 	</header>
 
 	<section class="panel experience-panel">
-		<h2>NTT, Wellington — Present</h2>
+		<div class="employment-heading">
+			<h2 class="employment-title">{resumeCurrentEmploymentRoleLine}</h2>
+			<p class="employment-meta">{resumeCurrentEmploymentLocationPeriodLine}</p>
+		</div>
 
 		<div class="scope-grid">
 			<section class="scope-card">
@@ -241,6 +247,9 @@
 
 					<section class="scope-card scope-card-deep">
 						<h5>Completed</h5>
+						<p class="scope-meta">
+							{resumeInitiativeMetadata.completed.label} | {resumeInitiativeMetadata.completed.period.display}
+						</p>
 						<ul class="content-list">
 							{#each activeProjectCompleted as point}
 								<li>{point}</li>
@@ -250,6 +259,9 @@
 
 					<section class="scope-card scope-card-deep">
 						<h5>Active</h5>
+						<p class="scope-meta">
+							{resumeInitiativeMetadata.active.label} | {resumeInitiativeMetadata.active.period.display}
+						</p>
 						<ul class="content-list">
 							{#each activeProjectActive as point}
 								<li>{point}</li>
@@ -276,6 +288,9 @@
 				{#each progressionStages as stage}
 					<section class="progression-stage">
 						<h4>{stage.title}</h4>
+						{#if stage.period}
+							<p class="stage-period">{stage.period.display}</p>
+						{/if}
 						<ul class="content-list">
 							{#each stage.items as point}
 								<li>{point}</li>
@@ -629,6 +644,33 @@
 			gap: 0.9rem;
 		}
 
+	.employment-heading {
+		display: grid;
+		gap: 0.22rem;
+	}
+
+	.employment-title {
+		font-size: 1.12rem;
+		line-height: 1.25;
+		letter-spacing: 0;
+		text-transform: none;
+		color: #f3f7ff;
+	}
+
+	.employment-meta,
+	.scope-meta,
+	.stage-period {
+		font-size: 0.9rem;
+		font-weight: 600;
+		line-height: 1.42;
+		color: #cfe6ff;
+	}
+
+	.scope-meta,
+	.stage-period {
+		color: #9fc7ee;
+	}
+
 	.experience-panel .core-role-start {
 		color: transparent;
 		background: linear-gradient(90deg, #96dcff 0%, #a98cff 52%, #6fd8b6 100%);
@@ -916,6 +958,22 @@
 		.section-note {
 			font-size: 1.5rem;
 			line-height: 1.58;
+		}
+
+		.employment-title {
+			font-size: 1.7rem;
+			line-height: 1.28;
+		}
+
+		.employment-meta {
+			font-size: 1.28rem;
+			line-height: 1.42;
+		}
+
+		.scope-meta,
+		.stage-period {
+			font-size: 1.2rem;
+			line-height: 1.42;
 		}
 
 		.experience-panel h3,

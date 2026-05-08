@@ -5,6 +5,7 @@ export type ResumeSkillGroup = {
 
 export type ResumeProgressionStage = {
 	title: string;
+	period?: ResumePeriod;
 	items: string[];
 };
 
@@ -18,6 +19,33 @@ export type ResumeContactItem = {
 	copiedMessage: string;
 };
 
+export type ResumePeriod = {
+	startLabel: string;
+	startIsoMonth: string | null;
+	endLabel: string;
+	endIsoMonth: string | null;
+	isCurrent: boolean;
+	display: string;
+};
+
+export type ResumeCurrentEmployment = {
+	role: string;
+	employer: string;
+	location: string;
+	period: ResumePeriod;
+};
+
+export type ResumeInitiativeMetadata = {
+	label: string;
+	period: ResumePeriod;
+};
+
+export const formatResumeEmploymentRoleLine = (employment: ResumeCurrentEmployment) =>
+	`${employment.role} — ${employment.employer}`;
+
+export const formatResumeEmploymentLocationPeriodLine = (employment: ResumeCurrentEmployment) =>
+	`${employment.location} | ${employment.period.display}`;
+
 export const resumeLocation = 'Lower Hutt, New Zealand';
 export const resumeContactEmail = 'nicko.obrien.ai@gmail.com';
 export const resumeWebsiteDisplay = 'nicko.obrienai.com';
@@ -28,6 +56,50 @@ export const resumeGitHubDisplay = 'github.com/nicholasob7';
 export const resumeGitHubUrl = 'https://github.com/nicholasob7';
 export const resumeTwitterProfileDisplay = 'x.com/nicho0101';
 export const resumeTwitterProfileUrl = 'https://x.com/nicho0101';
+
+export const resumeCurrentEmployment = {
+	role: 'IT Service Desk Analyst',
+	employer: 'NTT DATA',
+	location: 'Wellington, New Zealand',
+	period: {
+		startLabel: 'November 2022',
+		startIsoMonth: '2022-11',
+		endLabel: 'Present',
+		endIsoMonth: null,
+		isCurrent: true,
+		display: 'November 2022 – Present'
+	}
+} satisfies ResumeCurrentEmployment;
+
+export const resumeCurrentEmploymentRoleLine =
+	formatResumeEmploymentRoleLine(resumeCurrentEmployment);
+export const resumeCurrentEmploymentLocationPeriodLine =
+	formatResumeEmploymentLocationPeriodLine(resumeCurrentEmployment);
+
+export const resumeInitiativeMetadata = {
+	completed: {
+		label: 'Endpoint Remediation / Script Fix',
+		period: {
+			startLabel: 'August 2025',
+			startIsoMonth: '2025-08',
+			endLabel: 'October 2025',
+			endIsoMonth: '2025-10',
+			isCurrent: false,
+			display: 'August–October 2025'
+		}
+	},
+	active: {
+		label: 'Package Reconstruction',
+		period: {
+			startLabel: 'February 2026',
+			startIsoMonth: '2026-02',
+			endLabel: 'Ongoing',
+			endIsoMonth: null,
+			isCurrent: true,
+			display: 'February 2026 – Ongoing'
+		}
+	}
+} satisfies Record<'completed' | 'active', ResumeInitiativeMetadata>;
 
 export const resumeContactItems: ResumeContactItem[] = [
 	{
@@ -107,6 +179,14 @@ export const delegatedScope = [
 export const progressionStages: ResumeProgressionStage[] = [
 	{
 		title: 'Service Desk Foundation',
+		period: {
+			startLabel: 'November 2022',
+			startIsoMonth: '2022-11',
+			endLabel: 'approx. end of 2023',
+			endIsoMonth: null,
+			isCurrent: false,
+			display: 'November 2022 – approx. end of 2023'
+		},
 		items: [
 			'Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients.',
 			'Supported clients in transport, healthcare, energy, regional government, and consumer goods.',
@@ -116,6 +196,14 @@ export const progressionStages: ResumeProgressionStage[] = [
 	},
 	{
 		title: 'Trusted Operational Scope',
+		period: {
+			startLabel: '2023',
+			startIsoMonth: null,
+			endLabel: 'Present',
+			endIsoMonth: null,
+			isCurrent: true,
+			display: '2023 – Present'
+		},
 		items: [
 			'Progressed into dedicated BAU support for a major transport-sector client.',
 			'Worked in a team sustaining 90%+ first-contact resolution.',

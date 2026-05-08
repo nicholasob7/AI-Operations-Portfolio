@@ -1,8 +1,32 @@
 import { canonicalSource } from '$lib/canonical/source';
+import {
+	resumeCurrentEmployment,
+	resumeCurrentEmploymentLocationPeriodLine,
+	resumeCurrentEmploymentRoleLine
+} from '$lib/content/resume';
 
 export const prerender = true;
 
 const machineProjectionTag = 'machine_recoverable';
+
+const currentEmploymentProjection = {
+	role: resumeCurrentEmployment.role,
+	employer: resumeCurrentEmployment.employer,
+	location: resumeCurrentEmployment.location,
+	start: {
+		label: resumeCurrentEmployment.period.startLabel,
+		iso_month: resumeCurrentEmployment.period.startIsoMonth
+	},
+	end: {
+		label: resumeCurrentEmployment.period.endLabel,
+		iso_month: resumeCurrentEmployment.period.endIsoMonth,
+		is_current: resumeCurrentEmployment.period.isCurrent
+	},
+	display: {
+		role_employer: resumeCurrentEmploymentRoleLine,
+		location_period: resumeCurrentEmploymentLocationPeriodLine
+	}
+};
 
 const includedClaimIds = new Set(
 	canonicalSource.claims
@@ -376,9 +400,11 @@ const entrySpecs = [
 		label: 'Resume Identity and Context',
 		entry_type: 'resume_section',
 		entry_semantic_type: 'summary_surface',
-		public_summary: 'Resume header identity plus context statements about AI growth, projects, and technical direction.',
+		public_summary:
+			'Resume current employment, header identity, and context statements about AI growth, projects, and technical direction.',
+		current_employment: currentEmploymentProjection,
 		contextIds: ['ctx_resume_identity', 'ctx_resume_context'],
-		claimIds: ['clm_resume_identity', 'clm_resume_context_points'],
+		claimIds: ['clm_resume_current_employment', 'clm_resume_identity', 'clm_resume_context_points'],
 		relationshipIds: ['rel_resume_identity_to_capability', 'rel_resume_context_to_direction'],
 		signalIds: ['sig_resume_capability', 'sig_resume_direction'],
 		projection_notes: ['Resume-facing identity and direction section.']
@@ -549,6 +575,7 @@ const entries = entrySpecs.map((entry) => {
 				.map(getClaim)
 				.filter(isDefined)
 		),
+		...('current_employment' in entry ? { current_employment: entry.current_employment } : {}),
 		projection_notes: entry.projection_notes
 	};
 });

@@ -1,3 +1,10 @@
+import {
+	resumeCurrentEmployment,
+	resumeCurrentEmploymentLocationPeriodLine,
+	resumeCurrentEmploymentRoleLine,
+	resumeInitiativeMetadata
+} from '../content/resume';
+
 export type ClaimOrigin =
 	| 'direct_self_authored'
 	| 'descriptive_summary'
@@ -426,6 +433,7 @@ export const canonicalSource: {
 				'Broad enterprise IT operations capability across service desk, endpoint support, vendor coordination, process improvement, and AI-assisted operational work.',
 			supportingIds: [
 				'clm_resume_identity',
+				'clm_resume_current_employment',
 				'clm_resume_initiative_completed',
 				'clm_resume_delegated_scope',
 				'clm_resume_progression_foundation',
@@ -1132,6 +1140,26 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_current_employment',
+			claimText: `Current employment: ${resumeCurrentEmploymentRoleLine}. ${resumeCurrentEmploymentLocationPeriodLine}.`,
+			claimKind: 'resume_current_employment',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_identity'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: `${resumeCurrentEmployment.role} at ${resumeCurrentEmployment.employer}, ${resumeCurrentEmployment.period.display}.`
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_summary', 'pdf_summary', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_identity',
 			claimText:
 				'Nicholas Francis O’Brien. Lower Hutt, New Zealand. nicko.obrien.ai@gmail.com. AI-Forward | Enterprise IT Operations | Process Improvement.',
@@ -1175,8 +1203,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_completed',
-			claimText:
-				'Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. The script was not at fault. This led to investigation of the install package itself.',
+			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. The script was not at fault. This led to investigation of the install package itself.`,
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1196,8 +1223,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_active',
-			claimText:
-				'Rebuilding the enterprise app package from the proven fix. Test-device validation is complete. Further rollout stages remain.',
+			claimText: `${resumeInitiativeMetadata.active.label} (${resumeInitiativeMetadata.active.period.display}). Rebuilding the enterprise app package from the proven fix. Test-device validation is complete. Further rollout stages remain.`,
 			claimKind: 'resume_initiative_active',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1239,7 +1265,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_progression_foundation',
 			claimText:
-				'Service Desk Foundation. Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
+				'Service Desk Foundation (November 2022 – approx. end of 2023). Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1260,7 +1286,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_progression_trusted_scope',
 			claimText:
-				'Trusted Operational Scope. Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle tasks within service desk scope.',
+				'Trusted Operational Scope (2023 – Present). Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle tasks within service desk scope.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',

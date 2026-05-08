@@ -11,7 +11,10 @@ import {
 	progressionStages,
 	qualifications,
 	resumeContactEmail,
+	resumeCurrentEmploymentLocationPeriodLine,
+	resumeCurrentEmploymentRoleLine,
 	resumeGitHubDisplay,
+	resumeInitiativeMetadata,
 	resumeLinkedInProfileDisplay,
 	resumeLocation,
 	resumeTwitterProfileDisplay,
@@ -61,6 +64,7 @@ const renderProgressionStages = () =>
 		.map(
 			(stage) => `<section class="subsection progression-stage">
 \t\t\t\t\t<h3>${escapeHtml(stage.title)}</h3>
+\t\t\t\t\t${stage.period ? `<p class="section-meta">${escapeHtml(stage.period.display)}</p>` : ''}
 \t\t\t\t\t${renderBulletList(stage.items)}
 \t\t\t\t</section>`
 		)
@@ -95,7 +99,10 @@ const renderResumePdfHtml = () => `<!doctype html>
 \t\t</section>
 
 \t\t<section class="section">
-\t\t\t<h2>NTT, Wellington — Present</h2>
+\t\t\t<div class="employment-heading">
+\t\t\t\t<h2 class="employment-title">${escapeHtml(resumeCurrentEmploymentRoleLine)}</h2>
+\t\t\t\t<p class="employment-meta">${escapeHtml(resumeCurrentEmploymentLocationPeriodLine)}</p>
+\t\t\t</div>
 
 \t\t\t<div class="section-grid">
 \t\t\t\t<section class="subsection">
@@ -106,11 +113,13 @@ const renderResumePdfHtml = () => `<!doctype html>
 
 \t\t\t\t\t\t<section class="subsection nested-deep">
 \t\t\t\t\t\t\t<h5>Completed</h5>
+\t\t\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.completed.label)} | ${escapeHtml(resumeInitiativeMetadata.completed.period.display)}</p>
 \t\t\t\t\t\t\t${renderBulletList(activeProjectCompleted)}
 \t\t\t\t\t\t</section>
 
 \t\t\t\t\t\t<section class="subsection nested-deep">
 \t\t\t\t\t\t\t<h5>Active</h5>
+\t\t\t\t\t\t\t<p class="section-meta">${escapeHtml(resumeInitiativeMetadata.active.label)} | ${escapeHtml(resumeInitiativeMetadata.active.period.display)}</p>
 \t\t\t\t\t\t\t${renderBulletList(activeProjectActive)}
 \t\t\t\t\t\t</section>
 \t\t\t\t\t</section>
