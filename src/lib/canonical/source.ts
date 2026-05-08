@@ -1202,6 +1202,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_summary', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_it_support_summary_compact',
+			claimText:
+				'IT Service Desk Analyst at NTT DATA with nearly four years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues. Dedicated BAU support analyst for a major New Zealand transport-sector client, contributing to 90%+ first-contact resolution through structured troubleshooting, documentation, resolution ownership, and escalation judgment.',
+			claimKind: 'resume_summary',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_current_role', 'ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Current compact IT support summary from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client identity remains bounded while support scope and operational performance signal remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_initiative_completed',
 			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to investigation of the install package itself.`,
 			claimKind: 'resume_initiative_completed',
@@ -1218,6 +1239,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'sensitive_substrate_withheld',
 				note: 'Major vendor application is intentionally unnamed and package substrate remains bounded.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_it_support_initiative_compact',
+			claimText:
+				'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application. Tested script versions on a dedicated test device. Script passed validation and entered production for individual endpoint failures. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+			claimKind: 'resume_initiative_completed',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: 'Compact IT support rendering of the completed remediation initiative from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Major vendor application remains intentionally unnamed while PowerShell remediation and production-use signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1263,6 +1305,27 @@ export const canonicalSource: {
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
 		{
+			id: 'clm_resume_it_support_delegated_scope_compact',
+			claimText:
+				'SME for privileged access requests across admin, local admin, shared, and external account types. Managed a printer queue serviced by a major external vendor. Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope. Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.',
+			claimKind: 'resume_delegated_scope',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_delegated_scope', 'ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support rendering of delegated scope from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Vendor names and internal workflow substrate remain bounded while queue, printer, and traceability scope remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
 			id: 'clm_resume_progression_foundation',
 			claimText:
 				'Service Desk Foundation (November 2022 – late 2023). Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
@@ -1280,6 +1343,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'bounded_withholding',
 				note: 'Client names are omitted while environment scale and sectors remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_it_support_progression_foundation_compact',
+			claimText:
+				'Service Desk Foundation (November 2022 – late 2023). Supported users in a 5,000+ user environment across shared-service and single-organisation clients. Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation. Resolved user, endpoint, application, access, and network issues across remote enterprise support workflows.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Compact IT support rendering of the foundation stage from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client names are omitted while environment scale and exact support workflow phrasing remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1346,6 +1430,27 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
+		{
+			id: 'clm_resume_it_support_progression_trusted_scope_compact',
+			claimText:
+				'Dedicated BAU Support — Major NZ Transport Client (2023 – Present). Progressed into dedicated BAU support for a major transport-sector client. Worked in a team sustaining 90%+ first-contact resolution. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces. Analysed endpoint performance and device health issues as part of day-to-day support.',
+			claimKind: 'resume_progression_stage',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence'],
+			statusOrProgression: {
+				status: 'complete',
+				progressionNote: 'Compact IT support rendering of the trusted-scope stage from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Client identity remains bounded while exact IT support phrasing for identity and Microsoft administration surfaces remains public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
 			{
 				id: 'clm_resume_skills_identity_access',
 				claimText:
@@ -1358,6 +1463,27 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_it_support_skills_identity_access_compact',
+			claimText:
+				'Directory/access: Active Directory; account lifecycle, local/admin/privileged/service/shared/external access, security groups.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support skills phrasing from the frozen one-page resume.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain',
@@ -1388,6 +1514,27 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
+		{
+			id: 'clm_resume_it_support_skills_m365_compact',
+			claimText:
+				'Microsoft administration: Microsoft 365 admin center, Intune, Entra ID, Exchange; identity, licensing, compliance, endpoint, app, messaging support.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support skills phrasing from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
 			{
 				id: 'clm_resume_skills_endpoint',
 				claimText:
@@ -1406,6 +1553,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'none',
 				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_it_support_skills_endpoint_compact',
+			claimText:
+				'Endpoint/hardware/network support: Windows troubleshooting, vendor apps, packaged installs, deployments, network troubleshooting, DNS/connectivity diagnosis.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support skills phrasing from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'bounded_withholding',
+				note: 'Specific vendor applications remain unnamed while exact support terminology remains public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1472,6 +1640,27 @@ export const canonicalSource: {
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
+		{
+			id: 'clm_resume_it_support_skills_service_ops_compact',
+			claimText:
+				'Service operations: ServiceNow, Jira Service Management; ITSM, incident/request ownership, escalation, SLA handling.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support skills phrasing from the frozen one-page resume.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
 			{
 				id: 'clm_resume_skills_knowledge',
 				claimText:
@@ -1484,6 +1673,27 @@ export const canonicalSource: {
 			statusOrProgression: {
 				status: 'active',
 				progressionNote: 'Current resume skill group.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'none',
+				note: ''
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_it_support_skills_knowledge_ai_ops_compact',
+			claimText:
+				'Technical tooling: remote/admin tools, knowledge bases, scripted fixes, PowerShell tooling, AI-assisted troubleshooting/scripting.',
+			claimKind: 'resume_skill_group',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_skills'],
+			signalIds: ['sig_resume_capability', 'sig_resume_judgment', 'sig_resume_direction'],
+			statusOrProgression: {
+				status: 'active',
+				progressionNote: 'Compact IT support tooling phrasing from the frozen one-page resume.'
 			},
 			inferenceLabel: 'explicit',
 			releaseState: 'retain',
