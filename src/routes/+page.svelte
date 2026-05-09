@@ -148,6 +148,7 @@
 <PortraitIntro
 	src={homeEntryImage}
 	enabled={homeUsesPortraitEntry}
+	pathname={homeEntrySurface.path}
 	onStateChange={handleHomepagePortraitState}
 />
 

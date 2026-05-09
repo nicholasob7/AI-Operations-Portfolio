@@ -76,7 +76,11 @@
 	/>
 </svelte:head>
 
-<PortraitIntro src={projectionEntryImage} enabled={projectionUsesPortraitEntry} />
+<PortraitIntro
+	src={projectionEntryImage}
+	enabled={projectionUsesPortraitEntry}
+	pathname={document.htmlPath}
+/>
 
 <main class="resume-detail-page">
 	<div class="resume-print-hidden">

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import PortraitIntro, { type PortraitIntroState } from '$lib/components/PortraitIntro.svelte';
+	import { browser } from '$app/environment';
 	import {
 		resumeContactItems,
 		resumeCurrentEmploymentLocationPeriodLine,
@@ -8,6 +9,7 @@
 	} from '$lib/content/resume';
 	import { getHumanVisibleResumeProjections } from '$lib/content/resume-projections';
 	import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
+	import { willAutoRunPortraitIntro } from '$lib/portrait-intro';
 	import { canonicalOrigin } from '$lib/site';
 	import { onMount } from 'svelte';
 
@@ -19,10 +21,13 @@
 	const resumeSocialImage = resumeEntryImage ? `${canonicalOrigin}${resumeEntryImage}` : null;
 	const resumeUsesPortraitEntry = isPortraitEntry(resumeEntrySurface);
 	const resumeProjections = getHumanVisibleResumeProjections();
+	const resumeAutomaticIntroShouldRun = browser
+		? willAutoRunPortraitIntro(resumeEntrySurface.path)
+		: resumeUsesPortraitEntry;
 
-	let showResumePortraitOverlay = $state(resumeUsesPortraitEntry);
+	let showResumePortraitOverlay = $state(resumeUsesPortraitEntry && resumeAutomaticIntroShouldRun);
 	let fadeResumePortraitOverlay = $state(false);
-	let resumeIntroBooting = $state(resumeUsesPortraitEntry);
+	let resumeIntroBooting = $state(resumeUsesPortraitEntry && resumeAutomaticIntroShouldRun);
 	const resumeActions: DestinationAction[] = [
 		{
 			id: 'home',
@@ -90,6 +95,7 @@
 <PortraitIntro
 	src={resumeEntryImage}
 	enabled={resumeUsesPortraitEntry}
+	pathname={resumeEntrySurface.path}
 	onStateChange={handleResumePortraitState}
 />
 

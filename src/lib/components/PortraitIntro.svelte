@@ -16,6 +16,7 @@
 		portraitIntroFadeDuration,
 		portraitIntroFadeMs,
 		portraitIntroHoldMs,
+		registerAutomaticPortraitIntroMount,
 		subscribePortraitIntroReplay,
 		type PortraitIntroHandoff
 	} from '$lib/portrait-intro';
@@ -24,10 +25,11 @@
 		src: string | null;
 		alt?: string;
 		enabled?: boolean;
+		pathname?: string | null;
 		onStateChange?: (state: PortraitIntroState) => void;
 	};
 
-	let { src, alt = '', enabled = true, onStateChange }: Props = $props();
+	let { src, alt = '', enabled = true, pathname = null, onStateChange }: Props = $props();
 
 	let activeSrc = $state<string | null>(null);
 	let activeAlt = $state('');
@@ -123,10 +125,10 @@
 		}, portraitIntroFadeMs);
 	};
 
-	const runIntro = (handoff: PortraitIntroHandoff | null = null) => {
+	const runIntro = (handoff: PortraitIntroHandoff | null = null, automaticShouldRun = enabled) => {
 		const nextSrc = handoff?.src ?? src;
 		const nextAlt = handoff?.alt ?? alt;
-		const shouldRun = Boolean(handoff?.src || (enabled && nextSrc));
+		const shouldRun = Boolean(handoff?.src || (automaticShouldRun && nextSrc));
 		const runId = ++introRunId;
 
 		clearTimers();
@@ -175,7 +177,10 @@
 		const unsubscribeReplay = subscribePortraitIntroReplay((replayHandoff) => {
 			runIntro(replayHandoff);
 		});
-		runIntro(handoff);
+		const automaticShouldRun = handoff?.src
+			? true
+			: enabled && registerAutomaticPortraitIntroMount(pathname);
+		runIntro(handoff, automaticShouldRun);
 
 		return () => {
 			unsubscribeReplay();
