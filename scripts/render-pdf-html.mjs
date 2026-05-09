@@ -40,6 +40,7 @@ import {
 	defaultResumeProjectionId,
 	getProjectedProgressionStages,
 	getProjectedSkillGroups,
+	isResumeProjectionId,
 	resumeProjections
 } from '../src/lib/content/resume-projections.ts';
 import {
@@ -55,6 +56,15 @@ const requestedTargets = process.argv.slice(2);
 const targetSet = new Set(
 	requestedTargets.length > 0 ? requestedTargets : ['resume', 'remediation', 'migration']
 );
+const resumeProjectionFilter = requestedTargets[0] === 'resume' ? requestedTargets[1] : undefined;
+
+if (resumeProjectionFilter !== undefined && !isResumeProjectionId(resumeProjectionFilter)) {
+	throw new Error(
+		`Unknown resume projection id "${resumeProjectionFilter}". Expected one of: ${resumeProjections
+			.map((projection) => projection.id)
+			.join(', ')}`
+	);
+}
 
 const escapeHtml = (value) =>
 	value
@@ -396,7 +406,12 @@ const renderProjectPdfHtml = (detail, title) => `<!doctype html>
 await mkdir(generatedDir, { recursive: true });
 
 if (targetSet.has('resume')) {
-	for (const resumeProjection of resumeProjections) {
+	const projectionsToRender =
+		resumeProjectionFilter === undefined
+			? resumeProjections
+			: resumeProjections.filter((resumeProjection) => resumeProjection.id === resumeProjectionFilter);
+
+	for (const resumeProjection of projectionsToRender) {
 		await writeFile(
 			path.join(generatedDir, resumeProjection.pdf.generatedHtmlFilename),
 			renderResumePdfHtml(resumeProjection),
@@ -404,10 +419,12 @@ if (targetSet.has('resume')) {
 		);
 	}
 
+	const shouldWriteDefaultHtml =
+		resumeProjectionFilter === undefined || resumeProjectionFilter === defaultResumeProjectionId;
 	const defaultProjection = resumeProjections.find(
 		(resumeProjection) => resumeProjection.id === defaultResumeProjectionId
 	);
-	if (defaultProjection) {
+	if (shouldWriteDefaultHtml && defaultProjection) {
 		await writeFile(path.join(generatedDir, 'resume-bw.html'), renderResumePdfHtml(defaultProjection), 'utf8');
 	}
 }
