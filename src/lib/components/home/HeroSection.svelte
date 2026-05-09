@@ -14,10 +14,10 @@
 		<div class="hero-aurora-frame hero-aurora-frame-4"></div>
 	</div>
 	<h1>Nicko O'Brien</h1>
-	<p class="tagline">AI Operations Portfolio</p>
+	<p class="tagline">IT Professional Profile</p>
 	<p class="proof">
-		Technical communication, structured reasoning, and deterministic AI delivery for enterprise operations and
-		automation.
+		Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
+		reviewed professional profile.
 	</p>
 	<div class="links">
 		<div class="hero-actions" aria-label="Primary actions">
@@ -34,7 +34,7 @@
 				data-sveltekit-preload-code="hover"
 				href="/resume"
 			>
-				Resume
+				View Resumes
 			</a>
 		</div>
 	</div>

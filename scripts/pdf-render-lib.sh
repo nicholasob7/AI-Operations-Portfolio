@@ -31,7 +31,7 @@ generate_pdf() {
 	local browser_bin="$1"
 	local input_html="$2"
 	local output_pdf="$3"
-	local output_dir output_name temp_pdf
+	local output_dir output_name temp_pdf script_dir fallback_renderer allow_text_fallback
 
 	if [[ ! -f "$input_html" ]]; then
 		echo "Input HTML not found: $input_html" >&2
@@ -40,6 +40,9 @@ generate_pdf() {
 
 	output_dir="$(dirname "$output_pdf")"
 	output_name="$(basename "$output_pdf")"
+	script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+	fallback_renderer="$script_dir/render-html-text-pdf.mjs"
+	allow_text_fallback="${ALLOW_TEXT_PDF_FALLBACK:-0}"
 	mkdir -p "$output_dir"
 	temp_pdf="$(mktemp "$output_dir/.${output_name}.tmp.XXXXXX")"
 
@@ -49,8 +52,18 @@ generate_pdf() {
 		--no-pdf-header-footer \
 		"--print-to-pdf=$temp_pdf" \
 		"file://$input_html"; then
-		rm -f "$temp_pdf"
-		return 1
+		if [[ "$allow_text_fallback" == "1" ]]; then
+			echo "Chrome PDF rendering failed for $input_html; using opt-in text PDF fallback." >&2
+			if ! node --experimental-strip-types "$fallback_renderer" "$input_html" "$temp_pdf"; then
+				rm -f "$temp_pdf"
+				return 1
+			fi
+		else
+			echo "Chrome PDF rendering failed for $input_html." >&2
+			echo "Set ALLOW_TEXT_PDF_FALLBACK=1 to permit plain-text fallback rendering." >&2
+			rm -f "$temp_pdf"
+			return 1
+		fi
 	fi
 
 	if [[ ! -s "$temp_pdf" ]]; then
@@ -59,5 +72,6 @@ generate_pdf() {
 		return 1
 	fi
 
+	chmod 0644 "$temp_pdf"
 	mv -f "$temp_pdf" "$output_pdf"
 }

@@ -18,12 +18,12 @@
 	import './home.css';
 
 	const githubUrl = 'https://github.com/nicholasob7';
-	const homeTitle = "Nicko O'Brien | AI-Forward IT Operations and Automation";
-	const homeSocialTitle = "Nicko O'Brien | Personal Website";
+	const homeTitle = "Nicko O'Brien | IT Professional Profile";
+	const homeSocialTitle = "Nicko O'Brien | IT Professional Profile";
 	const homeDescription =
-		"Personal website of Nicko O'Brien, an AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery.";
+		"Professional profile of Nicko O'Brien with role-specific resumes, bounded public evidence, and a canonical profile and projection index.";
 	const homeSocialDescription =
-		'AI-forward IT professional focused on high-precision technical communication, deterministic AI outcomes, automation, and delivery.';
+		'IT professional profile with support foundation, technical operations evidence, and AI/process improvement capability.';
 	const homeEntrySurface = resolveEntrySurface('home');
 	const homeEntryImage = getEntryImage(homeEntrySurface);
 	const homeSocialImage = homeEntryImage ? `${canonicalOrigin}${homeEntryImage}` : null;
@@ -148,6 +148,7 @@
 <PortraitIntro
 	src={homeEntryImage}
 	enabled={homeUsesPortraitEntry}
+	pathname={homeEntrySurface.path}
 	onStateChange={handleHomepagePortraitState}
 />
 
@@ -157,7 +158,9 @@
 		class="page"
 	>
 	<section class="machine-profile-notice" aria-label="Machine-readable profile pointer">
-		<a href="/canonical.json" rel="alternate" type="application/json">Machine-readable profile: /canonical.json</a>
+		<a href="/canonical.json" rel="alternate" type="application/json"
+			>Canonical profile and projection index: /canonical.json</a
+		>
 	</section>
 
 	<HeroSection

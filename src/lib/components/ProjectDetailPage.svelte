@@ -25,7 +25,11 @@
 	});
 </script>
 
-<PortraitIntro src={projectEntryImage} enabled={projectUsesPortraitEntry} />
+<PortraitIntro
+	src={projectEntryImage}
+	enabled={projectUsesPortraitEntry}
+	pathname={entrySurface?.path ?? null}
+/>
 
 <main class="doc-page">
 	<DestinationActions {actions} {panelId} portraitHandoff={{ src: projectEntryImage }} />

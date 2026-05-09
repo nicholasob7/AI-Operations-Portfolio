@@ -2,15 +2,28 @@
 
 set -euo pipefail
 
-repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+projection_id="${1:-}"
 
-. "$repo_root/scripts/pdf-render-lib.sh"
+# Legacy resume PDF generation is intentionally disabled.
+# Active resume PDFs are reviewed static artifacts until a replacement
+# renderer consumes src/lib/content/resume-documents.ts.
 
-readonly chrome_bin="$(resolve_chrome_bin)"
+if [[ -n "$projection_id" ]]; then
+	case "$projection_id" in
+		default|resume-bw|Resume_Default|Nicholas_OBrien_Resume_Default)
+			echo "Retired broad/default resume artifacts must not be regenerated: $projection_id" >&2
+			exit 1
+			;;
+		it_support|technical_operations|ai_process)
+			echo "Legacy resume PDF generation is retired. Active resume PDFs are reviewed static artifacts until the resume-documents.ts renderer is implemented." >&2
+			exit 1
+			;;
+		*)
+			echo "Unsupported resume projection for PDF generation: $projection_id" >&2
+			exit 1
+			;;
+	esac
+fi
 
-node --experimental-strip-types "$repo_root/scripts/render-pdf-html.mjs" resume
-
-generate_pdf \
-	"$chrome_bin" \
-	"$repo_root/scripts/generated/resume-bw.html" \
-	"$repo_root/static/resume-bw.pdf"
+echo "Legacy resume PDF generation is retired. Do not regenerate resume-bw or default resume artifacts. Active role-specific PDFs remain reviewed static artifacts until the resume-documents.ts renderer is implemented." >&2
+exit 1

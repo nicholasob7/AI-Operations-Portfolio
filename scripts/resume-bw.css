@@ -96,12 +96,40 @@ h2 {
 	font-weight: 700;
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
+	break-after: avoid;
+	page-break-after: avoid;
+}
+
+.employment-heading {
+	margin-bottom: 7px;
+}
+
+.employment-title {
+	margin: 0;
+	font-size: 12.8pt;
+	line-height: 1.16;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.employment-meta,
+.section-meta {
+	margin: 2px 0 0;
+	font-size: 9.4pt;
+	font-weight: 700;
+	line-height: 1.22;
+}
+
+.section-meta {
+	color: #333;
 }
 
 h3 {
 	margin: 0;
 	font-size: 10.6pt;
 	font-weight: 700;
+	break-after: avoid;
+	page-break-after: avoid;
 }
 
 h4,
@@ -174,6 +202,156 @@ p {
 .bullet-list li {
 	margin: 0 0 2px;
 	line-height: 1.24;
+}
+
+.compact-section {
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
+
+.compact-subsection {
+	margin-top: 5px;
+}
+
+.compact-list {
+	margin-top: 4px;
+}
+
+.summary-paragraphs {
+	margin: 4px 0 0;
+	line-height: 1.27;
+}
+
+.compact-employment-heading {
+	margin-bottom: 0;
+}
+
+.compact-qualifications {
+	margin-bottom: 0;
+}
+
+.resume-compact-it-support {
+	font-size: 9.9pt;
+}
+
+.resume-compact-it-support .compact-section p,
+.resume-compact-it-support .compact-section li {
+	font-size: 10.5pt;
+}
+
+.resume-compact-technical-operations {
+	font-size: 9.7pt;
+}
+
+.resume-compact-technical-operations .compact-section p,
+.resume-compact-technical-operations .compact-section li {
+	font-size: 9.85pt;
+	line-height: 1.2;
+}
+
+.resume-compact-ai-process {
+	font-size: 9.65pt;
+}
+
+.resume-compact-ai-process .compact-section p,
+.resume-compact-ai-process .compact-section li {
+	font-size: 9.7pt;
+	line-height: 1.18;
+}
+
+.resume-compact-it-support .hero {
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
+
+.resume-compact-it-support .hero-line {
+	margin-top: 4px;
+}
+
+.resume-compact-technical-operations .hero {
+	padding-bottom: 7px;
+	margin-bottom: 8px;
+}
+
+.resume-compact-technical-operations .hero-line {
+	margin-top: 4px;
+}
+
+.resume-compact-ai-process .hero {
+	padding-bottom: 7px;
+	margin-bottom: 8px;
+}
+
+.resume-compact-ai-process .hero-line {
+	margin-top: 4px;
+}
+
+.resume-compact-it-support .contact-block {
+	margin-top: 5px;
+	gap: 2px 10px;
+	font-size: 9.2pt;
+	line-height: 1.2;
+}
+
+.resume-compact-technical-operations .contact-block {
+	margin-top: 5px;
+	gap: 2px 10px;
+	font-size: 9.05pt;
+	line-height: 1.18;
+}
+
+.resume-compact-ai-process .contact-block {
+	margin-top: 5px;
+	gap: 2px 10px;
+	font-size: 9pt;
+	line-height: 1.16;
+}
+
+.resume-compact-it-support .section {
+	margin-bottom: 9px;
+}
+
+.resume-compact-technical-operations .section {
+	margin-bottom: 7px;
+}
+
+.resume-compact-technical-operations .compact-list {
+	margin-top: 3px;
+}
+
+.resume-compact-ai-process .section {
+	margin-bottom: 7px;
+}
+
+.resume-compact-ai-process .compact-list {
+	margin-top: 3px;
+}
+
+.resume-compact-it-support h2 {
+	margin-bottom: 6px;
+	font-size: 11.2pt;
+}
+
+.resume-compact-it-support h3 {
+	font-size: 10.2pt;
+}
+
+.resume-compact-it-support .summary-paragraphs {
+	margin-top: 4px;
+	line-height: 1.24;
+}
+
+.resume-compact-it-support .bullet-list {
+	margin-top: 5px;
+}
+
+.resume-compact-it-support .bullet-list li {
+	margin-bottom: 2px;
+	line-height: 1.23;
+}
+
+.resume-compact-it-support .compact-subsection {
+	margin-top: 6px;
 }
 
 .skill-list {

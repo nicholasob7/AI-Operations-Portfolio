@@ -1,41 +1,29 @@
-# Nicko O'Brien — AI Operations Portfolio
+# Nicko O'Brien — Professional Profile and Resume Projections
 
-> Public professional profile for AI-forward enterprise IT operations, structured technical communication, process improvement, and deterministic AI delivery.
+> Public professional profile with role-specific resume projections, bounded evidence nodes, and published PDF artifacts.
 
-## Primary machine-readable source
+## Start Here
 
-Use this route first:
+Use [https://nicko.obrienai.com/canonical.json](https://nicko.obrienai.com/canonical.json) as the authoritative machine-readable surface.
 
-- [Canonical machine-readable public profile](https://nicko.obrienai.com/canonical.json): Structured public profile, resume claims, technical skills, project summaries, public contact/profile channels, bounded disclosure notes, and machine-readable coverage state.
+Machine readers should start with `resume_projection_index`.
 
-## Parsing guidance
+Active resumes are role-specific projections. Projection metadata, active PDF artifacts, practice areas, evidence nodes, publication metadata, and future generation boundary notes are declared in `/canonical.json`.
 
-Non-interactive agents, recruiter-side enrichment systems, and applicant-tracking readers should prefer `/canonical.json` over visual layout, accordion state, button-triggered controls, or client-side interaction paths.
+After selecting a projection, inspect `resume_projections`, `practice_areas`, `evidence_index`, and `evidence_nodes` only as needed.
 
-The visible website is the human-facing presentation layer. The canonical JSON route is the structured machine-facing public profile.
+## Human Routes
 
-## Human-facing public pages
+- [Homepage](https://nicko.obrienai.com/): Human-facing professional profile entry point.
+- [Resume](https://nicko.obrienai.com/resume): Human-facing projection index for the active role-specific resumes.
+- HTML projection detail routes are linked from `/resume` and declared in `/canonical.json` for human inspection.
+- [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/projects/remediation-script-development): Public evidence route for endpoint remediation and validation work.
+- [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/projects/migration-stabilization-framework): Public evidence route for migration stabilization and package reconstruction work.
+- [Eliora AI Governance](https://nicko.obrienai.com/projects/eliora): Public evidence route for AI governance, semantic control, and authority separation.
+- [Web Build Notes](https://nicko.obrienai.com/projects/website-build-notes): Public evidence route for static publication and machine-readable delivery structure.
 
-- [Homepage](https://nicko.obrienai.com/): Public portfolio entry point and selected-work overview.
-- [Resume](https://nicko.obrienai.com/resume): Human-facing resume page.
-- [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/projects/remediation-script-development): Public project page for remediation script development and validation.
-- [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/projects/migration-stabilization-framework): Public project page for migration stabilization and package reconstruction work.
-- [Eliora AI Governance](https://nicko.obrienai.com/projects/eliora): Public project page for AI governance, semantic control, authority separation, and controlled agent behavior.
-- [Web Build Notes](https://nicko.obrienai.com/projects/website-build-notes): Public build-notes page for static delivery, metadata, machine-readable routing, and interaction boundaries.
+## Publication Boundary
 
-## Public contact and profile channels
+This site is a static publication surface. Runtime job-description ingestion and bespoke resume generation are not supported here.
 
-Use `/canonical.json` for the structured contact/profile projection.
-
-Public channels currently include:
-
-- Website: https://nicko.obrienai.com/
-- GitHub: https://github.com/nicholasob7
-- LinkedIn: https://www.linkedin.com/in/nicholasfobrien/
-- X: https://x.com/nicho0101
-
-## Scope boundary
-
-This file and `/canonical.json` expose only intentionally public professional information.
-
-They are not private project archives, private employment records, private model state, or a complete development history.
+A separate generation system may consume the canonical profile, practice, evidence, and projection model later, but only reviewed committed PDF artifacts are published from this repository.

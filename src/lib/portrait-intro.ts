@@ -10,6 +10,48 @@ export type PortraitIntroHandoff = {
 
 let pendingPortraitIntroHandoff: PortraitIntroHandoff | null = null;
 const portraitIntroReplayListeners = new Set<(handoff: PortraitIntroHandoff | null) => void>();
+let currentPortraitRouteArea: 'resume' | 'other' | null = null;
+
+const normalizePathname = (pathname: string) => {
+	if (!pathname) return '/';
+	const normalized = pathname.replace(/\/+$/g, '');
+	return normalized === '' ? '/' : normalized;
+};
+
+export const isResumeAreaPath = (pathname: string): boolean => {
+	const normalized = normalizePathname(pathname);
+	return (
+		normalized === '/resume' ||
+		normalized === '/resume/it-support' ||
+		normalized === '/resume/technical-operations' ||
+		normalized === '/resume/ai-process'
+	);
+};
+
+const getPortraitRouteArea = (pathname: string | null | undefined) => {
+	if (!pathname) return null;
+	return isResumeAreaPath(pathname) ? 'resume' : 'other';
+};
+
+export const willAutoRunPortraitIntro = (pathname: string | null | undefined) => {
+	const nextArea = getPortraitRouteArea(pathname);
+	if (nextArea === 'resume') {
+		return currentPortraitRouteArea !== 'resume';
+	}
+
+	return true;
+};
+
+export const registerAutomaticPortraitIntroMount = (pathname: string | null | undefined) => {
+	const nextArea = getPortraitRouteArea(pathname);
+	const shouldRun = nextArea === 'resume' ? currentPortraitRouteArea !== 'resume' : true;
+
+	if (nextArea) {
+		currentPortraitRouteArea = nextArea;
+	}
+
+	return shouldRun;
+};
 
 export const setPortraitIntroHandoff = (handoff: PortraitIntroHandoff) => {
 	pendingPortraitIntroHandoff = handoff.src ? handoff : null;
