@@ -91,6 +91,9 @@
 	}
 
 	.resume-document-panel {
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
 		min-width: 0;
 		padding: 1rem 1.05rem;
 		border: 1px solid transparent;
@@ -115,6 +118,7 @@
 		font-size: clamp(1.8rem, 4vw, 2.4rem);
 		line-height: 1.05;
 		color: #f4f8ff;
+		overflow-wrap: anywhere;
 	}
 
 	.resume-document-subheading,
@@ -126,6 +130,7 @@
 		margin: 0;
 		color: #d4def3;
 		line-height: 1.58;
+		overflow-wrap: anywhere;
 	}
 
 	.resume-document-role-family {
@@ -168,5 +173,20 @@
 		color: #d4def3;
 		text-decoration-color: rgba(165, 205, 255, 0.45);
 		text-underline-offset: 0.14em;
+	}
+
+	@media (max-width: 640px) {
+		.resume-document-panel {
+			padding: 0.9rem 0.85rem;
+		}
+
+		h1 {
+			font-size: clamp(1.6rem, 9vw, 2rem);
+		}
+
+		.resume-document-list,
+		.resume-document-contact-list {
+			padding-left: 1rem;
+		}
 	}
 </style>
