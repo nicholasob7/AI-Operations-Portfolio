@@ -366,7 +366,7 @@ export const qualifications = [
 	'AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
 	'Bachelor of Arts, History and Political Science — Griffith University',
 	'NTT internal certifications, including AI training',
-	'NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework'
+	'NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support coursework'
 ];
 
 export type ItSupportCompactExperienceBlock = {
@@ -376,7 +376,7 @@ export type ItSupportCompactExperienceBlock = {
 };
 
 export const itSupportProfessionalSummary = [
-	'IT Service Desk Analyst at NTT DATA with nearly four years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues.',
+	'IT Service Desk Analyst at NTT DATA with over three and a half years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues.',
 	'Dedicated BAU support analyst for a major New Zealand transport-sector client, contributing to 90%+ first-contact resolution through structured troubleshooting, documentation, resolution ownership, and escalation judgment.'
 ];
 
@@ -393,7 +393,7 @@ export const itSupportRelevantExperience: ItSupportCompactExperienceBlock[] = [
 		stageId: 'service_desk_foundation',
 		titleWithPeriod: 'Service Desk Foundation | November 2022 – late 2023',
 		items: [
-			'Supported users in a 5,000+ user environment across shared-service and single-organisation clients.',
+			'Supported users in a 5,000+ user enterprise environment across shared-service support operations.',
 			'Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation.',
 			'Resolved user, endpoint, application, access, and network issues across remote enterprise support workflows.'
 		]
@@ -418,16 +418,17 @@ export const itSupportAdditionalScope = [
 ];
 
 export const itSupportSelectedTechnicalImprovement = [
-	'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application.',
-	'Tested script versions on a dedicated test device.',
+	'Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue.',
+	'Tested versions on a dedicated device before production use.',
 	'Script passed validation and entered production for individual endpoint failures.',
-	'Used remediation results to identify package-level deployment issues requiring further reconstruction.'
+	'Recognised internally for initiative, documentation, manager endorsement, and cross-team circulation.',
+	'Used results to identify package-level deployment issues requiring further reconstruction.'
 ];
 
 export const itSupportCompactQualifications = [
 	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
 	'BA History and Political Science — Griffith University | NTT internal certifications, including AI training',
-	'NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework'
+	'NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support coursework'
 ];
 
 export const technicalOperationsSummary = [
