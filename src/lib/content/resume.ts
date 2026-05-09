@@ -432,39 +432,40 @@ export const itSupportCompactQualifications = [
 ];
 
 export const technicalOperationsSummary = [
-	'IT Service Desk Analyst at NTT DATA with hands-on technical operations experience across endpoint remediation, package reconstruction, vendor application support, deployment support, and privileged access handling.',
-	'Additional scope includes endpoint performance and device health analysis, printer/vendor transition work, queue/process improvement, and AI-assisted research and scripting.'
+	'IT Service Desk Analyst at NTT DATA with hands-on experience in endpoint remediation, application support, and Microsoft administration.',
+	'Technical focus includes deployment diagnostics, package-level fault investigation, endpoint health, privileged access, and scripted remediation.',
+	'Additional scope includes printer/vendor transition work, queue/process improvement, technical documentation, and AI-assisted research.'
 ];
 
 export const technicalOperationsSelectedDelivery = [
-	'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application.',
-	'Script passed validation and entered production for individual endpoint failures after dedicated test-device work.',
-	'Used remediation results to identify package-level deployment issues requiring further reconstruction.',
-	'Rebuilding the enterprise app package from the proven fix; test-device validation is complete and further rollout stages remain.'
+	'Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings.',
+	'Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use.',
+	'Recognised internally for initiative, documentation, manager endorsement, and circulation to relevant teams. Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction.'
 ];
 
 export const technicalOperationsScope = [
-	'Analysed endpoint performance and device health issues as part of day-to-day support.',
-	'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling.',
-	'Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope.',
-	'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.'
+	'Analysed endpoint performance and device health issues during day-to-day support. Investigated recurring endpoint/application failures through device state and deployment symptoms.',
+	'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces. Handled privileged access requests across admin, local admin, shared, and external account types.',
+	'Supported printer vendor transition work. Resolved printer configuration issues beyond normal front-line scope.',
+	'Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Produced technical documentation and repeatable remediation guidance.'
 ];
 
 export const technicalOperationsCoreSkillLines = [
-	'Endpoint/device: Intune, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration',
-	'Applications/deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support',
-	'Access/admin: Active Directory, Entra ID, security groups, privileged access, account lifecycle, Microsoft 365 admin center, licensing',
-	'Tooling/process: ServiceNow, Jira Service Management, ITSM, remote/admin tools, troubleshooting, scripted fixes, PowerShell tooling, AI-assisted troubleshooting/scripting'
+	'Endpoint/device: Intune, compliance, BitLocker recovery, Windows support, drivers, disk space, device administration, endpoint health',
+	'Applications/deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment diagnostics, remediation validation, package-level deployment diagnosis',
+	'Access/admin: Active Directory, Entra ID, security groups, privileged access, account lifecycle, Microsoft 365 admin center, Exchange, licensing',
+	'Tooling/process: ServiceNow, Jira Service Management, ITSM, remote/admin tools, operational troubleshooting, scripted fixes, PowerShell tooling, technical documentation, AI-assisted troubleshooting/scripting'
 ];
 
 export const technicalOperationsSupportingFoundation = [
-	'Supported users in a 5,000+ user environment across shared-service and single-organisation clients.',
+	'Supported users in a 5,000+ user enterprise environment across shared-service support operations.',
 	'Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation.'
 ];
 
 export const technicalOperationsCompactQualifications = [
 	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
-	'NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support'
+	'BA History and Political Science — Griffith University',
+	'NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support coursework'
 ];
 
 export const aiProcessSummary = [

@@ -218,7 +218,7 @@ const renderItSupportCompactContent = () => `<section class="section compact-sec
 \t\t\t${renderBulletList(itSupportCompactQualifications, 'bullet-list compact-list')}
 \t\t</section>`;
 
-const renderTechnicalOperationsCompactContent = () => `<section class="section compact-section">
+const renderTechnicalOperationsCompactContent = (projection) => `<section class="section compact-section">
 \t\t\t<h2>Technical Operations Summary</h2>
 \t\t\t${renderParagraphList(technicalOperationsSummary)}
 \t\t</section>
@@ -232,7 +232,7 @@ const renderTechnicalOperationsCompactContent = () => `<section class="section c
 \t\t</section>
 
 \t\t<section class="section compact-section">
-\t\t\t<h2>Selected Technical Delivery</h2>
+\t\t\t<h2>${escapeHtml(projection.compactSectionHeadings?.selectedDelivery ?? 'Selected Technical Delivery')}</h2>
 \t\t\t${renderBulletList(technicalOperationsSelectedDelivery, 'bullet-list compact-list')}
 \t\t</section>
 
@@ -247,7 +247,7 @@ const renderTechnicalOperationsCompactContent = () => `<section class="section c
 \t\t</section>
 
 \t\t<section class="section compact-section">
-\t\t\t<h2>Supporting Foundation</h2>
+\t\t\t<h2>${escapeHtml(projection.compactSectionHeadings?.supportingFoundation ?? 'Supporting Foundation')}</h2>
 \t\t\t${renderBulletList(technicalOperationsSupportingFoundation, 'bullet-list compact-list')}
 \t\t</section>
 
@@ -342,7 +342,7 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 			projection.pdfLayout === 'it_support_compact'
 				? renderItSupportCompactContent()
 				: projection.pdfLayout === 'technical_operations_compact'
-					? renderTechnicalOperationsCompactContent()
+					? renderTechnicalOperationsCompactContent(projection)
 					: projection.pdfLayout === 'ai_process_compact'
 						? renderAiProcessCompactContent()
 				: projection.sectionOrder.map((sectionId) => renderResumeSection(projection, sectionId)).join('\n\n\t\t')

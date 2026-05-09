@@ -31,6 +31,10 @@ export type ResumeProjection = {
 	promotedScopeIds: ResumeScopeId[];
 	progressionOrder: ResumeProgressionStageId[];
 	initiativePlacement: 'early' | 'standard' | 'late';
+	compactSectionHeadings?: {
+		selectedDelivery?: string;
+		supportingFoundation?: string;
+	};
 	pdf: {
 		label: string;
 		href: string;
@@ -160,7 +164,7 @@ export const resumeProjections = [
 			'infrastructure support',
 			'deployment support'
 		],
-		headline: 'Technical Operations | Endpoint Support | Deployment Improvement',
+		headline: 'Technical Operations | Endpoint Support | Deployment Diagnostics',
 		summary: [
 			'Enterprise support operator with current NTT DATA service desk grounding and hands-on endpoint, application, access, and deployment-support experience.',
 			'Strong fit for technical operations roles needing structured remediation, package reconstruction, privileged access handling, vendor application support, and process improvement.'
@@ -185,6 +189,10 @@ export const resumeProjections = [
 			'service_desk_foundation'
 		],
 		initiativePlacement: 'early',
+		compactSectionHeadings: {
+			selectedDelivery: 'Selected Technical Improvement | 2025 – Present',
+			supportingFoundation: 'Supporting Service Desk Foundation | November 2022 – late 2023'
+		},
 		pdf: {
 			label: 'Technical Operations PDF',
 			href: '/resumes/Nicholas_OBrien_Resume_Technical_Operations.pdf',
