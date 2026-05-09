@@ -116,15 +116,21 @@
 	.resume-detail-intro-copy {
 		display: grid;
 		gap: 0.8rem;
+		min-width: 0;
+		box-sizing: border-box;
 	}
 
 	.resume-detail-page {
+		width: min(100%, 1320px);
 		max-width: 1320px;
 		margin: 0 auto;
 		padding: 1.2rem 1rem calc(6.5rem + env(safe-area-inset-bottom));
 	}
 
 	.panel {
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
 		min-width: 0;
 		padding: 1rem 1.05rem;
 		border: 1px solid transparent;
@@ -177,6 +183,32 @@
 			0 0 0 1px rgba(255, 255, 255, 0.05) inset,
 			0 10px 22px rgba(4, 9, 22, 0.28);
 		cursor: pointer;
+	}
+
+	@media (max-width: 640px) {
+		.resume-detail-page {
+			width: 100%;
+			padding: 0.95rem 0.8rem 1.25rem;
+		}
+
+		.resume-detail-intro {
+			gap: 0.65rem;
+		}
+
+		.resume-detail-actions {
+			grid-template-columns: 1fr;
+			display: grid;
+		}
+
+		.resume-detail-action {
+			width: 100%;
+			min-width: 0;
+			text-align: center;
+		}
+
+		.resume-print-hidden :global(.destination-actions) {
+			display: none;
+		}
 	}
 
 	@media print {
