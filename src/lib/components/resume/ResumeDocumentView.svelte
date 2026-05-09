@@ -59,11 +59,16 @@
 			</section>
 		{/each}
 
-		<section class="resume-document-section" aria-labelledby="resume-contact-heading">
-			<h2 id="resume-contact-heading">Contact and Public Profile</h2>
+		<section
+			class="resume-document-section resume-document-contact-section"
+			aria-labelledby="resume-contact-heading"
+		>
+			<h2 id="resume-contact-heading" class="resume-document-contact-heading">
+				Contact and Public Profile
+			</h2>
 			<ul class="resume-document-contact-list">
 				{#each contactItems as item}
-					<li>
+					<li class={`resume-contact-item resume-contact-item-${item.id}`}>
 						<span class="resume-contact-label">{item.label}</span>
 						<a href={item.href}>{item.value}</a>
 					</li>

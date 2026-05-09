@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import PortraitIntro from '$lib/components/PortraitIntro.svelte';
 	import ResumeDocumentView from '$lib/components/resume/ResumeDocumentView.svelte';
@@ -22,11 +21,6 @@
 		: null;
 	const projectionUsesPortraitEntry = isPortraitEntry(projectionEntrySurface);
 
-	const printResume = () => {
-		if (!browser) return;
-		window.print();
-	};
-
 	const projectionActions = $derived([
 		{
 			id: 'resume-index',
@@ -36,17 +30,11 @@
 			preload: true
 		},
 		{
-			id: 'pdf',
-			label: 'PDF',
+			id: 'save-pdf',
+			label: 'Save PDF',
 			type: 'link' as const,
 			href: document.pdfPath,
 			download: `${document.slug}.pdf`
-		},
-		{
-			id: 'print',
-			label: 'Save PDF',
-			type: 'button' as const,
-			onclick: printResume
 		}
 	] satisfies DestinationAction[]);
 </script>
@@ -95,11 +83,11 @@
 		<div class="resume-detail-intro-copy">
 			<p class="resume-detail-eyebrow">Resume Actions</p>
 			<p class="resume-detail-note">
-				Read this resume on-site, then use Save PDF for a clean black-and-white output of the same content.
+				Read this resume on-site, then use Save PDF to open the reviewed one-page PDF version.
 			</p>
 			<div class="resume-detail-actions resume-print-hidden">
 				<a class="resume-detail-action" href="/resume" data-sveltekit-preload-code="hover">Back to Resume Versions</a>
-				<button class="resume-detail-action" type="button" onclick={printResume}>Save PDF</button>
+				<a class="resume-detail-action" href={document.pdfPath} download={`${document.slug}.pdf`}>Save PDF</a>
 			</div>
 		</div>
 	</section>
@@ -192,6 +180,11 @@
 	}
 
 	@media print {
+		@page {
+			size: A4;
+			margin: 8mm 9mm;
+		}
+
 		:global(body) {
 			color: #000;
 			background: #fff;
@@ -206,7 +199,13 @@
 		.resume-detail-page {
 			max-width: none;
 			padding: 0;
-			gap: 0.5rem;
+			gap: 0.35rem;
+		}
+
+		:global(.resume-document-body) {
+			display: flex;
+			flex-direction: column;
+			gap: 0.35rem;
 		}
 
 		.panel,
@@ -217,7 +216,8 @@
 			box-shadow: none;
 			background: #fff !important;
 			color: #000 !important;
-		}
+			font-size: 10.6pt;
+		 }
 
 		.resume-detail-eyebrow,
 		.resume-detail-note,
@@ -239,6 +239,90 @@
 
 		:global(.resume-document-section h2) {
 			border-top: 1px solid #000;
+		}
+
+		:global(.resume-document-header) {
+			gap: 0.2rem;
+		}
+
+		:global(.resume-document-panel h1) {
+			font-size: 17pt;
+			line-height: 1.02;
+		}
+
+		:global(.resume-document-eyebrow) {
+			display: none;
+		}
+
+		:global(.resume-document-paragraphs),
+		:global(.resume-document-groups),
+		:global(.resume-document-group),
+		:global(.resume-document-section) {
+			gap: 0.25rem;
+		}
+
+		:global(.resume-document-section h2) {
+			font-size: 10pt;
+			padding-top: 0.28rem;
+		}
+
+		:global(.resume-document-group h3) {
+			font-size: 9.4pt;
+		}
+
+		:global(.resume-document-subheading),
+		:global(.resume-document-role-family),
+		:global(.resume-document-paragraphs p),
+		:global(.resume-document-section li),
+		:global(.resume-document-contact-list a),
+		:global(.resume-contact-label) {
+			font-size: 9pt;
+			line-height: 1.26;
+		}
+
+		:global(.resume-document-list) {
+			margin: 0;
+			padding-left: 0.9rem;
+		}
+
+		:global(.resume-document-contact-section) {
+			order: -1;
+			display: block;
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
+		:global(.resume-document-contact-heading) {
+			display: none;
+		}
+
+		:global(.resume-document-contact-list) {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			gap: 0.35rem;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			font-size: 8.3pt;
+			line-height: 1.12;
+		}
+
+		:global(.resume-document-contact-list li) {
+			margin: 0;
+		}
+
+		:global(.resume-contact-label) {
+			font-size: 0.74rem;
+			margin-right: 0.18rem;
+		}
+
+		:global(.resume-contact-item-linkedin),
+		:global(.resume-contact-item-github),
+		:global(.resume-contact-item-twitter),
+		:global(.resume-contact-item-mobile) {
+			display: none !important;
 		}
 
 		:global(a) {
