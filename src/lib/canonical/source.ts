@@ -1183,7 +1183,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_context_points',
 			claimText:
-				'Deeply engaged in learning and applying AI in my own time. Building projects at different scales. Personal investment supports continued technical growth.',
+				'AI Operations | Process Improvement | Technical Analysis. Enterprise IT support professional applying AI-assisted research, scripting, documentation, and structured troubleshooting to operational support problems. Uses AI as a practical delivery aid for fault analysis, remediation design, workflow mapping, documentation, automation enablement, and escalation quality. Well suited to evolving operational environments where loose problems need to become documented workflows, scripts, decisions, or repeatable outputs. Self-directed AI systems work includes portfolio, resume projection, and canonical profile workflows with deterministic PDF and machine-readable profile outputs. Developing data visualization, assistant-design, Linux support, and AI governance projects as applied AI systems practice. Uses these projects to strengthen prompting, workflow design, documentation, deterministic outputs, technical communication, and operational analysis.',
 			claimKind: 'resume_context',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1246,7 +1246,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_ai_process_summary_compact',
 			claimText:
-				'AI-Forward Operations | Process Improvement | Technical Analysis. Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems. Portfolio evidence includes endpoint remediation, evidence-based package investigation, workflow improvement, and practical AI use grounded in current NTT DATA service desk operations.',
+				'AI Operations | Process Improvement | Technical Analysis. Enterprise IT support professional applying AI-assisted research, scripting, documentation, and structured troubleshooting to operational support problems. Uses AI as a practical delivery aid for fault analysis, remediation design, workflow mapping, documentation, automation enablement, and escalation quality. Well suited to evolving operational environments where loose problems need to become documented workflows, scripts, decisions, or repeatable outputs.',
 			claimKind: 'resume_summary',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1266,7 +1266,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_completed',
-			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Recognised internally for remediation-script initiative, documentation, manager endorsement, and circulation to relevant teams. Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction. This led to further package investigation and reconstruction planning.`,
+			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Investigated a recurring vendor application endpoint failure through controlled manual testing. Used AI-assisted research and scripting to convert findings into a PowerShell remediation path. Observed application behaviour under different conditions. Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, clarity, and manager endorsement. Used AI-assisted investigation to convert a recurring support failure into an internal remediation path, reducing dependency on higher-tier or external-vendor investigation. Built the remediation logic and evidence base needed to make package-level deployment automation actionable.`,
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1329,7 +1329,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_ai_process_initiative_compact',
 			claimText:
-				'Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+				'Investigated a recurring vendor application endpoint failure through controlled manual testing. Used AI-assisted research and scripting to convert findings into a PowerShell remediation path. Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use. Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, clarity, and manager endorsement. Used AI-assisted investigation to convert a recurring support failure into an internal remediation path, reducing dependency on higher-tier or external-vendor investigation. Built the remediation logic and evidence base needed to make package-level deployment automation actionable.',
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1391,7 +1391,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_delegated_scope',
 			claimText:
-				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved traceability across related requests. Cut staff time and repeat work. Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model. Used remediation findings to separate endpoint-state faults from package-level deployment issues before escalation or handoff.',
+				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Used AI-assisted drafting and analysis to turn troubleshooting results into clearer documentation and repeatable guidance. Converted recurring support failures into remediation logic, documentation, and deployment evidence for automation-ready handoff. Applied remediation evidence to improve handoff quality where access, ownership, or packaging boundaries required escalation.',
 			claimKind: 'resume_delegated_scope',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1454,7 +1454,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_ai_process_workflow_compact',
 			claimText:
-				'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage. Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling. Applied AI-assisted research and coding to turn remediation results into evidence for package investigation and rebuild work.',
+				'Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Used AI-assisted drafting and analysis to turn troubleshooting results into clearer documentation and repeatable guidance. Converted recurring support failures into remediation logic, documentation, and deployment evidence for automation-ready handoff. Supported printer vendor transition work and resolved configuration issues beyond normal front-line scope. Applied remediation evidence to improve handoff quality where access, ownership, or packaging boundaries required escalation.',
 			claimKind: 'resume_delegated_scope',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1769,7 +1769,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_skills_enterprise_apps',
 			claimText:
-				'Enterprise applications and deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment diagnostics, package-level investigation, package-level deployment diagnosis, deployment support.',
+				'Enterprise investigation: vendor applications, packaged installs, application faults, deployment symptoms, endpoint-state evidence, deployment diagnostics, package-level investigation, package-level deployment diagnosis.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1874,7 +1874,7 @@ export const canonicalSource: {
 			{
 				id: 'clm_resume_skills_knowledge',
 				claimText:
-					'Knowledge, process, and documentation: remote/admin tools, documentation, knowledge base use and creation, troubleshooting steps, workflow traceability.',
+					'Process improvement: workflow traceability, process mapping, ticket linkage, repeatable guidance, documentation quality, handoff clarity.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1937,7 +1937,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_ai_process_methods_compact',
 			claimText:
-				'AI-assisted operations: research, troubleshooting, scripting, remediation, package rebuild. Documentation/process: documentation, workflow traceability, troubleshooting steps, knowledge base use and creation. Enterprise investigation: vendor applications, packaged installs, application faults, deployment support. Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools.',
+				'AI-assisted operations: research, troubleshooting, scripting, documentation, remediation logic, playbooks, automation-ready handoff. Process improvement: workflow traceability, process mapping, ticket linkage, repeatable guidance, documentation quality, handoff clarity. Enterprise investigation: vendor applications, packaged installs, application faults, deployment symptoms, endpoint-state evidence. Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools, PowerShell tooling.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1958,7 +1958,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_skills_ai_ops',
 			claimText:
-				'AI in IT operations: AI-assisted research, troubleshooting, scripting, fault narrowing, remediation-path validation, package rebuild, workflow improvement.',
+				'AI-assisted operations: research, troubleshooting, scripting, documentation, remediation logic, playbooks, automation-ready handoff.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1979,7 +1979,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_qualifications',
 			claimText:
-				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support coursework.',
+				'Qualifications: NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, implementation strategy, service management, security awareness, and enterprise IT support coursework. AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University.',
 			claimKind: 'resume_qualifications',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
