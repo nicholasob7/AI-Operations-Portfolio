@@ -1141,7 +1141,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_current_employment',
-			claimText: `Current employment: ${resumeCurrentEmploymentRoleLine}. ${resumeCurrentEmploymentLocationPeriodLine}.`,
+			claimText: `Current employment: ${resumeCurrentEmploymentRoleLine}. ${resumeCurrentEmploymentLocationPeriodLine}. Over three and a half years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues.`,
 			claimKind: 'resume_current_employment',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1204,7 +1204,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_it_support_summary_compact',
 			claimText:
-				'IT Service Desk Analyst at NTT DATA with nearly four years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues. Dedicated BAU support analyst for a major New Zealand transport-sector client, contributing to 90%+ first-contact resolution through structured troubleshooting, documentation, resolution ownership, and escalation judgment.',
+				'IT Service Desk Analyst at NTT DATA with over three and a half years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues. Dedicated BAU support analyst for a major New Zealand transport-sector client, contributing to 90%+ first-contact resolution through structured troubleshooting, documentation, resolution ownership, and escalation judgment.',
 			claimKind: 'resume_summary',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1266,7 +1266,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_completed',
-			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted endpoint fix script for a major vendor application. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Tested approaches and script versions on a dedicated test device. The script passed validation and entered production for individual endpoint failures. L2 bundling with the existing install package failed. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to investigation of the install package itself.`,
+			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Recognised internally for remediation-script initiative, documentation, manager endorsement, and circulation to relevant teams. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to further package investigation and reconstruction planning.`,
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1287,7 +1287,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_it_support_initiative_compact',
 			claimText:
-				'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application. Tested script versions on a dedicated test device. Script passed validation and entered production for individual endpoint failures. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+				'Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Recognised internally for remediation-script initiative, documentation, manager endorsement, and circulation to relevant teams. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1308,7 +1308,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_ai_process_initiative_compact',
 			claimText:
-				'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application. Script passed validation and entered production for individual endpoint failures after dedicated test-device work. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+				'Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Used remediation results to identify package-level deployment issues requiring further reconstruction.',
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1454,7 +1454,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_progression_foundation',
 			claimText:
-				'Service Desk Foundation (November 2022 – late 2023). Began in November 2022 in a 5,000+ user environment across shared-service and single-organisation clients. Supported clients in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
+				'Service Desk Foundation (November 2022 – late 2023). Began in November 2022 in a 5,000+ user enterprise environment across shared-service support operations. Supported organisations in transport, healthcare, energy, regional government, and consumer goods. Handled incidents and service requests from triage through resolution, documentation, and escalation. Resolved user, device, application, and access issues through remote support.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1475,7 +1475,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_it_support_progression_foundation_compact',
 			claimText:
-				'Service Desk Foundation (November 2022 – late 2023). Supported users in a 5,000+ user environment across shared-service and single-organisation clients. Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation. Resolved user, endpoint, application, access, and network issues across remote enterprise support workflows.',
+				'Service Desk Foundation (November 2022 – late 2023). Supported users in a 5,000+ user enterprise environment across shared-service support operations. Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation. Resolved user, endpoint, application, access, and network issues across remote enterprise support workflows.',
 			claimKind: 'resume_progression_stage',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1958,7 +1958,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_qualifications',
 			claimText:
-				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Microsoft Azure Fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support coursework.',
+				'Qualifications: AWS Certified Cloud Practitioner. AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. Bachelor of Arts, History and Political Science — Griffith University. NTT internal certifications, including AI training. NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support coursework.',
 			claimKind: 'resume_qualifications',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1979,7 +1979,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_technical_operations_qualifications_compact',
 			claimText:
-				'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support.',
+				'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga. NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure AI, AI development, Microsoft Azure Fundamentals preparation, service management, security awareness, and enterprise IT support.',
 			claimKind: 'resume_qualifications',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
