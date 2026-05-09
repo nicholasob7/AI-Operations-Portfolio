@@ -44,7 +44,7 @@
 		},
 		{
 			id: 'print',
-			label: 'Print',
+			label: 'Save PDF',
 			type: 'button' as const,
 			onclick: printResume
 		}
@@ -95,11 +95,11 @@
 		<div class="resume-detail-intro-copy">
 			<p class="resume-detail-eyebrow">Resume Actions</p>
 			<p class="resume-detail-note">
-				Read this resume on-site, then use Print for a clean black-and-white output of the same content.
+				Read this resume on-site, then use Save PDF for a clean black-and-white output of the same content.
 			</p>
 			<div class="resume-detail-actions resume-print-hidden">
 				<a class="resume-detail-action" href="/resume" data-sveltekit-preload-code="hover">Back to Resume Versions</a>
-				<button class="resume-detail-action" type="button" onclick={printResume}>Print</button>
+				<button class="resume-detail-action" type="button" onclick={printResume}>Save PDF</button>
 			</div>
 		</div>
 	</section>

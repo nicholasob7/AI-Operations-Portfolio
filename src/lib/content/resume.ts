@@ -76,8 +76,8 @@ export const resumeLinkedInProfileDisplay = 'linkedin.com/in/nicholasfobrien/';
 export const resumeLinkedInProfileUrl = 'https://linkedin.com/in/nicholasfobrien/';
 export const resumeGitHubDisplay = 'github.com/nicholasob7';
 export const resumeGitHubUrl = 'https://github.com/nicholasob7';
-export const resumeTwitterProfileDisplay = 'x.com/nicho0101';
-export const resumeTwitterProfileUrl = 'https://x.com/nicho0101';
+export const resumeTwitterProfileDisplay = 'x.com/francis_o39763';
+export const resumeTwitterProfileUrl = 'https://x.com/francis_o39763';
 
 export const resumeCurrentEmployment = {
 	role: 'IT Service Desk Analyst',

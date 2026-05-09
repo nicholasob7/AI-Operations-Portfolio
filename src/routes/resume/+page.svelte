@@ -49,7 +49,7 @@
 		website: 'https://nicko.obrienai.com',
 		linkedin: 'https://linkedin.com/in/nicholasfobrien/',
 		github: 'https://github.com/nicholasob7',
-		twitter: 'https://x.com/nicho0101'
+		twitter: 'https://x.com/francis_o39763'
 	};
 
 	const handleResumePortraitState = (state: PortraitIntroState) => {
