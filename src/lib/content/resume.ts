@@ -471,37 +471,47 @@ export const technicalOperationsCompactQualifications = [
 ];
 
 export const aiProcessSummary = [
-	'Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems.',
-	'Portfolio evidence includes endpoint remediation, evidence-based package investigation, workflow improvement, and practical AI use grounded in current NTT DATA service desk operations.'
+	'Enterprise IT support professional applying AI-assisted research, scripting, documentation, and structured troubleshooting to operational support problems.',
+	'Uses AI as a practical delivery aid for fault analysis, remediation design, workflow mapping, documentation, automation enablement, and escalation quality.',
+	'Well suited to evolving operational environments where loose problems need to become documented workflows, scripts, decisions, or repeatable outputs.'
 ];
 
 export const aiProcessSelectedDelivery = [
-	'Built an AI-assisted PowerShell endpoint remediation script for a major vendor application.',
-	'Script passed validation and entered production for individual endpoint failures after dedicated test-device work.',
-	'Used remediation results to identify package-level deployment issues requiring further reconstruction.',
-	'Rebuilding the enterprise app package from the proven fix; test-device validation is complete and further rollout stages remain.'
+	'Investigated a recurring vendor application endpoint failure through controlled manual testing. Used AI-assisted research and scripting to convert findings into a PowerShell remediation path.',
+	'Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use.',
+	'Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, clarity, and manager endorsement.',
+	'Used AI-assisted investigation to convert a recurring support failure into an internal remediation path, reducing dependency on higher-tier or external-vendor investigation.',
+	'Built the remediation logic and evidence base needed to make package-level deployment automation actionable.'
+];
+
+export const aiProcessSelfDirectedWork = [
+	'Building AI-forward portfolio, resume projection, and canonical profile workflows with deterministic PDF and machine-readable profile outputs.',
+	'Developing data visualization, assistant-design, Linux support, and AI governance projects as applied AI systems practice.',
+	'Uses self-directed AI systems projects to strengthen prompting, workflow design, documentation, deterministic outputs, technical communication, and operational analysis.'
 ];
 
 export const aiProcessWorkflowImprovement = [
-	'Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.',
-	'Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope.',
-	'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling.',
-	'Applied AI-assisted research and coding to turn remediation results into evidence for package investigation and rebuild work.'
+	'Improved operational traceability through bulk updates, filtering, and cross-ticket linkage.',
+	'Used AI-assisted drafting and analysis to turn troubleshooting results into clearer documentation and repeatable guidance.',
+	'Converted recurring support failures into remediation logic, documentation, and deployment evidence for automation-ready handoff.',
+	'Supported printer vendor transition work and resolved configuration issues beyond normal front-line scope.',
+	'Applied remediation evidence to improve handoff quality where access, ownership, or packaging boundaries required escalation.'
 ];
 
 export const aiProcessMethodLines = [
-	'AI-assisted operations: research, troubleshooting, scripting, remediation, package rebuild',
-	'Documentation/process: documentation, workflow traceability, troubleshooting steps, knowledge base use and creation',
-	'Enterprise investigation: vendor applications, packaged installs, application faults, deployment support',
-	'Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools'
+	'AI-assisted operations: research, troubleshooting, scripting, documentation, remediation logic, playbooks, automation-ready handoff',
+	'Process improvement: workflow traceability, process mapping, ticket linkage, repeatable guidance, documentation quality, handoff clarity',
+	'Enterprise investigation: vendor applications, packaged installs, application faults, deployment symptoms, endpoint-state evidence',
+	'Operational delivery: ServiceNow, Jira Service Management, incident/request handling, remote/admin tools, PowerShell tooling'
 ];
 
 export const aiProcessSupportingFoundation = [
-	'Supported users in a 5,000+ user environment across shared-service and single-organisation clients.',
+	'Supported users in a 5,000+ user enterprise environment across shared-service support operations.',
 	'Owned incidents and service requests from diagnosis through resolution, documentation, or evidence-based escalation.'
 ];
 
 export const aiProcessCompactQualifications = [
+	'NTT internal training via Skillsoft Percipio, including Azure AI, AI development, Microsoft Azure Fundamentals preparation, implementation strategy, service management, security awareness, and enterprise IT support coursework.',
 	'AWS Certified Cloud Practitioner | AWS Foundations of Cloud Computing — Unitec / Te Pūkenga',
-	'NTT internal certifications, AI training, and Skillsoft Percipio coursework spanning Azure fundamentals preparation, AI fundamentals, service management, security awareness, and enterprise IT support'
+	'BA History and Political Science — Griffith University'
 ];

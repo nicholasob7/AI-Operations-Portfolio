@@ -34,6 +34,7 @@ export type ResumeProjection = {
 	compactSectionHeadings?: {
 		selectedDelivery?: string;
 		supportingFoundation?: string;
+		selfDirectedWork?: string;
 	};
 	pdf: {
 		label: string;
@@ -212,10 +213,10 @@ export const resumeProjections = [
 			'technical analyst',
 			'automation-adjacent operations'
 		],
-		headline: 'AI-Forward Operations | Process Improvement | Technical Analysis',
+		headline: 'AI Operations | Process Improvement | Technical Analysis',
 		summary: [
-			'Enterprise IT support professional applying structured troubleshooting, documentation, traceability, and AI-assisted delivery to operational problems.',
-			'Portfolio evidence includes machine-readable public structure, endpoint remediation work, and process redesign grounded in current NTT DATA service desk operations.'
+			'Enterprise IT support professional applying AI-assisted research, scripting, documentation, and structured troubleshooting to operational support problems.',
+			'Uses AI as a practical delivery aid for fault analysis, remediation design, workflow mapping, documentation, automation enablement, and escalation quality.'
 		],
 		sectionOrder: ['experience', 'qualifications'],
 		experienceBlockOrder: ['initiative', 'delegated_scope', 'role_progression'],
@@ -237,6 +238,10 @@ export const resumeProjections = [
 			'service_desk_foundation'
 		],
 		initiativePlacement: 'early',
+		compactSectionHeadings: {
+			selectedDelivery: 'Selected AI-Assisted Delivery | 2025 – Present',
+			selfDirectedWork: 'Self-Directed AI / Systems Work'
+		},
 		pdf: {
 			label: 'AI / Process Improvement PDF',
 			href: '/resumes/Nicholas_OBrien_Resume_AI_Process.pdf',

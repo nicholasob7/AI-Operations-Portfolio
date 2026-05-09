@@ -7,6 +7,7 @@ import {
 	aiProcessCompactQualifications,
 	aiProcessMethodLines,
 	aiProcessSelectedDelivery,
+	aiProcessSelfDirectedWork,
 	aiProcessSummary,
 	aiProcessSupportingFoundation,
 	aiProcessWorkflowImprovement,
@@ -256,7 +257,7 @@ const renderTechnicalOperationsCompactContent = (projection) => `<section class=
 \t\t\t${renderBulletList(technicalOperationsCompactQualifications, 'bullet-list compact-list')}
 \t\t</section>`;
 
-const renderAiProcessCompactContent = () => `<section class="section compact-section">
+const renderAiProcessCompactContent = (projection) => `<section class="section compact-section">
 \t\t\t<h2>AI / Process Improvement Summary</h2>
 \t\t\t${renderParagraphList(aiProcessSummary)}
 \t\t</section>
@@ -270,9 +271,18 @@ const renderAiProcessCompactContent = () => `<section class="section compact-sec
 \t\t</section>
 
 \t\t<section class="section compact-section">
-\t\t\t<h2>Selected AI-Enabled Delivery</h2>
+\t\t\t<h2>${escapeHtml(projection.compactSectionHeadings?.selectedDelivery ?? 'Selected AI-Enabled Delivery')}</h2>
 \t\t\t${renderBulletList(aiProcessSelectedDelivery, 'bullet-list compact-list')}
 \t\t</section>
+
+		${
+			projection.compactSectionHeadings?.selfDirectedWork
+				? `<section class="section compact-section">
+			<h2>${escapeHtml(projection.compactSectionHeadings.selfDirectedWork)}</h2>
+			${renderBulletList(aiProcessSelfDirectedWork, 'bullet-list compact-list')}
+		</section>`
+				: ''
+		}
 
 \t\t<section class="section compact-section">
 \t\t\t<h2>Process / Workflow Improvement</h2>
@@ -344,7 +354,7 @@ const renderResumePdfHtml = (projection) => `<!doctype html>
 				: projection.pdfLayout === 'technical_operations_compact'
 					? renderTechnicalOperationsCompactContent(projection)
 					: projection.pdfLayout === 'ai_process_compact'
-						? renderAiProcessCompactContent()
+						? renderAiProcessCompactContent(projection)
 				: projection.sectionOrder.map((sectionId) => renderResumeSection(projection, sectionId)).join('\n\n\t\t')
 		}
 \t</main>
