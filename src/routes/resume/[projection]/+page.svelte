@@ -205,10 +205,6 @@
 			min-width: 0;
 			text-align: center;
 		}
-
-		.resume-print-hidden :global(.destination-actions) {
-			display: none;
-		}
 	}
 
 	@media print {
