@@ -1141,7 +1141,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_current_employment',
-			claimText: `Current employment: ${resumeCurrentEmploymentRoleLine}. ${resumeCurrentEmploymentLocationPeriodLine}. Over three and a half years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues.`,
+			claimText: `Current employment: ${resumeCurrentEmploymentRoleLine}. ${resumeCurrentEmploymentLocationPeriodLine}. Over three and a half years’ enterprise support experience across incidents, service requests, Microsoft administration, identity/access, endpoint, application, and network issues. Technical Operations | Endpoint Support | Deployment Diagnostics. Technical focus includes deployment diagnostics, fault-pattern analysis, package-level investigation, endpoint remediation, endpoint health, privileged access, and scripted remediation. Uses AI-assisted research and scripting to narrow faults, validate remediation paths, and improve escalation quality where access or ownership boundaries require handoff.`,
 			claimKind: 'resume_current_employment',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1225,7 +1225,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_technical_operations_summary_compact',
 			claimText:
-				'Technical Operations | Endpoint Support | Deployment Improvement. IT Service Desk Analyst at NTT DATA with hands-on technical operations experience across endpoint remediation, package reconstruction, vendor application support, deployment support, and privileged access handling. Additional scope includes endpoint performance and device health analysis, printer/vendor transition work, queue/process improvement, and AI-assisted research and scripting.',
+				'Technical Operations | Endpoint Support | Deployment Diagnostics. IT Service Desk Analyst at NTT DATA with hands-on experience in endpoint remediation, application support, and Microsoft administration. Technical focus includes deployment diagnostics, fault-pattern analysis, package-level investigation, endpoint health, privileged access, and scripted remediation. Uses AI-assisted research and scripting to narrow faults, validate remediation paths, and improve escalation quality where access or ownership boundaries require handoff.',
 			claimKind: 'resume_summary',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1266,7 +1266,7 @@ export const canonicalSource: {
 		},
 		{
 			id: 'clm_resume_initiative_completed',
-			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Built an AI-assisted PowerShell remediation script for a major vendor application endpoint issue. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Recognised internally for remediation-script initiative, documentation, manager endorsement, and circulation to relevant teams. Used remediation results to identify package-level deployment issues requiring further reconstruction. This led to further package investigation and reconstruction planning.`,
+			claimText: `${resumeInitiativeMetadata.completed.label} (${resumeInitiativeMetadata.completed.period.display}). Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings. This involved AI-assisted research and coding. Observed application behaviour under different conditions. Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use. Completed dedicated test-device validation before production use. The script entered production use for individual endpoint failures. Recognised internally for remediation-script initiative, documentation, manager endorsement, and circulation to relevant teams. Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction. This led to further package investigation and reconstruction planning.`,
 			claimKind: 'resume_initiative_completed',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1302,6 +1302,27 @@ export const canonicalSource: {
 			withheldDetailMarker: {
 				status: 'sensitive_substrate_withheld',
 				note: 'Major vendor application remains intentionally unnamed while PowerShell remediation and production-use signal remain public.'
+			},
+			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
+		},
+		{
+			id: 'clm_resume_technical_operations_initiative_compact',
+			claimText:
+				'Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings. Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use. Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, documentation, and manager endorsement. Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction.',
+			claimKind: 'resume_initiative_completed',
+			claimOrigin: 'direct_self_authored',
+			sourceSurface: 'resume.page',
+			contextIds: ['ctx_resume_initiative', 'ctx_remediation_project', 'ctx_remediation_progression'],
+			signalIds: ['sig_resume_capability', 'sig_resume_confidence', 'sig_resume_judgment'],
+			statusOrProgression: {
+				status: 'in_production_use',
+				progressionNote: 'Compact Technical Operations rendering of the completed remediation initiative from the one-page resume projection.'
+			},
+			inferenceLabel: 'explicit',
+			releaseState: 'retain',
+			withheldDetailMarker: {
+				status: 'sensitive_substrate_withheld',
+				note: 'Major vendor application remains intentionally unnamed while remediation method, validation, and deployment-diagnostics signal remain public.'
 			},
 			projectionTags: ['machine_recoverable', 'human_detail', 'pdf_detail', 'query_relevance_candidate']
 		},
@@ -1370,7 +1391,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_delegated_scope',
 			claimText:
-				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved traceability across related requests. Cut staff time and repeat work. Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model.',
+				'I manage the printer queue serviced by a major external vendor. Supported a printer vendor transition through vendor liaison and project work. Resolved printer configuration issues beyond normal front-line scope. Reduced avoidable escalation. Reworked a fragmented multi-ticket process using bulk changes, filter logic, and cross-ticket linkage. Improved traceability across related requests. Cut staff time and repeat work. Advised on preserving classification and workflow visibility during the transition away from the three-ticket vendor model. Used remediation findings to separate endpoint-state faults from package-level deployment issues before escalation or handoff.',
 			claimKind: 'resume_delegated_scope',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1412,7 +1433,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_technical_operations_scope_compact',
 			claimText:
-				'Analysed endpoint performance and device health issues as part of day-to-day support. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces, including privileged access handling. Supported printer vendor transition and resolved printer configuration issues beyond normal front-line scope. Improved traceability and reduced repeat work through bulk updates, filtering, and cross-ticket linkage.',
+				'Analysed endpoint performance and device health issues during day-to-day support. Investigated recurring endpoint/application failures through device state and deployment symptoms. Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces. Handled privileged access requests across admin, local admin, shared, and external account types. Supported printer vendor transition work and resolved printer configuration issues beyond normal front-line scope. Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Produced repeatable remediation guidance for endpoint/application support workflows. Used remediation findings to separate endpoint-state faults from package-level deployment issues before escalation or handoff.',
 			claimKind: 'resume_delegated_scope',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1748,7 +1769,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_skills_enterprise_apps',
 			claimText:
-				'Enterprise applications and deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support.',
+				'Enterprise applications and deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment diagnostics, package-level investigation, package-level deployment diagnosis, deployment support.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1769,7 +1790,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_technical_operations_skills_apps_compact',
 			claimText:
-				'Applications/deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment support.',
+				'Applications/deployment: vendor applications, packaged installs, application faults, cache issues, shortcut issues, deployment diagnostics, remediation validation, package-level deployment diagnosis.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1895,7 +1916,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_technical_operations_skills_tooling_compact',
 			claimText:
-				'Tooling/process: ServiceNow, Jira Service Management, ITSM, remote/admin tools, troubleshooting, scripted fixes, PowerShell tooling, AI-assisted troubleshooting/scripting.',
+				'Tooling/process: ServiceNow, Jira Service Management, ITSM, remote/admin tools, operational troubleshooting, scripted fixes, PowerShell tooling, technical documentation, AI-assisted troubleshooting/scripting.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
@@ -1937,7 +1958,7 @@ export const canonicalSource: {
 		{
 			id: 'clm_resume_skills_ai_ops',
 			claimText:
-				'AI in IT operations: AI-assisted research, troubleshooting, scripting, package rebuild, workflow improvement.',
+				'AI in IT operations: AI-assisted research, troubleshooting, scripting, fault narrowing, remediation-path validation, package rebuild, workflow improvement.',
 			claimKind: 'resume_skill_group',
 			claimOrigin: 'direct_self_authored',
 			sourceSurface: 'resume.page',
