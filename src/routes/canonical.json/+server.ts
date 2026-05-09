@@ -4,7 +4,12 @@ import {
 	resumeCurrentEmploymentLocationPeriodLine,
 	resumeCurrentEmploymentRoleLine
 } from '$lib/content/resume';
-import { defaultResumeProjectionId, resumeProjections } from '$lib/content/resume-projections';
+import {
+	getAllResumeProjections,
+	getMachineVisibleResumeProjections,
+	getRetiredResumeProjections,
+	resumeProjectionRegistryVersion
+} from '$lib/content/resume-projections';
 
 export const prerender = true;
 
@@ -29,27 +34,36 @@ const currentEmploymentProjection = {
 	}
 };
 
+const allResumeProjections = getAllResumeProjections();
+const machineVisibleResumeProjections = getMachineVisibleResumeProjections();
+const retiredResumeProjections = getRetiredResumeProjections();
+
 const resumeProjectionMetadata = {
-	derived_from: 'single canonical resume data source',
+	registry_version: resumeProjectionRegistryVersion,
+	derived_from: 'approved static resume projection registry',
 	factual_history_note:
-		'Role-emphasis projections are ordered views of the same facts, dates, and evidence base. They are not separate factual histories.',
-	default_projection_id: defaultResumeProjectionId,
-	items: resumeProjections.map((resumeProjection) => ({
+		'Role-specific resume projections are ordered views of the same facts, dates, and evidence base. They are not separate factual histories.',
+	human_index_route: '/resume',
+	active_projection_ids: machineVisibleResumeProjections.map((projection) => projection.id),
+	retired_projection_ids: retiredResumeProjections.map((projection) => projection.id),
+	items: allResumeProjections.map((resumeProjection) => ({
 		id: resumeProjection.id,
+		status: resumeProjection.status,
 		label: resumeProjection.label,
-		intended_role_families: resumeProjection.intendedRoleFamilies,
-		summary: resumeProjection.purpose,
-		route:
-			resumeProjection.id === defaultResumeProjectionId
-				? '/resume'
-				: `/resume?emphasis=${resumeProjection.id}`,
-		download: resumeProjection.pdf.href,
-		download_filename: resumeProjection.pdf.filename,
-		section_order: resumeProjection.sectionOrder,
-		experience_block_order: resumeProjection.experienceBlockOrder,
-		promoted_skill_group_ids: resumeProjection.promotedSkillGroupIds,
-		promoted_scope_ids: resumeProjection.promotedScopeIds,
-		progression_order: resumeProjection.progressionOrder
+		role_family: resumeProjection.roleFamily,
+		role_targets: resumeProjection.roleTargets,
+		summary: resumeProjection.summary,
+		pdf_path: resumeProjection.pdfPath,
+		human_visible: resumeProjection.humanVisible,
+		machine_visible: resumeProjection.machineVisible,
+		canonical_priority: resumeProjection.canonicalPriority,
+		sort_order: resumeProjection.sortOrder,
+		...(resumeProjection.version ? { version: resumeProjection.version } : {}),
+		...(resumeProjection.lastReviewed ? { last_reviewed: resumeProjection.lastReviewed } : {}),
+		...(resumeProjection.sha256 ? { sha256: resumeProjection.sha256 } : {}),
+		...(resumeProjection.supersedes ? { supersedes: resumeProjection.supersedes } : {}),
+		...(resumeProjection.supersededBy ? { superseded_by: resumeProjection.supersededBy } : {}),
+		...(resumeProjection.legacyOf ? { legacy_of: resumeProjection.legacyOf } : {})
 	}))
 };
 

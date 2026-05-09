@@ -1,3 +1,5 @@
+import { getMachineVisibleResumeProjections } from '$lib/content/resume-projections';
+
 export const canonicalOrigin = 'https://nicko.obrienai.com';
 
 export const sitemapRoutes = [
@@ -9,6 +11,10 @@ export const sitemapRoutes = [
 	'/projects/remediation-script-development',
 	'/projects/migration-stabilization-framework'
 ] as const;
+
+export const sitemapArtifactRoutes = getMachineVisibleResumeProjections().map(
+	(projection) => projection.pdfPath
+);
 
 export function toCanonicalUrl(pathname: string): string {
 	const normalizedPath =

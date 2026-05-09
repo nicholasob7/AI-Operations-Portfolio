@@ -17,7 +17,7 @@
 /aurora/*
   Cache-Control: public, max-age=5184000, stale-while-revalidate=604800
 
-/resume-bw.pdf
+/resumes/*
   Cache-Control: public, max-age=5184000, stale-while-revalidate=604800
 
 /favicon-n-purple-green.svg

@@ -14,10 +14,12 @@ Non-interactive agents, recruiter-side enrichment systems, and applicant-trackin
 
 The visible website is the human-facing presentation layer. The canonical JSON route is the structured machine-facing public profile.
 
+Active resumes are projection-based. Use `resume_projections` inside `/canonical.json` for the active resume registry, active projection IDs, and the direct role-specific PDF artifact paths.
+
 ## Human-facing public pages
 
 - [Homepage](https://nicko.obrienai.com/): Public portfolio entry point and selected-work overview.
-- [Resume](https://nicko.obrienai.com/resume): Human-facing resume page.
+- [Resume](https://nicko.obrienai.com/resume): Human-facing role-specific resume index.
 - [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/projects/remediation-script-development): Public project page for remediation script development and validation.
 - [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/projects/migration-stabilization-framework): Public project page for migration stabilization and package reconstruction work.
 - [Eliora AI Governance](https://nicko.obrienai.com/projects/eliora): Public project page for AI governance, semantic control, authority separation, and controlled agent behavior.
@@ -26,6 +28,8 @@ The visible website is the human-facing presentation layer. The canonical JSON r
 ## Public contact and profile channels
 
 Use `/canonical.json` for the structured contact/profile projection.
+
+Use `/resume` for the human-facing projection selector and `/canonical.json` for the active role-specific resume artifacts.
 
 Public channels currently include:
 
