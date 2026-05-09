@@ -433,21 +433,23 @@ export const itSupportCompactQualifications = [
 
 export const technicalOperationsSummary = [
 	'IT Service Desk Analyst at NTT DATA with hands-on experience in endpoint remediation, application support, and Microsoft administration.',
-	'Technical focus includes deployment diagnostics, package-level fault investigation, endpoint health, privileged access, and scripted remediation.',
-	'Additional scope includes printer/vendor transition work, queue/process improvement, technical documentation, and AI-assisted research.'
+	'Technical focus includes deployment diagnostics, fault-pattern analysis, package-level investigation, endpoint health, privileged access, and scripted remediation.',
+	'Uses AI-assisted research and scripting to narrow faults, validate remediation paths, and improve escalation quality where access or ownership boundaries require handoff.'
 ];
 
 export const technicalOperationsSelectedDelivery = [
 	'Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings.',
 	'Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use.',
-	'Recognised internally for initiative, documentation, manager endorsement, and circulation to relevant teams. Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction.'
+	'Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, documentation, and manager endorsement.',
+	'Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction.'
 ];
 
 export const technicalOperationsScope = [
 	'Analysed endpoint performance and device health issues during day-to-day support. Investigated recurring endpoint/application failures through device state and deployment symptoms.',
 	'Managed identity, access, and account lifecycle work across Active Directory and Microsoft administration surfaces. Handled privileged access requests across admin, local admin, shared, and external account types.',
 	'Supported printer vendor transition work. Resolved printer configuration issues beyond normal front-line scope.',
-	'Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Produced technical documentation and repeatable remediation guidance.'
+	'Improved operational traceability through bulk updates, filtering, and cross-ticket linkage. Produced repeatable remediation guidance for endpoint/application support workflows.',
+	'Used remediation findings to separate endpoint-state faults from package-level deployment issues before escalation or handoff.'
 ];
 
 export const technicalOperationsCoreSkillLines = [
