@@ -52,9 +52,7 @@ const toJsonProfile = (profile: PersonProfile) => ({
 	display_name: profile.displayName,
 	location: profile.location,
 	headline: profile.headline,
-	summary: profile.summary.filter(
-		(line) => !line.toLowerCase().includes('broad default resume')
-	),
+	summary: profile.summary,
 	public_links: profile.publicLinks.map(toJsonPublicLink),
 	current_employment: {
 		role: profile.currentEmployment.role,
@@ -146,12 +144,16 @@ const mergedProjectionItems = machineVisibleProjections.map((projection) => {
 			? { secondary_practice_area_ids: guidance.secondaryPracticeAreaIds }
 			: {}),
 		core_evidence_node_ids: guidance.coreEvidenceNodeIds,
-		...(guidance.secondaryEvidenceNodeIds
-			? { secondary_evidence_node_ids: guidance.secondaryEvidenceNodeIds }
-			: {}),
-		pdf: {
-			path: projection.pdfPath,
-			url: toCanonicalUrl(projection.pdfPath),
+			...(guidance.secondaryEvidenceNodeIds
+				? { secondary_evidence_node_ids: guidance.secondaryEvidenceNodeIds }
+				: {}),
+			html_route: {
+				path: projection.htmlPath,
+				url: toCanonicalUrl(projection.htmlPath)
+			},
+			pdf: {
+				path: projection.pdfPath,
+				url: toCanonicalUrl(projection.pdfPath),
 			human_visible: projection.humanVisible,
 			machine_visible: projection.machineVisible
 		},
@@ -180,12 +182,16 @@ export function buildCanonical() {
 			role_targets: projection.role_targets,
 			aliases: projection.aliases,
 			keywords: projection.keywords,
-			practice_area_ids: projection.practice_area_ids,
-			evidence_node_ids: projection.core_evidence_node_ids,
-			selection_summary: projection.selection_summary,
-			pdf: {
-				path: projection.pdf.path,
-				url: projection.pdf.url
+				practice_area_ids: projection.practice_area_ids,
+				evidence_node_ids: projection.core_evidence_node_ids,
+				selection_summary: projection.selection_summary,
+				html_route: {
+					path: projection.html_route.path,
+					url: projection.html_route.url
+				},
+				pdf: {
+					path: projection.pdf.path,
+					url: projection.pdf.url
 			}
 		}))
 	};
@@ -215,14 +221,20 @@ export function buildCanonical() {
 					label: evidenceNode.label,
 					...asRoute(evidenceNode.route!)
 				})),
-			resume_pdfs: mergedProjectionItems.map((projection) => ({
-				projection_id: projection.id,
-				label: projection.label,
-				path: projection.pdf.path,
-				url: projection.pdf.url
-			})),
-			sitemap: asRoute('/sitemap.xml')
-		},
+				resume_pdfs: mergedProjectionItems.map((projection) => ({
+					projection_id: projection.id,
+					label: projection.label,
+					path: projection.pdf.path,
+					url: projection.pdf.url
+				})),
+				resume_html_routes: mergedProjectionItems.map((projection) => ({
+					projection_id: projection.id,
+					label: projection.label,
+					path: projection.html_route.path,
+					url: projection.html_route.url
+				})),
+				sitemap: asRoute('/sitemap.xml')
+			},
 		publication: {
 			type: 'static_publication_surface',
 			canonical_origin: canonicalOrigin,

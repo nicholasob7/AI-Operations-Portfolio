@@ -111,10 +111,10 @@
 			<div class="hero-copy">
 				<h1>Nicholas Francis O'Brien</h1>
 				<p class="focus-line">Role-Specific Resumes</p>
-				<p class="hero-note">
-					Choose the resume version closest to the role. Each PDF uses the same underlying employment history
-					and evidence base, but the presentation is tuned to a specific role family.
-				</p>
+					<p class="hero-note">
+						Choose the resume version closest to the role. Each version can be read on-site and printed from
+						its detail view, with the same substantive resume content preserved in print.
+					</p>
 				<div class="hero-context" aria-label="Current role context">
 					<p class="hero-context-label">Current Role</p>
 					<p class="role-line">{resumeCurrentEmploymentRoleLine}</p>
@@ -156,18 +156,17 @@
 					<div class="projection-card-actions">
 						<a
 							class="projection-action projection-action-primary"
+							href={projection.htmlPath}
+						>
+							View Resume
+						</a>
+						<a
+							class="projection-action"
 							href={projection.pdfPath}
 							rel="noopener noreferrer"
 							target="_blank"
 						>
 							Open PDF
-						</a>
-						<a
-							class="projection-action"
-							download={`${projection.label}.pdf`}
-							href={projection.pdfPath}
-						>
-							Download PDF
 						</a>
 					</div>
 				</article>

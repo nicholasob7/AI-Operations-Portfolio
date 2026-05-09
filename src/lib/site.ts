@@ -1,4 +1,7 @@
-import { getMachineVisibleResumeProjections } from '$lib/content/resume-projections';
+import {
+	getHumanVisibleResumeProjections,
+	getMachineVisibleResumeProjections
+} from '$lib/content/resume-projections';
 
 export const canonicalOrigin = 'https://nicko.obrienai.com';
 
@@ -9,7 +12,8 @@ export const sitemapRoutes = [
 	'/projects/eliora',
 	'/projects/website-build-notes',
 	'/projects/remediation-script-development',
-	'/projects/migration-stabilization-framework'
+	'/projects/migration-stabilization-framework',
+	...getHumanVisibleResumeProjections().map((projection) => projection.htmlPath)
 ] as const;
 
 export const sitemapArtifactRoutes = getMachineVisibleResumeProjections().map(

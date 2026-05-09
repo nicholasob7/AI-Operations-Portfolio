@@ -5,10 +5,12 @@ export type ResumeProjectionId = 'it_support' | 'technical_operations' | 'ai_pro
 export type ResumeProjection = {
 	id: ResumeProjectionId;
 	status: ResumeProjectionStatus;
+	slug: string;
 	label: string;
 	roleFamily: string;
 	roleTargets: string[];
 	summary: string;
+	htmlPath: string;
 	pdfPath: string;
 	humanVisible: boolean;
 	machineVisible: boolean;
@@ -29,6 +31,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 	{
 		id: 'it_support',
 		status: 'active',
+		slug: 'it-support',
 		label: 'IT Support',
 		roleFamily: 'Enterprise IT support and service desk delivery',
 		roleTargets: [
@@ -40,6 +43,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'Front-line enterprise support projection for incident handling, service requests, Microsoft administration, identity and access work, endpoint troubleshooting, and escalation judgment.',
+		htmlPath: '/resume/it-support',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_IT_Support.pdf',
 		humanVisible: true,
 		machineVisible: true,
@@ -49,6 +53,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 	{
 		id: 'technical_operations',
 		status: 'active',
+		slug: 'technical-operations',
 		label: 'Technical Operations',
 		roleFamily: 'Technical operations, endpoint support, and deployment diagnostics',
 		roleTargets: [
@@ -60,6 +65,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'Operational support projection for endpoint remediation, application support, deployment troubleshooting, privileged access handling, package-level investigation, and structured improvement work.',
+		htmlPath: '/resume/technical-operations',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_Technical_Operations.pdf',
 		humanVisible: true,
 		machineVisible: true,
@@ -69,6 +75,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 	{
 		id: 'ai_process',
 		status: 'active',
+		slug: 'ai-process',
 		label: 'AI / Process Improvement',
 		roleFamily: 'AI-assisted operations and process improvement',
 		roleTargets: [
@@ -80,6 +87,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'AI-forward operations projection for workflow mapping, troubleshooting analysis, documentation, remediation design, and turning recurring support issues into repeatable operational outputs.',
+		htmlPath: '/resume/ai-process',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_AI_Process.pdf',
 		humanVisible: true,
 		machineVisible: true,
@@ -114,6 +122,15 @@ export const machineVisibleResumeProjectionIds = getMachineVisibleResumeProjecti
 	(projection) => projection.id
 );
 
+export const getResumeProjectionById = (id: ResumeProjectionId) =>
+	getAllResumeProjections().find((projection) => projection.id === id);
+
+export const getResumeProjectionBySlug = (slug: string) =>
+	getAllResumeProjections().find((projection) => projection.slug === slug);
+
 export const isActiveResumeProjectionId = (
 	id: string | null | undefined
 ): id is ResumeProjectionId => activeResumeProjectionIds.includes(id as ResumeProjectionId);
+
+export const isActiveResumeProjectionSlug = (slug: string | null | undefined) =>
+	!!slug && getActiveResumeProjections().some((projection) => projection.slug === slug);

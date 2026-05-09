@@ -60,7 +60,7 @@ export const personProfile = {
 	headline: 'IT professional with support, technical operations, and AI/process improvement capability.',
 	summary: [
 		'Enterprise IT support professional with current service desk experience and public evidence across support practice, technical operations, and AI/process improvement work.',
-		'Published site scope is a canonical professional profile with reviewed evidence nodes and role-specific resume projections, not a single broad default resume.',
+		'Published site scope is a canonical professional profile with reviewed evidence nodes and role-specific resume projections.',
 		'Public detail remains intentionally bounded to protect sensitive operational substrate while preserving useful delivery evidence.'
 	],
 	publicLinks: personProfilePublicLinks,
