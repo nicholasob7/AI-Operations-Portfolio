@@ -68,13 +68,19 @@
 			</h2>
 			<ul class="resume-document-contact-list">
 				{#each contactItems as item}
-					<li class={`resume-contact-item resume-contact-item-${item.id}`}>
-						<span class="resume-contact-label">{item.label}</span>
-						<a href={item.href}>{item.value}</a>
-					</li>
-				{/each}
-			</ul>
-		</section>
+						<li class={`resume-contact-item resume-contact-item-${item.id}`}>
+							<span class="resume-contact-label">{item.label}</span>
+							<a
+								href={item.href}
+								rel={item.id === 'email' ? undefined : 'noopener noreferrer'}
+								target={item.id === 'email' ? undefined : '_blank'}
+							>
+								{item.value}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
 	</div>
 </section>
 
