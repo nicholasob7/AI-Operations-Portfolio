@@ -789,10 +789,8 @@
 	}
 
 	#hero-head,
-	#about-head,
 	#selected-work-head,
-	#remediation-head,
-	#deployment-head,
+	#self-directed-head,
 	#tail-head {
 		scroll-margin-top: 1.25rem;
 	}

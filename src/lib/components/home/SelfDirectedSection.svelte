@@ -1,4 +1,9 @@
 <script lang="ts">
+	import {
+		highlightsIndexRoute,
+		homepageHighlightsGatewayCopy
+	} from '$lib/content/highlights';
+
 	type Props = {
 		navigationReady: boolean;
 	};
@@ -10,15 +15,12 @@
 	<h2 id="self-directed-head" tabindex="-1">Evidence Highlights</h2>
 	<div class="projects">
 		<article class="project-card project-card-governance self-directed-gateway" tabindex="-1">
-			<p class="self-directed-note">
-				Selected evidence from support work, technical operations, AI governance, and publication
-				delivery is grouped in one highlights index.
-			</p>
+			<p class="self-directed-note">{homepageHighlightsGatewayCopy}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
 				class="cta cta-resume section-cta-eliora"
-				href="/highlights"
+				href={highlightsIndexRoute}
 				tabindex={navigationReady ? undefined : -1}
 			>
 				View Highlights

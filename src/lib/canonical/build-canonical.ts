@@ -213,6 +213,7 @@ export function buildCanonical() {
 		artifacts: {
 			canonical_json: asRoute('/canonical.json'),
 			homepage: asRoute('/'),
+			highlights_index: asRoute('/highlights'),
 			resume_index: asRoute('/resume'),
 			project_routes: evidenceNodes
 				.filter((evidenceNode) => evidenceNode.route)

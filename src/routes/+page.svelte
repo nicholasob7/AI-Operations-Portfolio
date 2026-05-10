@@ -28,10 +28,7 @@
 	const homeSocialImage = homeEntryImage ? `${canonicalOrigin}${homeEntryImage}` : null;
 	const homeUsesPortraitEntry = isPortraitEntry(homeEntrySurface);
 	const legacyHomepageHashes = new Set([
-		'#hero-head',
-		'#about-head',
-		'#eliora-head',
-		'#overview-head'
+		'#hero-head'
 	]);
 	let showHomepagePortraitOverlay = $state(homeUsesPortraitEntry);
 	let fadeHomepagePortraitOverlay = $state(false);

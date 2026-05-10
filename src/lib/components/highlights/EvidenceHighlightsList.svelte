@@ -1,58 +1,29 @@
 <script lang="ts">
 	import { evidenceNodeById } from '$lib/content/evidence-nodes';
-	import type { EvidenceNodeId } from '$lib/content/types';
+	import { highlightsEntries } from '$lib/content/highlights';
 
 	type Props = {
 		navigationReady: boolean;
 	};
 
 	let { navigationReady }: Props = $props();
-
-	const evidenceHighlights = [
-		{
-			id: 'endpoint_remediation_script' as EvidenceNodeId,
-			title: 'Endpoint Remediation Script',
-			href: '/projects/remediation-script-development',
-			ctaClass: 'section-cta-remediation'
-		},
-		{
-			id: 'migration_stabilization_framework' as EvidenceNodeId,
-			title: 'Migration Stabilization Framework',
-			href: '/projects/migration-stabilization-framework',
-			ctaClass: 'section-cta-migration'
-		},
-		{
-			id: 'eliora_governance' as EvidenceNodeId,
-			title: 'Eliora Governance',
-			href: '/projects/eliora',
-			ctaClass: 'section-cta-eliora'
-		},
-		{
-			id: 'website_publication_system' as EvidenceNodeId,
-			title: 'Publication Layer',
-			href: '/projects/website-build-notes',
-			ctaClass: 'section-cta-eliora'
-		}
-	].map((entry) => ({
-		...entry,
-		summary: evidenceNodeById[entry.id].summary
-	}));
 </script>
 
 <div class="projects">
-	{#each evidenceHighlights as item}
+	{#each highlightsEntries as entry}
+		{@const node = evidenceNodeById[entry.evidenceNodeId]}
 		<article class="project-card project-card-governance" tabindex="-1">
-			<h3>{item.title}</h3>
-			<p class="project-summary">{item.summary}</p>
+			<h3>{node.humanDisplayLabel ?? node.label}</h3>
+			<p class="project-summary">{node.summary}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
-				class={`cta cta-resume ${item.ctaClass}`}
+				class={`cta cta-resume ${entry.ctaClass}`}
 				data-sveltekit-preload-code="hover"
-				href={item.href}
+				href={entry.href}
 				tabindex={navigationReady ? undefined : -1}
 			>
-				View Evidence
+				{entry.ctaLabel}
 			</a>
 		</article>
 	{/each}
