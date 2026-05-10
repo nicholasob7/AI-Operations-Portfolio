@@ -23,6 +23,13 @@
 
 	const projectionActions = $derived([
 		{
+			id: 'home',
+			label: 'Home',
+			type: 'link' as const,
+			href: '/',
+			preload: true
+		},
+		{
 			id: 'resume-index',
 			label: 'Resume Versions',
 			type: 'link' as const,
@@ -85,10 +92,10 @@
 			<p class="resume-detail-note">
 				Read this resume on-site, or use Save PDF for the reviewed one-page PDF artifact.
 			</p>
-			<div class="resume-detail-actions resume-print-hidden">
-				<a class="resume-detail-action" href="/resume" data-sveltekit-preload-code="hover">Back to Resume Versions</a>
-				<a class="resume-detail-action" href={document.pdfPath} download={`${document.slug}.pdf`}>Save PDF</a>
-			</div>
+				<div class="resume-detail-actions resume-print-hidden">
+					<a class="resume-detail-action" href="/resume" data-sveltekit-preload-code="hover">Resume Versions</a>
+					<a class="resume-detail-action" href={document.pdfPath} download={`${document.slug}.pdf`}>Save PDF</a>
+				</div>
 		</div>
 	</section>
 
