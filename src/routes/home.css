@@ -122,6 +122,12 @@
 		align-content: start;
 	}
 
+	.section-flow {
+		display: grid;
+		gap: 0.55rem;
+		align-content: start;
+	}
+
 	.hero {
 		position: relative;
 		overflow: hidden;
@@ -207,28 +213,6 @@
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-	}
-
-	.proof {
-		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
-		font-size: 1.04rem;
-		line-height: 1.45;
-		color: var(--text-muted);
-		margin-top: 0.6rem;
-		max-width: 82ch;
-	}
-
-	.hero-contact-list {
-		margin-top: 0.85rem;
-	}
-
-	.self-directed-section {
-		gap: 0.85rem;
-	}
-
-	.self-directed-note {
-		color: #d4def3;
-		max-width: 72ch;
 	}
 
 	.status-strip {
@@ -482,10 +466,6 @@
 		margin-top: 0.55rem;
 	}
 
-	.card > h2 + .projects {
-		margin-top: 0.55rem;
-	}
-
 	.about-section > h2 + .about-panel {
 		margin-top: 0.55rem;
 	}
@@ -576,11 +556,6 @@
 		-webkit-text-fill-color: transparent;
 	}
 
-	.projects p {
-		line-height: 1.55;
-		max-width: 88ch;
-	}
-
 	.project-outcome {
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.82rem;
@@ -668,12 +643,6 @@
 			max-width: 40ch;
 		}
 
-		.proof {
-			font-size: 1.5rem;
-			line-height: 1.58;
-			max-width: 82ch;
-		}
-
 		.about-panel {
 			padding: 1.24rem 1.28rem;
 			border-radius: 1rem;
@@ -713,8 +682,7 @@
 	}
 
 	@media (min-width: 960px) {
-		.about-panel p,
-		.projects p {
+		.about-panel p {
 			max-width: 100%;
 		}
 	}

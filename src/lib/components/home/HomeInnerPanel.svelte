@@ -49,9 +49,12 @@
 	}
 
 	.home-inner-panel :global(p) {
+		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
+		font-size: 1.05rem;
 		margin: 0;
 		line-height: 1.55;
 		max-width: 88ch;
+		color: #d4def3;
 	}
 
 	.home-inner-panel :global(h3) {

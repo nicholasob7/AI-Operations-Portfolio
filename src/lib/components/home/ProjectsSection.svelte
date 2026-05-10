@@ -9,8 +9,8 @@
 </script>
 
 <section class="card" aria-labelledby="selected-work-head">
-	<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
-	<div class="projects">
+	<div class="section-flow">
+		<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
 		<HomeInnerPanel>
 			<p>
 				Resumes on this website come from one canonical source. Evidence stays consistent; role emphasis changes. Built to save you valuable time.

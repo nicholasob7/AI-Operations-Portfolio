@@ -12,11 +12,11 @@
 	let { navigationReady }: Props = $props();
 </script>
 
-<section class="card self-directed-section" aria-labelledby="self-directed-head">
-	<h2 id="self-directed-head" tabindex="-1">Evidence Highlights</h2>
-	<div class="projects">
+<section class="card" aria-labelledby="self-directed-head">
+	<div class="section-flow">
+		<h2 id="self-directed-head" tabindex="-1">Evidence Highlights</h2>
 		<HomeInnerPanel>
-			<p class="self-directed-note">{homepageHighlightsGatewayCopy}</p>
+			<p>{homepageHighlightsGatewayCopy}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
