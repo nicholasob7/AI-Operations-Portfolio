@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HomeInnerPanel from '$lib/components/home/HomeInnerPanel.svelte';
 	import {
 		highlightsIndexRoute,
 		homepageHighlightsGatewayCopy
@@ -14,7 +15,7 @@
 <section class="card self-directed-section" aria-labelledby="self-directed-head">
 	<h2 id="self-directed-head" tabindex="-1">Evidence Highlights</h2>
 	<div class="projects">
-		<article class="project-card project-card-governance self-directed-gateway" tabindex="-1">
+		<HomeInnerPanel>
 			<p class="self-directed-note">{homepageHighlightsGatewayCopy}</p>
 			<a
 				aria-disabled={!navigationReady}
@@ -25,6 +26,6 @@
 			>
 				View Highlights
 			</a>
-		</article>
+		</HomeInnerPanel>
 	</div>
 </section>

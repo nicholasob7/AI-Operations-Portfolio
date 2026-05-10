@@ -1,4 +1,6 @@
 <script lang="ts">
+	import HomeInnerPanel from '$lib/components/home/HomeInnerPanel.svelte';
+
 	type Props = {
 		navigationReady: boolean;
 	};
@@ -9,7 +11,7 @@
 <section class="card" aria-labelledby="selected-work-head">
 	<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
 	<div class="projects">
-		<article class="project-card project-card-remediation resume-versions-card" tabindex="-1">
+		<HomeInnerPanel>
 			<p>
 				Resumes on this website come from one canonical source. Evidence stays consistent; role emphasis changes. Built to save you valuable time.
 			</p>
@@ -27,6 +29,6 @@
 			>
 				Resumes
 			</a>
-		</article>
+		</HomeInnerPanel>
 	</div>
 </section>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HomeInnerPanel from '$lib/components/home/HomeInnerPanel.svelte';
 	import { evidenceNodeById } from '$lib/content/evidence-nodes';
 	import { highlightsEntries } from '$lib/content/highlights';
 
@@ -12,7 +13,7 @@
 <div class="projects">
 	{#each highlightsEntries as entry}
 		{@const node = evidenceNodeById[entry.evidenceNodeId]}
-		<article class="project-card project-card-governance" tabindex="-1">
+		<HomeInnerPanel>
 			<h3>{node.humanDisplayLabel ?? node.label}</h3>
 			<p class="project-summary">{node.summary}</p>
 			<a
@@ -25,6 +26,6 @@
 			>
 				{entry.ctaLabel}
 			</a>
-		</article>
+		</HomeInnerPanel>
 	{/each}
 </div>

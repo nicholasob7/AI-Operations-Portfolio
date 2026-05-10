@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HomeInnerPanel from '$lib/components/home/HomeInnerPanel.svelte';
 	import { personProfilePublicLinks } from '$lib/content/person-profile';
 
 	type Props = {
@@ -19,25 +20,27 @@
 		<h1>Nicko O'Brien</h1>
 		<p class="tagline">IT Professional Profile</p>
 	</div>
-	<p class="proof">
-		Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
-		reviewed professional profile.
-	</p>
-	<ul class="contact-list hero-contact-list" aria-label="Public links">
-		{#each personProfilePublicLinks as item (item.id)}
-			<li>
-				<a
-					aria-disabled={!navigationReady}
-					class:interaction-disabled={!navigationReady}
-					class="contact-link"
-					href={item.href}
-					rel={item.id === 'email' ? undefined : 'noopener noreferrer'}
-					target={item.id === 'email' ? undefined : '_blank'}
-					tabindex={navigationReady ? undefined : -1}
-				>
-					{item.label}
-				</a>
-			</li>
-		{/each}
-	</ul>
+	<HomeInnerPanel>
+		<p class="proof">
+			Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
+			reviewed professional profile.
+		</p>
+		<ul class="contact-list hero-contact-list" aria-label="Public links">
+			{#each personProfilePublicLinks as item (item.id)}
+				<li>
+					<a
+						aria-disabled={!navigationReady}
+						class:interaction-disabled={!navigationReady}
+						class="contact-link"
+						href={item.href}
+						rel={item.id === 'email' ? undefined : 'noopener noreferrer'}
+						target={item.id === 'email' ? undefined : '_blank'}
+						tabindex={navigationReady ? undefined : -1}
+					>
+						{item.label}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</HomeInnerPanel>
 </section>
