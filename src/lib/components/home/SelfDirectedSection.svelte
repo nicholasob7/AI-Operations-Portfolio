@@ -29,7 +29,7 @@
 		},
 		{
 			id: 'website_publication_system' as EvidenceNodeId,
-			title: 'Website Publication System',
+			title: 'Publication Layer',
 			href: '/projects/website-build-notes',
 			ctaClass: 'section-cta-eliora'
 		}

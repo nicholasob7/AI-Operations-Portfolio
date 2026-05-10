@@ -20,7 +20,7 @@
 </script>
 
 <section class="card">
-	<h2 id="selected-work-head" tabindex="-1">Role-Specific Resumes</h2>
+	<h2 id="selected-work-head" tabindex="-1">Resume Versions</h2>
 	<div class="projects">
 		{#each featuredProjections as projection}
 			<article class="project-card project-card-remediation" tabindex="-1">
@@ -34,7 +34,7 @@
 					data-sveltekit-preload-code="hover"
 					tabindex={navigationReady ? undefined : -1}
 				>
-					View Resume
+					Resumes
 				</a>
 			</article>
 		{/each}

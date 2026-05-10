@@ -34,7 +34,7 @@
 				data-sveltekit-preload-code="hover"
 				href="/resume"
 			>
-				View Resumes
+				Resumes
 			</a>
 		</div>
 	</div>

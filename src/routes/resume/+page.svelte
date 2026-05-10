@@ -13,9 +13,9 @@
 	import { canonicalOrigin } from '$lib/site';
 	import { onMount } from 'svelte';
 
-	const resumeTitle = "Nicholas Francis O'Brien | Role-Specific Resumes";
+	const resumeTitle = "Nicholas Francis O'Brien | Resume Versions";
 	const resumeDescription =
-		"Role-specific resumes for Nicholas Francis O'Brien across IT Support, Technical Operations, and AI / Process Improvement.";
+		"Resume versions for Nicholas Francis O'Brien across IT Support, Technical Operations, and AI / Process Improvement.";
 	const resumeEntrySurface = resolveEntrySurface('resume');
 	const resumeEntryImage = getEntryImage(resumeEntrySurface);
 	const resumeSocialImage = resumeEntryImage ? `${canonicalOrigin}${resumeEntryImage}` : null;
@@ -116,7 +116,7 @@
 		<div class="hero-panel-content">
 			<div class="hero-copy">
 				<h1>Nicholas Francis O'Brien</h1>
-				<p class="focus-line">Resume Projections</p>
+				<p class="focus-line">Resume Versions</p>
 					<p class="hero-note">
 						Choose the resume version closest to the role. Each version can be read on-site or opened as the
 						reviewed one-page PDF artifact, with the same substantive resume content preserved across formats.
@@ -133,7 +133,7 @@
 	<section class="panel projections-panel" aria-labelledby="role-specific-resumes-heading">
 		<div class="section-head">
 			<div class="section-head-copy">
-				<h2 id="role-specific-resumes-heading">Role-Specific Resumes</h2>
+				<h2 id="role-specific-resumes-heading">Resume Versions</h2>
 				<p class="section-note">
 					The active public resume surface is projection-based. These are the only published resume artifacts in
 					active use.
