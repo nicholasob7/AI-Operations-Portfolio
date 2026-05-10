@@ -67,5 +67,5 @@ export const personProfile = {
 	currentEmployment: resumeCurrentEmployment,
 	qualifications,
 	publicationNote:
-		'This profile is the approved static publication surface for reviewed professional profile data, evidence nodes, projection metadata, and published PDF artifacts.'
+		'This profile is the approved static publication surface for professional profile data, evidence nodes, projection metadata, and published PDF artifacts.'
 } satisfies PersonProfile;
