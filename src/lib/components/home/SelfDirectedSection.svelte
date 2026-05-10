@@ -14,7 +14,7 @@
 
 <section class="card" aria-labelledby="self-directed-head">
 	<div class="section-flow">
-		<h2 id="self-directed-head" tabindex="-1">Evidence Highlights</h2>
+		<h2 id="self-directed-head" tabindex="-1">Selected Evidence Highlights</h2>
 		<HomeInnerPanel>
 			<p>{homepageHighlightsGatewayCopy}</p>
 			<a

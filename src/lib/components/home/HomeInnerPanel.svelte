@@ -31,23 +31,6 @@
 		position: relative;
 	}
 
-	.home-inner-panel::before {
-		content: '';
-		position: absolute;
-		left: -1px;
-		top: -1px;
-		bottom: -1px;
-		width: 5px;
-		border-radius: 0.75rem 0 0 0.75rem;
-		background: linear-gradient(
-			180deg,
-			rgba(47, 209, 255, 1),
-			rgba(154, 99, 232, 1),
-			rgba(57, 198, 154, 0.95)
-		);
-		box-shadow: 0 0 18px rgba(154, 99, 232, 0.35);
-	}
-
 	.home-inner-panel :global(p) {
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1.05rem;

@@ -613,6 +613,10 @@
 		justify-self: center;
 	}
 
+	.current-role-line {
+		color: var(--heading-green);
+	}
+
 	@media (min-width: 960px) {
 		.page {
 			max-width: 1320px;

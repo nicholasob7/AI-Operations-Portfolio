@@ -12,7 +12,7 @@
 	<div class="section-flow">
 		<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
 		<HomeInnerPanel>
-			<p>
+			<p class="current-role-line">
 				Current: <strong>IT Support</strong>, <strong>Technical Operations</strong>, and
 				<strong>AI / Process Improvement</strong>.
 			</p>
