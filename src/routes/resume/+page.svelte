@@ -116,10 +116,10 @@
 		<div class="hero-panel-content">
 			<div class="hero-copy">
 				<h1>Nicholas Francis O'Brien</h1>
-				<p class="focus-line">Role-Specific Resumes</p>
+				<p class="focus-line">Resume Projections</p>
 					<p class="hero-note">
-						Choose the resume version closest to the role. Each version can be read on-site and printed from
-						its detail view, with the same substantive resume content preserved in print.
+						Choose the resume version closest to the role. Each version can be read on-site or opened as the
+						reviewed one-page PDF artifact, with the same substantive resume content preserved across formats.
 					</p>
 				<div class="hero-context" aria-label="Current role context">
 					<p class="hero-context-label">Current Role</p>

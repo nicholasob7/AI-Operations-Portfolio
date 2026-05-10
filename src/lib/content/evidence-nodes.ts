@@ -29,7 +29,7 @@ export const evidenceNodes = [
 		id: 'service_desk_foundation',
 		label: 'Service Desk Foundation',
 		summary:
-			'Bounded public evidence of enterprise service desk foundation across incidents, service requests, remote support, documentation, and escalation judgment.',
+			'Enterprise service desk foundation across incidents, service requests, remote support, documentation, and escalation judgment.',
 		status: 'complete',
 		practiceAreaIds: ['support_practice', 'documentation_delivery_evidence'],
 		projectionIds: allActiveProjectionIds,
@@ -56,7 +56,7 @@ export const evidenceNodes = [
 		id: 'privileged_access_and_operational_scope',
 		label: 'Privileged Access and Operational Scope',
 		summary:
-			'Bounded public evidence of extended operational scope covering privileged access handling, vendor-facing coordination, queue/process improvement, and repeat-work reduction.',
+			'Extended operational scope covering privileged access handling, vendor-facing coordination, queue/process improvement, and repeat-work reduction.',
 		status: 'mixed_or_transitional',
 		practiceAreaIds: [
 			'support_practice',
@@ -87,7 +87,7 @@ export const evidenceNodes = [
 		id: 'endpoint_remediation_script',
 		label: 'Endpoint Remediation Script',
 		summary:
-			'Bounded public evidence of AI-assisted endpoint remediation development, validation, production use, and controlled translation of incident results into broader technical investigation.',
+			'AI-assisted endpoint remediation development, validation, production use, and controlled translation of incident results into broader technical investigation.',
 		status: 'complete',
 		practiceAreaIds: [
 			'technical_operations_practice',
@@ -118,7 +118,7 @@ export const evidenceNodes = [
 		id: 'migration_stabilization_framework',
 		label: 'Migration Stabilization Framework',
 		summary:
-			'Bounded public evidence of package reconstruction and migration stabilization work derived from validated remediation logic and test-device confirmation.',
+			'Package reconstruction and migration stabilization work derived from validated remediation logic and test-device confirmation.',
 		status: 'active',
 		practiceAreaIds: [
 			'technical_operations_practice',
@@ -149,7 +149,7 @@ export const evidenceNodes = [
 		id: 'eliora_governance',
 		label: 'Eliora Governance',
 		summary:
-			'Bounded public evidence of AI governance thinking, semantic control, authority separation, and structured reasoning for high-consequence systems.',
+			'AI governance thinking, semantic control, authority separation, and structured reasoning for high-consequence systems.',
 		status: 'active',
 		practiceAreaIds: ['ai_process_improvement_practice', 'documentation_delivery_evidence'],
 		projectionIds: ['ai_process'],
@@ -175,7 +175,7 @@ export const evidenceNodes = [
 		id: 'website_publication_system',
 		label: 'Website Publication System',
 		summary:
-			'Bounded public evidence of static publication discipline, machine-readable surface design, and controlled public delivery for the professional profile site itself.',
+			'Static publication discipline, machine-readable surface design, and controlled public delivery for the professional profile site itself.',
 		status: 'active',
 		practiceAreaIds: ['documentation_delivery_evidence', 'ai_process_improvement_practice'],
 		projectionIds: ['ai_process'],

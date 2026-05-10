@@ -6,7 +6,7 @@ export const projectionSelectionGuidance = [
 		projectionId: 'it_support',
 		roleFamily: 'Enterprise IT support and service desk delivery',
 		selectionSummary:
-			'Choose this projection for roles centered on front-line support, service desk delivery, Microsoft administration, identity/access work, and end-user issue resolution.',
+			'Best aligned with front-line support, service desk delivery, Microsoft administration, identity/access work, and end-user issue resolution roles.',
 		roleTargets: [
 			'IT Support',
 			'Service Desk',
@@ -35,7 +35,7 @@ export const projectionSelectionGuidance = [
 		projectionId: 'technical_operations',
 		roleFamily: 'Technical operations, endpoint support, and deployment diagnostics',
 		selectionSummary:
-			'Choose this projection for roles centered on endpoint remediation, application support, deployment diagnostics, package investigation, and structured technical troubleshooting.',
+			'Built for endpoint remediation, application support, deployment diagnostics, package investigation, and structured technical troubleshooting roles.',
 		roleTargets: [
 			'Technical Operations',
 			'Systems Support',
@@ -67,7 +67,7 @@ export const projectionSelectionGuidance = [
 		projectionId: 'ai_process',
 		roleFamily: 'AI-assisted operations and process improvement',
 		selectionSummary:
-			'Choose this projection for roles centered on AI-assisted operational analysis, process improvement, documentation quality, remediation design, and converting recurring issues into repeatable outputs.',
+			'Suited to AI-assisted operational analysis, process improvement, documentation quality, remediation design, and converting recurring issues into repeatable outputs.',
 		roleTargets: [
 			'AI / Process Improvement',
 			'AI Operations',

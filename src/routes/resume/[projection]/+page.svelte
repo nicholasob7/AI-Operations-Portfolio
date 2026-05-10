@@ -83,7 +83,7 @@
 		<div class="resume-detail-intro-copy">
 			<p class="resume-detail-eyebrow">Resume Actions</p>
 			<p class="resume-detail-note">
-				Read this resume on-site, then use Save PDF to open the reviewed one-page PDF version.
+				Read this resume on-site, or use Save PDF for the reviewed one-page PDF artifact.
 			</p>
 			<div class="resume-detail-actions resume-print-hidden">
 				<a class="resume-detail-action" href="/resume" data-sveltekit-preload-code="hover">Back to Resume Versions</a>
