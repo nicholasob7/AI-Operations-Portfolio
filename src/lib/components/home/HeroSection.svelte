@@ -15,8 +15,10 @@
 		<div class="hero-aurora-frame hero-aurora-frame-3"></div>
 		<div class="hero-aurora-frame hero-aurora-frame-4"></div>
 	</div>
-	<h1>Nicko O'Brien</h1>
-	<p class="tagline">IT Professional Profile</p>
+	<div class="hero-heading">
+		<h1>Nicko O'Brien</h1>
+		<p class="tagline">IT Professional Profile</p>
+	</div>
 	<p class="proof">
 		Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
 		reviewed professional profile.
