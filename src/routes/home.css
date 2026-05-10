@@ -584,11 +584,6 @@
 		align-items: center;
 	}
 
-	.identity-links li:not(:last-child)::after {
-		content: '·';
-		margin-left: 0.85rem;
-		color: rgba(146, 219, 255, 0.72);
-	}
 
 	.identity-link {
 		color: #d7e8ff;
@@ -746,10 +741,6 @@
 
 		.identity-links {
 			gap: 0.3rem 0.7rem;
-		}
-
-		.identity-links li:not(:last-child)::after {
-			margin-left: 0.7rem;
 		}
 
 		.metric-label {
