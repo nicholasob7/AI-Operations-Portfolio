@@ -108,6 +108,12 @@
 		letter-spacing: -0.028em;
 		margin: 0.18rem 0 0.08rem;
 		color: #d6e2f7;
+		background: none;
+		background-clip: border-box;
+		-webkit-background-clip: border-box;
+		-webkit-text-fill-color: #d6e2f7;
+		text-shadow: none;
+		filter: none;
 	}
 
 	.hero-heading {
