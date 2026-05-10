@@ -7,6 +7,7 @@ export const canonicalOrigin = 'https://nicko.obrienai.com';
 
 export const sitemapRoutes = [
 	'/',
+	'/highlights',
 	'/resume',
 	'/canonical.json',
 	'/projects/eliora',

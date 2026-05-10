@@ -1,42 +1,34 @@
 <script lang="ts">
-	import { projectionSelectionGuidanceById } from '$lib/content/projection-guidance';
-	import { getHumanVisibleResumeProjections } from '$lib/content/resume-projections';
+	import HomeInnerPanel from '$lib/components/home/HomeInnerPanel.svelte';
 
 	type Props = {
 		navigationReady: boolean;
 	};
 
 	let { navigationReady }: Props = $props();
-
-	const featuredProjections = getHumanVisibleResumeProjections().map((projection) => {
-		const guidance = projectionSelectionGuidanceById[projection.id];
-		return {
-			id: projection.id,
-			label: projection.label,
-			href: projection.htmlPath,
-			summary: guidance.selectionSummary
-		};
-	});
 </script>
 
-<section class="card">
-	<h2 id="selected-work-head" tabindex="-1">Role-Specific Resumes</h2>
-	<div class="projects">
-		{#each featuredProjections as projection}
-			<article class="project-card project-card-remediation" tabindex="-1">
-				<h3>{projection.label}</h3>
-				<p class="project-summary">{projection.summary}</p>
-				<a
-					aria-disabled={!navigationReady}
-					class:interaction-disabled={!navigationReady}
-					class="cta cta-resume section-cta-remediation"
-					href={projection.href}
-					data-sveltekit-preload-code="hover"
-					tabindex={navigationReady ? undefined : -1}
-				>
-					View Resume
-				</a>
-			</article>
-		{/each}
+<section class="card" aria-labelledby="selected-work-head">
+	<div class="section-flow">
+		<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
+		<HomeInnerPanel>
+			<p class="current-role-line">
+				Current: <strong>IT Support</strong>, <strong>Technical Operations</strong>, and
+				<strong>AI / Process Improvement</strong>.
+			</p>
+			<p>
+				Resumes on this website come from one canonical source. Evidence stays consistent; role emphasis changes. Built to save you valuable time.
+			</p>
+			<a
+				aria-disabled={!navigationReady}
+				class:interaction-disabled={!navigationReady}
+				class="cta cta-resume section-cta-remediation"
+				href="/resume"
+				data-sveltekit-preload-code="hover"
+				tabindex={navigationReady ? undefined : -1}
+			>
+				Resumes
+			</a>
+		</HomeInnerPanel>
 	</div>
 </section>

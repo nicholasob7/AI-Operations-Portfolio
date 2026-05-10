@@ -15,17 +15,17 @@
 
 	const websiteBuildNotesActions = [
 		{
+			id: 'highlights',
+			label: 'Highlights',
+			type: 'link',
+			href: '/highlights',
+			preload: true
+		},
+		{
 			id: 'home',
 			label: 'Home',
 			type: 'link',
 			href: '/',
-			preload: true
-		},
-		{
-			id: 'back-to-card',
-			label: 'Back to Card',
-			type: 'link',
-			href: '/#website-build-notes-head',
 			preload: true
 		},
 		{

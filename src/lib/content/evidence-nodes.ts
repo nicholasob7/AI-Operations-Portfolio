@@ -174,6 +174,7 @@ export const evidenceNodes = [
 	{
 		id: 'website_publication_system',
 		label: 'Website Publication System',
+		humanDisplayLabel: 'Publication Layer',
 		summary:
 			'Static publication discipline, machine-readable surface design, and controlled public delivery for the professional profile site itself.',
 		status: 'active',

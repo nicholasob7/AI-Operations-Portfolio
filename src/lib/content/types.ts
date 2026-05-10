@@ -75,6 +75,7 @@ export type EvidenceNodeStatus = 'active' | 'complete' | 'mixed_or_transitional'
 export type EvidenceNode = {
 	id: EvidenceNodeId;
 	label: string;
+	humanDisplayLabel?: string;
 	summary: string;
 	status: EvidenceNodeStatus;
 	practiceAreaIds: PracticeAreaId[];

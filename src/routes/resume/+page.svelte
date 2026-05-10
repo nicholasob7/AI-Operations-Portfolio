@@ -3,7 +3,6 @@
 	import PortraitIntro, { type PortraitIntroState } from '$lib/components/PortraitIntro.svelte';
 	import { browser } from '$app/environment';
 	import {
-		resumeContactItems,
 		resumeCurrentEmploymentLocationPeriodLine,
 		resumeCurrentEmploymentRoleLine
 	} from '$lib/content/resume';
@@ -13,9 +12,9 @@
 	import { canonicalOrigin } from '$lib/site';
 	import { onMount } from 'svelte';
 
-	const resumeTitle = "Nicholas Francis O'Brien | Role-Specific Resumes";
+	const resumeTitle = "Nicholas Francis O'Brien | Resume Versions";
 	const resumeDescription =
-		"Role-specific resumes for Nicholas Francis O'Brien across IT Support, Technical Operations, and AI / Process Improvement.";
+		"Resume versions for Nicholas Francis O'Brien across IT Support, Technical Operations, and AI / Process Improvement.";
 	const resumeEntrySurface = resolveEntrySurface('resume');
 	const resumeEntryImage = getEntryImage(resumeEntrySurface);
 	const resumeSocialImage = resumeEntryImage ? `${canonicalOrigin}${resumeEntryImage}` : null;
@@ -43,14 +42,6 @@
 			href: '#resume-top'
 		}
 	];
-
-	const contactHrefById: Record<(typeof resumeContactItems)[number]['id'], string> = {
-		email: 'mailto:nicko.obrien.ai@gmail.com',
-		website: 'https://nicko.obrienai.com',
-		linkedin: 'https://linkedin.com/in/nicholasfobrien/',
-		github: 'https://github.com/nicholasob7',
-		twitter: 'https://x.com/francis_o39763'
-	};
 
 	const handleResumePortraitState = (state: PortraitIntroState) => {
 		showResumePortraitOverlay = state.visible;
@@ -116,7 +107,7 @@
 		<div class="hero-panel-content">
 			<div class="hero-copy">
 				<h1>Nicholas Francis O'Brien</h1>
-				<p class="focus-line">Resume Projections</p>
+				<p class="focus-line">Resume Versions</p>
 					<p class="hero-note">
 						Choose the resume version closest to the role. Each version can be read on-site or opened as the
 						reviewed one-page PDF artifact, with the same substantive resume content preserved across formats.
@@ -133,7 +124,7 @@
 	<section class="panel projections-panel" aria-labelledby="role-specific-resumes-heading">
 		<div class="section-head">
 			<div class="section-head-copy">
-				<h2 id="role-specific-resumes-heading">Role-Specific Resumes</h2>
+				<h2 id="role-specific-resumes-heading">Resume Versions</h2>
 				<p class="section-note">
 					The active public resume surface is projection-based. These are the only published resume artifacts in
 					active use.
@@ -180,27 +171,6 @@
 		</div>
 	</section>
 
-	<section class="panel support-panel" aria-labelledby="public-links-heading">
-		<div class="section-head-copy">
-			<h2 id="public-links-heading">Public Links</h2>
-			<p class="section-note">Use these channels for portfolio context and contact.</p>
-		</div>
-		<ul class="contact-list">
-			{#each resumeContactItems as item (item.id)}
-				<li>
-					<span class="contact-label">{item.label}</span>
-					<a
-						class="contact-link"
-						href={contactHrefById[item.id]}
-						rel="noopener noreferrer"
-						target={item.id === 'email' ? undefined : '_blank'}
-					>
-						{item.displayValue}
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</section>
 </main>
 
 <style>
@@ -257,8 +227,7 @@
 	.section-head-copy,
 	.projection-card,
 	.projection-card-copy,
-	.projection-card-targets,
-	.support-panel {
+	.projection-card-targets {
 		display: grid;
 		gap: 0.5rem;
 	}
@@ -310,8 +279,7 @@
 	.role-line,
 	.role-meta,
 	.projection-summary,
-	.target-list li,
-	.contact-list li {
+	.target-list li {
 		font-size: 0.92rem;
 		line-height: 1.48;
 		color: #d3def1;
@@ -323,8 +291,7 @@
 		padding-top: 0.2rem;
 	}
 
-	.hero-context-label,
-	.contact-label {
+	.hero-context-label {
 		font-size: 0.72rem;
 		line-height: 1.1;
 		font-weight: 700;
@@ -366,8 +333,7 @@
 		text-transform: uppercase;
 	}
 
-	.target-list,
-	.contact-list {
+	.target-list {
 		margin: 0;
 		padding-left: 1.05rem;
 		display: grid;
@@ -375,8 +341,7 @@
 		list-style: disc;
 	}
 
-	.target-list li::marker,
-	.contact-list li::marker {
+	.target-list li::marker {
 		color: #92dbff;
 	}
 
@@ -387,8 +352,7 @@
 		padding-top: 0.2rem;
 	}
 
-	.projection-action,
-	.contact-link {
+	.projection-action {
 		color: #d7e8ff;
 		text-decoration: none;
 	}
@@ -412,21 +376,13 @@
 		color: #f3f7ff;
 	}
 
-	.projection-action:hover,
-	.contact-link:hover {
+	.projection-action:hover {
 		color: #ffffff;
 	}
 
-	.projection-action:focus-visible,
-	.contact-link:focus-visible {
+	.projection-action:focus-visible {
 		outline: 2px solid rgba(141, 214, 255, 0.9);
 		outline-offset: 2px;
-	}
-
-	.contact-link {
-		text-decoration: underline;
-		text-decoration-color: rgba(154, 214, 255, 0.44);
-		text-underline-offset: 0.18rem;
 	}
 
 	@media (min-width: 960px) {
@@ -462,14 +418,12 @@
 		.role-line,
 		.role-meta,
 		.projection-summary,
-		.target-list li,
-		.contact-list li {
+		.target-list li {
 			font-size: 1.05rem;
 			line-height: 1.58;
 		}
 
-		.hero-context-label,
-		.contact-label {
+		.hero-context-label {
 			font-size: 0.86rem;
 		}
 

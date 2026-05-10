@@ -22,17 +22,17 @@
 			download: 'Portfolio_Description_BW.pdf'
 		},
 		{
+			id: 'highlights',
+			label: 'Highlights',
+			type: 'link',
+			href: '/highlights',
+			preload: true
+		},
+		{
 			id: 'home',
 			label: 'Home',
 			type: 'link',
 			href: '/',
-			preload: true
-		},
-		{
-			id: 'next',
-			label: 'Next',
-			type: 'link',
-			href: '/#selected-work-head',
 			preload: true
 		},
 		{

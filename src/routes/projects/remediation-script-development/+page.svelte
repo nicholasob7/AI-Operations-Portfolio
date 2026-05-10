@@ -22,17 +22,17 @@
 			download: 'Remediation_Script_Development_Portfolio_BW.pdf'
 		},
 		{
+			id: 'highlights',
+			label: 'Highlights',
+			type: 'link',
+			href: '/highlights',
+			preload: true
+		},
+		{
 			id: 'home',
 			label: 'Home',
 			type: 'link',
 			href: '/',
-			preload: true
-		},
-		{
-			id: 'next',
-			label: 'Next Fix',
-			type: 'link',
-			href: '/#deployment-head',
 			preload: true
 		},
 		{
