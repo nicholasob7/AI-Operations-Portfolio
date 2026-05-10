@@ -608,11 +608,6 @@
 		outline-offset: 2px;
 	}
 
-	.card .home-inner-panel .section-cta-remediation,
-	.card .home-inner-panel .section-cta-eliora {
-		justify-self: center;
-	}
-
 	.current-role-line {
 		color: var(--heading-green);
 	}

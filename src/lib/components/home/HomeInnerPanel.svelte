@@ -45,7 +45,7 @@
 	}
 
 	.home-inner-panel :global(.cta) {
-		justify-self: start;
+		justify-self: center;
 		max-width: 100%;
 	}
 
