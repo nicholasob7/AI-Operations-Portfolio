@@ -62,3 +62,58 @@ Operational rule:
 - `Save PDF` must link to the reviewed one-page static PDF artifact
 - future resume PDF generation must use a controlled renderer from structured resume-document data
 - do not treat browser print as the formal downloadable artifact path
+
+
+## Skill: Application argument compression
+
+When producing cover letters, resume summaries, recruiter notes, or application-facing text, do not write generic enthusiasm or broad self-description.
+
+Use this sequence:
+
+1. Identify the employer’s real hiring problem from the job description.
+   - Do not merely repeat the job title.
+   - Find the operational pressure behind the role.
+   - Example: for a customer experience role, the real problem may be that complex AI software only matters if customers can understand it, trust it, and use it under real working pressure.
+
+2. Reduce the opening to one direct claim.
+   - No "I want to do this work" if applying already proves that.
+   - No "this is not just a support role" unless the contrast is necessary.
+   - No classification padding.
+   - The first sentence must state the reason the role matters.
+
+3. Make the experience paragraph prove one thing.
+   - Do not list every related skill.
+   - Pick the strongest bridge between Nicholas's experience and the job's pressure.
+   - Preferred structure:
+     - current operating context
+     - practical action
+     - role-matched consequence
+
+4. Keep the language recruiter-safe.
+   - Short paragraphs.
+   - Plain English.
+   - No inflated claims.
+   - No machine-like phrasing.
+   - No garden-path sentences.
+   - No unnecessary adjectives.
+   - No "passionate," "excited," "dynamic," "leveraging," or similar filler.
+
+5. Preserve first-pass readability.
+   - Treat the cover letter like the one-page resume system.
+   - Every sentence must survive a 10-second recruiter scan.
+   - Delete anything that only decorates the argument.
+
+Example pattern:
+
+Dear [team],
+
+I'm interested in the [role] because [direct statement of why the employer's problem matters].
+
+In my current [role], I [one clear proof of relevant operating discipline]. That matches this role because [direct bridge to the job's core need].
+
+What stands out about [company] is [specific system/product/customer-pressure fit].
+
+I [short closing proof: write clearly / learn systems quickly / own practical problems].
+
+Kind regards,
+Nicholas O'Brien
