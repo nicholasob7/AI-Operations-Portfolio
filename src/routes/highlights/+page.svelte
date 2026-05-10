@@ -1,10 +1,31 @@
 <script lang="ts">
+	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import EvidenceHighlightsList from '$lib/components/highlights/EvidenceHighlightsList.svelte';
 	import {
 		highlightsPageSummary,
 		highlightsPageTitle
 	} from '$lib/content/highlights';
 	import './+page.css';
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'auto' });
+	};
+
+	const highlightsActions = [
+		{
+			id: 'home',
+			label: 'Home',
+			type: 'link',
+			href: '/',
+			preload: true
+		},
+		{
+			id: 'top',
+			label: 'Top',
+			type: 'button',
+			onclick: scrollToTop
+		}
+	] satisfies DestinationAction[];
 </script>
 
 <svelte:head>
@@ -20,6 +41,7 @@
 </svelte:head>
 
 <main class="page">
+	<DestinationActions actions={highlightsActions} panelId="highlights-destination-actions" />
 	<section class="card highlights-page-section" aria-labelledby="highlights-head">
 		<h1 id="highlights-head" tabindex="-1">{highlightsPageTitle}</h1>
 		<EvidenceHighlightsList navigationReady={true} />

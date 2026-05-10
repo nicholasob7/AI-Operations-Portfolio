@@ -27,7 +27,7 @@ body {
 .page {
 	max-width: 1320px;
 	margin: 0 auto;
-	padding: 3rem 1.25rem 4rem;
+	padding: 3rem 1.25rem calc(6.5rem + env(safe-area-inset-bottom));
 	display: grid;
 	gap: 1.5rem;
 }
