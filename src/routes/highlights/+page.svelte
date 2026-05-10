@@ -22,7 +22,6 @@
 <main class="page">
 	<section class="card highlights-page-section" aria-labelledby="highlights-head">
 		<h1 id="highlights-head" tabindex="-1">{highlightsPageTitle}</h1>
-		<p class="highlights-page-note">{highlightsPageSummary}</p>
 		<EvidenceHighlightsList navigationReady={true} />
 	</section>
 </main>

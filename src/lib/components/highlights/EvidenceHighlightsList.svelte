@@ -29,3 +29,25 @@
 		</HomeInnerPanel>
 	{/each}
 </div>
+
+<style>
+	.projects {
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.projects :global(h3) {
+		justify-self: center;
+		text-align: center;
+	}
+
+	.projects :global(.project-summary) {
+		text-align: left;
+	}
+
+	@media (min-width: 960px) {
+		.projects {
+			gap: 1.2rem;
+		}
+	}
+</style>
