@@ -11,8 +11,9 @@
 	import PortraitIntro, { type PortraitIntroState } from '$lib/components/PortraitIntro.svelte';
 	import { requestPortraitIntroReplay } from '$lib/portrait-intro';
 	import { onMount, tick } from 'svelte';
-	import HeroSection from '$lib/components/home/HeroSection.svelte';
+	import IdentitySection from '$lib/components/home/IdentitySection.svelte';
 	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
+	import ProfessionalProfileSection from '$lib/components/home/ProfessionalProfileSection.svelte';
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
 	import SelfDirectedSection from '$lib/components/home/SelfDirectedSection.svelte';
 	import './home.css';
@@ -159,9 +160,13 @@
 		>
 	</section>
 
-	<HeroSection
+	<IdentitySection
 		navigationReady={homepageInteractionReady}
 	/>
+	<div class="section-divider" aria-hidden="true"></div>
+
+	<ProfessionalProfileSection />
+	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProjectsSection
 		navigationReady={homepageInteractionReady}
@@ -171,6 +176,7 @@
 	<SelfDirectedSection
 		navigationReady={homepageInteractionReady}
 	/>
+	<div class="section-divider" aria-hidden="true"></div>
 
 	<ProfileTail entrySettled={homepageInteractionReady} {returnToTop} />
 	<div class="page-end-spacer" aria-hidden="true"></div>

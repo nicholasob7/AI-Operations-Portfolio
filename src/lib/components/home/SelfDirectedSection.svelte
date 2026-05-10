@@ -24,7 +24,7 @@
 				href={highlightsIndexRoute}
 				tabindex={navigationReady ? undefined : -1}
 			>
-				View Highlights
+				Highlights
 			</a>
 		</HomeInnerPanel>
 	</div>

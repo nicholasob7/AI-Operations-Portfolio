@@ -100,7 +100,7 @@
 		animation: rise-in 520ms ease both;
 	}
 
-	.hero h1 {
+	.identity-section h1 {
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: clamp(2.1rem, 5vw, 3.25rem);
 		font-weight: 600;
@@ -116,10 +116,12 @@
 		filter: none;
 	}
 
-	.hero-heading {
+	.identity-heading {
 		display: grid;
 		gap: 0.2rem;
 		align-content: start;
+		justify-items: center;
+		text-align: center;
 	}
 
 	.section-flow {
@@ -128,17 +130,22 @@
 		align-content: start;
 	}
 
-	.hero {
+	.identity-section {
 		position: relative;
 		overflow: hidden;
+		padding: 1.25rem;
 	}
 
-	.hero > * {
+	.identity-section .section-flow {
+		justify-items: center;
+	}
+
+	.identity-section > * {
 		position: relative;
 		z-index: 1;
 	}
 
-	.hero-aurora-stack {
+	.identity-aurora-stack {
 		display: none;
 		position: absolute;
 		inset: -35% -10% auto -10%;
@@ -147,7 +154,7 @@
 		overflow: hidden;
 	}
 
-	.hero-aurora-frame {
+	.identity-aurora-frame {
 		position: absolute;
 		inset: 0;
 		background-position: center;
@@ -158,22 +165,22 @@
 		animation: aurora-frame-fade 32s linear infinite;
 	}
 
-	.hero-aurora-frame-1 {
+	.identity-aurora-frame-1 {
 		background-image: url('/aurora/hero-aurora-01.webp');
 		animation-delay: 0s;
 	}
 
-	.hero-aurora-frame-2 {
+	.identity-aurora-frame-2 {
 		background-image: url('/aurora/hero-aurora-02.webp');
 		animation-delay: 8s;
 	}
 
-	.hero-aurora-frame-3 {
+	.identity-aurora-frame-3 {
 		background-image: url('/aurora/hero-aurora-03.webp');
 		animation-delay: 16s;
 	}
 
-	.hero-aurora-frame-4 {
+	.identity-aurora-frame-4 {
 		background-image: url('/aurora/hero-aurora-04.webp');
 		animation-delay: 24s;
 	}
@@ -192,26 +199,6 @@
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		font-size: 0.75rem;
-	}
-
-	.tagline {
-		display: block;
-		width: auto;
-		font-size: 1.5rem;
-		font-weight: 600;
-		line-height: 1.12;
-		margin: 0;
-		max-width: 40ch;
-		color: transparent;
-		background: linear-gradient(
-			90deg,
-			var(--heading-cyan) 0%,
-			var(--heading-violet) 50%,
-			var(--heading-green) 100%
-		);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 	}
 
 	.status-strip {
@@ -452,6 +439,13 @@
 		-webkit-text-fill-color: transparent;
 	}
 
+	#professional-profile-head,
+	#selected-work-head,
+	#self-directed-head {
+		justify-self: center;
+		text-align: center;
+	}
+
 	p {
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 1.05rem;
@@ -568,34 +562,35 @@
 	}
 
 	.section-note,
-	.contact-list li {
+	.identity-links li {
 		font-size: 0.92rem;
 		line-height: 1.48;
 		color: #d3def1;
 	}
 
-	.contact-list {
+	.identity-links {
 		margin: 0;
 		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 0.4rem 0.85rem;
 		list-style: none;
 	}
 
-	.contact-list li {
+	.identity-links li {
 		position: relative;
 		display: inline-flex;
 		align-items: center;
 	}
 
-	.contact-list li:not(:last-child)::after {
+	.identity-links li:not(:last-child)::after {
 		content: '·';
 		margin-left: 0.85rem;
 		color: rgba(146, 219, 255, 0.72);
 	}
 
-	.contact-link {
+	.identity-link {
 		color: #d7e8ff;
 		text-decoration: underline;
 		text-decoration-color: rgba(154, 214, 255, 0.44);
@@ -603,15 +598,21 @@
 		text-decoration-thickness: 1px;
 	}
 
-	.contact-link:hover {
+	.identity-link:hover {
 		color: #ffffff;
 		text-decoration-color: rgba(214, 236, 255, 0.82);
 	}
 
-	.contact-link:focus-visible {
+	.identity-link:focus-visible {
 		outline: 2px solid rgba(141, 214, 255, 0.9);
 		outline-offset: 2px;
 	}
+
+	.card .home-inner-panel .section-cta-remediation,
+	.card .home-inner-panel .section-cta-eliora {
+		justify-self: center;
+	}
+
 	@media (min-width: 960px) {
 		.page {
 			max-width: 1320px;
@@ -624,22 +625,17 @@
 			border-radius: 1.2rem;
 		}
 
-		.hero {
+		.identity-section {
 			padding: 1.7rem;
 		}
 
-		.hero h1 {
+		.identity-section h1 {
 			font-size: clamp(3rem, 4.8vw, 4.7rem);
 		}
 
 		.eyebrow {
 			font-size: 0.84rem;
 			letter-spacing: 0.1em;
-		}
-
-		.tagline {
-			font-size: 1.9rem;
-			max-width: 40ch;
 		}
 
 		.about-panel {
@@ -668,7 +664,7 @@
 		}
 
 		.section-note,
-		.contact-list li {
+		.identity-links li {
 			font-size: 1.05rem;
 			line-height: 1.58;
 		}
@@ -687,6 +683,7 @@
 	}
 
 	#hero-head,
+	#professional-profile-head,
 	#selected-work-head,
 	#self-directed-head,
 	#tail-head {
@@ -734,11 +731,11 @@
 			gap: 1rem;
 		}
 
-		.hero {
+		.identity-section {
 			padding: 1.25rem;
 		}
 
-		.hero h1 {
+		.identity-section h1 {
 			font-size: clamp(1.9rem, 11vw, 2.45rem);
 			line-height: 0.98;
 		}
@@ -748,11 +745,11 @@
 			white-space: normal;
 		}
 
-		.contact-list {
+		.identity-links {
 			gap: 0.3rem 0.7rem;
 		}
 
-		.contact-list li:not(:last-child)::after {
+		.identity-links li:not(:last-child)::after {
 			margin-left: 0.7rem;
 		}
 
@@ -779,12 +776,12 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.card,
-		.hero-aurora-frame,
+		.identity-aurora-frame,
 		.section-divider {
 			animation: none;
 		}
 
-		.hero-aurora-frame-1 {
+		.identity-aurora-frame-1 {
 			opacity: 1;
 		}
 
