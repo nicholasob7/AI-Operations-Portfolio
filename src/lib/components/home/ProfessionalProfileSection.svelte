@@ -8,7 +8,7 @@
 		<HomeInnerPanel>
 			<p>
 				Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
-				reviewed professional profile.
+				professional profile.
 			</p>
 		</HomeInnerPanel>
 	</div>
