@@ -214,10 +214,10 @@
 
 	.hero-actions {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, var(--homepage-action-width)));
+		grid-template-columns: minmax(0, var(--homepage-action-width));
 		gap: 0.6rem;
 		align-items: stretch;
-		max-width: calc(var(--homepage-action-width) * 2 + 0.6rem);
+		max-width: var(--homepage-action-width);
 	}
 
 	.hero-actions > .cta {
@@ -688,6 +688,28 @@
 		min-height: calc(1.55em * 2);
 	}
 
+	.resume-versions-card {
+		gap: 0.8rem;
+	}
+
+	.resume-versions-card > .cta {
+		justify-self: start;
+		max-width: 100%;
+	}
+
+	.resume-publication-layer {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 0.25rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(190, 215, 242, 0.18);
+	}
+
+	.resume-publication-layer > .cta {
+		justify-self: start;
+		max-width: 100%;
+	}
+
 		.projects .project-card > .cta {
 			justify-self: start;
 			max-width: 100%;
@@ -791,13 +813,14 @@
 	}
 
 	#hero-head,
-#about-head,
-#selected-work-head,
-#remediation-head,
-#deployment-head,
-#tail-head {
-	scroll-margin-top: 1.25rem;
-}
+	#about-head,
+	#selected-work-head,
+	#website-build-notes-head,
+	#remediation-head,
+	#deployment-head,
+	#tail-head {
+		scroll-margin-top: 1.25rem;
+	}
 
 .tail-actions {
 	margin-top: 0;
@@ -861,11 +884,11 @@
 			white-space: normal;
 		}
 
-		.hero-actions {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			align-items: stretch;
-		}
+			.hero-actions {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr);
+				align-items: stretch;
+			}
 
 		.hero-actions > .cta {
 			width: 100%;

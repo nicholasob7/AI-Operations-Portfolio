@@ -29,13 +29,6 @@
 			>
 				GitHub<span class="sr-only"> (opens in new tab)</span>
 			</a>
-			<a
-				class="cta cta-resume"
-				data-sveltekit-preload-code="hover"
-				href="/resume"
-			>
-				Resumes
-			</a>
 		</div>
 	</div>
 </section>
