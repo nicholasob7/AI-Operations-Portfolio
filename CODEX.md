@@ -20,6 +20,20 @@ Reason:
 
 A production mobile regression in the resume detail routes required a 22-minute hotfix window after deployment. Desktop validation alone is not sufficient for resume-route promotion.
 
+## Minimalism Standard: Human-Local vs Machine-Structural
+
+When choosing a “minimal” change, distinguish between human-local minimalism and machine-structural minimalism.
+
+Human-local minimalism is the smallest immediate edit: a route-local CSS patch, a one-off selector, or a narrow override that fixes the visible symptom.
+
+Machine-structural minimalism is the smallest durable system: fewer behavioral authorities, fewer duplicated layout rules, fewer route-specific compensations, and clearer reusable component contracts.
+
+Do not prefer a tiny local patch if it preserves fragmented behavior across multiple surfaces. If several routes or components share the same visual or behavioral logic, the preferred minimal change is usually to move that rule into the shared component or shared contract that actually owns the behavior.
+
+Route-level CSS should handle route-level layout. Component-internal behavior should live in the component. Avoid accidental cross-route leakage, class-specific exceptions, and one-off fixes when a shared component rule would remove drift.
+
+In short: the minimal change is not always the smallest diff. The minimal change is the one that reduces future ambiguity and gives the machine the fewest places to reason from.
+
 ## CSP / Lighthouse Best Practices
 
 Lighthouse Best Practices may report `92` because SvelteKit injects `#svelte-announcer` with a runtime inline style that is blocked by the strict CSP.
