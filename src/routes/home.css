@@ -131,7 +131,6 @@
 	.hero {
 		position: relative;
 		overflow: hidden;
-		padding: 1.75rem;
 	}
 
 	.hero > * {
@@ -626,7 +625,7 @@
 		}
 
 		.hero {
-			padding: 2.35rem;
+			padding: 1.7rem;
 		}
 
 		.hero h1 {
@@ -736,7 +735,7 @@
 		}
 
 		.hero {
-			padding: 1.2rem;
+			padding: 1.25rem;
 		}
 
 		.hero h1 {
