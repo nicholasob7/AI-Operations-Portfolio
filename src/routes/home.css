@@ -206,24 +206,8 @@
 		max-width: 82ch;
 	}
 
-	.links {
-		display: grid;
-		gap: 0.65rem;
-		margin-top: 1rem;
-	}
-
-	.hero-actions {
-		display: grid;
-		grid-template-columns: minmax(0, var(--homepage-action-width));
-		gap: 0.6rem;
-		align-items: stretch;
-		max-width: var(--homepage-action-width);
-	}
-
-	.hero-actions > .cta {
-		width: 100%;
-		justify-content: center;
-		text-align: center;
+	.hero-contact-list {
+		margin-top: 0.85rem;
 	}
 
 	.status-strip {
@@ -380,7 +364,6 @@
 			0 8px 20px rgba(7, 14, 33, 0.35);
 	}
 
-		.hero-actions > .cta,
 		.projects .project-card > .cta {
 			width: min(100%, var(--homepage-action-width));
 			min-width: 0;
@@ -401,35 +384,6 @@
 		--btn-end-hover: #2a695b;
 		--btn-text: #f3f7ff;
 		--btn-text-hover: #ffffff;
-	}
-
-	.cta-github {
-		--btn-start: #3b7b63;
-		--btn-mid: #2a5f4d;
-		--btn-end: #1e4538;
-		--btn-start-hover: #4b9278;
-		--btn-mid-hover: #33735d;
-		--btn-end-hover: #275547;
-		--btn-text: #e9fff4;
-		--btn-text-hover: #f6fffb;
-	}
-
-	.hero-actions > .cta-github {
-		--btn-start: #3b7b63;
-		--btn-mid: #2a5f4d;
-		--btn-end: #1e4538;
-		--btn-start-hover: #4b9278;
-		--btn-mid-hover: #33735d;
-		--btn-end-hover: #275547;
-	}
-
-	.hero-actions > .cta-resume {
-		--btn-start: #436f66;
-		--btn-mid: #365c56;
-		--btn-end: #24453e;
-		--btn-start-hover: #54857b;
-		--btn-mid-hover: #427169;
-		--btn-end-hover: #2e5850;
 	}
 
 		.section-cta-eliora {
@@ -469,26 +423,6 @@
 		color: var(--btn-text-hover);
 		border-color: rgba(206, 226, 255, 0.6);
 		transform: translateY(-1px);
-	}
-
-	.cta-feature {
-		padding: 0.5rem 0.95rem;
-		font-size: 0.95rem;
-		font-weight: 700;
-		letter-spacing: 0.015em;
-		border-color: rgba(182, 238, 219, 0.8);
-		box-shadow:
-			0 0 0 1px rgba(210, 240, 230, 0.26) inset,
-			0 0 18px rgba(92, 191, 154, 0.24),
-			0 10px 24px rgba(7, 14, 33, 0.4);
-	}
-
-	.cta-github.cta-feature:hover {
-		border-color: rgba(194, 255, 231, 0.95);
-		box-shadow:
-			0 0 0 1px rgba(224, 255, 243, 0.34) inset,
-			0 0 20px rgba(108, 209, 171, 0.35),
-			0 12px 26px rgba(7, 14, 33, 0.46);
 	}
 
 	.cta:focus-visible {
@@ -697,17 +631,50 @@
 		max-width: 100%;
 	}
 
-	.resume-publication-layer {
-		display: grid;
-		gap: 0.7rem;
-		margin-top: 0.25rem;
-		padding-top: 1rem;
-		border-top: 1px solid rgba(190, 215, 242, 0.18);
+	.section-note,
+	.contact-list li {
+		font-size: 0.92rem;
+		line-height: 1.48;
+		color: #d3def1;
 	}
 
-	.resume-publication-layer > .cta {
-		justify-self: start;
-		max-width: 100%;
+	.contact-list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 0.85rem;
+		list-style: none;
+	}
+
+	.contact-list li {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.contact-list li:not(:last-child)::after {
+		content: '·';
+		margin-left: 0.85rem;
+		color: rgba(146, 219, 255, 0.72);
+	}
+
+	.contact-link {
+		color: #d7e8ff;
+		text-decoration: underline;
+		text-decoration-color: rgba(154, 214, 255, 0.44);
+		text-underline-offset: 0.18rem;
+		text-decoration-thickness: 1px;
+	}
+
+	.contact-link:hover {
+		color: #ffffff;
+		text-decoration-color: rgba(214, 236, 255, 0.82);
+	}
+
+	.contact-link:focus-visible {
+		outline: 2px solid rgba(141, 214, 255, 0.9);
+		outline-offset: 2px;
 	}
 
 		.projects .project-card > .cta {
@@ -717,7 +684,6 @@
 
 		@media (min-width: 960px) {
 			.page {
-				--homepage-action-width: 11rem;
 			max-width: 1320px;
 			padding: 4.15rem 2rem 5.1rem;
 			gap: 2rem;
@@ -752,21 +718,6 @@
 			max-width: 82ch;
 		}
 
-		.links {
-			gap: 0.95rem;
-			margin-top: 1.35rem;
-		}
-
-		.links > .hero-actions:first-child > .cta {
-			width: var(--homepage-action-width);
-			justify-content: center;
-			text-align: center;
-		}
-
-		.hero-actions {
-			gap: 0.7rem;
-		}
-
 		.about-panel,
 		.projects article {
 			padding: 1.24rem 1.28rem;
@@ -780,11 +731,6 @@
 			font-size: 1.02rem;
 		}
 
-		.cta-feature {
-			padding: 0.7rem 1.16rem;
-			font-size: 1.08rem;
-		}
-
 		h2 {
 			font-size: 1.9rem;
 		}
@@ -796,6 +742,12 @@
 
 		.projects {
 			gap: 1.2rem;
+		}
+
+		.section-note,
+		.contact-list li {
+			font-size: 1.05rem;
+			line-height: 1.58;
 		}
 
 		.project-outcome {
@@ -815,7 +767,6 @@
 	#hero-head,
 	#about-head,
 	#selected-work-head,
-	#website-build-notes-head,
 	#remediation-head,
 	#deployment-head,
 	#tail-head {
@@ -884,16 +835,12 @@
 			white-space: normal;
 		}
 
-			.hero-actions {
-				display: grid;
-				grid-template-columns: minmax(0, 1fr);
-				align-items: stretch;
-			}
+		.contact-list {
+			gap: 0.3rem 0.7rem;
+		}
 
-		.hero-actions > .cta {
-			width: 100%;
-			justify-content: center;
-			text-align: center;
+		.contact-list li:not(:last-child)::after {
+			margin-left: 0.7rem;
 		}
 
 		.metric-label {

@@ -26,6 +26,12 @@
 			title: 'Eliora Governance',
 			href: '/projects/eliora',
 			ctaClass: 'section-cta-eliora'
+		},
+		{
+			id: 'website_publication_system' as EvidenceNodeId,
+			title: 'Publication Layer',
+			href: '/projects/website-build-notes',
+			ctaClass: 'section-cta-eliora'
 		}
 	].map((entry) => ({
 		...entry,

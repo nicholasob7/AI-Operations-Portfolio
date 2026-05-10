@@ -17,7 +17,6 @@
 	import SelfDirectedSection from '$lib/components/home/SelfDirectedSection.svelte';
 	import './home.css';
 
-	const githubUrl = 'https://github.com/nicholasob7';
 	const homeTitle = "Nicko O'Brien | IT Professional Profile";
 	const homeSocialTitle = "Nicko O'Brien | IT Professional Profile";
 	const homeDescription =
@@ -164,7 +163,7 @@
 	</section>
 
 	<HeroSection
-		{githubUrl}
+		navigationReady={homepageInteractionReady}
 	/>
 
 	<ProjectsSection

@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { personProfilePublicLinks } from '$lib/content/person-profile';
+
 	type Props = {
-		githubUrl: string;
+		navigationReady: boolean;
 	};
 
-	let { githubUrl }: Props = $props();
+	let { navigationReady }: Props = $props();
 </script>
 
 <section id="hero-head" class="hero card" tabindex="-1">
@@ -19,16 +21,21 @@
 		Support foundation, technical operations delivery evidence, and AI/process improvement capability from one
 		reviewed professional profile.
 	</p>
-	<div class="links">
-		<div class="hero-actions" aria-label="Primary actions">
-			<a
-				class="cta cta-github cta-feature"
-				href={githubUrl}
-				rel="noopener noreferrer me"
-				target="_blank"
-			>
-				GitHub<span class="sr-only"> (opens in new tab)</span>
-			</a>
-		</div>
-	</div>
+	<ul class="contact-list hero-contact-list" aria-label="Public links">
+		{#each personProfilePublicLinks as item (item.id)}
+			<li>
+				<a
+					aria-disabled={!navigationReady}
+					class:interaction-disabled={!navigationReady}
+					class="contact-link"
+					href={item.href}
+					rel={item.id === 'email' ? undefined : 'noopener noreferrer'}
+					target={item.id === 'email' ? undefined : '_blank'}
+					tabindex={navigationReady ? undefined : -1}
+				>
+					{item.label}
+				</a>
+			</li>
+		{/each}
+	</ul>
 </section>
