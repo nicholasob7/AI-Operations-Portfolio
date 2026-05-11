@@ -85,7 +85,7 @@ export const evidenceNodes = [
 	},
 	{
 		id: 'endpoint_remediation_script',
-		label: 'Endpoint Remediation Script',
+		label: 'Endpoint Remediation',
 		summary:
 			'AI-assisted endpoint remediation development, validation, production use, and controlled translation of incident results into broader technical investigation.',
 		status: 'complete',
@@ -116,7 +116,7 @@ export const evidenceNodes = [
 	},
 	{
 		id: 'migration_stabilization_framework',
-		label: 'Migration Stabilization Framework',
+		label: 'Package Redesign',
 		summary:
 			'Package reconstruction and migration stabilization work derived from validated remediation logic and test-device confirmation.',
 		status: 'active',

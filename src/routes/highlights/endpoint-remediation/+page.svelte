@@ -5,9 +5,9 @@
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
 	const remediationEntrySurface = resolveEntrySurface('remediationProject');
-	const remediationTitle = "Post-Deployment Remediation Script Development | Nicko O'Brien";
+	const remediationTitle = "Endpoint Remediation | Nicko O'Brien";
 	const remediationDescription =
-		'Detailed portfolio entry for post-deployment remediation script development and validation.';
+		'Detailed portfolio entry for the Endpoint Remediation evidence highlight.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });

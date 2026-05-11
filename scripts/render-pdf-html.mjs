@@ -91,7 +91,7 @@ if (targetSet.has('migration')) {
 if (targetSet.has('remediation')) {
 	await writeFile(
 		path.join(generatedDir, 'remediation-bw.html'),
-		renderProjectPdfHtml(remediationProjectDetail, 'Remediation Script Development Portfolio BW'),
+		renderProjectPdfHtml(remediationProjectDetail, 'Endpoint Remediation Portfolio BW'),
 		'utf8'
 	);
 }

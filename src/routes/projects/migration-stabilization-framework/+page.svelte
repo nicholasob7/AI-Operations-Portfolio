@@ -5,9 +5,9 @@
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
 	const migrationEntrySurface = resolveEntrySurface('migrationProject');
-	const migrationTitle = "Enterprise Migration Stabilization Framework | Nicko O'Brien";
+	const migrationTitle = "Package Redesign | Nicko O'Brien";
 	const migrationDescription =
-		'Detailed portfolio entry for the Enterprise Application Migration Stabilization Framework project.';
+		'Detailed portfolio entry for the Package Redesign evidence highlight.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
