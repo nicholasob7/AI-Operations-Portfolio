@@ -15,13 +15,6 @@
 
 	const migrationActions = [
 		{
-			id: 'print',
-			label: 'Print',
-			type: 'link',
-			href: '/appprojects/Portfolio_Description_bw.pdf',
-			download: 'Portfolio_Description_BW.pdf'
-		},
-		{
 			id: 'highlights',
 			label: 'Highlights',
 			type: 'link',

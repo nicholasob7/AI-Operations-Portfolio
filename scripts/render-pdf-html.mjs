@@ -80,18 +80,3 @@ const renderProjectPdfHtml = (detail, title) => `<!doctype html>
 
 await mkdir(generatedDir, { recursive: true });
 
-if (targetSet.has('migration')) {
-	await writeFile(
-		path.join(generatedDir, 'portfolio-description-bw.html'),
-		renderProjectPdfHtml(migrationProjectDetail, 'Portfolio Description BW'),
-		'utf8'
-	);
-}
-
-if (targetSet.has('remediation')) {
-	await writeFile(
-		path.join(generatedDir, 'remediation-bw.html'),
-		renderProjectPdfHtml(remediationProjectDetail, 'Endpoint Remediation Portfolio BW'),
-		'utf8'
-	);
-}

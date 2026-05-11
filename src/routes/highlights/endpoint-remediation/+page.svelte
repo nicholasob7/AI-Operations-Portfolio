@@ -15,13 +15,6 @@
 
 	const remediationActions = [
 		{
-			id: 'print',
-			label: 'Print',
-			type: 'link',
-			href: '/appprojects/Remediation_Script_Development_Portfolio_bw.pdf',
-			download: 'Remediation_Script_Development_Portfolio_BW.pdf'
-		},
-		{
 			id: 'highlights',
 			label: 'Highlights',
 			type: 'link',
