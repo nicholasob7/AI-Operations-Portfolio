@@ -21,7 +21,7 @@ After selecting a projection, inspect `resume_projections`, `practice_areas`, `e
 - [Endpoint Remediation](https://nicko.obrienai.com/highlights/endpoint-remediation): Public evidence route for endpoint remediation and validation work.
 - [Package Redesign](https://nicko.obrienai.com/highlights/package-redesign): Public evidence route for package redesign and deployment-layer correction work.
 - [Eliora AI Governance](https://nicko.obrienai.com/highlights/ai-governance): Public evidence route for AI governance, semantic control, and authority separation.
-- [Web Build Notes](https://nicko.obrienai.com/highlights/website-publication): Public evidence route for static publication and machine-readable delivery structure.
+- [Website Publication System](https://nicko.obrienai.com/highlights/website-publication): Public evidence route for static publication, canonical JSON, and machine-readable delivery structure.
 
 ## Publication Boundary
 

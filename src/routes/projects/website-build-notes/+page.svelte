@@ -5,9 +5,9 @@
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
 	const websiteBuildNotesEntrySurface = resolveEntrySurface('websiteBuildNotesProject');
-	const websiteBuildNotesTitle = "Web Build Notes | Nicko O'Brien";
+	const websiteBuildNotesTitle = "Website Publication System | Nicko O'Brien";
 	const websiteBuildNotesDescription =
-		"Build notes for the website's transition behaviour, interaction controls, public structure, and static delivery.";
+		"Evidence highlight for the website publication system, canonical JSON surface, public route structure, interaction controls, and static delivery.";
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });

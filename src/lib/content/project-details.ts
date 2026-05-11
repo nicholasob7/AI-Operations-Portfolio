@@ -256,10 +256,10 @@ export const elioraProjectDetail: ProjectDetail = {
 };
 
 export const websiteBuildNotesProjectDetail: ProjectDetail = {
-	title: 'Web Build Notes',
-	titleId: 'website-build-notes-title',
-	eyebrow: 'Project Detail',
-	ariaLabel: 'Website build notes project details',
+	title: 'Website Publication System',
+	titleId: 'website-publication-system-title',
+	eyebrow: 'Evidence Highlight',
+	ariaLabel: 'Website publication system evidence',
 	sections: [
 		{
 			title: 'Implemented behaviours',
