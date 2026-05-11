@@ -18,10 +18,10 @@ After selecting a projection, inspect `resume_projections`, `practice_areas`, `e
 - [Highlights](https://nicko.obrienai.com/highlights): Human-facing evidence highlights index linking to canonical project detail routes.
 - [Resume](https://nicko.obrienai.com/resume): Human-facing resume selector and artifact access route for the active role-specific resumes.
 - HTML resume detail routes are linked from `/resume` and declared in `/canonical.json` for human inspection.
-- [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/projects/remediation-script-development): Public evidence route for endpoint remediation and validation work.
-- [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/projects/migration-stabilization-framework): Public evidence route for migration stabilization and package reconstruction work.
-- [Eliora AI Governance](https://nicko.obrienai.com/projects/eliora): Public evidence route for AI governance, semantic control, and authority separation.
-- [Web Build Notes](https://nicko.obrienai.com/projects/website-build-notes): Public evidence route for static publication and machine-readable delivery structure.
+- [Post-Deployment Remediation Script Development](https://nicko.obrienai.com/highlights/remediation-script-development): Public evidence route for endpoint remediation and validation work.
+- [Enterprise Application Migration Stabilization Framework](https://nicko.obrienai.com/highlights/migration-stabilization-framework): Public evidence route for migration stabilization and package reconstruction work.
+- [Eliora AI Governance](https://nicko.obrienai.com/highlights/eliora): Public evidence route for AI governance, semantic control, and authority separation.
+- [Web Build Notes](https://nicko.obrienai.com/highlights/website-build-notes): Public evidence route for static publication and machine-readable delivery structure.
 
 ## Publication Boundary
 

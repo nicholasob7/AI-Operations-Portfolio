@@ -56,7 +56,7 @@ Generated/current-state routes remain conservative:
 
 - `/`
 - `/resume`
-- `/projects/eliora`
+- `/highlights/eliora`
 - `/canonical.json`
 - `/sitemap.xml`
 

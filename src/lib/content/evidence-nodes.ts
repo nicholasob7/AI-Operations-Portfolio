@@ -95,7 +95,7 @@ export const evidenceNodes = [
 			'documentation_delivery_evidence'
 		],
 		projectionIds: ['technical_operations', 'ai_process', 'it_support'],
-		route: '/projects/remediation-script-development',
+		route: '/highlights/remediation-script-development',
 		keywords: [
 			'endpoint remediation',
 			'PowerShell',
@@ -126,7 +126,7 @@ export const evidenceNodes = [
 			'documentation_delivery_evidence'
 		],
 		projectionIds: ['technical_operations', 'ai_process'],
-		route: '/projects/migration-stabilization-framework',
+		route: '/highlights/migration-stabilization-framework',
 		keywords: [
 			'migration stabilization',
 			'deployment diagnostics',
@@ -153,7 +153,7 @@ export const evidenceNodes = [
 		status: 'active',
 		practiceAreaIds: ['ai_process_improvement_practice', 'documentation_delivery_evidence'],
 		projectionIds: ['ai_process'],
-		route: '/projects/eliora',
+		route: '/highlights/eliora',
 		keywords: [
 			'ai governance',
 			'semantic control',
@@ -180,7 +180,7 @@ export const evidenceNodes = [
 		status: 'active',
 		practiceAreaIds: ['documentation_delivery_evidence', 'ai_process_improvement_practice'],
 		projectionIds: ['ai_process'],
-		route: '/projects/website-build-notes',
+		route: '/highlights/website-build-notes',
 		keywords: [
 			'static publication',
 			'machine-readable profile',

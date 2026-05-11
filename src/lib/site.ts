@@ -10,10 +10,10 @@ export const sitemapRoutes = [
 	'/highlights',
 	'/resume',
 	'/canonical.json',
-	'/projects/eliora',
-	'/projects/website-build-notes',
-	'/projects/remediation-script-development',
-	'/projects/migration-stabilization-framework',
+	'/highlights/eliora',
+	'/highlights/website-build-notes',
+	'/highlights/remediation-script-development',
+	'/highlights/migration-stabilization-framework',
 	...getHumanVisibleResumeProjections().map((projection) => projection.htmlPath)
 ] as const;
 

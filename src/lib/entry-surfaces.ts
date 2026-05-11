@@ -39,28 +39,28 @@ export const entrySurfaces = {
 		canonicalUrl: '/resume/ai-process'
 	},
 	remediationProject: {
-		path: '/projects/remediation-script-development',
+		path: '/highlights/remediation-script-development',
 		mode: 'portrait',
 		image: '/images/spring-snow.jpg',
-		canonicalUrl: '/projects/remediation-script-development'
+		canonicalUrl: '/highlights/remediation-script-development'
 	},
 	migrationProject: {
-		path: '/projects/migration-stabilization-framework',
+		path: '/highlights/migration-stabilization-framework',
 		mode: 'portrait',
 		image: '/images/sun-snow-mountain.jpg',
-		canonicalUrl: '/projects/migration-stabilization-framework'
+		canonicalUrl: '/highlights/migration-stabilization-framework'
 	},
 	elioraProject: {
-		path: '/projects/eliora',
+		path: '/highlights/eliora',
 		mode: 'portrait',
 		image: '/images/mountain-square.jpg',
-		canonicalUrl: '/projects/eliora'
+		canonicalUrl: '/highlights/eliora'
 	},
 	websiteBuildNotesProject: {
-		path: '/projects/website-build-notes',
+		path: '/highlights/website-build-notes',
 		mode: 'portrait',
 		image: '/images/StClair-Sunrise.jpg',
-		canonicalUrl: '/projects/website-build-notes'
+		canonicalUrl: '/highlights/website-build-notes'
 	}
 } as const satisfies Record<string, PathSurface>;
 
