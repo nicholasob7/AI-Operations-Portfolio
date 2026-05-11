@@ -51,16 +51,16 @@ export const entrySurfaces = {
 		canonicalUrl: '/highlights/package-redesign'
 	},
 	elioraProject: {
-		path: '/highlights/eliora',
+		path: '/highlights/ai-governance',
 		mode: 'portrait',
 		image: '/images/mountain-square.jpg',
-		canonicalUrl: '/highlights/eliora'
+		canonicalUrl: '/highlights/ai-governance'
 	},
 	websiteBuildNotesProject: {
-		path: '/highlights/website-build-notes',
+		path: '/highlights/website-publication',
 		mode: 'portrait',
 		image: '/images/StClair-Sunrise.jpg',
-		canonicalUrl: '/highlights/website-build-notes'
+		canonicalUrl: '/highlights/website-publication'
 	}
 } as const satisfies Record<string, PathSurface>;
 

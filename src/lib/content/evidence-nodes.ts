@@ -153,7 +153,7 @@ export const evidenceNodes = [
 		status: 'active',
 		practiceAreaIds: ['ai_process_improvement_practice', 'documentation_delivery_evidence'],
 		projectionIds: ['ai_process'],
-		route: '/highlights/eliora',
+		route: '/highlights/ai-governance',
 		keywords: [
 			'ai governance',
 			'semantic control',
@@ -180,7 +180,7 @@ export const evidenceNodes = [
 		status: 'active',
 		practiceAreaIds: ['documentation_delivery_evidence', 'ai_process_improvement_practice'],
 		projectionIds: ['ai_process'],
-		route: '/highlights/website-build-notes',
+		route: '/highlights/website-publication',
 		keywords: [
 			'static publication',
 			'machine-readable profile',

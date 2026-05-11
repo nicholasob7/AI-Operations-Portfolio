@@ -79,8 +79,8 @@ Resume publication artifacts:
 
 Project/evidence routes:
 
-- `/highlights/eliora`
-- `/highlights/website-build-notes`
+- `/highlights/ai-governance`
+- `/highlights/website-publication`
 - `/highlights/endpoint-remediation`
 - `/highlights/package-redesign`
 

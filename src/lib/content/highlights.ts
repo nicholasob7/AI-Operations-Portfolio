@@ -32,14 +32,14 @@ export const highlightsEntries: HighlightsEntry[] = [
 	},
 	{
 		evidenceNodeId: 'eliora_governance',
-		href: '/highlights/eliora',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/ai-governance',
+		ctaLabel: 'AI Governance',
 		ctaClass: 'section-cta-eliora'
 	},
 	{
 		evidenceNodeId: 'website_publication_system',
-		href: '/highlights/website-build-notes',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/website-publication',
+		ctaLabel: 'Website Publication',
 		ctaClass: 'section-cta-eliora'
 	}
 ];
