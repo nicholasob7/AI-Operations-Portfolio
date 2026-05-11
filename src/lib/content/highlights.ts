@@ -20,14 +20,14 @@ export type HighlightsEntry = {
 export const highlightsEntries: HighlightsEntry[] = [
 	{
 		evidenceNodeId: 'endpoint_remediation_script',
-		href: '/highlights/remediation-script-development',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/endpoint-remediation',
+		ctaLabel: 'Endpoint Remediation',
 		ctaClass: 'section-cta-remediation'
 	},
 	{
 		evidenceNodeId: 'migration_stabilization_framework',
-		href: '/highlights/migration-stabilization-framework',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/package-redesign',
+		ctaLabel: 'Package Redesign',
 		ctaClass: 'section-cta-migration'
 	},
 	{

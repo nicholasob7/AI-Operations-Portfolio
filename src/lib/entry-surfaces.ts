@@ -39,16 +39,16 @@ export const entrySurfaces = {
 		canonicalUrl: '/resume/ai-process'
 	},
 	remediationProject: {
-		path: '/highlights/remediation-script-development',
+		path: '/highlights/endpoint-remediation',
 		mode: 'portrait',
 		image: '/images/spring-snow.jpg',
-		canonicalUrl: '/highlights/remediation-script-development'
+		canonicalUrl: '/highlights/endpoint-remediation'
 	},
 	migrationProject: {
-		path: '/highlights/migration-stabilization-framework',
+		path: '/highlights/package-redesign',
 		mode: 'portrait',
 		image: '/images/sun-snow-mountain.jpg',
-		canonicalUrl: '/highlights/migration-stabilization-framework'
+		canonicalUrl: '/highlights/package-redesign'
 	},
 	elioraProject: {
 		path: '/highlights/eliora',

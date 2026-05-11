@@ -95,7 +95,7 @@ export const evidenceNodes = [
 			'documentation_delivery_evidence'
 		],
 		projectionIds: ['technical_operations', 'ai_process', 'it_support'],
-		route: '/highlights/remediation-script-development',
+		route: '/highlights/endpoint-remediation',
 		keywords: [
 			'endpoint remediation',
 			'PowerShell',
@@ -126,7 +126,7 @@ export const evidenceNodes = [
 			'documentation_delivery_evidence'
 		],
 		projectionIds: ['technical_operations', 'ai_process'],
-		route: '/highlights/migration-stabilization-framework',
+		route: '/highlights/package-redesign',
 		keywords: [
 			'migration stabilization',
 			'deployment diagnostics',

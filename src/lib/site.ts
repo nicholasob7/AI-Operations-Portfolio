@@ -12,8 +12,8 @@ export const sitemapRoutes = [
 	'/canonical.json',
 	'/highlights/eliora',
 	'/highlights/website-build-notes',
-	'/highlights/remediation-script-development',
-	'/highlights/migration-stabilization-framework',
+	'/highlights/endpoint-remediation',
+	'/highlights/package-redesign',
 	...getHumanVisibleResumeProjections().map((projection) => projection.htmlPath)
 ] as const;
 

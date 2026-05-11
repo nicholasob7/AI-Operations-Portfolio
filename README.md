@@ -81,8 +81,8 @@ Project/evidence routes:
 
 - `/highlights/eliora`
 - `/highlights/website-build-notes`
-- `/highlights/remediation-script-development`
-- `/highlights/migration-stabilization-framework`
+- `/highlights/endpoint-remediation`
+- `/highlights/package-redesign`
 
 ## Stack
 
