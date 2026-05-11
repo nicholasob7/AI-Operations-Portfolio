@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import DestinationActions, { type DestinationAction } from './DestinationActions.svelte';
 	import PortraitIntro from './PortraitIntro.svelte';
 	import type { ProjectDetail, ProjectDetailListItem } from '$lib/content/project-details';
 	import { getEntryImage, isPortraitEntry, type EntrySurface } from '$lib/entry-surfaces';
+	import { setPortraitIntroHandoff } from '$lib/portrait-intro';
 
 	type Props = {
 		actions: DestinationAction[];
@@ -19,6 +21,17 @@
 	const isLabelledItem = (
 		item: ProjectDetailListItem
 	): item is Extract<ProjectDetailListItem, { label: string }> => typeof item !== 'string';
+
+	const shouldCarryDetailImageToHighlights = (targetPathname: string | null | undefined) =>
+		targetPathname === '/highlights' &&
+		entrySurface?.path.startsWith('/highlights/') &&
+		!!projectEntryImage;
+
+	beforeNavigate(({ to }) => {
+		if (shouldCarryDetailImageToHighlights(to?.url.pathname) && projectEntryImage) {
+			setPortraitIntroHandoff({ src: projectEntryImage });
+		}
+	});
 
 	onMount(() => {
 		window.scrollTo({ top: 0, behavior: 'auto' });

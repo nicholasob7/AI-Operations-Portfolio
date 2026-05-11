@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import EvidenceHighlightsList from '$lib/components/highlights/EvidenceHighlightsList.svelte';
+	import PortraitIntro from '$lib/components/PortraitIntro.svelte';
 	import {
 		highlightsPageSummary,
 		highlightsPageTitle
@@ -39,6 +40,8 @@
 	<meta name="twitter:title" content={`${highlightsPageTitle} | Nicko O'Brien`} />
 	<meta name="twitter:description" content={highlightsPageSummary} />
 </svelte:head>
+
+<PortraitIntro src={null} enabled={false} pathname={null} />
 
 <main class="page">
 	<DestinationActions actions={highlightsActions} panelId="highlights-destination-actions" />
