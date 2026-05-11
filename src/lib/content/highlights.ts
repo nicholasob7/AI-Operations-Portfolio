@@ -20,26 +20,26 @@ export type HighlightsEntry = {
 export const highlightsEntries: HighlightsEntry[] = [
 	{
 		evidenceNodeId: 'endpoint_remediation_script',
-		href: '/projects/remediation-script-development',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/endpoint-remediation',
+		ctaLabel: 'Endpoint Remediation',
 		ctaClass: 'section-cta-remediation'
 	},
 	{
 		evidenceNodeId: 'migration_stabilization_framework',
-		href: '/projects/migration-stabilization-framework',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/package-redesign',
+		ctaLabel: 'Package Redesign',
 		ctaClass: 'section-cta-migration'
 	},
 	{
 		evidenceNodeId: 'eliora_governance',
-		href: '/projects/eliora',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/ai-governance',
+		ctaLabel: 'AI Governance',
 		ctaClass: 'section-cta-eliora'
 	},
 	{
 		evidenceNodeId: 'website_publication_system',
-		href: '/projects/website-build-notes',
-		ctaLabel: 'View Evidence',
+		href: '/highlights/website-publication',
+		ctaLabel: 'Website Publication',
 		ctaClass: 'section-cta-eliora'
 	}
 ];

@@ -1,53 +1,88 @@
 # AI Operations Portfolio
 
-Static SvelteKit portfolio site for Nicko O'Brien, focused on AI-forward IT operations, technical communication, automation, and selected project work.
+Static SvelteKit public career-data, publication, and rendering surface for Nicko O'Brien, focused on AI-forward IT operations, technical communication, automation, resume projections, and selected project work.
 
-The site is built as a fully prerendered static site with `@sveltejs/adapter-static`.
+The website is a simple publication and rendering machine: it serves structured canonical data, human-readable routes, and document artifacts. It is built as a fully prerendered static site with `@sveltejs/adapter-static`.
 
-## Template reuse note
+## Project Purpose
 
-This repository can be reused as a template, but the current deployed instance is canonically bound to `https://nicko.obrienai.com`.
+This repository is the deployed public website and publication surface for structured professional material. It renders first-class consumer artifacts from structured source data and approved publication assets.
 
-If you clone or adapt this repo for another site, update `src/lib/site.ts` to your own canonical origin before deployment. Canonical metadata and sitemap output derive from that source.
+The site presents canonical career data, stated skills, employment history, professional confidence areas, evidence/project nodes, reviewed resume projections, static resume PDFs, project artifacts, and discovery files for human and machine consumers.
 
-If you do not change it, your cloned site may emit the wrong canonical public URLs.
+Future job-description-to-resume generation belongs to the private repo/API engine. This public website remains the user-owned publication and rendering surface for approved career-data and resume artifacts.
 
-## Purpose
+## Canonical Surface
 
-This repository is not just a portfolio shell. It is built to present resume and case-study material in a way that reduces reader effort.
+The canonical JSON surface is the structured public representation of the user's stated professional claims, evidence framing, and publication choices.
 
-The current UX direction favors:
+It describes stated skills, experiences, professional confidence areas, projects, evidence nodes, resume projections, publication artifacts, routes, and discovery metadata. It gives machine consumers a stable structured entry point into the same public professional material that the human routes and document artifacts present.
 
-- clear primary actions over dense navigation
-- "view first" reading flows before download decisions
-- reduced scroll friction on long-form pages
-- printable assets that match the live page content
-- interaction patterns that keep the reader oriented instead of forcing repeated returns to the homepage
+## First-Class Consumer Surfaces
 
-## Reader-Focused UX Patterns
+The site is organized around three first-class consumer surfaces: machine/AI, human reader, and PDF/document.
 
-### Homepage action design
+### Machine / AI
 
-- The homepage exposes resume, contact, and social actions through compact controls that avoid dense upfront navigation.
-- Each homepage project card exposes a single CTA rather than paired homepage view/download actions.
+Machine-readable surfaces are built for machine ingestion and machine interaction. This broad consumer class includes AI assistants, parsing systems, generation systems, recruiter systems, ATS systems, search systems, and future machine consumers.
 
-### Long-page navigation convenience
+Primary machine/discovery surfaces:
 
-- The resume page and both project detail pages include floating action bars that appear after the reader scrolls away from the opening section.
-- Those floating actions provide direct access to download and return navigation without requiring the reader to scroll all the way back.
-- Floating controls are hidden when the bottom static action row is already visible, preventing duplicate controls from competing on screen.
+- `/canonical.json`
+- `/llms.txt`
+- `/sitemap.xml`
+- `/robots.txt`
 
-### Resume interaction behavior
+### Human Reader
 
-- The technical skills section uses a controlled one-open-at-a-time accordion by default to reduce vertical sprawl.
-- `View all` and `Collapse` controls are available for readers who want either a quick scan or a fully expanded review.
-- A second collapse control appears at the bottom of the section so the reader does not need to scroll back up just to close content.
+Human-readable routes are built for human ingestion. This broad consumer class includes the site owner, recruiters, hiring managers, collaborators, students, reviewers, and other readers.
 
-### Download and print behavior
+Primary human surfaces:
 
-- The resume and both project pages each include their own B&W download action at page level.
-- Printable PDFs are generated with Chrome headless using `--no-pdf-header-footer` so browser-added date, file path, and title metadata are removed.
-- The downloadable assets are intended to stay aligned with the reader-facing web copy.
+- `/`
+- `/resume`
+- `/resume/it-support`
+- `/resume/technical-operations`
+- `/resume/ai-process`
+- project/evidence routes
+
+### PDF / Document
+
+PDF and document artifacts are formal publication surfaces. This broad consumer class covers recruiter workflows, application workflows, compliance/reference workflows, offline review, archival use, and other document-consumer contexts.
+
+Primary document artifacts:
+
+- resume PDFs in `static/resumes/`
+- project PDFs in `static/appprojects/`
+
+## Current Public Surfaces
+
+Machine/discovery routes:
+
+- `/canonical.json`
+- `/llms.txt`
+- `/sitemap.xml`
+- `/robots.txt`
+
+Resume routes:
+
+- `/resume`
+- `/resume/it-support`
+- `/resume/technical-operations`
+- `/resume/ai-process`
+
+Resume publication artifacts:
+
+- `static/resumes/Nicholas_OBrien_Resume_IT_Support.pdf`
+- `static/resumes/Nicholas_OBrien_Resume_Technical_Operations.pdf`
+- `static/resumes/Nicholas_OBrien_Resume_AI_Process.pdf`
+
+Project/evidence routes:
+
+- `/highlights/ai-governance`
+- `/highlights/website-publication`
+- `/highlights/endpoint-remediation`
+- `/highlights/package-redesign`
 
 ## Stack
 
@@ -59,32 +94,65 @@ The current UX direction favors:
 
 ## Project Structure
 
+Machine/discovery surface:
+
+- `src/lib/canonical/build-canonical.ts`
+  Builds the structured canonical JSON payload from public content modules.
+- `src/routes/canonical.json/+server.ts`
+  Serves the canonical JSON route.
+- `src/lib/site.ts`
+  Defines canonical origin, sitemap route inputs, and URL helpers.
+- `src/routes/sitemap.xml/+server.ts`
+  Serves the sitemap from route and artifact metadata.
+- `static/llms.txt`
+  Gives machine consumers the preferred discovery entry point.
+- `static/robots.txt`
+  Publishes crawl and sitemap discovery hints.
+
+Human reader surface:
+
 - `src/routes/+page.svelte`
   Landing page assembly for the interactive homepage.
 - `src/routes/resume/+page.svelte`
-  Web resume page with floating actions, controlled skills accordion, and download links.
-- `src/routes/projects/remediation-script-development/+page.svelte`
-  Case study page for the remediation script project.
-- `src/routes/projects/migration-stabilization-framework/+page.svelte`
-  Case study page for the migration stabilization framework.
-- `src/routes/sitemap.xml/+server.ts`
-  Generated sitemap route derived from `src/lib/site.ts`.
+  Resume projection index and artifact access route.
+- `src/routes/resume/[projection]/+page.ts`
+  Loads reviewed resume projection documents for static projection routes.
+- `src/routes/resume/[projection]/+page.svelte`
+  Renders individual resume projection routes.
+- `src/lib/components/resume/ResumeDocumentView.svelte`
+  Renders structured resume projection content for the public HTML surface.
+- `src/routes/projects/*/+page.svelte`
+  Human-readable project and evidence routes.
+
+Structured public content:
+
+- `src/lib/content/person-profile.ts`
+  Public profile and link model assembled from approved public content.
 - `src/lib/content/resume.ts`
-  Shared resume content used by the web route and PDF HTML renderer.
+  Public resume/profile content used by resume routes and reviewed projection documents.
+- `src/lib/content/resume-projections.ts`
+  Active resume projection registry and publication artifact paths.
+- `src/lib/content/resume-documents.ts`
+  Reviewed resume projection document structures consumed by the public renderer.
+- `src/lib/content/evidence-nodes.ts`
+  Public evidence nodes and disclosure framing.
+- `src/lib/content/practice-areas.ts`
+  Public practice/confidence area model.
 - `src/lib/content/project-details.ts`
-  Shared project detail content used by web project routes and PDF HTML generation.
-- `src/lib/components/home/`
-  Homepage sections for hero actions, selected work, and about content.
-- `scripts/render-pdf-html.mjs`
-  Renders print HTML into `scripts/generated/` from the shared content modules.
-- `scripts/generate-resume-pdfs.sh`
-  Regenerates `static/resume-bw.pdf`.
+  Shared project detail content for project routes and project PDF artifacts.
+
+PDF/document surface:
+
+- `static/resumes/`
+  Reviewed resume PDF publication artifacts.
+- `static/appprojects/`
+  Project PDF publication artifacts.
 - `scripts/generate-project-pdfs.sh`
-  Regenerates the project B&W PDFs in `static/appprojects/`.
+  Project PDF artifact workflow.
+- `scripts/render-pdf-html.mjs`
+  Project PDF HTML renderer.
 - `scripts/pdf-render-lib.sh`
-  Shared Chrome resolution and PDF writing helpers for PDF generation scripts.
-- `static/`
-  Public assets including generated PDFs and `robots.txt`. The sitemap is served by the SvelteKit route above.
+  Shared Chrome resolution and PDF writing helpers for project PDF artifacts.
 
 ## Local Development
 
@@ -118,37 +186,35 @@ Preview the production build locally:
 npm run preview
 ```
 
-## PDF Generation
+## Publication Artifacts
 
-Regenerate the printable resume PDFs:
+Resume PDFs are reviewed static publication artifacts in `static/resumes/`:
 
-```bash
-npm run generate:resume-pdfs
-```
+- `static/resumes/Nicholas_OBrien_Resume_IT_Support.pdf`
+- `static/resumes/Nicholas_OBrien_Resume_Technical_Operations.pdf`
+- `static/resumes/Nicholas_OBrien_Resume_AI_Process.pdf`
 
-Regenerate the printable project PDFs:
+Public resume routes render reviewed projection content and link to those document artifacts.
+
+Project PDFs are separate publication artifacts in `static/appprojects/`. The project PDF workflow remains available for project document artifacts:
 
 ```bash
 npm run generate:project-pdfs
 ```
 
-Important:
+The website renders first-class consumer artifacts from structured source data and approved publication assets.
 
-- The downloadable PDFs are static assets in `static/`.
-- They do not update automatically when the Svelte route copy changes.
-- Resume and project print HTML is generated into `scripts/generated/` from shared content modules.
-- If resume or project wording changes, update the relevant shared content module and regenerate the PDFs.
+## Validation Workflow
 
-## Suggested Validation Workflow
+For changes affecting public surfaces:
 
-For UI or content changes affecting reader experience:
-
-1. Run `npm run build`.
-2. Run `npm run preview`.
-3. Verify the served preview, not just source files.
-4. If any printable content changed, regenerate the PDFs and verify the downloads.
-5. Check that floating action bars do not overlap with bottom page actions.
-6. Check that homepage reveal flows still open and close cleanly.
+1. Run `npm run check`.
+2. Run `npm run build`.
+3. Run `npm run preview`.
+4. Preview human routes, including resume and project/evidence routes.
+5. Verify machine/discovery surfaces: `/canonical.json`, `/llms.txt`, `/sitemap.xml`, and `/robots.txt`.
+6. Verify publication artifact links for resume PDFs and project PDFs.
+7. Verify hashes where artifact integrity matters.
 
 ## Node Version
 
@@ -165,7 +231,7 @@ Local validation was also completed successfully on Node `24.14.1` on April 15, 
 - `npm run check`
 - `npm run build`
 
-If you want local development to match the repository-declared requirement, use Node 22. The Node 24 result above is a historical validation note rather than a standing compatibility guarantee.
+Use Node 22 for local development that matches the repository-declared requirement. The Node 24 result above is a historical validation note rather than a standing compatibility guarantee.
 
 ## Deployment
 
@@ -180,4 +246,4 @@ The app uses `@sveltejs/adapter-static` and `prerender = true`, so deployment is
 
 - The site uses explicit CSP settings in `svelte.config.js`.
 - Styling is primarily hand-authored CSS rather than utility-first Tailwind markup. Tailwind remains in the toolchain through `src/routes/layout.css` for its imported base behavior.
-- UX changes should preserve the reader-first navigation patterns already in place unless there is a clear reason to replace them.
+- UX changes should preserve the reader-first navigation patterns already in place and document the reason for any replacement.
