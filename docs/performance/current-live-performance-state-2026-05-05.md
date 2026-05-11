@@ -49,7 +49,7 @@ Confirmed asset groups:
 - `/fonts/*`
 - `/images/*`
 - `/aurora/*`
-- `/resume-bw.pdf`
+- `/resumes/*`
 - `/favicon-n-purple-green.svg`
 
 Generated/current-state routes remain conservative:
