@@ -38,25 +38,25 @@ export const entrySurfaces = {
 		image: '/images/resume-portrait.jpg',
 		canonicalUrl: '/resume/ai-process'
 	},
-	remediationProject: {
+	endpointRemediation: {
 		path: '/highlights/endpoint-remediation',
 		mode: 'portrait',
 		image: '/images/spring-snow.jpg',
 		canonicalUrl: '/highlights/endpoint-remediation'
 	},
-	migrationProject: {
+	packageRedesign: {
 		path: '/highlights/package-redesign',
 		mode: 'portrait',
 		image: '/images/sun-snow-mountain.jpg',
 		canonicalUrl: '/highlights/package-redesign'
 	},
-	elioraProject: {
+	aiGovernance: {
 		path: '/highlights/ai-governance',
 		mode: 'portrait',
 		image: '/images/mountain-square.jpg',
 		canonicalUrl: '/highlights/ai-governance'
 	},
-	websiteBuildNotesProject: {
+	websitePublication: {
 		path: '/highlights/website-publication',
 		mode: 'portrait',
 		image: '/images/StClair-Sunrise.jpg',

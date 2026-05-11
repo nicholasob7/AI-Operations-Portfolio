@@ -29,7 +29,7 @@ export const projectionSelectionGuidance = [
 			'service_desk_foundation',
 			'privileged_access_and_operational_scope'
 		],
-		secondaryEvidenceNodeIds: ['endpoint_remediation_script']
+			secondaryEvidenceNodeIds: ['endpoint_remediation']
 	},
 	{
 		projectionId: 'technical_operations',
@@ -56,12 +56,12 @@ export const projectionSelectionGuidance = [
 			'support_practice',
 			'documentation_delivery_evidence'
 		],
-		coreEvidenceNodeIds: [
-			'endpoint_remediation_script',
-			'migration_stabilization_framework',
-			'privileged_access_and_operational_scope',
-			'service_desk_foundation'
-		]
+			coreEvidenceNodeIds: [
+				'endpoint_remediation',
+				'package_redesign',
+				'privileged_access_and_operational_scope',
+				'service_desk_foundation'
+			]
 	},
 	{
 		projectionId: 'ai_process',
@@ -94,12 +94,12 @@ export const projectionSelectionGuidance = [
 			'documentation_delivery_evidence'
 		],
 		secondaryPracticeAreaIds: ['technical_operations_practice'],
-		coreEvidenceNodeIds: [
-			'endpoint_remediation_script',
-			'migration_stabilization_framework',
-			'eliora_governance',
-			'website_publication_system'
-		],
+			coreEvidenceNodeIds: [
+				'endpoint_remediation',
+				'package_redesign',
+				'ai_governance',
+				'website_publication'
+			],
 		secondaryEvidenceNodeIds: ['privileged_access_and_operational_scope']
 	}
 ] satisfies ProjectionSelectionGuidance[];

@@ -11,11 +11,11 @@
 </script>
 
 <div class="projects">
-	{#each highlightsEntries as entry}
-		{@const node = evidenceNodeById[entry.evidenceNodeId]}
-		<HomeInnerPanel>
-			<h3>{node.humanDisplayLabel ?? node.label}</h3>
-			<p class="project-summary">{node.summary}</p>
+		{#each highlightsEntries as entry}
+			{@const node = evidenceNodeById[entry.evidenceNodeId]}
+			<HomeInnerPanel>
+				<h3>{'humanDisplayLabel' in node ? node.humanDisplayLabel ?? node.label : node.label}</h3>
+				<p class="project-summary">{node.summary}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}

@@ -1,51 +1,51 @@
-<script lang="ts">
-	import { beforeNavigate } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import DestinationActions, { type DestinationAction } from './DestinationActions.svelte';
-	import PortraitIntro from './PortraitIntro.svelte';
-	import type { ProjectDetail, ProjectDetailListItem } from '$lib/content/project-details';
-	import { getEntryImage, isPortraitEntry, type EntrySurface } from '$lib/entry-surfaces';
-	import { setPortraitIntroHandoff } from '$lib/portrait-intro';
+	<script lang="ts">
+		import { beforeNavigate } from '$app/navigation';
+		import { onMount } from 'svelte';
+		import DestinationActions, { type DestinationAction } from './DestinationActions.svelte';
+		import PortraitIntro from './PortraitIntro.svelte';
+		import type { HighlightContent, HighlightContentListItem } from '$lib/content/highlight-content';
+		import { getEntryImage, isPortraitEntry, type EntrySurface } from '$lib/entry-surfaces';
+		import { setPortraitIntroHandoff } from '$lib/portrait-intro';
 
-	type Props = {
-		actions: DestinationAction[];
-		detail: ProjectDetail;
-		panelId: string;
-		entrySurface?: EntrySurface;
-	};
+		type Props = {
+			actions: DestinationAction[];
+			detail: HighlightContent;
+			panelId: string;
+			entrySurface?: EntrySurface;
+		};
 
-	let { actions, detail, panelId, entrySurface }: Props = $props();
-	const projectUsesPortraitEntry = $derived(entrySurface ? isPortraitEntry(entrySurface) : false);
-	const projectEntryImage = $derived(entrySurface ? getEntryImage(entrySurface) : null);
+		let { actions, detail, panelId, entrySurface }: Props = $props();
+		const contentUsesPortraitEntry = $derived(entrySurface ? isPortraitEntry(entrySurface) : false);
+		const contentEntryImage = $derived(entrySurface ? getEntryImage(entrySurface) : null);
 
-	const isLabelledItem = (
-		item: ProjectDetailListItem
-	): item is Extract<ProjectDetailListItem, { label: string }> => typeof item !== 'string';
+		const isLabelledItem = (
+			item: HighlightContentListItem
+		): item is Extract<HighlightContentListItem, { label: string }> => typeof item !== 'string';
 
-	const shouldCarryDetailImageToHighlights = (targetPathname: string | null | undefined) =>
-		targetPathname === '/highlights' &&
-		entrySurface?.path.startsWith('/highlights/') &&
-		!!projectEntryImage;
+		const shouldCarryDetailImageToHighlights = (targetPathname: string | null | undefined) =>
+			targetPathname === '/highlights' &&
+			entrySurface?.path.startsWith('/highlights/') &&
+			!!contentEntryImage;
 
-	beforeNavigate(({ to }) => {
-		if (shouldCarryDetailImageToHighlights(to?.url.pathname) && projectEntryImage) {
-			setPortraitIntroHandoff({ src: projectEntryImage });
-		}
-	});
+		beforeNavigate(({ to }) => {
+			if (shouldCarryDetailImageToHighlights(to?.url.pathname) && contentEntryImage) {
+				setPortraitIntroHandoff({ src: contentEntryImage });
+			}
+		});
 
 	onMount(() => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	});
 </script>
 
-<PortraitIntro
-	src={projectEntryImage}
-	enabled={projectUsesPortraitEntry}
-	pathname={entrySurface?.path ?? null}
-/>
+	<PortraitIntro
+		src={contentEntryImage}
+		enabled={contentUsesPortraitEntry}
+		pathname={entrySurface?.path ?? null}
+	/>
 
-<main class="doc-page">
-	<DestinationActions {actions} {panelId} portraitHandoff={{ src: projectEntryImage }} />
+	<main class="doc-page">
+		<DestinationActions {actions} {panelId} portraitHandoff={{ src: contentEntryImage }} />
 
 	<section class="doc-card" aria-labelledby={detail.titleId}>
 		<p class="eyebrow">{detail.eyebrow}</p>

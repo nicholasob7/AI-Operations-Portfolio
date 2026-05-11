@@ -215,7 +215,7 @@ export function buildCanonical() {
 			homepage: asRoute('/'),
 			highlights_index: asRoute('/highlights'),
 			resume_index: asRoute('/resume'),
-			project_routes: evidenceNodes
+			highlight_routes: evidenceNodes
 				.filter((evidenceNode) => evidenceNode.route)
 				.map((evidenceNode) => ({
 					id: evidenceNode.id,

@@ -1,40 +1,40 @@
-export type ProjectDetailListItem =
+export type HighlightContentListItem =
 	| string
 	| {
-			label: string;
-			text: string;
-	  };
+				label: string;
+				text: string;
+		  };
 
-export type ProjectDetailBlock =
+export type HighlightContentBlock =
 	| {
-			type: 'paragraph';
-			text: string;
-			className?: string;
-	  }
+				type: 'paragraph';
+				text: string;
+				className?: string;
+		  }
 	| {
-			type: 'list';
-			items: ProjectDetailListItem[];
-	  };
+				type: 'list';
+				items: HighlightContentListItem[];
+		  };
 
-export type ProjectDetailSection = {
+export type HighlightContentSection = {
 	title: string;
 	id?: string;
-	blocks: ProjectDetailBlock[];
+	blocks: HighlightContentBlock[];
 };
 
-export type ProjectDetail = {
+export type HighlightContent = {
 	title: string;
 	titleId: string;
 	eyebrow: string;
 	ariaLabel: string;
 	standfirst?: string;
 	highlightDetailText?: boolean;
-	sections: ProjectDetailSection[];
+	sections: HighlightContentSection[];
 };
 
-export const remediationProjectDetail: ProjectDetail = {
+export const endpointRemediationContent: HighlightContent = {
 	title: 'Endpoint Remediation',
-	titleId: 'remediation-title',
+	titleId: 'endpoint-remediation-title',
 	eyebrow: 'Evidence Highlight',
 	ariaLabel: 'Endpoint remediation evidence',
 	sections: [
@@ -116,9 +116,9 @@ export const remediationProjectDetail: ProjectDetail = {
 	]
 };
 
-export const migrationProjectDetail: ProjectDetail = {
+export const packageRedesignContent: HighlightContent = {
 	title: 'Package Redesign',
-	titleId: 'migration-title',
+	titleId: 'package-redesign-title',
 	eyebrow: 'Evidence Highlight',
 	ariaLabel: 'Package redesign evidence',
 	sections: [
@@ -201,11 +201,11 @@ export const migrationProjectDetail: ProjectDetail = {
 	]
 };
 
-export const elioraProjectDetail: ProjectDetail = {
-	title: 'Eliora AI Governance',
-	titleId: 'eliora-title',
-	eyebrow: 'Project Detail',
-	ariaLabel: 'Eliora project details',
+export const aiGovernanceContent: HighlightContent = {
+	title: 'AI Governance',
+	titleId: 'ai-governance-title',
+	eyebrow: 'Evidence Highlight',
+	ariaLabel: 'AI governance evidence',
 	standfirst:
 		'Built to keep authority, derivation, and execution clearly separate. Designed for high-consequence agent systems.',
 	highlightDetailText: true,
@@ -255,11 +255,11 @@ export const elioraProjectDetail: ProjectDetail = {
 	]
 };
 
-export const websiteBuildNotesProjectDetail: ProjectDetail = {
-	title: 'Website Publication System',
-	titleId: 'website-publication-system-title',
+export const websitePublicationContent: HighlightContent = {
+	title: 'Website Publication',
+	titleId: 'website-publication-title',
 	eyebrow: 'Evidence Highlight',
-	ariaLabel: 'Website publication system evidence',
+	ariaLabel: 'Website publication evidence',
 	sections: [
 		{
 			title: 'Implemented behaviours',
