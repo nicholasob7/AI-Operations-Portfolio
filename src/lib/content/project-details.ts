@@ -33,10 +33,10 @@ export type ProjectDetail = {
 };
 
 export const remediationProjectDetail: ProjectDetail = {
-	title: 'Post-Deployment Remediation Script Development',
+	title: 'Endpoint Remediation',
 	titleId: 'remediation-title',
-	eyebrow: 'Project Detail',
-	ariaLabel: 'Remediation project details',
+	eyebrow: 'Evidence Highlight',
+	ariaLabel: 'Endpoint remediation evidence',
 	sections: [
 		{
 			title: 'Summary',
@@ -44,94 +44,71 @@ export const remediationProjectDetail: ProjectDetail = {
 				{
 					type: 'paragraph',
 					className: 'doc-summary',
-					text: 'Built and deployed a remediation script for live post-deployment incidents. It targeted profile corruption, cache drift, and launch inconsistency. The script moved from testing into production use and became part of a wider stabilization effort.'
+					text: 'A major application migration failed. I built a remediation script for affected endpoints. The script passed the required approval process, entered production use, and remains in use today. Its results became evidence for the wider package and deployment-layer correction.'
 				}
 			]
 		},
 		{
-			title: 'How It Was Built',
+			title: 'Starting Point',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{ label: 'Development workflow', text: 'Built with AI-assisted support and standard tooling' },
-						{
-							label: 'Testing path',
-							text: 'Moved from non-production testing to test-device validation and then live deployment'
-						},
-						{
-							label: 'User targeting',
-							text: 'Separated device logon user from session user to target the correct profile'
-						},
-						{ label: 'Cache cleanup', text: 'Covered both version-specific and legacy cache variants' },
-						{
-							label: 'Shortcut control',
-							text: 'Consolidated validated shortcut artifacts into one canonical launch surface'
-						},
-						{ label: 'Binary checks', text: 'Confirmed binaries and detected reparse-point anomalies' },
-						{ label: 'Status output', text: 'Returned JSON-compatible state summaries for downstream parsing' }
+						'Earlier remediation work had provided a test device and a safe way to test endpoint changes.',
+						'The failed migration raised a larger practical question: which failures could be fixed locally?',
+						'A test account was requested so the application could be investigated without relying only on live user sessions.'
 					]
 				}
 			]
 		},
 		{
-			title: 'What We Found',
+			title: 'Investigation Setup',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{ label: 'Main pattern', text: 'Incidents clustered in upgrade scenarios' },
-						{ label: 'Control case', text: 'Clean first-time installs did not show the same failure profile' },
-						{
-							label: 'Main causes',
-							text: 'Cache drift, user-profile contamination, mixed shortcut paths, duplicate variants, and validation gaps'
-						},
-						{
-							label: 'Field behavior',
-							text: 'Production incidents often involved stale shortcuts, legacy cache corruption, and precise per-profile targeting'
-						},
-						{ label: 'Production result', text: 'Validation confirmed normalized application state' },
-						{ label: 'Boundary', text: 'Remaining failures fell outside remediation scope' }
+						'AI support, PowerShell, VS Code, and GitHub Copilot were used to work through the script logic.',
+						'Local application behavior was tested through uninstall, reinstall, safe local-data cleanup, and checks against what the application recreated.',
+						'The investigation separated safe endpoint remediation from areas that needed to remain untouched.'
 					]
 				}
 			]
 		},
 		{
-			title: 'How It Was Used',
+			title: 'Script Development',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{
-							label: 'Evidence role',
-							text: 'Served as the main evidence item in the revised deployment package wrapper'
-						},
-						{ label: 'Problem link', text: 'Tied each remediation action to observed symptoms' },
-						{ label: 'Approval', text: 'Approved for controlled live use on single endpoints' },
-						{
-							label: 'Project effect',
-							text: 'Turned incident success into evidence for root-cause analysis and package hardening'
-						},
-						{
-							label: 'Scope boundary',
-							text: 'Full wrapper lifecycle testing remained separate from script effectiveness evidence'
-						}
+						'The script refreshed safe local application state on affected endpoints.',
+						'It corrected launch and profile-related failures where those failures were local to the endpoint.',
+						'It also identified when a failure sat outside local application state.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Why It Helped',
+			title: 'Approval and Production Use',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						'Each remediation action targeted a real observed failure rather than a theoretical fix',
-						'Refinement decisions were based on test-device and production outcomes',
-						'Defensive design handled cloud desktop variants, registry-redirected paths, and reparse-point binaries',
-						'Rapid problem breakdown supported cache, shortcut, and user-context diagnosis',
-						'AI-assisted code generation became production-grade PowerShell',
-						'Confirmed outcomes stayed separate from assumptions that needed more evidence'
+						'The script was prepared for review and approval.',
+						'It passed the required approval process.',
+						'It entered production use for affected endpoints.'
+					]
+				}
+			]
+		},
+		{
+			title: 'What It Proved',
+			blocks: [
+				{
+					type: 'list',
+					items: [
+						'The script fixed endpoint failures that would otherwise have required workaround or rollback.',
+						'Its success and failure boundaries showed that the wider migration problem involved the package and deployment layer.',
+						'The work turned live service-desk issues into evidence for a larger technical correction.'
 					]
 				}
 			]
@@ -140,10 +117,10 @@ export const remediationProjectDetail: ProjectDetail = {
 };
 
 export const migrationProjectDetail: ProjectDetail = {
-	title: 'Enterprise Application Migration Stabilization Framework',
+	title: 'Package Redesign',
 	titleId: 'migration-title',
-	eyebrow: 'Project Detail',
-	ariaLabel: 'Migration stabilization project details',
+	eyebrow: 'Evidence Highlight',
+	ariaLabel: 'Package redesign evidence',
 	sections: [
 		{
 			title: 'Summary',
@@ -151,95 +128,72 @@ export const migrationProjectDetail: ProjectDetail = {
 				{
 					type: 'paragraph',
 					className: 'doc-summary',
-					text: 'Built from the successful remediation script development work, this project turns validated fix logic into a framework for controlled deployment. Active reconstruction of installation packaging has reached successful test-device validation, with full production deployment still pending.'
+					text: 'The endpoint remediation script worked on affected machines, but it did not solve the whole migration by itself. Its success and failure boundaries showed that the package and deployment layer needed correction. I used that evidence to redesign the package path, which reached successful test-device validation. Full production rollout is in process.'
 				}
 			]
 		},
 		{
-			title: 'What We Found',
+			title: 'Turning Point',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{ label: 'Failure review', text: 'Examined endpoint failures from a large version migration' },
-						{
-							label: 'Main causes',
-							text: 'Found user-context drift, cache conflicts, shortcut issues, installer weak points, and validation gaps'
-						},
-						{ label: 'Fix mapping', text: 'Matched live remediation steps to new package controls' },
-						{
-							label: 'Change tracking',
-							text: 'Built a clear method for linking each package change to a known problem and result'
-						}
+						'The endpoint remediation script showed which failures could be corrected locally.',
+						'The wider migration still needed a package-level answer.',
+						'The work moved from individual endpoint recovery to investigation of the deployment package.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Results',
+			title: 'Package Investigation',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{
-							label: 'Test-device result',
-							text: 'Resolved duplicate paths, intermittent launch failures, and workaround drift on the validation device'
-						},
-						{ label: 'Installer flow', text: 'Reduced installation ambiguity with earlier failure detection' },
-						{
-							label: 'Prepared output',
-							text: 'Assembled records for review, change submission, and later audit'
-						},
-						{ label: 'Next step', text: 'Production rollout remains pending' }
+						'The endpoint remediation script worked when applied directly to affected machines.',
+						'When packaged, the same fix failed because installation packaging conflicted with and overrode the script behavior.',
+						'That failure showed there was no reliable pre-installation point where the endpoint script alone could correct the migration.',
+						'The investigation therefore moved from packaging the script to redesigning the package path itself.'
 					]
 				}
 			]
 		},
 		{
-			title: 'How It Helped',
+			title: 'Redesign Path',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{
-							label: 'Technical teams',
-							text: 'Control mapping, smoke tests, integrity checks, and package comparisons for review and safer deployment decisions'
-						},
-						{
-							label: 'Business and compliance',
-							text: 'Clear summaries, confidence statements, and before/after framing without heavy technical language'
-						},
-						{
-							label: 'Change process',
-							text: 'Prepared project materials for controlled change review and submission'
-						},
-						{ label: 'Future migrations', text: 'Prepared a reusable process for rollout completion' }
+						'The endpoint script became evidence for what the package needed to handle.',
+						'Package controls were mapped back to observed failure behavior.',
+						'The redesign focused on reducing repeated endpoint recovery by correcting the deployment path.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Why It Worked',
+			title: 'Validation',
 			blocks: [
 				{
 					type: 'list',
 					items: [
-						{
-							label: 'Clear proof',
-							text: 'Each control stayed linked to installer behavior, remediation results, or endpoint state'
-						},
-						{
-							label: 'Clear boundaries',
-							text: 'Confirmed findings stayed separate from assumptions and open questions'
-						},
-						{
-							label: 'Shared access',
-							text: 'One structure worked across technical teams, compliance reviewers, operations, and documentation.'
-						},
-						{
-							label: 'Reusable process',
-							text: 'The same approach can be used for future enterprise migrations with similar failure patterns'
-						}
+						'The redesigned package path reached successful test-device validation.',
+						'The output was prepared for review, change submission, and later rollout.',
+						'Production rollout remained a later stage.'
+					]
+				}
+			]
+		},
+		{
+			title: 'What It Proved',
+			blocks: [
+				{
+					type: 'list',
+					items: [
+						'The work turned live support failures into a package redesign path.',
+						'It showed a progression from service-desk investigation to deployment-level correction.',
+						'It gave the migration problem a practical route beyond repeated endpoint recovery.'
 					]
 				}
 			]
