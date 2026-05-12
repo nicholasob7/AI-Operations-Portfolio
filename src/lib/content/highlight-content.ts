@@ -293,7 +293,6 @@ export const websitePublicationContent: HighlightContent = {
 						'Exposes selected public content through a machine-readable route.',
 						'Respects reduced-motion preferences during longer visual transitions.',
 						'Supports keyboard operation, Escape close, and focus return in floating action controls.',
-						'Confirms when copy actions succeed.',
 						'Handles older or redirected page anchors without leaving the visitor at a dead position.'
 					]
 				}
