@@ -173,6 +173,19 @@ export const packageRedesignContent: HighlightContent = {
 			]
 		},
 		{
+			title: 'Review Surface',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'The package redesign was structured as an agent-readable evidence directory rather than a loose set of notes or chat output. The VS Code folder structure preserved the package design, justifications, supporting evidence, deployment implications, and review-relevant information in a form another reviewer could open and interrogate with their preferred AI assistant.'
+				},
+				{
+					type: 'paragraph',
+					text: 'The result was a transferable review surface: a reviewer could open the folder, ask a basic question such as “What is this?”, and be guided through the redesigned package path, the reasons for it, the evidence supporting it, and the information needed for change review.'
+				}
+			]
+		},
+		{
 			title: 'Validation',
 			blocks: [
 				{
