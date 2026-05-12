@@ -14,7 +14,7 @@ export type ResumeProgressionStageId =
 	| 'specialist_improvement'
 	| 'ai_forward_delivery';
 
-export type ResumeInitiativeId = 'endpoint_remediation' | 'package_reconstruction';
+export type ResumeInitiativeId = 'endpoint_remediation' | 'package_redesign';
 export type ResumeScopeId = ResumeProgressionStageId | ResumeInitiativeId | 'delegated_scope';
 
 export type ResumeSkillGroup = {
@@ -112,8 +112,8 @@ export const resumeInitiativeMetadata = {
 		}
 	},
 	active: {
-		id: 'package_reconstruction',
-		label: 'Package Reconstruction',
+		id: 'package_redesign',
+		label: 'Package Redesign',
 		period: {
 			startLabel: 'February 2026',
 			startIsoMonth: '2026-02',
@@ -179,7 +179,7 @@ export const activeProjectCompleted = [
 	'Tested approaches and script versions on a dedicated test device.',
 	'The script passed validation and entered production for individual endpoint failures.',
 	'L2 bundling with the existing install package failed.',
-	'Used remediation results to identify package-level deployment issues requiring further reconstruction.',
+	'Used remediation results to identify package-level deployment issues requiring further redesign.',
 	'This led to investigation of the install package itself.'
 ];
 
@@ -254,7 +254,7 @@ export const progressionStages: ResumeProgressionStage[] = [
 			'Applied AI-assisted research and coding to build an endpoint remediation script for a major vendor application.',
 			'Moved the work from test-device validation into controlled production use for individual endpoint failures.',
 			'Turned remediation results into evidence for package investigation and rebuild work.',
-			'Continued into enterprise package reconstruction from the proven fix.'
+			'Continued into enterprise package redesign from the proven fix.'
 		]
 	}
 ];
@@ -422,7 +422,7 @@ export const itSupportSelectedTechnicalImprovement = [
 	'Tested versions on a dedicated device before production use.',
 	'Script passed validation and entered production for individual endpoint failures.',
 	'Recognised internally for initiative, documentation, manager endorsement, and cross-team circulation.',
-	'Used results to identify package-level deployment issues requiring further reconstruction.'
+	'Used results to identify package-level deployment issues requiring further redesign.'
 ];
 
 export const itSupportCompactQualifications = [
@@ -441,7 +441,7 @@ export const technicalOperationsSelectedDelivery = [
 	'Investigated a recurring vendor application endpoint failure through controlled manual testing. Built an AI-assisted PowerShell remediation script from the findings.',
 	'Mapped safe remediation handling for application folders, cache contents, and local state files. Validated what could be cleared, regenerated, or preserved before production use.',
 	'Documented the remediation process and circulated guidance to relevant teams. Recognised internally for initiative, documentation, and manager endorsement.',
-	'Used endpoint remediation results to identify package-level deployment issues requiring further reconstruction.'
+	'Used endpoint remediation results to identify package-level deployment issues requiring further redesign.'
 ];
 
 export const technicalOperationsScope = [

@@ -43,7 +43,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'Front-line enterprise support projection for incident handling, service requests, Microsoft administration, identity and access work, endpoint troubleshooting, and escalation judgment.',
-		htmlPath: '/resume/it-support',
+		htmlPath: '/resumes/it-support',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_IT_Support.pdf',
 		humanVisible: true,
 		machineVisible: true,
@@ -65,7 +65,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'Operational support projection for endpoint remediation, application support, deployment troubleshooting, privileged access handling, package-level investigation, and structured improvement work.',
-		htmlPath: '/resume/technical-operations',
+		htmlPath: '/resumes/technical-operations',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_Technical_Operations.pdf',
 		humanVisible: true,
 		machineVisible: true,
@@ -87,7 +87,7 @@ export const resumeProjectionRegistry: ResumeProjection[] = [
 		],
 		summary:
 			'AI-forward operations projection for workflow mapping, troubleshooting analysis, documentation, remediation design, and turning recurring support issues into repeatable operational outputs.',
-		htmlPath: '/resume/ai-process',
+		htmlPath: '/resumes/ai-process',
 		pdfPath: '/resumes/Nicholas_OBrien_Resume_AI_Process.pdf',
 		humanVisible: true,
 		machineVisible: true,

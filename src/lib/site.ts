@@ -8,7 +8,7 @@ export const canonicalOrigin = 'https://nicko.obrienai.com';
 export const sitemapRoutes = [
 	'/',
 	'/highlights',
-	'/resume',
+	'/resumes',
 	'/canonical.json',
 	'/highlights/ai-governance',
 	'/highlights/website-publication',

@@ -118,7 +118,7 @@ export const evidenceNodes = [
 		id: 'package_redesign',
 		label: 'Package Redesign',
 		summary:
-			'Package reconstruction and migration stabilization work derived from validated remediation logic and test-device confirmation.',
+			'Package redesign and migration stabilization work derived from validated remediation logic and test-device confirmation.',
 		status: 'active',
 		practiceAreaIds: [
 			'technical_operations_practice',
@@ -137,7 +137,7 @@ export const evidenceNodes = [
 		],
 		publicDetails: [
 			'Validated remediation logic translated into package-level controls.',
-			'Test-device reconstruction reached successful validation.',
+			'Test-device package redesign reached successful validation.',
 			'Prepared review, change, and audit-ready framing for later rollout stages.'
 		],
 		withheldDetailsNote:

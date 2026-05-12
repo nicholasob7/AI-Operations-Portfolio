@@ -21,10 +21,10 @@ const normalizePathname = (pathname: string) => {
 export const isResumeAreaPath = (pathname: string): boolean => {
 	const normalized = normalizePathname(pathname);
 	return (
-		normalized === '/resume' ||
-		normalized === '/resume/it-support' ||
-		normalized === '/resume/technical-operations' ||
-		normalized === '/resume/ai-process'
+		normalized === '/resumes' ||
+		normalized === '/resumes/it-support' ||
+		normalized === '/resumes/technical-operations' ||
+		normalized === '/resumes/ai-process'
 	);
 };
 

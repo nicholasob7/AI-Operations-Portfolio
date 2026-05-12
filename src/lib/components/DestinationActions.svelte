@@ -88,7 +88,7 @@
 	const shouldCarryPortrait = (action: Extract<DestinationAction, { type: 'link' }>) =>
 		!!portraitHandoff?.src &&
 		!action.download &&
-		(action.href === '/' || action.href.startsWith('/#') || action.href.startsWith('/projects/'));
+		(action.href === '/' || action.href.startsWith('/#'));
 
 	const runLinkAction = (action: Extract<DestinationAction, { type: 'link' }>) => {
 		if (action.id === 'top' && portraitHandoff?.src) {

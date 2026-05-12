@@ -150,7 +150,7 @@ Reject these failure modes:
 - returning to maximal evidentiary claim as the construction method
 - treating omission as a hole to be filled
 - ranking truth by proof density
-- treating project-detail pages as more true because they are closer to operational substrate
+- treating highlight/evidence pages as more true because they are closer to operational substrate
 - demoting summary, quality, personal, or resume content into lesser truth status
 - replacing relationship-bearing meaning with fact-shard bureaucracy
 - collapsing sanitized public signal into weak or null capability

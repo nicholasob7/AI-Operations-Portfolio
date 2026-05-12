@@ -55,7 +55,7 @@ Confirmed asset groups:
 Generated/current-state routes remain conservative:
 
 - `/`
-- `/resume`
+- `/resumes`
 - `/highlights/ai-governance`
 - `/canonical.json`
 - `/sitemap.xml`

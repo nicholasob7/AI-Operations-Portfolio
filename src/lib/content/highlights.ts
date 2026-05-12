@@ -22,24 +22,24 @@ export const highlightsEntries: HighlightsEntry[] = [
 		evidenceNodeId: 'endpoint_remediation',
 		href: '/highlights/endpoint-remediation',
 		ctaLabel: 'Endpoint Remediation',
-		ctaClass: 'section-cta-remediation'
+		ctaClass: 'endpoint-remediation-cta'
 	},
 	{
 		evidenceNodeId: 'package_redesign',
 		href: '/highlights/package-redesign',
 		ctaLabel: 'Package Redesign',
-		ctaClass: 'section-cta-migration'
+		ctaClass: 'package-redesign-cta'
 	},
 	{
 		evidenceNodeId: 'ai_governance',
 		href: '/highlights/ai-governance',
 		ctaLabel: 'AI Governance',
-		ctaClass: 'section-cta-eliora'
+		ctaClass: 'ai-governance-cta'
 	},
 	{
 		evidenceNodeId: 'website_publication',
 		href: '/highlights/website-publication',
 		ctaLabel: 'Website Publication',
-		ctaClass: 'section-cta-eliora'
+		ctaClass: 'website-publication-cta'
 	}
 ];

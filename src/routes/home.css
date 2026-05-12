@@ -371,7 +371,27 @@
 		--btn-text-hover: #ffffff;
 	}
 
-		.section-cta-eliora {
+		.highlights-cta,
+		.ai-governance-cta,
+		.website-publication-cta {
+			--btn-start: #3b7b63;
+			--btn-mid: #2a5f4d;
+		--btn-end: #1e4538;
+			--btn-start-hover: #4b9278;
+			--btn-mid-hover: #33735d;
+			--btn-end-hover: #275547;
+		}
+
+		.endpoint-remediation-cta {
+			--btn-start: #3b7b63;
+			--btn-mid: #2a5f4d;
+			--btn-end: #1e4538;
+			--btn-start-hover: #4b9278;
+			--btn-mid-hover: #33735d;
+			--btn-end-hover: #275547;
+		}
+
+		.resumes-cta {
 			--btn-start: #3b7b63;
 			--btn-mid: #2a5f4d;
 		--btn-end: #1e4538;
@@ -380,16 +400,7 @@
 		--btn-end-hover: #275547;
 	}
 
-	.section-cta-remediation {
-		--btn-start: #3b7b63;
-		--btn-mid: #2a5f4d;
-		--btn-end: #1e4538;
-		--btn-start-hover: #4b9278;
-		--btn-mid-hover: #33735d;
-		--btn-end-hover: #275547;
-	}
-
-	.section-cta-migration {
+	.package-redesign-cta {
 		--btn-start: #3b7b63;
 		--btn-mid: #2a5f4d;
 		--btn-end: #1e4538;
@@ -440,8 +451,8 @@
 	}
 
 	#professional-profile-head,
-	#selected-work-head,
-	#self-directed-head {
+	#resumes-head,
+	#highlights-head {
 		justify-self: center;
 		text-align: center;
 	}
@@ -485,7 +496,7 @@
 		max-width: 88ch;
 	}
 
-	.projects {
+	.evidence-highlights {
 		display: grid;
 		gap: 0.9rem;
 	}
@@ -528,7 +539,7 @@
 		content: none;
 	}
 
-	.projects h3 {
+	.evidence-highlights h3 {
 		display: inline-block;
 		width: fit-content;
 		margin: 0;
@@ -549,7 +560,7 @@
 		-webkit-text-fill-color: transparent;
 	}
 
-	.project-outcome {
+	.evidence-outcome {
 		font-family: "Spectral", "Times New Roman", "Liberation Serif", "DejaVu Serif", serif;
 		font-size: 0.82rem;
 		line-height: 1.4;
@@ -557,7 +568,7 @@
 		min-height: 1.4em;
 	}
 
-	.project-summary {
+	.evidence-summary {
 		min-height: calc(1.55em * 2);
 	}
 
@@ -653,7 +664,7 @@
 			line-height: 1.58;
 		}
 
-		.projects {
+		.evidence-highlights {
 			gap: 1.2rem;
 		}
 
@@ -663,7 +674,7 @@
 			line-height: 1.58;
 		}
 
-		.project-outcome {
+		.evidence-outcome {
 			font-size: 1.5rem;
 			line-height: 1.58;
 		}
@@ -678,8 +689,8 @@
 
 	#hero-head,
 	#professional-profile-head,
-	#selected-work-head,
-	#self-directed-head,
+	#resumes-head,
+	#highlights-head,
 	#tail-head {
 		scroll-margin-top: 1.25rem;
 	}
@@ -751,15 +762,15 @@
 			font-size: 0.7rem;
 		}
 
-		.project-summary,
-		.project-outcome {
+		.evidence-summary,
+		.evidence-outcome {
 			min-height: 0;
 		}
 
 	}
 
 		@media (min-width: 960px) {
-			.projects h3 {
+			.evidence-highlights h3 {
 				font-size: 1.65rem;
 			}
 		}

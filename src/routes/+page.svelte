@@ -12,10 +12,10 @@
 	import { requestPortraitIntroReplay } from '$lib/portrait-intro';
 	import { onMount, tick } from 'svelte';
 	import IdentitySection from '$lib/components/home/IdentitySection.svelte';
-	import ProjectsSection from '$lib/components/home/ProjectsSection.svelte';
+	import Resumes from '$lib/components/home/Resumes.svelte';
 	import ProfessionalProfileSection from '$lib/components/home/ProfessionalProfileSection.svelte';
 	import ProfileTail from '$lib/components/home/ProfileTail.svelte';
-	import SelfDirectedSection from '$lib/components/home/SelfDirectedSection.svelte';
+	import Highlights from '$lib/components/home/Highlights.svelte';
 	import './home.css';
 
 	const homeTitle = "Nicko O'Brien | IT Professional Profile";
@@ -168,12 +168,12 @@
 	<ProfessionalProfileSection />
 	<div class="section-divider" aria-hidden="true"></div>
 
-	<ProjectsSection
+	<Resumes
 		navigationReady={homepageInteractionReady}
 	/>
 	<div class="section-divider" aria-hidden="true"></div>
 
-	<SelfDirectedSection
+	<Highlights
 		navigationReady={homepageInteractionReady}
 	/>
 	<div class="section-divider" aria-hidden="true"></div>

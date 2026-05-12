@@ -15,28 +15,28 @@ export const entrySurfaces = {
 		canonicalUrl: '/'
 	},
 	resume: {
-		path: '/resume',
+		path: '/resumes',
 		mode: 'portrait',
-		image: '/images/resume-portrait.jpg',
-		canonicalUrl: '/resume'
+		image: '/images/resumes-portrait.jpg',
+		canonicalUrl: '/resumes'
 	},
 	resumeItSupport: {
-		path: '/resume/it-support',
+		path: '/resumes/it-support',
 		mode: 'portrait',
-		image: '/images/resume-portrait.jpg',
-		canonicalUrl: '/resume/it-support'
+		image: '/images/resumes-portrait.jpg',
+		canonicalUrl: '/resumes/it-support'
 	},
 	resumeTechnicalOperations: {
-		path: '/resume/technical-operations',
+		path: '/resumes/technical-operations',
 		mode: 'portrait',
-		image: '/images/resume-portrait.jpg',
-		canonicalUrl: '/resume/technical-operations'
+		image: '/images/resumes-portrait.jpg',
+		canonicalUrl: '/resumes/technical-operations'
 	},
 	resumeAiProcess: {
-		path: '/resume/ai-process',
+		path: '/resumes/ai-process',
 		mode: 'portrait',
-		image: '/images/resume-portrait.jpg',
-		canonicalUrl: '/resume/ai-process'
+		image: '/images/resumes-portrait.jpg',
+		canonicalUrl: '/resumes/ai-process'
 	},
 	endpointRemediation: {
 		path: '/highlights/endpoint-remediation',
