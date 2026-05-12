@@ -1,0 +1,4 @@
+Contact: mailto:nicholasob972@gmail.com
+Expires: 2027-05-12T00:00:00Z
+Preferred-Languages: en
+Canonical: https://nicko.obrienai.com/.well-known/security.txt
