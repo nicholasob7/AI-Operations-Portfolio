@@ -1,9 +1,14 @@
 <script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
 	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import PortraitIntro from '$lib/components/PortraitIntro.svelte';
 	import ResumeDocumentView from '$lib/components/resume/ResumeDocumentView.svelte';
 	import type { ResumeProjectionDocument } from '$lib/content/resume-documents';
 	import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
+	import {
+		setPortraitIntroHandoff,
+		shouldReplayResumePortraitOnHomeEntry
+	} from '$lib/portrait-intro';
 	import { canonicalOrigin } from '$lib/site';
 
 	type Props = {
@@ -44,6 +49,15 @@
 			download: `${document.slug}.pdf`
 		}
 	] satisfies DestinationAction[]);
+
+	beforeNavigate(({ from, to }) => {
+		if (
+			projectionEntryImage &&
+			shouldReplayResumePortraitOnHomeEntry(from?.url.pathname, to?.url.pathname)
+		) {
+			setPortraitIntroHandoff({ src: projectionEntryImage });
+		}
+	});
 </script>
 
 <svelte:head>

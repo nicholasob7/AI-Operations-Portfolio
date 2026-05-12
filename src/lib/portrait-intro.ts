@@ -28,6 +28,14 @@ export const isResumeAreaPath = (pathname: string): boolean => {
 	);
 };
 
+export const shouldReplayResumePortraitOnHomeEntry = (
+	fromPathname: string | null | undefined,
+	toPathname: string | null | undefined
+) => {
+	if (!fromPathname || !toPathname) return false;
+	return isResumeAreaPath(fromPathname) && normalizePathname(toPathname) === '/';
+};
+
 const getPortraitRouteArea = (pathname: string | null | undefined) => {
 	if (!pathname) return null;
 	return isResumeAreaPath(pathname) ? 'resume' : 'other';
