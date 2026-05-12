@@ -84,8 +84,8 @@ export const evidenceNodes = [
 		period: privilegedAccessOperationalScopePeriod
 	},
 	{
-		id: 'endpoint_remediation_script',
-		label: 'Endpoint Remediation Script',
+		id: 'endpoint_remediation',
+		label: 'Endpoint Remediation',
 		summary:
 			'AI-assisted endpoint remediation development, validation, production use, and controlled translation of incident results into broader technical investigation.',
 		status: 'complete',
@@ -115,10 +115,10 @@ export const evidenceNodes = [
 		period: initiativePeriod(resumeInitiativeMetadata.completed)
 	},
 	{
-		id: 'migration_stabilization_framework',
-		label: 'Migration Stabilization Framework',
+		id: 'package_redesign',
+		label: 'Package Redesign',
 		summary:
-			'Package reconstruction and migration stabilization work derived from validated remediation logic and test-device confirmation.',
+			'Package redesign and migration stabilization work derived from validated remediation logic and test-device confirmation.',
 		status: 'active',
 		practiceAreaIds: [
 			'technical_operations_practice',
@@ -137,7 +137,7 @@ export const evidenceNodes = [
 		],
 		publicDetails: [
 			'Validated remediation logic translated into package-level controls.',
-			'Test-device reconstruction reached successful validation.',
+			'Test-device package redesign reached successful validation.',
 			'Prepared review, change, and audit-ready framing for later rollout stages.'
 		],
 		withheldDetailsNote:
@@ -146,8 +146,8 @@ export const evidenceNodes = [
 		period: initiativePeriod(resumeInitiativeMetadata.active)
 	},
 	{
-		id: 'eliora_governance',
-		label: 'Eliora Governance',
+		id: 'ai_governance',
+		label: 'AI Governance',
 		summary:
 			'AI governance thinking, semantic control, authority separation, and structured reasoning for high-consequence systems.',
 		status: 'active',
@@ -172,9 +172,8 @@ export const evidenceNodes = [
 		disclosure: 'bounded_public'
 	},
 	{
-		id: 'website_publication_system',
-		label: 'Website Publication System',
-		humanDisplayLabel: 'Publication Layer',
+		id: 'website_publication',
+		label: 'Website Publication',
 		summary:
 			'Static publication discipline, machine-readable surface design, and controlled public delivery for the professional profile site itself.',
 		status: 'active',

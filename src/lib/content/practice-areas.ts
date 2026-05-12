@@ -38,11 +38,11 @@ export const practiceAreas = [
 			'technical troubleshooting',
 			'endpoint remediation'
 		],
-		evidenceNodeIds: [
-			'privileged_access_and_operational_scope',
-			'endpoint_remediation_script',
-			'migration_stabilization_framework'
-		],
+			evidenceNodeIds: [
+				'privileged_access_and_operational_scope',
+				'endpoint_remediation',
+				'package_redesign'
+			],
 		projectionIds: ['it_support', 'technical_operations']
 	},
 	{
@@ -60,12 +60,12 @@ export const practiceAreas = [
 			'structured troubleshooting',
 			'repeatable operational outputs'
 		],
-		evidenceNodeIds: [
-			'endpoint_remediation_script',
-			'migration_stabilization_framework',
-			'eliora_governance',
-			'website_publication_system'
-		],
+			evidenceNodeIds: [
+				'endpoint_remediation',
+				'package_redesign',
+				'ai_governance',
+				'website_publication'
+			],
 		projectionIds: ['technical_operations', 'ai_process', 'it_support']
 	},
 	{
@@ -83,14 +83,14 @@ export const practiceAreas = [
 			'machine-readable profile',
 			'bounded disclosure'
 		],
-		evidenceNodeIds: [
-			'service_desk_foundation',
-			'privileged_access_and_operational_scope',
-			'endpoint_remediation_script',
-			'migration_stabilization_framework',
-			'eliora_governance',
-			'website_publication_system'
-		],
+			evidenceNodeIds: [
+				'service_desk_foundation',
+				'privileged_access_and_operational_scope',
+				'endpoint_remediation',
+				'package_redesign',
+				'ai_governance',
+				'website_publication'
+			],
 		projectionIds: ['it_support', 'technical_operations', 'ai_process']
 	}
 ] satisfies PracticeArea[];

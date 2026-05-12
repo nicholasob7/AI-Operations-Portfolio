@@ -1,19 +1,19 @@
 <script lang="ts">
-	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
-	import { elioraProjectDetail } from '$lib/content/project-details';
+	import HighlightContentPage from '$lib/components/HighlightContentPage.svelte';
+	import { aiGovernanceContent } from '$lib/content/highlight-content';
 	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
-	const elioraEntrySurface = resolveEntrySurface('elioraProject');
-	const elioraTitle = "Eliora AI Governance | Nicko O'Brien";
-	const elioraDescription =
-		'Compact portfolio page describing Eliora as an AI governance and coordination project.';
+	const aiGovernanceEntrySurface = resolveEntrySurface('aiGovernance');
+	const aiGovernanceTitle = "AI Governance | Nicko O'Brien";
+	const aiGovernanceDescription =
+		'Detailed portfolio entry for the AI Governance evidence highlight.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	};
 
-	const elioraActions = [
+	const aiGovernanceActions = [
 		{
 			id: 'highlights',
 			label: 'Highlights',
@@ -38,20 +38,20 @@
 </script>
 
 <svelte:head>
-	<title>{elioraTitle}</title>
-	<meta name="description" content={elioraDescription} />
+	<title>{aiGovernanceTitle}</title>
+	<meta name="description" content={aiGovernanceDescription} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={elioraTitle} />
-	<meta property="og:description" content={elioraDescription} />
+	<meta property="og:title" content={aiGovernanceTitle} />
+	<meta property="og:description" content={aiGovernanceDescription} />
 	<meta property="og:site_name" content="Nicko O'Brien" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content={elioraTitle} />
-	<meta name="twitter:description" content={elioraDescription} />
+	<meta name="twitter:title" content={aiGovernanceTitle} />
+	<meta name="twitter:description" content={aiGovernanceDescription} />
 </svelte:head>
 
-<ProjectDetailPage
-	actions={elioraActions}
-	detail={elioraProjectDetail}
-	entrySurface={elioraEntrySurface}
-	panelId="eliora-destination-actions"
+<HighlightContentPage
+	actions={aiGovernanceActions}
+	detail={aiGovernanceContent}
+	entrySurface={aiGovernanceEntrySurface}
+	panelId="ai-governance-actions"
 />

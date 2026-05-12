@@ -172,7 +172,7 @@ export function buildCanonical() {
 
 	const resumeProjectionIndex = {
 		registry_version: resumeProjectionRegistryVersion,
-		human_index_route: '/resume',
+		human_index_route: '/resumes',
 		active_projection_ids: mergedProjectionItems.map((projection) => projection.id),
 		projection_count: mergedProjectionItems.length,
 		items: mergedProjectionItems.map((projection) => ({
@@ -214,8 +214,8 @@ export function buildCanonical() {
 			canonical_json: asRoute('/canonical.json'),
 			homepage: asRoute('/'),
 			highlights_index: asRoute('/highlights'),
-			resume_index: asRoute('/resume'),
-			project_routes: evidenceNodes
+			resume_index: asRoute('/resumes'),
+			highlight_routes: evidenceNodes
 				.filter((evidenceNode) => evidenceNode.route)
 				.map((evidenceNode) => ({
 					id: evidenceNode.id,

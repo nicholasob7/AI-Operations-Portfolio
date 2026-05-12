@@ -33,7 +33,7 @@
 			id: 'resume-index',
 			label: 'Resume Versions',
 			type: 'link' as const,
-			href: '/resume',
+			href: '/resumes',
 			preload: true
 		},
 		{

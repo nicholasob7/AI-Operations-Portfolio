@@ -85,7 +85,7 @@ For this site:
 
 - the homepage contains primary public truth in summary and navigation form
 - the resume contains primary public truth in resume form
-- complete and active project pages contain primary public truth in reduced public project-detail form
+- highlight/evidence pages contain primary public truth in bounded public evidence form
 - quality content contains primary public truth about language command, semantic control, and precision
 - personal content contains primary public truth about governance orientation, project direction, and selected public intellectual and technical identity
 - PDFs are public projections that should remain aligned with selected public truth, while recognizing they may lag if separately authored
@@ -127,7 +127,7 @@ Reject these failure modes:
 - treating omission as suspicious
 - treating sanitization as weakness
 - ranking truth by proof density
-- treating project-detail pages as more true because they are closer to operational substrate
+- treating highlight/evidence pages as more true because they are closer to operational substrate
 - demoting homepage, resume, quality, or personal content into lesser truth status
 - collapsing relationship-bearing skill signal into evidentiary nullity
 - inferring weak competence from withheld specifics

@@ -10,12 +10,12 @@
 	let { navigationReady }: Props = $props();
 </script>
 
-<div class="projects">
-	{#each highlightsEntries as entry}
-		{@const node = evidenceNodeById[entry.evidenceNodeId]}
-		<HomeInnerPanel>
-			<h3>{node.humanDisplayLabel ?? node.label}</h3>
-			<p class="project-summary">{node.summary}</p>
+<div class="evidence-highlights">
+		{#each highlightsEntries as entry}
+			{@const node = evidenceNodeById[entry.evidenceNodeId]}
+			<HomeInnerPanel>
+				<h3>{'humanDisplayLabel' in node ? node.humanDisplayLabel ?? node.label : node.label}</h3>
+				<p class="evidence-summary">{node.summary}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
@@ -31,22 +31,22 @@
 </div>
 
 <style>
-	.projects {
+	.evidence-highlights {
 		display: grid;
 		gap: 0.9rem;
 	}
 
-	.projects :global(h3) {
+	.evidence-highlights :global(h3) {
 		justify-self: center;
 		text-align: center;
 	}
 
-	.projects :global(.project-summary) {
+	.evidence-highlights :global(.evidence-summary) {
 		text-align: left;
 	}
 
 	@media (min-width: 960px) {
-		.projects {
+		.evidence-highlights {
 			gap: 1.2rem;
 		}
 	}

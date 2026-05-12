@@ -50,10 +50,10 @@ export type PracticeAreaId =
 export type EvidenceNodeId =
 	| 'service_desk_foundation'
 	| 'privileged_access_and_operational_scope'
-	| 'endpoint_remediation_script'
-	| 'migration_stabilization_framework'
-	| 'eliora_governance'
-	| 'website_publication_system';
+	| 'endpoint_remediation'
+	| 'package_redesign'
+	| 'ai_governance'
+	| 'website_publication';
 
 export type PracticeArea = {
 	id: PracticeAreaId;

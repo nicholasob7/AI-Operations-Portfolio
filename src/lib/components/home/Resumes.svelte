@@ -8,9 +8,9 @@
 	let { navigationReady }: Props = $props();
 </script>
 
-<section class="card" aria-labelledby="selected-work-head">
+<section class="card" aria-labelledby="resumes-head">
 	<div class="section-flow">
-		<h2 id="selected-work-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
+		<h2 id="resumes-head" tabindex="-1">Recruiter-Friendly Resumes</h2>
 		<HomeInnerPanel>
 			<p class="current-role-line">
 				Current: <strong>IT Support</strong>, <strong>Technical Operations</strong>, and
@@ -22,8 +22,8 @@
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
-				class="cta cta-resume section-cta-remediation"
-				href="/resume"
+				class="cta cta-resume resumes-cta"
+				href="/resumes"
 				data-sveltekit-preload-code="hover"
 				tabindex={navigationReady ? undefined : -1}
 			>

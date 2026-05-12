@@ -12,15 +12,15 @@
 	let { navigationReady }: Props = $props();
 </script>
 
-<section class="card" aria-labelledby="self-directed-head">
+<section class="card" aria-labelledby="highlights-head">
 	<div class="section-flow">
-		<h2 id="self-directed-head" tabindex="-1">Selected Evidence Highlights</h2>
+		<h2 id="highlights-head" tabindex="-1">Selected Evidence Highlights</h2>
 		<HomeInnerPanel>
 			<p>{homepageHighlightsGatewayCopy}</p>
 			<a
 				aria-disabled={!navigationReady}
 				class:interaction-disabled={!navigationReady}
-				class="cta cta-resume section-cta-eliora"
+				class="cta cta-resume highlights-cta"
 				href={highlightsIndexRoute}
 				tabindex={navigationReady ? undefined : -1}
 			>

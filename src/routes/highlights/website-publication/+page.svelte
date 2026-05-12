@@ -1,19 +1,19 @@
 <script lang="ts">
-	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
-	import { websiteBuildNotesProjectDetail } from '$lib/content/project-details';
+	import HighlightContentPage from '$lib/components/HighlightContentPage.svelte';
+	import { websitePublicationContent } from '$lib/content/highlight-content';
 	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
-	const websiteBuildNotesEntrySurface = resolveEntrySurface('websiteBuildNotesProject');
-	const websiteBuildNotesTitle = "Web Build Notes | Nicko O'Brien";
-	const websiteBuildNotesDescription =
-		"Build notes for the website's transition behaviour, interaction controls, public structure, and static delivery.";
+	const websitePublicationEntrySurface = resolveEntrySurface('websitePublication');
+	const websitePublicationTitle = "Website Publication | Nicko O'Brien";
+	const websitePublicationDescription =
+		'Evidence highlight for website publication, canonical JSON, public route structure, interaction controls, and static delivery.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	};
 
-	const websiteBuildNotesActions = [
+	const websitePublicationActions = [
 		{
 			id: 'highlights',
 			label: 'Highlights',
@@ -38,20 +38,20 @@
 </script>
 
 <svelte:head>
-	<title>{websiteBuildNotesTitle}</title>
-	<meta name="description" content={websiteBuildNotesDescription} />
+	<title>{websitePublicationTitle}</title>
+	<meta name="description" content={websitePublicationDescription} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={websiteBuildNotesTitle} />
-	<meta property="og:description" content={websiteBuildNotesDescription} />
+	<meta property="og:title" content={websitePublicationTitle} />
+	<meta property="og:description" content={websitePublicationDescription} />
 	<meta property="og:site_name" content="Nicko O'Brien" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content={websiteBuildNotesTitle} />
-	<meta name="twitter:description" content={websiteBuildNotesDescription} />
+	<meta name="twitter:title" content={websitePublicationTitle} />
+	<meta name="twitter:description" content={websitePublicationDescription} />
 </svelte:head>
 
-<ProjectDetailPage
-	actions={websiteBuildNotesActions}
-	detail={websiteBuildNotesProjectDetail}
-	entrySurface={websiteBuildNotesEntrySurface}
-	panelId="website-build-notes-destination-actions"
+<HighlightContentPage
+	actions={websitePublicationActions}
+	detail={websitePublicationContent}
+	entrySurface={websitePublicationEntrySurface}
+	panelId="website-publication-actions"
 />

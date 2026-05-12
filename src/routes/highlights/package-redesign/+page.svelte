@@ -1,26 +1,19 @@
 <script lang="ts">
-	import ProjectDetailPage from '$lib/components/ProjectDetailPage.svelte';
-	import { migrationProjectDetail } from '$lib/content/project-details';
+	import HighlightContentPage from '$lib/components/HighlightContentPage.svelte';
+	import { packageRedesignContent } from '$lib/content/highlight-content';
 	import { resolveEntrySurface } from '$lib/entry-surfaces';
 	import type { DestinationAction } from '$lib/components/DestinationActions.svelte';
 
-	const migrationEntrySurface = resolveEntrySurface('migrationProject');
-	const migrationTitle = "Enterprise Migration Stabilization Framework | Nicko O'Brien";
-	const migrationDescription =
-		'Detailed portfolio entry for the Enterprise Application Migration Stabilization Framework project.';
+	const packageRedesignEntrySurface = resolveEntrySurface('packageRedesign');
+	const packageRedesignTitle = "Package Redesign | Nicko O'Brien";
+	const packageRedesignDescription =
+		'Detailed portfolio entry for the Package Redesign evidence highlight.';
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'auto' });
 	};
 
-	const migrationActions = [
-		{
-			id: 'print',
-			label: 'Print',
-			type: 'link',
-			href: '/appprojects/Portfolio_Description_bw.pdf',
-			download: 'Portfolio_Description_BW.pdf'
-		},
+	const packageRedesignActions = [
 		{
 			id: 'highlights',
 			label: 'Highlights',
@@ -46,20 +39,20 @@
 </script>
 
 <svelte:head>
-	<title>{migrationTitle}</title>
-	<meta name="description" content={migrationDescription} />
+	<title>{packageRedesignTitle}</title>
+	<meta name="description" content={packageRedesignDescription} />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={migrationTitle} />
-	<meta property="og:description" content={migrationDescription} />
+	<meta property="og:title" content={packageRedesignTitle} />
+	<meta property="og:description" content={packageRedesignDescription} />
 	<meta property="og:site_name" content="Nicko O'Brien" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content={migrationTitle} />
-	<meta name="twitter:description" content={migrationDescription} />
+	<meta name="twitter:title" content={packageRedesignTitle} />
+	<meta name="twitter:description" content={packageRedesignDescription} />
 </svelte:head>
 
-<ProjectDetailPage
-	actions={migrationActions}
-	detail={migrationProjectDetail}
-	entrySurface={migrationEntrySurface}
-	panelId="migration-destination-actions"
+<HighlightContentPage
+	actions={packageRedesignActions}
+	detail={packageRedesignContent}
+	entrySurface={packageRedesignEntrySurface}
+	panelId="package-redesign-actions"
 />
