@@ -133,11 +133,13 @@ export const evidenceNodes = [
 			'package investigation',
 			'change tracking',
 			'test-device validation',
-			'controlled deployment'
+			'controlled deployment',
+			'agent-readable evidence directory'
 		],
 		publicDetails: [
 			'Validated remediation logic translated into package-level controls.',
 			'Test-device package redesign reached successful validation.',
+			'Structured as an agent-readable evidence directory so another reviewer could inspect the package path, rationale, supporting evidence, deployment implications, and change-review information.',
 			'Prepared review, change, and audit-ready framing for later rollout stages.'
 		],
 		withheldDetailsNote:
