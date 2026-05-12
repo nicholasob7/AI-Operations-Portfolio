@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
 	import DestinationActions, { type DestinationAction } from '$lib/components/DestinationActions.svelte';
 	import PortraitIntro, { type PortraitIntroState } from '$lib/components/PortraitIntro.svelte';
 	import { browser } from '$app/environment';
@@ -8,7 +9,11 @@
 	} from '$lib/content/resume';
 	import { getHumanVisibleResumeProjections } from '$lib/content/resume-projections';
 	import { getEntryImage, isPortraitEntry, resolveEntrySurface } from '$lib/entry-surfaces';
-	import { willAutoRunPortraitIntro } from '$lib/portrait-intro';
+	import {
+		setPortraitIntroHandoff,
+		shouldReplayResumePortraitOnHomeEntry,
+		willAutoRunPortraitIntro
+	} from '$lib/portrait-intro';
 	import { canonicalOrigin } from '$lib/site';
 	import { onMount } from 'svelte';
 
@@ -48,6 +53,15 @@
 		fadeResumePortraitOverlay = state.fading;
 		resumeIntroBooting = state.booting;
 	};
+
+	beforeNavigate(({ from, to }) => {
+		if (
+			resumeEntryImage &&
+			shouldReplayResumePortraitOnHomeEntry(from?.url.pathname, to?.url.pathname)
+		) {
+			setPortraitIntroHandoff({ src: resumeEntryImage });
+		}
+	});
 
 	onMount(() => {
 		const url = new URL(window.location.href);
