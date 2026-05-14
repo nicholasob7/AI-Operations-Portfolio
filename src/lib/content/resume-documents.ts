@@ -83,7 +83,7 @@ export type ResumeProjectionDocument = {
 	contactItems: ResumeDocumentContactItem[];
 };
 
-const primaryContactIds = new Set(['email', 'website', 'linkedin', 'github']);
+const primaryContactIds = new Set(['email', 'linkedin', 'github']);
 
 const resumeDocumentContactItems: ResumeDocumentContactItem[] = personProfilePublicLinks
 	.filter((item) => primaryContactIds.has(item.id))

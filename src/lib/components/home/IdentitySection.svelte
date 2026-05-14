@@ -20,7 +20,7 @@
 			<h1>Nicko O'Brien</h1>
 		</div>
 		<ul class="identity-links" aria-label="Public links">
-			{#each personProfilePublicLinks as item (item.id)}
+			{#each personProfilePublicLinks.filter((item) => item.id !== 'website') as item (item.id)}
 				<li>
 					<a
 						aria-disabled={!navigationReady}
