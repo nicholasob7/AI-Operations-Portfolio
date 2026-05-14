@@ -709,12 +709,12 @@
 }
 
 	.cta-return-top {
-		--btn-start: #35598f;
-		--btn-mid: #4f4685;
-		--btn-end: #2a7167;
-		--btn-start-hover: #446ca9;
-		--btn-mid-hover: #6458a0;
-		--btn-end-hover: #358879;
+		--btn-start: #3b7b63;
+		--btn-mid: #2a5f4d;
+		--btn-end: #1e4538;
+		--btn-start-hover: #4b9278;
+		--btn-mid-hover: #33735d;
+		--btn-end-hover: #275547;
 	}
 
 	.sr-only {
