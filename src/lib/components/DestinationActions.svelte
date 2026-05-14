@@ -218,15 +218,7 @@
 		border-color: transparent;
 		white-space: nowrap;
 		color: #f3f7ff;
-		background:
-			linear-gradient(120deg, rgba(13, 24, 43, 0.95), rgba(17, 31, 52, 0.95)) padding-box,
-			linear-gradient(
-					120deg,
-					rgba(47, 209, 255, 0.5) 0%,
-					rgba(154, 99, 232, 0.42) 52%,
-					rgba(57, 198, 154, 0.46) 100%
-				)
-				border-box;
+		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
 		text-shadow: 0 1px 2px rgba(3, 8, 20, 0.66);
 		box-shadow:
 			0 0 0 1px rgba(255, 255, 255, 0.035) inset,
@@ -272,15 +264,7 @@
 
 	.destination-action:hover {
 		border-color: transparent;
-		background:
-			linear-gradient(120deg, rgba(17, 31, 54, 0.97), rgba(21, 39, 60, 0.97)) padding-box,
-			linear-gradient(
-					120deg,
-					rgba(97, 221, 255, 0.64) 0%,
-					rgba(170, 118, 239, 0.52) 52%,
-					rgba(83, 213, 170, 0.58) 100%
-				)
-				border-box;
+		background: linear-gradient(120deg, #4b9278 0%, #33735d 55%, #275547 100%);
 	}
 
 	.destination-actions-trigger:hover {

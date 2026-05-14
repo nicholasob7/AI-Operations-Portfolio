@@ -369,6 +369,7 @@
 	.projection-action {
 		color: #d7e8ff;
 		text-decoration: none;
+		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
 	}
 
 	.projection-action {
@@ -386,12 +387,13 @@
 
 	.projection-action-primary {
 		border-color: rgba(154, 214, 255, 0.54);
-		background: rgba(25, 48, 84, 0.9);
+		background: linear-gradient(120deg, #3b7b63 0%, #2a5f4d 55%, #1e4538 100%);
 		color: #f3f7ff;
 	}
 
 	.projection-action:hover {
 		color: #ffffff;
+		background: linear-gradient(120deg, #4b9278 0%, #33735d 55%, #275547 100%);
 	}
 
 	.projection-action:focus-visible {
