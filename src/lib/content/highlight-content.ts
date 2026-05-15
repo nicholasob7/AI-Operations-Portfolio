@@ -275,119 +275,136 @@ export const websitePublicationContent: HighlightContent = {
 	ariaLabel: 'Website publication evidence',
 	sections: [
 		{
-			title: 'Implemented behaviours',
+			title: 'Static publication surface',
 			blocks: [
 				{
 					type: 'paragraph',
 					className: 'doc-summary',
-					text: 'The website rests on underlying build, delivery, metadata, and interaction behaviours that keep it predictable.'
+					text: 'The website is a static SvelteKit professional publication surface. It publishes selected public profile, resume, evidence, and machine-readable material without relying on a live application backend.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Built as static files rather than served from a live application backend.',
-						'Uses browser and deployment rules for predictable loading.',
-						'Reuses unchanged application files safely on repeat visits.',
-						'Gives each major route page identity and social preview information.',
-						'Publishes a sitemap so public routes are declared in one place.',
-						'Exposes selected public content through a machine-readable route.',
-						'Respects reduced-motion preferences during longer visual transitions.',
-						'Supports keyboard operation, Escape close, and focus return in floating action controls.',
-						'Handles older or redirected page anchors without leaving the visitor at a dead position.'
+						'Built with SvelteKit static output rather than a server-rendered runtime.',
+						'Public pages render from committed source content and static assets.',
+						'Deployment headers define browser-facing security and cache behaviour.',
+						'Each major human route declares page identity and social preview metadata.',
+						'Generated public files can be served without a dynamic application server.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Portrait transition and navigation state',
+			title: 'Public route system',
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The portrait transition is visual entry behaviour. It is not application loading. Control availability is handled separately from the fade sequence.'
+					text: 'The public site is organized around a small set of intentional entry routes for human readers and machine readers.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Visual fade state and page readiness are handled separately.',
-						'Controls are released before the portrait fade has fully completed.',
-						'Reduced-motion handling skips the long fade path.',
-						'Cleanup removes transition state after the intro is no longer needed.'
+						'The homepage introduces the profile, public links, resume entry point, highlights entry point, and canonical JSON pointer.',
+						'/resumes lists the active role-specific resume projections.',
+						'Resume detail routes publish the HTML versions for each active projection.',
+						'/highlights lists the public evidence highlight routes.',
+						'Highlight detail routes publish bounded evidence pages, including this Website Publication page.',
+						'/canonical.json, /llms.txt, /sitemap.xml, and robots.txt provide public machine-readable and discovery surfaces.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Interaction controls',
+			title: 'Resume projection surface',
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'Button-triggered action lists need clear close and focus behaviour. Clipboard actions need visible and accessible feedback.'
+					text: 'The active resume surface is projection-based. It publishes three reviewed role-specific resume paths from the same public profile and evidence model.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Floating actions behave like simple action lists rather than complex menu widgets.',
-						'Escape closes the action list.',
-						'Focus returns to the control that opened it.',
-						'Copy actions report success after writing to the clipboard.',
-						'Copy feedback clears after a short delay.',
-						'Resume collapse controls appear only when there is something relevant to collapse.'
+						'The three active public projections are IT Support, Technical Operations, and AI / Process Improvement.',
+						'Each projection has a human-readable HTML detail route linked from /resumes.',
+						'Each projection also has a reviewed static PDF artifact under /resumes.',
+						'The resume index opens PDFs in a new tab; resume detail pages expose a Save PDF action using the browser download attribute.',
+						'Unknown or inactive resume projection slugs resolve to a not-found state rather than a generated resume.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Public structure',
+			title: 'Machine-readable surfaces',
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The website exposes public structure through route metadata, a manual sitemap, and a bounded canonical JSON endpoint. These surfaces describe selected public content outside the visible page layout.'
+					text: '/canonical.json is the authoritative structured public surface. It is generated from build-time content modules and exposes selected public profile, practice, evidence, resume projection, artifact, and publication-boundary data.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Routes declare public identity for browsers and link previews.',
-						'The sitemap lists intentionally exposed public routes.',
-						'/canonical.json gives machines a structured version of selected public content.',
-						'The machine-readable content is limited to public claims and signals.',
-						'It is not a private model of the website or its development process.'
+						'Machine readers are directed to start with resume_projection_index.',
+						'The canonical payload declares active projection metadata, HTML routes, PDF artifact paths, evidence relationships, and publication boundary notes.',
+						'/llms.txt points machine readers to /canonical.json and summarizes the intended reading path.',
+						'/sitemap.xml lists intentionally exposed public routes and PDF artifacts.',
+						'robots.txt allows crawling and points crawlers to the sitemap and canonical JSON surface.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Static delivery',
+			title: 'Portrait entry behaviour',
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The public website is built as static output. Delivery behaviour is defined through generated HTML, static assets, and deployment headers.'
+					text: 'Portrait entry behaviour is visual navigation state. It is not application loading, resume generation, or data fetching.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Generated files can be served without a dynamic application backend.',
-						'Deployment headers define browser-facing delivery rules.',
-						'Security policy is present in the generated HTML.',
-						'Long-lived caching is limited to hashed application files.',
-						'Public pages do not require a dynamic application server to render.'
+						'Portrait images are attached to selected entry surfaces, including the homepage, resume area, and highlight detail pages.',
+						'The visual fade state is tracked separately from interaction readiness.',
+						'Controls can become available before the portrait fade has fully completed.',
+						'Reduced-motion preference skips the long fade path.',
+						'Resume-area navigation suppresses repeated automatic portrait intros while moving between active resume pages.'
 					]
 				}
 			]
 		},
 		{
-			title: 'Closing',
+			title: 'Floating actions and accessibility',
 			blocks: [
 				{
 					type: 'paragraph',
-					text: 'The practical constraint is consistency. Visual effects, interaction state, public data, and delivery rules must keep their proper limits.'
+					text: 'Floating actions are simple action lists for route navigation, top-of-page actions, and PDF access. They are not clipboard controls or complex menu widgets.'
 				},
 				{
 					type: 'list',
 					items: [
-						'Visual effects must not decide when the page is usable.',
-						'Controls must show their state.',
-						'Machine-readable data must stay limited to public content.',
-						'Delivery behaviour must be explicit.'
+						'The Actions trigger opens a grouped list of links or buttons.',
+						'Opening the list moves focus to the first available action.',
+						'Escape closes the list and returns focus to the trigger.',
+						'Button actions close the list after running.',
+						'Link actions close the list and may carry portrait handoff state for supported home navigation.'
+					]
+				}
+			]
+		},
+		{
+			title: 'Publication boundary',
+			blocks: [
+				{
+					type: 'paragraph',
+					text: 'This website publishes reviewed public material. It does not expose private development state, old project routes, or runtime resume generation.'
+				},
+				{
+					type: 'list',
+					items: [
+						'The public model is bounded to selected professional profile, evidence, projection metadata, and artifact data.',
+						'Runtime job-description ingestion and bespoke resume generation are not supported by this site.',
+						'Only reviewed committed PDF artifacts are published from this repository.',
+						'Retired or unknown public links fall back to the current not-found page and active entry points.',
+						'Future generation systems, if used, are separate from this static publication surface.'
 					]
 				}
 			]
