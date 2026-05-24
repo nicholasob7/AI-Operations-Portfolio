@@ -1,8 +1,11 @@
 # allow crawling everything by default
 User-agent: *
 Disallow:
+Allow: /canonical.json
+Allow: /llms.txt
+Allow: /sitemap.xml
 
 Sitemap: https://nicko.obrienai.com/sitemap.xml
 
-# Machine-readable public profile:
+# Authoritative machine-readable public profile and resume projection index:
 # https://nicko.obrienai.com/canonical.json

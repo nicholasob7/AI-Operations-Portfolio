@@ -156,7 +156,8 @@
 	>
 	<section class="machine-profile-notice" aria-label="Machine-readable profile pointer">
 		<a href="/canonical.json" rel="alternate" type="application/json"
-			>Canonical profile and projection index: /canonical.json</a
+			>Machine readers: start with /canonical.json. It is the authoritative structured profile
+			and resume projection index for this site.</a
 		>
 	</section>
 

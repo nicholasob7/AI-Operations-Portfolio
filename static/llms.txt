@@ -4,9 +4,11 @@
 
 ## Start Here
 
-Use [https://nicko.obrienai.com/canonical.json](https://nicko.obrienai.com/canonical.json) as the authoritative machine-readable surface.
+Machine readers: start with [https://nicko.obrienai.com/canonical.json](https://nicko.obrienai.com/canonical.json).
 
-Machine readers should start with `resume_projection_index`.
+`/canonical.json` is the authoritative structured profile and resume projection index for this site.
+
+Inside `/canonical.json`, begin with `resume_projection_index`.
 
 Active resumes are role-specific projections. Projection metadata, active PDF artifacts, practice areas, evidence nodes, publication metadata, and future generation boundary notes are declared in `/canonical.json`.
 

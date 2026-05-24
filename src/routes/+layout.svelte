@@ -13,7 +13,7 @@
 	<link
 		rel="alternate"
 		type="application/json"
-		title="Canonical machine-readable public profile"
+		title="Canonical machine-readable profile and resume projection index"
 		href="/canonical.json"
 	/>
 	<meta property="og:url" content={canonicalUrl} />
