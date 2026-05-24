@@ -155,7 +155,11 @@
 		class="page"
 	>
 	<section class="machine-profile-notice" aria-label="Machine-readable profile pointer">
-		<a href="/canonical.json" rel="alternate" type="application/json"
+		<a
+			href="/canonical.json"
+			rel="alternate noopener noreferrer"
+			target="_blank"
+			type="application/json"
 			>Machine readers: start with /canonical.json. It is the authoritative structured profile
 			and resume projection index for this site.</a
 		>
